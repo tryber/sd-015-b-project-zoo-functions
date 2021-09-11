@@ -21,35 +21,21 @@ function countEntrants(entrants) {
 
 function calculateEntry(entrants) {
   // seu código aqui
-  if (!entrants || Object.entries(entrants).length === 0) {return 0}
-  const {
-    child: childTotal,
-    adult: adultTotal,
-    senior: seniorTotal,
-  } = countEntrants(entrants);
+  if (!entrants || Object.entries(entrants).length === 0) {
+    return 0;
+  }
 
-  const {
-    child: childPrice,
-    adult: adultPrice,
-    senior: seniorPrice,
-  } = data.prices;
+  const entrantTotals = countEntrants(entrants);
+  const prices = data.prices;
 
-  let result = 0;
-  result += childTotal * childPrice;
-  result += adultTotal * adultPrice;
-  result += seniorTotal * seniorPrice;
-
+  const result = Object.keys(entrantTotals).reduce((acc, age) => {
+    const paid = entrantTotals[age];
+    const price = prices[age];
+    acc += paid * price;
+    return acc
+  }, 0); 
+ 
   return result;
 }
-
-const entrants = [
-  { name: "Lara Carvalho", age: 5 },
-  { name: "Frederico Moreira", age: 5 },
-  { name: "Pedro Henrique Carvalho", age: 5 },
-  { name: "Maria Costa", age: 18 },
-  { name: "Núbia Souza", age: 18 },
-  { name: "Carlos Nogueira", age: 50 },
-];
-console.log(calculateEntry(entrants));
 
 module.exports = { calculateEntry, countEntrants };
