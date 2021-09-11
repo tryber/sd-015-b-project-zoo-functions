@@ -10,5 +10,5 @@ function getEmployeeByName(employeeName) {
 
   return employeeName === undefined ? { } : employee;
 }
-console.log(getEmployeeByName());
+
 module.exports = getEmployeeByName;
