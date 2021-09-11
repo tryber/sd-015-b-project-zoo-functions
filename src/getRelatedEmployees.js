@@ -3,11 +3,9 @@ const data = require("../data/zoo_data");
 function isManager(id) {
   // seu código aqui
   const employee = data.employees.find((employee) => employee.id === id);
-  const isManager = employee.managers.length === 0;
+  const isManager = data.employees.some(({managers}) => managers.includes(employee.id));
   return isManager;
 }
-
-console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 function getRelatedEmployees(managerId) {
   // seu código aqui
