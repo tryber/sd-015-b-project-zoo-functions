@@ -77,10 +77,33 @@ function filterOfGender(gender) {
   return objectOfRegions;
 }
 
+function filterOfGenderSorted(gender) {
+  const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
+
+  regions.forEach((region) => {
+    filterByRegions(region).forEach((specie) => {
+      let tempObj = {};
+      const { name, residents } = specie;
+      tempObj = { [name]: [] };
+      residents.forEach((resident) => {
+        if (resident.sex === gender) {
+          const residentName = resident.name;
+          tempObj[name].push(residentName);
+        }
+      });
+      tempObj[name].sort();
+      objectOfRegions[region].push(tempObj);
+    });
+  });
+  return objectOfRegions;
+}
+
 function getAnimalMap(options) {
   if (!options) return outputDeafult();
 
   const { includeNames, sorted, sex = false } = options;
+
+  if (sex && sorted) return filterOfGenderSorted(sex);
 
   if (sex) return filterOfGender(sex);
 
