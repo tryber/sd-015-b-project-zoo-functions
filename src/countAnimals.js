@@ -10,15 +10,7 @@ const countWithoutParameters = () => {
   return animalsCount;
 };
 
-const countSpeciesByName = ({ specie }) => {
-  const animalsCount = data.species.reduce((acc, { name, residents }) => (
-    specie === name ? acc + residents.length : acc
-  ), 0);
-
-  return animalsCount;
-};
-
-const countSpeciesByNameAndGender = ({ specie, gender }) => {
+const countSpeciesByNameAndGender = (specie, gender) => {
   const filteredAnimals = data.species.find(({ name }) => specie === name);
 
   return filteredAnimals.residents.reduce((acc, { sex }) => (
@@ -26,15 +18,21 @@ const countSpeciesByNameAndGender = ({ specie, gender }) => {
   ), 0);
 };
 
+const countSpeciesByName = ({ specie, gender }) => {
+  if (specie && !gender) {
+    const animalsCount = data.species.reduce((acc, { name, residents }) => (
+      specie === name ? acc + residents.length : acc
+    ), 0);
+
+    return animalsCount;
+  }
+
+  return countSpeciesByNameAndGender(specie, gender);
+};
+
 function countAnimals(animal) {
   // seu código aqui
-  if (!animal) return countWithoutParameters();
-
-  const keys = Object.keys(animal);
-
-  if (keys.length === 1) return countSpeciesByName(animal);
-
-  if (keys.length > 1) return countSpeciesByNameAndGender(animal);
+  return !animal ? countWithoutParameters() : countSpeciesByName(animal);
 }
 
 module.exports = countAnimals;
