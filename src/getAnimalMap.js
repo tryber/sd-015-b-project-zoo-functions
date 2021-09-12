@@ -1,12 +1,13 @@
 const { species } = require('../data/zoo_data');
 
+const regions = ['NE', 'NW', 'SE', 'SW'];
+
 function filterByRegions(region) {
   return species.filter((specie) => specie.location === region);
 }
 
 function outputDeafult() {
   const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
-  const regions = Object.keys(objectOfRegions);
 
   regions.forEach((region) => Object.assign(objectOfRegions[region],
     filterByRegions(region).map((resident) => resident.name)));
@@ -16,7 +17,6 @@ function outputDeafult() {
 
 function includeName() {
   const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
-  const regions = Object.keys(objectOfRegions);
 
   regions.forEach((region) => {
     filterByRegions(region).forEach((specie) => {
@@ -36,7 +36,6 @@ function includeName() {
 
 function includeNameSorted() {
   const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
-  const regions = Object.keys(objectOfRegions);
 
   regions.forEach((region) => {
     filterByRegions(region).forEach((specie) => {
