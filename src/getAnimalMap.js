@@ -6,6 +6,8 @@ function filterByRegions(region) {
   return species.filter((specie) => specie.location === region);
 }
 
+console.log(filterByRegions('NE'));
+
 function outputDeafult() {
   const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
 
@@ -54,10 +56,33 @@ function includeNameSorted() {
   return objectOfRegions;
 }
 
+function filterOfGender(gender) {
+  const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
+
+  regions.forEach((region) => {
+    filterByRegions(region).forEach((specie) => {
+      let tempObj = {};
+      const { name, residents } = specie;
+      tempObj = { [name]: [] };
+      residents.forEach((resident) => {
+        if (resident.sex === gender) {
+          const residentName = resident.name;
+          tempObj[name].push(residentName);
+        }
+      });
+      objectOfRegions[region].push(tempObj);
+    });
+  });
+
+  return objectOfRegions;
+}
+
 function getAnimalMap(options) {
   if (!options) return outputDeafult();
 
-  const { includeNames, sorted = false } = options;
+  const { includeNames, sorted, sex = false } = options;
+
+  if (sex) return filterOfGender(sex);
 
   if (sorted) return includeNameSorted();
 
