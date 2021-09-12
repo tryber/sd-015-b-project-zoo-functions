@@ -4,7 +4,7 @@ const scheduleEntries = Object.entries(hours);
 
 function noArgs() {
   const output = {};
-  scheduleEntries.forEach((day, index) => {
+  scheduleEntries.forEach((day) => {
     const { open, close } = day[1];
     const tempObj = {};
     if (open === 0) {
@@ -42,9 +42,16 @@ function filterByDay(day) {
   return output;
 }
 
+function filteredByAnimal(animal) {
+  return species.find((specie) => specie.name === animal).availability;
+}
+
 function getSchedule(scheduleTarget) {
-  const schedule = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+  const schedule = Object.keys(hours);
+  const animals = species.map((specie) => specie.name);
+
   if (schedule.includes(scheduleTarget)) return filterByDay(scheduleTarget);
+  if (animals.includes(scheduleTarget)) return filteredByAnimal(scheduleTarget);
 
   return noArgs();
 }
