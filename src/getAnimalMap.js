@@ -34,10 +34,33 @@ function includeName() {
   return objectOfRegions;
 }
 
+function includeNameSorted() {
+  const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
+  const regions = Object.keys(objectOfRegions);
+
+  regions.forEach((region) => {
+    filterByRegions(region).forEach((specie) => {
+      let tempObj = {};
+      const { name, residents } = specie;
+      tempObj = { [name]: [] };
+      residents.forEach((resident) => {
+        const residentName = resident.name;
+        tempObj[name].push(residentName);
+      });
+      tempObj[name].sort();
+      objectOfRegions[region].push(tempObj);
+    });
+  });
+
+  return objectOfRegions;
+}
+
 function getAnimalMap(options) {
   if (!options) return outputDeafult();
 
-  const { includeNames = false } = options;
+  const { includeNames, sorted = false } = options;
+
+  if (sorted) return includeNameSorted();
 
   if (includeNames) return includeName();
 }
