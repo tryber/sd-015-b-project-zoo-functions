@@ -1,7 +1,6 @@
 const { hours, species } = require('../data/zoo_data');
 
 const scheduleEntries = Object.entries(hours);
-// console.log(scheduleEntries);
 
 function noArgs() {
   const output = {};
@@ -23,7 +22,30 @@ function noArgs() {
   return output;
 }
 
+function filterByDay(day) {
+  const { open, close } = hours[day];
+
+  if (day === 'Monday') {
+    return { [day]: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
+  }
+
+  const filteredByDay = species.filter((available) => available.availability.includes(day));
+  const namesByDay = filteredByDay.map((specie) => specie.name);
+
+  const output = {
+    [day]: {
+      officeHour: `Open from ${open}am until ${close}pm`,
+      exhibition: namesByDay,
+    },
+  };
+
+  return output;
+}
+
 function getSchedule(scheduleTarget) {
+  const schedule = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+  if (schedule.includes(scheduleTarget)) return filterByDay(scheduleTarget);
+
   return noArgs();
 }
 
