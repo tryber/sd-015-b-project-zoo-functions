@@ -6,8 +6,6 @@ function filterByRegions(region) {
   return species.filter((specie) => specie.location === region);
 }
 
-console.log(filterByRegions('NE'));
-
 function outputDeafult() {
   const objectOfRegions = { NE: [], NW: [], SE: [], SW: [] };
 
@@ -85,9 +83,9 @@ function filterOfGenderSorted(gender) {
       let tempObj = {};
       const { name, residents } = specie;
       tempObj = { [name]: [] };
-      residents.forEach((resident) => {
-        if (resident.sex === gender) {
-          const residentName = resident.name;
+      residents.forEach((animal) => {
+        if (animal.sex === gender) {
+          const residentName = animal.name;
           tempObj[name].push(residentName);
         }
       });
@@ -98,18 +96,28 @@ function filterOfGenderSorted(gender) {
   return objectOfRegions;
 }
 
+function verifyInput(input, gender) {
+  const objOfOptions = {
+    truefalsefalse: includeName(),
+    truetruefalse: includeNameSorted(),
+    truefalsefemale: filterOfGender(gender),
+    truefalsemale: filterOfGender(gender),
+    truetruefemale: filterOfGenderSorted(gender),
+    truetruemale: filterOfGenderSorted(gender),
+    falsefalsefemale: outputDeafult(),
+    falsetruefemale: outputDeafult(),
+  };
+  return objOfOptions[input];
+}
+
 function getAnimalMap(options) {
   if (!options) return outputDeafult();
 
-  const { includeNames, sorted, sex = false } = options;
+  const { includeNames = false, sorted = false, sex = false } = options;
 
-  if (sex && sorted) return filterOfGenderSorted(sex);
+  const optionsOfOptions = `${includeNames}${sorted}${sex}`;
 
-  if (sex) return filterOfGender(sex);
-
-  if (sorted) return includeNameSorted();
-
-  if (includeNames) return includeName();
+  return verifyInput(optionsOfOptions, sex);
 }
 
 module.exports = getAnimalMap;
