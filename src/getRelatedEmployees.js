@@ -1,7 +1,4 @@
 const data = require('../data/zoo_data');
-const {stephanieId, olaId, burlId, employees} = data; // Importa variável que armazena as ids dos managers diretamente do zoo_data
-
-const managers = [stephanieId, olaId, burlId];
 
 function isManager(id) {
   // seu código aqui
