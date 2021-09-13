@@ -22,7 +22,14 @@ function getRelatedEmployees(managerId) {
     // return `resultOfId === ${resultOfId}`; // [DEBUG] Verifica o retorno da função
     const employeFinded = employees.find( (employee) => {
       if (employee.id === managerId ) {
-        return employee;
+        // Esta condicional deve retornar os nomes referentes aos ids
+        // localizados na propriedade responsibleFor [USAR MAP]
+        const responsavelPor = employee.responsibleFor; // Armazena em um array as ids dos subordinados
+        const arraySubordinados = employees.map( (employee) => {
+
+        });
+        console.log(responsavelPor);
+        // return employee; // [RETORNA O OBJ REFERENTE AO ID PASSADO]
       }
     })
     return employeFinded;
@@ -31,7 +38,7 @@ function getRelatedEmployees(managerId) {
 
 // getRelatedEmployees('123456');
 // console.log(getRelatedEmployees('123456')); // [DEBUG] Verifica retorno da Função
-// console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
+console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
 
 module.exports = { isManager, getRelatedEmployees };
 
