@@ -3,13 +3,13 @@ const { employees } = require('../data/zoo_data');
 
 function getEmployeeByName(...employeeName) {
   // seu código aqui
-  const colaboradores = [];
+  let colaboradores = {};
   if (employeeName === undefined || employeeName === '') return {};
 
   employees.filter( (employe) => {
     employeeName.forEach( (name) => {
       if (employe.firstName === name || employe.lastName === name) {
-        colaboradores.push(employe);
+        colaboradores = employe;
       }
       return colaboradores;
     });
