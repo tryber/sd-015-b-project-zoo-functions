@@ -6,9 +6,9 @@ const specieId = (id) => data.employees.find(({ id: employeeId }) => (
 
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
-  const animalIdFound = specieId(id);
+  const findAnimalId = specieId(id);
 
-  const oldestAnimal = data.species.find(({ id: animalId }) => animalId === animalIdFound);
+  const oldestAnimal = data.species.find(({ id: animalId }) => animalId === findAnimalId);
 
   const [{ name, sex, age }] = oldestAnimal.residents.sort((a, b) => b.age - a.age);
 
