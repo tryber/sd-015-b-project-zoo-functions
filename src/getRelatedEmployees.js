@@ -1,4 +1,5 @@
 const data = require('../data/zoo_data');
+const {employees} = data;
 
 function isManager(id) {
   // seu código aqui
@@ -15,7 +16,17 @@ function isManager(id) {
 function getRelatedEmployees(managerId) {
   // seu código aqui
   const resultOfId = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
-  console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
+  // console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
+  if (resultOfId === true) {
+    // console.log(`resultOfId: ${resultOfId}`); // [DEBUG] Verifica o retorno da função
+    // return `resultOfId === ${resultOfId}`; // [DEBUG] Verifica o retorno da função
+    const employeFinded = employees.find( (employee) => {
+      if (employee.id === managerId ) {
+        return employee;
+      }
+    })
+    return employeFinded;
+  }
 }
 
 // getRelatedEmployees('123456');
