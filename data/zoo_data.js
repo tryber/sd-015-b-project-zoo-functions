@@ -5,10 +5,17 @@ const snakesId = '78460a91-f4da-4dea-a469-86fd2b8ccc84';
 const frogsId = '89be95b3-47e4-4c5b-b687-1fabf2afa274';
 const bearsId = 'baa6e93a-f295-44e7-8f70-2bcdc6f6948d';
 const tigersId = 'e8481c1d-42ea-4610-8e11-1752cfc05a46';
+const penguinsID = 'ef3778eb-2844-4c7c-b66c-f432073e1c6b';
+const giraffesID = '01422318-ca2d-46b8-b66c-3e9e188244ed';
 
 const stephanieId = '9e7d4524-363c-416a-8759-8aa7e50c0992';
 const olaId = 'fdb2543b-5662-46a7-badc-93d960fdc0a8';
 const burlId = '0e7b460e-acf4-4e17-bcb3-ee472265db83';
+const nigelID = 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1';
+const wilburnID = '56d43ba3-a5a7-40f6-8dd7-cbb05082383f';
+const sharondaID = '4b40a139-d4dc-4f09-822d-ec25e819a5ad';
+const ardithID = 'c1f50212-35a6-4ecd-8223-f835538526c2';
+const emeryID = 'b0dc644a-5335-489b-8a2c-4e086c7819a2';
 
 module.exports = {
   species: [
@@ -85,7 +92,7 @@ module.exports = {
       ],
     },
     {
-      id: 'ef3778eb-2844-4c7c-b66c-f432073e1c6b',
+      id: penguinsID,
       name: 'penguins',
       popularity: 4,
       location: 'SE',
@@ -210,7 +217,7 @@ module.exports = {
       ],
     },
     {
-      id: '01422318-ca2d-46b8-b66c-3e9e188244ed',
+      id: giraffesID,
       name: 'giraffes',
       popularity: 4,
       location: 'NE',
@@ -251,11 +258,14 @@ module.exports = {
   ],
   employees: [
     {
-      id: 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1',
+      id: nigelID,
       firstName: 'Nigel',
       lastName: 'Nelson',
       managers: [burlId, olaId],
-      responsibleFor: [lionId, tigersId],
+      responsibleFor: [
+        lionId, 
+        tigersId,
+      ],
     },
     {
       id: burlId,
@@ -266,7 +276,8 @@ module.exports = {
         lionId,
         tigersId,
         bearsId,
-        'ef3778eb-2844-4c7c-b66c-f432073e1c6b'],
+        penguinsID,
+      ],
     },
     {
       id: olaId,
@@ -281,11 +292,14 @@ module.exports = {
       ],
     },
     {
-      id: '56d43ba3-a5a7-40f6-8dd7-cbb05082383f',
+      id: wilburnID,
       firstName: 'Wilburn',
       lastName: 'Wishart',
       managers: [burlId, olaId],
-      responsibleFor: [snakesId, elephantsId],
+      responsibleFor: [
+        snakesId, 
+        elephantsId,
+      ],
     },
     {
       id: stephanieId,
@@ -294,28 +308,31 @@ module.exports = {
       managers: [],
       responsibleFor: [
         ottersId,
-        '01422318-ca2d-46b8-b66c-3e9e188244ed',
+        giraffesID,
       ],
     },
     {
-      id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad',
+      id: sharondaID,
       firstName: 'Sharonda',
       lastName: 'Spry',
       managers: [burlId, olaId],
-      responsibleFor: [ottersId, frogsId],
+      responsibleFor: [
+        ottersId, 
+        frogsId,
+      ],
     },
     {
-      id: 'c1f50212-35a6-4ecd-8223-f835538526c2',
+      id: ardithID,
       firstName: 'Ardith',
       lastName: 'Azevado',
-      managers: ['b0dc644a-5335-489b-8a2c-4e086c7819a2'],
+      managers: [emeryID],
       responsibleFor: [
         tigersId,
         bearsId,
       ],
     },
     {
-      id: 'b0dc644a-5335-489b-8a2c-4e086c7819a2',
+      id: emeryID,
       firstName: 'Emery',
       lastName: 'Elser',
       managers: [stephanieId],
