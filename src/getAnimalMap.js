@@ -1,8 +1,8 @@
-const { Console } = require('console');
+const { options } = require('jest-runtime/build/cli/args');
 const data = require('../data/zoo_data');
 
 function separeAnimalsByLocation() {
-  locationObj = {
+  const locationObj = {
     NE: [],
     NW: [],
     SE: [],
@@ -38,33 +38,39 @@ function filterSpeciesBySex(arr, sex) {
 }
 
 function sortNames(obj) {
-  sortObject = obj;
+  const sortObject = obj;
   Object.keys(obj).forEach((location) => {
     sortObject[location].forEach((element, index) => {
-      const key = Object.keys(element)[0]
+      const key = Object.keys(element)[0];
       sortObject[location][index][key].sort();
-    }) 
+    });
   });
   return sortObject;
 }
 
-const getAnimalMap = (options) => {
+function optionsUndefined(options) {
   const animalsByLocation = separeAnimalsByLocation();
   if (options) {
     const { includeNames, sex, sorted } = options;
     const speciesArray = sex ? filterSpeciesBySex(data.species, sex) : data.species;
-    let returnObject;
-    if (includeNames) {
-      returnObject = increaseAnimalNames(animalsByLocation, speciesArray);
-      returnObject = sorted ? sortNames(returnObject) : returnObject;
-    } else {
-      returnObject = animalsByLocation;
-    }
-    return returnObject;
+    return optionsIncludeNames(includeNames, sorted, speciesArray, animalsByLocation);
   }
   return animalsByLocation;
 }
 
-console.log(getAnimalMap({ includeNames: true }));
+function optionsIncludeNames(includeNames, sorted, speciesArray, animalsByLocation) {
+  let returnObject;
+  if (includeNames) {
+    returnObject = increaseAnimalNames(animalsByLocation, speciesArray);
+    returnObject = sorted ? sortNames(returnObject) : returnObject;
+  } else {
+    returnObject = animalsByLocation;
+  }
+  return returnObject;
+}
+
+const getAnimalMap = (options) => {
+  return optionsUndefined(options); 
+}
 
 module.exports = getAnimalMap;
