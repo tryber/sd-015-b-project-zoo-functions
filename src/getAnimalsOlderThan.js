@@ -1,8 +1,26 @@
 const data = require('../data/zoo_data');
+const { species } = require('../data/zoo_data');
 
 function getAnimalsOlderThan(animal, age) {
   // seu código aqui
+  let result = false
+  species.forEach( (specie) => {
+    if (specie.name === animal) { // Se o nome da espécie for igual ao chamado na função
+      // Compare se todos os objetos dentro do array possuem idade >= age
+      specie.residents.filter( (resident) => {
+        // console.log(resident.age); // [DEBUG]
+        // console.log(resident.age >= age); // [DEBUG]
+        result = resident.age >= age; // result = Retorno da expressão (resident.age >= age)
+      })
+      // console.log(specie.name); // [DEBUG]
+      // console.log(specie.residents); // [DEBUG]
+    }
+    return false; // Se o condicional acima for false, ele retorna false automaticamente
+  });
+  return result; // Retorna o resultado para quem chamou a função
 }
+getAnimalsOlderThan('lions', 3);
+// console.log(getAnimalsOlderThan('lions', 3)); // [DEBUG] Todos os animais sao mais velhos que 3? True : False
 
 module.exports = getAnimalsOlderThan;
 
