@@ -12,6 +12,7 @@ function getRelatedEmployees(managerId) {
   if (isManager(managerId) === true) {
     const percorre = employees.filter((employee) => employee.managers.includes(managerId))
       .map((atualEmployee) => `${atualEmployee.firstName} ${atualEmployee.lastName}`);
+
     return percorre;
   } throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
