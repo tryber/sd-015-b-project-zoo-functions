@@ -8,13 +8,12 @@ function countAnimals(animal) {
         [specie.name]: specie.residents.length,
       }), {});
   }
-  if (animal.gender) {
-    return species
+  return animal.gender
+    ? species
       .find((specie) => specie.name === (animal.specie)).residents
-      .filter((resident) => resident.sex === (animal.gender)).length;
-  }
-  return species
-    .find((specie) => specie.name === (animal.specie)).residents.length;
+      .filter((resident) => resident.sex === (animal.gender)).length
+    : species
+      .find((specie) => specie.name === (animal.specie)).residents.length;
 }
 
 module.exports = countAnimals;
