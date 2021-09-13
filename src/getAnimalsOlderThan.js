@@ -20,8 +20,8 @@ function getAnimalsOlderThan(animal, age) {
   });
   return result; // Retorna o resultado para quem chamou a função
 }
-getAnimalsOlderThan('lions', 3);
-console.log(getAnimalsOlderThan('lions', 3)); // [DEBUG] Todos os animais sao mais velhos que 3? True : False
+// getAnimalsOlderThan('lions', 3);
+// console.log(getAnimalsOlderThan('lions', 3)); // [DEBUG] Todos os animais sao mais velhos que 3? True : False
 
 module.exports = getAnimalsOlderThan;
 
