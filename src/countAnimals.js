@@ -6,11 +6,9 @@ const countAnimals = ({ specie: specieName, gender } = {}) => {
   let count;
 
   if (typeof specieName === 'undefined') {
-    const total = {};
-    species.forEach((specie) => {
-      total[specie.name] = specie.residents.length;
-    });
-    count = total;
+    count = species.reduce(
+      (total, specie) => ({ ...total, [specie.name]: specie.residents.length }), {},
+    );
   } else if (typeof gender === 'undefined') {
     count = species.find((specie) => specie.name === specieName).residents.length;
   } else {
