@@ -10,7 +10,8 @@ function getAnimalsOlderThan(animal, age) {
       specie.residents.filter( (resident) => {
         // console.log(resident.age); // [DEBUG]
         // console.log(resident.age >= age); // [DEBUG]
-        return result = resident.age >= age; // result = Retorno da expressão (resident.age >= age)
+        result = resident.age >= age;
+        return result; // result = Retorno da expressão (resident.age >= age)
       });
       // console.log(specie.name); // [DEBUG]
       // console.log(specie.residents); // [DEBUG]
@@ -20,7 +21,7 @@ function getAnimalsOlderThan(animal, age) {
   return result; // Retorna o resultado para quem chamou a função
 }
 getAnimalsOlderThan('lions', 3);
-// console.log(getAnimalsOlderThan('lions', 3)); // [DEBUG] Todos os animais sao mais velhos que 3? True : False
+console.log(getAnimalsOlderThan('lions', 3)); // [DEBUG] Todos os animais sao mais velhos que 3? True : False
 
 module.exports = getAnimalsOlderThan;
 
