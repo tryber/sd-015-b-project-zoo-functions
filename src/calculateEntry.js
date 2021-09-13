@@ -18,12 +18,12 @@ function countEntrants(entrants) {
 }
 
 function calcTotal(totals) {
-  const prices = data.prices;
+  const { prices } = data;
   return Object.keys(totals).reduce((acc, age) => {
     const paid = totals[age];
     const price = prices[age];
-    acc += paid * price;
-    return acc;
+    const result = paid * price;
+    return acc + result;
   }, 0);
 }
 
