@@ -263,7 +263,7 @@ module.exports = {
       lastName: 'Nelson',
       managers: [burlId, olaId],
       responsibleFor: [
-        lionId, 
+        lionId,
         tigersId,
       ],
     },
@@ -297,7 +297,7 @@ module.exports = {
       lastName: 'Wishart',
       managers: [burlId, olaId],
       responsibleFor: [
-        snakesId, 
+        snakesId,
         elephantsId,
       ],
     },
@@ -317,7 +317,7 @@ module.exports = {
       lastName: 'Spry',
       managers: [burlId, olaId],
       responsibleFor: [
-        ottersId, 
+        ottersId,
         frogsId,
       ],
     },
