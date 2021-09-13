@@ -1,9 +1,9 @@
-const data = require("../data/zoo_data");
+const data = require('../data/zoo_data');
 
 function checkAge(age) {
-  let period = "senior";
-  if (age < 18) period = "child";
-  if (age >= 18 && age < 50) period = "adult";
+  let period = 'senior';
+  if (age < 18) period = 'child';
+  if (age >= 18 && age < 50) period = 'adult';
   return period;
 }
 function countEntrants(entrants) {
