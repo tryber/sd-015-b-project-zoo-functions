@@ -15,6 +15,4 @@ function calculateEntry(entrants) {
   return total;
 }
 
-console.log(calculateEntry({}));
-
 module.exports = { calculateEntry, countEntrants };
