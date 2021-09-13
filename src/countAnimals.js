@@ -9,14 +9,18 @@ const emptyObject = species.reduce((result, current) => {
   return Object.assign(result, tempObj);
 }, {});
 
+const findSpecie = (animal) => species.find((specie) => specie.name === (animal.specie));
+
+const filterGender = (animal) => findSpecie(animal).residents
+  .filter((resident) => resident.sex === (animal.gender));
+
 function countAnimals(animal) {
   if (!animal) {
     return emptyObject;
   }
-  return animal.gender ? species
-    .find((specie) => specie.name === (animal.specie))
-    .residents.filter((resident) => resident.sex === (animal.gender)).length : species
-    .find((specie) => specie.name === animal.specie).residents.length;
+  return animal.gender
+    ? filterGender(animal).length
+    : findSpecie(animal).residents.length;
 }
 
 module.exports = countAnimals;
