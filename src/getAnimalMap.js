@@ -22,5 +22,5 @@ function getAnimalMap(animal) {
   );
   return animalMap;
 }
-const test = getAnimalMap({ includeNames: true, sorted: true, sex: 'male'});
+
 module.exports = getAnimalMap;

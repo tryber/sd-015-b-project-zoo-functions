@@ -1,10 +1,12 @@
-const data = require("../data/zoo_data");
+const data = require('../data/zoo_data');
 
 function isManager(id) {
   // seu código aqui
-  const employee = data.employees.find((employee) => employee.id === id);
-  const isManager = data.employees.some(({managers}) => managers.includes(employee.id));
-  return isManager;
+  const employee = data.employees.find((actualEmployee) =>
+    actualEmployee.id === id);
+
+  const isAManager = data.employees.some(({ managers }) => managers.includes(employee.id));
+  return isAManager;
 }
 
 function getRelatedEmployees(managerId) {
@@ -13,10 +15,10 @@ function getRelatedEmployees(managerId) {
 
   if (isManager(managerId)) {
     employees = data.employees
-    .filter(({ managers }) => managers.includes(managerId))
-    .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
+      .filter(({ managers }) => managers.includes(managerId))
+      .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
   } else {
-    throw new Error("O id inserido não é de uma pessoa colaboradora gerente!");
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
   return employees;
 }
