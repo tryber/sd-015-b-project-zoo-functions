@@ -1,11 +1,13 @@
 const { species } = require('../data/zoo_data');
+
 const data = require('../data/zoo_data');
 
 function getSpeciesByIds(...ids) {
-  if (!ids) return [];
+  if (ids === undefined) return [];
 
-  const filtered = species.filter(({ id }, position) => id === ids[position]);
-  return filtered;
+  return species.filter(({ id }, position) => ids[position] === id);
 }
 
 module.exports = getSpeciesByIds;
+
+console.log(getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce'));
