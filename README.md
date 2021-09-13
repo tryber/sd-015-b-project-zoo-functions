@@ -80,7 +80,7 @@ Você deverá completar as funções de forma a satisfazer os requisitos listado
 
 - Projeto individual;
 - Serão 2 dias de projeto;
-- Data de entrega para avaliação final do projeto: `17/09/2021 - 14:00h`
+- Data de entrega para avaliação final do projeto: `21/09/2021 - 14:00h`
 
 ---
 
