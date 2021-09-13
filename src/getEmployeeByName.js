@@ -3,10 +3,11 @@ const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
   // seu código aqui
-  if(employeeName === undefined) {
+  if (employeeName === undefined) {
     return {};
   }
-  return employees.find(({firstName, lastName} = employees) =>(firstName === employeeName || lastName === employeeName));
+  return employees.find(({ firstName, lastName } = employees) =>
+    (firstName === employeeName || lastName === employeeName));
 }
 
 console.log(getEmployeeByName());
