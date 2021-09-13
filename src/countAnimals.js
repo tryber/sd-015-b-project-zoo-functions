@@ -2,8 +2,8 @@ const data = require('../data/zoo_data');
 
 const allAnimalsCount = () => {
   const { species } = data;
-  const count = species.reduce((acc, {name, residents}) => {
-    acc[name] = residents.length
+  const count = species.reduce((acc, { name, residents }) => {
+    acc[name] = residents.length;
     return acc;
   }, {});
   return count;
