@@ -9,14 +9,15 @@ function isManager(id) {
   return isAManager;
 }
 
+const getManager = (managerId) => data.employees
+  .filter(({ managers }) => managers.includes(managerId))
+  .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
+
 function getRelatedEmployees(managerId) {
   // seu código aqui
   let employees;
-
   if (isManager(managerId)) {
-    employees = data.employees
-      .filter(({ managers }) => managers.includes(managerId))
-      .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
+    employees = getManager(managerId);
   } else {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
