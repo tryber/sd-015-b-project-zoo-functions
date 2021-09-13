@@ -1,5 +1,5 @@
 const data = require('../data/zoo_data');
-const {stephanieId, olaId, burlId} = data; // Importa variável que armazena as ids dos managers diretamente do zoo_data
+const {stephanieId, olaId, burlId, employees} = data; // Importa variável que armazena as ids dos managers diretamente do zoo_data
 
 const managers = [stephanieId, olaId, burlId];
 
@@ -12,15 +12,7 @@ function isManager(id) {
 function getRelatedEmployees(managerId) {
   // seu código aqui
   const resultOfId = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
-  // console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
-  // Cria uma condicional onde, se resultOfId === true, executa a função que mostra quem essa pessoa gerencia
-  // Se não, retorna o erro: 'O id inserido não é de uma pessoa colaboradora gerente!';
-  if (resultOfId === true) {
-    // console.log(`resultOfId === ${resultOfId}`); // [DEBUG] Verifica o retorno da função
-    // return `resultOfId === ${resultOfId}`; // [DEBUG] Verifica o retorno da função
-  }
-
-  return 'O id inserido não é de uma pessoa colaboradora gerente!';
+  console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
 }
 
 // getRelatedEmployees('123456');
