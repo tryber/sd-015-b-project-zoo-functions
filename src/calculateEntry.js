@@ -9,7 +9,7 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined || entrants.length === undefined) {   
+  if (entrants === undefined || entrants.length === undefined) {
     return 0;
   }
   const adultPrice = countEntrants(entrants).adult * prices.adult;
