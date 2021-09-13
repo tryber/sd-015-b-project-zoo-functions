@@ -1,4 +1,3 @@
-// test
 const { name } = require('faker/locale/pt_BR');
 const { calculateEntry, countEntrants } = require('../src/calculateEntry');
 
