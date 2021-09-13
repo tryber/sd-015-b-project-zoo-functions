@@ -6,14 +6,14 @@ function getEmployeeByName(employeeName) {
   let colaboradores = {};
   if (employeeName === undefined || employeeName === '') return {};
 
-  employees.filter( (employe) => {
+  employees.filter((employe) => {
     if (employe.firstName === employeeName || employe.lastName === employeeName) {
       colaboradores = employe;
     }
     return colaboradores;
   });
   return colaboradores;
-  }
+}
 
 // getEmployeeByName('Teste');
 // console.log(getEmployeeByName('Emery', 'Nelson', 'Bethea', 'Wilburn'));
