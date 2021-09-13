@@ -1,4 +1,3 @@
-const { options } = require('jest-runtime/build/cli/args');
 const data = require('../data/zoo_data');
 
 function separeAnimalsByLocation() {
@@ -48,16 +47,6 @@ function sortNames(obj) {
   return sortObject;
 }
 
-function optionsUndefined(options) {
-  const animalsByLocation = separeAnimalsByLocation();
-  if (options) {
-    const { includeNames, sex, sorted } = options;
-    const speciesArray = sex ? filterSpeciesBySex(data.species, sex) : data.species;
-    return optionsIncludeNames(includeNames, sorted, speciesArray, animalsByLocation);
-  }
-  return animalsByLocation;
-}
-
 function optionsIncludeNames(includeNames, sorted, speciesArray, animalsByLocation) {
   let returnObject;
   if (includeNames) {
@@ -70,7 +59,13 @@ function optionsIncludeNames(includeNames, sorted, speciesArray, animalsByLocati
 }
 
 const getAnimalMap = (options) => {
-  return optionsUndefined(options); 
-}
+  const animalsByLocation = separeAnimalsByLocation();
+  if (options) {
+    const { includeNames, sex, sorted } = options;
+    const speciesArray = sex ? filterSpeciesBySex(data.species, sex) : data.species;
+    return optionsIncludeNames(includeNames, sorted, speciesArray, animalsByLocation);
+  }
+  return animalsByLocation;
+};
 
 module.exports = getAnimalMap;
