@@ -14,11 +14,15 @@ function isManager(id) {
 
 function getRelatedEmployees(managerId) {
   // seu código aqui
-  return isManager(managerId);
+  const resultOfId = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
+  // console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
+  // Cria uma condicional onde, se 
+  return 'O id inserido não é de uma pessoa colaboradora gerente!';
 }
 
 // getRelatedEmployees('123456');
-console.log(getRelatedEmployees('123456')); // [DEBUG] Verifica retorno da Função
+// console.log(getRelatedEmployees('123456')); // [DEBUG] Verifica retorno da Função
+// console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
 
 module.exports = { isManager, getRelatedEmployees };
 
