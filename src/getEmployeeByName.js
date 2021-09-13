@@ -1,11 +1,16 @@
 const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
-  return data.employees.filter(
-    ({ firstName }, { lastName }) => (employeeName.includes(firstName) || employeeName.includes(lastName)),
-  );
+  const getByName = data.employees;
+  if (!employeeName) {
+    return {};
+  }
+  return getByName.filter(
+    (employee) =>
+      employee.firstName === employeeName || employee.lastName === employeeName,
+  ).shift();
 }
 
 module.exports = getEmployeeByName;
 
-console.log(getEmployeeByName('Nelson'));
+console.log(getEmployeeByName('Nigel'));
