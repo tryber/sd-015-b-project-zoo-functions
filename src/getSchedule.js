@@ -26,7 +26,7 @@ function getScheduleByDay(scheduleTarget) {
   let scheduleArrayFiltered = scheduleArray.filter((element) => element[0] === scheduleTarget);
   if (scheduleArrayFiltered.length === 0) {
     scheduleArrayFiltered = scheduleArray;
-  };
+  }
   return scheduleArrayFiltered.reduce((acc, curr) => {
     const [key, value] = curr;
     acc[key] = value;
