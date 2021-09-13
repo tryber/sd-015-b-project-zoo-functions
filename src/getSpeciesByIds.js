@@ -7,12 +7,13 @@ function getSpeciesByIds(...arrayDeIDS) {
   // seu código aqui
   const arrayFiltrado = [];
   species.filter((specie) => {
-    arrayDeIDS.forEach( (id) => {
+    arrayDeIDS.forEach((id) => {
       if (specie.id === id) {
         arrayFiltrado.push(specie);
         return arrayFiltrado;
       }
     });
+    return arrayFiltrado;
   });
   return arrayFiltrado;
 }
