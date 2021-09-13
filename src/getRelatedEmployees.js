@@ -6,9 +6,9 @@ function isManager(id) {
 
 function getRelatedEmployees(managerId) {
   if (isManager(managerId)) {
-    const x = data.employees.filter((employee) =>
+    const getEmployee = data.employees.filter((employee) =>
       employee.managers.includes(managerId));
-    return x.reduce((acc, employee) => {
+    return getEmployee.reduce((acc, employee) => {
       const { firstName, lastName } = employee;
       acc.push(`${firstName} ${lastName}`);
       return acc;
