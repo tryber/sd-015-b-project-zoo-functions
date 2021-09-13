@@ -1,11 +1,33 @@
 const data = require('../data/zoo_data');
 
+function getEntrantAgeRange(entrant) {
+  if (entrant.age < 18) {
+    return 'child';
+  }
+
+  if (entrant.age < 50) {
+    return 'adult';
+  }
+
+  return 'senior';
+}
+
 function countEntrants(entrants) {
-  // seu código aqui
+  const result = { child: 0, adult: 0, senior: 0 };
+
+  entrants.forEach((entrant) => {
+    result[getEntrantAgeRange(entrant)] += 1;
+  });
+
+  return result;
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (!Array.isArray(entrants)) return 0;
+
+  const { child, adult, senior } = countEntrants(entrants);
+
+  return child * 20.99 + adult * 49.99 + senior * 24.99;
 }
 
 module.exports = { calculateEntry, countEntrants };
