@@ -16,7 +16,8 @@ function getRelatedEmployees(managerId) {
   // seu código aqui
   const resultOfId = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
   // console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
-  // Cria uma condicional onde, se 
+  // Cria uma condicional onde, se resultOfId === true, executa a função que mostra quem essa pessoa gerencia
+  // Se não, retorna o erro: 'O id inserido não é de uma pessoa colaboradora gerente!';
   return 'O id inserido não é de uma pessoa colaboradora gerente!';
 }
 
