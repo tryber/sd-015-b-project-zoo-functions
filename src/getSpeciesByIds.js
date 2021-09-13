@@ -1,12 +1,11 @@
 const data = require('../data/zoo_data');
 
-function getSpeciesByIds(...ids) { // Função recebe como parametro um array de parametros.
+function getSpeciesByIds(...ids) {
   // seu código aqui
-  if (ids.length === 0) return []; // Verifica se a função recebeu algum parametro.
-  
+  if (ids.length === 0) return [];  
   const filterId = ids.map((id) => {
-    const filter = data.species.filter((anotherId) => ( anotherId.id === id ? true : false ));
-    return filter[0];
+    const isIdAnimal = data.species.filter((anotherId) => (anotherId.id === id));
+    return isIdAnimal[0];
   });
   return filterId;
 }
