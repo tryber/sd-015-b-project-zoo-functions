@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 function getAnimalsOlderThan(animal, age) {
   return data.species.filter((animalActual) => animalActual.name === animal)
-    .map((ages) => ages.residents.every((resident) => resident.age > age)).shift();
+    .map((ag) => ag.residents.every((resident) => resident.age > age)).shift();
 }
 
 module.exports = getAnimalsOlderThan;
