@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 const data = require('../data/zoo_data');
 
 const especies = data.species;
@@ -9,7 +8,7 @@ function getSpeciesByIds(...ids) {
       especies.find((id) => {
         if (id.id === acc) {
           return id;
-        }
+        } return null;
       }),
     ));
   return resultado;
