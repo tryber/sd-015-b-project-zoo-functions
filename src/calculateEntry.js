@@ -1,12 +1,7 @@
 const data = require('../data/zoo_data');
 
-function countEntrants(entrants) {
-  const classifyAge = {
-    child: 0,
-    adult: 0,
-    senior: 0,
-  };
-  entrants && Array.isArray(entrants) ? entrants.forEach((element) => {
+function classifyAges(arr) {
+  arr.forEach((element) => {
     const { age } = element;
     if (age < 18) {
       classifyAge.child += 1;
@@ -15,7 +10,16 @@ function countEntrants(entrants) {
     } else {
       classifyAge.senior += 1;
     }
-  }) : false;
+  });
+}
+
+function countEntrants(entrants) {
+  const classifyAge = {
+    child: 0,
+    adult: 0,
+    senior: 0,
+  };
+  entrants && Array.isArray(entrants) ? classifyAges(entrants) : false;
   return classifyAge;
 }
 
