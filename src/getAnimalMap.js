@@ -1,45 +1,27 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function getMap() {
-  const animalsLocation = {
-    NE: [],
-    NW: [],
-    SE: [],
-    SW: [],
-  };
-  species.forEach(({ name, location }) => {
-    animalsLocation[location].push(name);
-  });
-  return animalsLocation;
+// Fonte https://github.com/tryber/sd-015-b-project-zoo-functions/blob/annie-haurani-zoo-functions/src/getAnimalMap.js
+function getAnimals(option, specie) {
+  return specie.residents.reduce((arr, animal) => {
+    if (option.sex && option.sex === animal.sex) arr.push(animal.name);
+    if (!option.sex) arr.push(animal.name);
+    return arr;
+  }, []);
 }
 
-function getNamesMap(option) {
-  const animalsLocation = {
-    NE: [],
-    NW: [],
-    SE: [],
-    SW: [],
-  };
-  species.forEach(({ name, location, residents }) => {
-    const obj = {};
-    const animalNames = residents.map((resident) => resident.name);
-    if (option) animalNames.sort();
-    console.log(animalNames);
-    obj[name] = animalNames;
-    animalsLocation[location].push(obj);
-  });
-  console.log(animalsLocation);
-  return animalsLocation;
+function getAnimalMap(options = { includeNames: false, sorted: false, sex: false }) {
+  const result = species.reduce((animalMap, specie) => {
+    if (options.includeNames) {
+      const animalList = getAnimals(options, specie);
+      if (options.sorted) animalList.sort();
+      animalMap[specie.location].push({ [specie.name]: animalList });
+    } else {
+      animalMap[specie.location].push(specie.name);
+    }
+    return animalMap;
+  }, { NE: [], NW: [], SE: [], SW: [] });
+  return result;
 }
-
-function getAnimalMap(options) {
-  if (!options) return getMap();
-  if (options.includeNames) return getNamesMap();
-  if (options) return getNamesMap(options);
-}
-
-getAnimalMap({ includeNames: true });
-getAnimalMap({ sorted: true });
 
 module.exports = getAnimalMap;
