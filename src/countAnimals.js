@@ -7,17 +7,16 @@ function countAnimals(animal) {
     const specieRequired = species.find((element) => element.name === specie);
     let quantity = specieRequired.residents;
     if (sex) {
-      quantity = quantity
-        .filter((element) => element.sex.toLowerCase() === sex.toLowerCase());
+      quantity = quantity.filter((element) => element.sex === sex);
     } return quantity.length;
   }
-  const objectReturn = {};
+  const result = {};
   species.forEach((element) => {
     const animalName = element.name;
     const animalResidents = element.residents.length;
-    objectReturn[`${animalName}`] = animalResidents;
+    result[`${animalName}`] = animalResidents;
   });
-  return objectReturn;
+  return result;
 }
 
 module.exports = countAnimals;
