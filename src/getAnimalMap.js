@@ -11,7 +11,7 @@ function searchDefault() {
   return regions;
 }
 
-function animalNames(sorted, sex) {
+function getAnimalNames(sorted, sex) {
   const regions = {};
 
   species.forEach((specie) => {
@@ -29,7 +29,7 @@ function animalNames(sorted, sex) {
 function getAnimalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
 
-  if (includeNames) return animalNames(sorted, sex);
+  if (includeNames) return getAnimalNames(sorted, sex);
   return searchDefault();
 }
 
