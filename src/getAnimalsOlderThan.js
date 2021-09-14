@@ -5,12 +5,19 @@ function getAnimalsOlderThan(animal, age) {
   // coletar o animal pelo name
   const findAnimal = species.find((elemento) => animal.includes(elemento.name))
   // comparar idade do animal encontrado
-  const findAge = species.find((elemento) => elemento.residents.age < age)
-
-  return findAge
+  const animalsInfo = findAnimal.residents;
+  const animalsAge = animalsInfo.every((elemento) => {
+    const ageAn = elemento.age;
+    if (ageAn <= age) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  return animalsAge
 }
 
 
 module.exports = getAnimalsOlderThan;
 
-console.log(getAnimalsOlderThan('otters', 4));
+console.log(getAnimalsOlderThan('otters', 12));
