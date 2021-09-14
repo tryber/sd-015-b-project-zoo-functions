@@ -5,9 +5,6 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-  const isManager = () => {
-
-  };
 }
 
 module.exports = { isManager, getRelatedEmployees };
