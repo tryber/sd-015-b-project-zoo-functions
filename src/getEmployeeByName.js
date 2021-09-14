@@ -1,7 +1,9 @@
-const data = require('../data/zoo_data');
+const { employees } = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
-  // seu código aqui
+  if (!employeeName) { return {}; }
+  const employee = employees.find((_employee) => employeeName.includes(_employee.firstName) || employeeName.includes(_employee.lastName));
+  return employee;
 }
 
 module.exports = getEmployeeByName;
