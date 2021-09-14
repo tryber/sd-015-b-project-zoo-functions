@@ -7,7 +7,9 @@ function countAnimals(animal) {
 
   if (animal === undefined) {
     const animalOccurrences = {};
-    species.forEach((obj) => (animalOccurrences[obj.name] = obj.residents.length));
+    species.forEach((obj) => {
+      animalOccurrences[obj.name] = obj.residents.length;
+    });
 
     return animalOccurrences;
   }
