@@ -30,5 +30,6 @@ function getAnimalMap(options = {}) {
   if (options.includeNames) return includeNameSortedSex(options.sorted, options.sex);
   return withoutParameter();
 }
+// console.log();
 
 module.exports = getAnimalMap;
