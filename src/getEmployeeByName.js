@@ -11,6 +11,4 @@ function getEmployeeByName(employeeName) {
   return employeeByName.reduce(() => employeeByName);
 }
 
-console.log(getEmployeeByName('Wishart'));
-
 module.exports = getEmployeeByName;
