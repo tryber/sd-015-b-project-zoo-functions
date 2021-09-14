@@ -7,7 +7,7 @@ function getEmployeesCoverage() {
 module.exports = getEmployeesCoverage;
 
 // LÓGICA DA FUNÇÃO:
-// ** 
-// ** 
-// ** 
+// **
+// **
+// **
 // **
