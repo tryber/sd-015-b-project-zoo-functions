@@ -1,24 +1,49 @@
-const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function getAnimalMap(options) {
-  if (!options) {
-    const specieMap = () => ({
-      NE: species
-        .filter((specie) => specie.location === 'NE')
-        .map((actualSpecie) => actualSpecie.name),
-      NW: species
-        .filter((specie) => specie.location === 'NW')
-        .map((actualSpecie) => actualSpecie.name),
-      SE: species
-        .filter((specie) => specie.location === 'SE')
-        .map((actualSpecie) => actualSpecie.name),
-      SW: species
-        .filter((specie) => specie.location === 'SW')
-        .map((actualSpecie) => actualSpecie.name),
+function filterSex(animals, sexObject) {
+  const objects = sexObject === undefined
+    ? animals
+    : animals.filter((animal) => {
+      const result = animal.sex === sexObject;
+      return result;
     });
-    return specieMap;
+  return objects.map((animal) => animal.name);
+}
+function allAnimals(arrayAnimal, options) {
+  return arrayAnimal.map((element) => {
+    const animalSelect = data.species.find((specie) => specie.name === element).residents;
+    const animalsResidents = filterSex(animalSelect, options.sex);
+    if (options.sorted) {
+      animalsResidents.sort();
+    }
+    const result = {};
+    result[element] = animalsResidents;
+    return result;
+  });
+}
+function animalLocation(local, options) {
+  let result;
+  const animalsLocation = data.species
+    .filter((animal) => {
+      const retornoFilter = animal.location === local;
+      return retornoFilter;
+    })
+    .map((animal) => animal.name);
+  if (options !== undefined && options.includeNames === true) {
+    result = allAnimals(animalsLocation, options);
+  } else {
+    result = animalsLocation;
   }
+  return result;
+}
+
+function getAnimalMap(options) {
+  const result = {};
+  const locals = [...new Set(data.species.map((specie) => specie.location))];
+  locals.forEach((local) => {
+    result[local] = animalLocation(local, options);
+  });
+  return result;
 }
 
 module.exports = getAnimalMap;
