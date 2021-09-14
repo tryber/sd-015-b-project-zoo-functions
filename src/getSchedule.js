@@ -28,7 +28,6 @@ function getDaySchedule(scheduleTarget) {
   const day = {};
   day[scheduleTarget] = daysSchedule[scheduleTarget];
   return day;
-
 }
 
 function getAimalExhibitionDays(animal) {
