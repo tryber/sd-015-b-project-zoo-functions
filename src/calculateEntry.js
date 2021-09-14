@@ -21,6 +21,7 @@ function calculateEntry(entrants) {
   // seu código aqui
   let valorTotal = 0;
   const arrayNovo = [];
+  if (!entrants || Object.keys(entrants).length === 0) return 0;
   const functionEntrants = entrants.forEach( (entrant) => { // Para cada pessoa no Array Recebido
     arrayNovo.push(entrant.age); // Capture sua idade
     // console.log(arrayNovo); // [DEBUG] Verifica entrada do Array
