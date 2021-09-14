@@ -2,8 +2,8 @@ const data = require('../data/zoo_data');
 
 function getSpeciesByIds(...ids) {
   return ids.reduce((acc, item) => {
-    const filterIds = data.species.find((specie) => item === specie.id);
-    acc.push(filterIds);
+    const findIds = data.species.every((specie) => item === specie.id);
+    acc.push(findIds);
     return acc;
   }, []);
 }
