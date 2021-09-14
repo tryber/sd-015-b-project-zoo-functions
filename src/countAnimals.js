@@ -2,9 +2,16 @@ const data = require('../data/zoo_data');
 
 const animais = data.species;
 
+function retornaTudo() {
+  const tudo = {};
+  animais.forEach((element) => {
+    tudo[element.name] = element.residents.length;
+  });
+  return tudo;
+}
 function countAnimals(object) {
   if (object === undefined) {
-    return null;
+    return retornaTudo();
   }
   const animal = object.specie;
   const genero = object.gender;
