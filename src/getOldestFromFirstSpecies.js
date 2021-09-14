@@ -29,5 +29,3 @@ function getOldestFromFirstSpecies(id) {
 }
 
 module.exports = getOldestFromFirstSpecies;
-// console.log(getFirstAnimal('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
-console.log(getOldestFromFirstSpecies('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
