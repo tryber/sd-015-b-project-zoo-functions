@@ -1,4 +1,5 @@
 const data = require('../data/zoo_data');
+const { prices } = data;
 
 function countEntrants(entrants) {
   // seu código aqui
@@ -15,6 +16,10 @@ function calculateEntry(entrants) {
   // Se entrants for NULL, retorna 0
   if (!entrants || Object.keys(entrants).length === 0) return 0;
   
+  // Captura valor de cada chave retornada pela função
+  const {child, adult, senior} = countEntrants(entrants);
+  console.log(prices);
+
 }
 
 const pessoasVisitantes = [
@@ -34,7 +39,7 @@ const pessoasVisitantes = [
 //   pessoasVisitantes[4],
 //   pessoasVisitantes[5]);
 // calculateEntry();
-calculateEntry(pessoasVisitantes);
+// calculateEntry(pessoasVisitantes);
 
 module.exports = { calculateEntry, countEntrants };
 
