@@ -16,7 +16,7 @@ function getOldestFromFirstSpecies(id) {
     });
   //  Aqui encontramos o animal mais velho cuidado pelo funcionario,
   //  e fazemos a comparação pela idade, quando o valor do parametro é maior
-  // que do acumulador retorna o animal, quando o acumular é maior retorna o animal
+  // que do acumulador retorna o animal, quando o acumular é maior retorna o animalc
   // do acumulador.
   return [olderAnimal.name, olderAnimal.sex, olderAnimal.age];
 }
