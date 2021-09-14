@@ -2,41 +2,32 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   // seu código aqui
-  // let adult = 0; // Define o contador inicialmente com 0
-  // let child = 0; // Define o contador inicialmente com 0
-  // let senior = 0; // Define o contador inicialmente com 0
-  // entrants.forEach((ageEntrant) => { // Para cada elemento no array Recebidos
-  //   if (ageEntrant < 18) { // Verifica idade
-  //     child += 1; // Soma se a verificação da expressão retornar verdadeira
-  //   } else if (ageEntrant >= 18 && ageEntrant < 50) { // Verifica idade
-  //     adult += 1; // Soma se a verificação da expressão retornar verdadeira
-  //   } else if (ageEntrant >= 50) { // Verifica idade
-  //     senior += 1; // Soma se a verificação da expressão retornar verdadeira
-  //   }
-  // });
-  // // console.log({ adult, child, senior }); // [DEBUG]
-  // return { adult, child, senior };
+  entrants.reduce((accumulator, entrant) => {
+    if (entrant.age < 18) return { ...acc, child: acc.child += 1 };
+    if (entrant.age >= 18 && ageEntrant < 50) return { ...acc, adult: acc.adult += 1 };
+    if (entrant.age >= 50) {return { ...acc, senior: acc.senior += 1 } }
+  }, {adult: 0, child: 0, senior: 0});
 }
 
 function calculateEntry(entrants) {
   // seu código aqui
-  // let valorTotal = 0;
-  // const arrayNovo = [];
-  // if (!entrants || Object.keys(entrants).length === 0) return 0;
-  // const functionEntrants = entrants.forEach( (entrant) => { // Para cada pessoa no Array Recebido
-  //   arrayNovo.push(entrant.age); // Capture sua idade
-  //   // console.log(arrayNovo); // [DEBUG] Verifica entrada do Array
-  // });
-  // const contagem = countEntrants(arrayNovo); // Chama a função que irá contar quantas pessoas de cada faixa etária entrarão,
-  // console.log(contagem); // [DEBUG] Verifica se o retorno é o esperado, com o formato correto.
+  let valorTotal = 0;
+  const arrayNovo = [];
+  if (!entrants || Object.keys(entrants).length === 0) return 0;
+  const functionEntrants = entrants.forEach( (entrant) => { // Para cada pessoa no Array Recebido
+    arrayNovo.push(entrant.age); // Capture sua idade
+    // console.log(arrayNovo); // [DEBUG] Verifica entrada do Array
+  });
+  const contagem = countEntrants(arrayNovo); // Chama a função que irá contar quantas pessoas de cada faixa etária entrarão,
+  console.log(contagem); // [DEBUG] Verifica se o retorno é o esperado, com o formato correto.
   // passando como parâmetro, o valor do array com a idade de Cada um.
-  // const valorAdulto = 49.99;
-  // const valorChild = 20.99;
-  // const valorSenior = 24.99;
-  // valorTotal = (contagem.adult * valorAdulto) + (contagem.child * valorChild) + (contagem.senior * valorSenior);
-  // console.log(contagem.adult, contagem.child, contagem.senior);
-  // console.log(valorTotal);
-  // return valorTotal;
+  const valorAdulto = 49.99;
+  const valorChild = 20.99;
+  const valorSenior = 24.99;
+  valorTotal = (contagem.adult * valorAdulto) + (contagem.child * valorChild) + (contagem.senior * valorSenior);
+  console.log(contagem.adult, contagem.child, contagem.senior);
+  console.log(valorTotal);
+  return valorTotal;
 }
 
 const pessoasVisitantes = [
