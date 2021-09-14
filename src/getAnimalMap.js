@@ -15,10 +15,9 @@ function getResidents(animalName, locationAnimals, options) {
   if (options.sorted) {
     locationAnimals[animalName].sort();
   }
-  return residentsNames;
 }
 
-function loopThroughLocationAnimals(locationAnimals, locations, options) {
+function loopThroughLocationAnimals(locationAnimals, options) {
   for (let i = 0; i < locationAnimals.length; i += 1) {
     const animalName = Object.keys(locationAnimals[i])[0];
     getResidents(animalName, locationAnimals[i], options);
@@ -29,7 +28,7 @@ function loopThroughLocations(locations, options) {
   const locationsKeys = Object.keys(locations);
   for (let i = 0; i < locationsKeys.length; i += 1) {
     const locationAnimals = locations[locationsKeys[i]];
-    loopThroughLocationAnimals(locationAnimals, locations, options);
+    loopThroughLocationAnimals(locationAnimals, options);
   }
 }
 

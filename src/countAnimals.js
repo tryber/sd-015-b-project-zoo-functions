@@ -23,16 +23,13 @@ function countAnimals(info) {
     const selSpecie = species.filter((animal) => animal.name === animalSpecie)[0];
     const animalQuantity = selSpecie.residents.length;
     functionReturn = animalQuantity;
-    if (info.gender) {
-      const animalGender = info.gender;
-      const selGender = selSpecie.residents.filter((member) => member.sex === animalGender).length;
+    if (info.sex) {
+      const { sex } = info;
+      const selGender = selSpecie.residents.filter((member) => member.sex === sex).length;
       functionReturn = selGender;
     }
   }
-  console.log(functionReturn);
   return functionReturn;
 }
 
-countAnimals();
-// countAnimals();
 module.exports = countAnimals;
