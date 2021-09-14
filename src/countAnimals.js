@@ -1,22 +1,28 @@
 const data = require('../data/zoo_data');
 const { species } = data;
 
-
+function paramVoid () {
+  const defaultAnimals = [];
+  const mapAnimals = species.map( (specie) => {
+    defaultAnimals.push(`${specie.name}: ${specie.residents.length}`);
+  });
+  // console.log(arrayAnimals);
+  return defaultAnimals;
+}
 function countAnimals(animal) {
   // seu código aqui
+  const arrayAnimals = [];
+  // Função que é executada quando não é passado nenhum parâmetro
   if (!animal) {
-    // console.log("Resultado sem nenhum animal passado!!!"); // [DEBUG] Verifica entrada na função
-    const arrayAnimals = [];
-    const mapAnimais = species.map( (specie) => {
-      arrayAnimals.push(`${specie.name}: ${specie.residents.length}`);
-    });
-    console.log(arrayAnimals);
-    return arrayAnimals;
+    arrayAnimals.push(paramVoid());
   }
+
   
+
+  return arrayAnimals;
 }
 
-countAnimals();
+console.log(countAnimals());
 
 module.exports = countAnimals;
 
