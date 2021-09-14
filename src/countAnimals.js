@@ -12,10 +12,10 @@ function countAllAnimals(speciesArray) {
 }
 
 function countSpecificAnimals(speciesArray, animal) {
-  return animal.gender === undefined
+  return animal.sex === undefined
     ? speciesArray.find((oneSpecies) => oneSpecies.name === animal.specie).residents.length
     : speciesArray.find((oneSpecies) => oneSpecies.name === animal.specie).residents
-      .filter((resident) => resident.sex === animal.gender).length;
+      .filter((resident) => resident.sex === animal.sex).length;
 }
 
 function countAnimals(animal) {
