@@ -25,13 +25,11 @@ function paramVoid () {
 
 function countAnimals(animal) {
   // seu código aqui
-  const arrayAnimals = [];
   // Função que é executada quando não é passado nenhum parâmetro
   if (!animal) {
     // console.log(arrayAnimals);
     return paramVoid();
   }
-  let valueGender = false; // Define a propriedade gênero inicialmente para false
   let quantidadeAnimais = 0;
   let retornoDoAnimal = {};
   const possuiGenero = Object.keys(animal).includes('gender'); // Verifica se o obj animal possui gender definido.
@@ -39,16 +37,17 @@ function countAnimals(animal) {
 
   if (possuiGenero) {
     // console.log("Possui Gênero!!!");
-     // Retorna um array com todos os animais da espécie
+    // Retorna um array com todos os animais da espécie
     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
     // Faz um filter para capturar apenas os animais que possuem o gênero passado
     // console.log(retornoDoAnimal.residents);
-    const retornoDoAnimal2 = retornoDoAnimal.residents.map( (cadaAnimal) => {
+    const retornoDoAnimal2 = retornoDoAnimal.residents.map((cadaAnimal) => {
       // console.log(`GÊNERO CADA ANIMAL: ${cadaAnimal.sex}`);
       // console.log(`GÊNERO BUSCADO: ${animal.gender}`);
       if (cadaAnimal.sex === animal.gender) {
         quantidadeAnimais += 1;
       }
+      return quantidadeAnimais;
     });
   }
 
