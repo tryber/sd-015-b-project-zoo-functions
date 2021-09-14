@@ -2,13 +2,13 @@ const data = require('../data/zoo_data');
 
 function countAnimals(param) {
   if (param) {
-    const { specie, gender } = param;
+    const { specie, sex } = param;
     const specieRequired = data.species
       .find((element) => element.name.toLowerCase() === specie.toLowerCase());
     let residentsRequired = specieRequired.residents;
-    if (gender) {
+    if (sex) {
       residentsRequired = residentsRequired
-        .filter((element) => element.sex.toLowerCase() === gender.toLowerCase());
+        .filter((element) => element.sex.toLowerCase() === sex.toLowerCase());
     } return residentsRequired.length;
   }
   const objectReturn = {};
