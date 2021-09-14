@@ -18,8 +18,8 @@ const countSpeciesByNameAndGender = (specie, gender) => {
   ), 0);
 };
 
-const countSpeciesByName = ({ specie, gender }) => {
-  if (specie && !gender) {
+const countSpeciesByName = ({ specie, sex }) => {
+  if (specie && !sex) {
     const animalsCount = data.species.reduce((acc, { name, residents }) => (
       specie === name ? acc + residents.length : acc
     ), 0);
@@ -27,7 +27,7 @@ const countSpeciesByName = ({ specie, gender }) => {
     return animalsCount;
   }
 
-  return countSpeciesByNameAndGender(specie, gender);
+  return countSpeciesByNameAndGender(specie, sex);
 };
 
 function countAnimals(animal) {
