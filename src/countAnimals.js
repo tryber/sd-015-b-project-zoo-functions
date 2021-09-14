@@ -2,26 +2,34 @@ const data = require('../data/zoo_data');
 const { species } = data;
 
 function paramVoid () {
-  const defaultAnimals = [];
-  const mapAnimals = species.map( (specie) => {
-    const formatedString = `${specie.name}:, ${specie.residents.length}`;
-    defaultAnimals.push(formatedString);
-  });
-  // console.log(arrayAnimals);
-  // console.log(defaultAnimals.sort());
-  // return defaultAnimals;
-  return defaultAnimals.sort();
+  // const defaultAnimals = [];
+  // const mapAnimals = species.map( (specie) => {
+  //   const formatedString = `${specie.name}:, ${specie.residents.length}`;
+  //   defaultAnimals.push(formatedString);
+  // });
+  // return defaultAnimals.sort();
+  // Implementa função reduce!
+  // FONTE:https://www.instagram.com/p/BziTc90D382/
+  const initialValue = {};
+  const transformArray = species.reduce( (obj, specie) => {
+    return {
+      ... obj,
+      [specie.name]: specie.residents.length,
+      };
+    }, initialValue);
+  // console.log(transformArray);
+  return transformArray;
 }
 // console.log(`Retorno paramVoid: ${paramVoid()}`);
+// console.log(paramVoid());
 
 function countAnimals(animal) {
   // seu código aqui
   const arrayAnimals = [];
   // Função que é executada quando não é passado nenhum parâmetro
   if (!animal) {
-    arrayAnimals.push(paramVoid());
     // console.log(arrayAnimals);
-    return arrayAnimals;
+    return paramVoid();
   }
   let valueGender = false; // Define a propriedade gênero inicialmente para false
   let quantidadeAnimais = 0;
