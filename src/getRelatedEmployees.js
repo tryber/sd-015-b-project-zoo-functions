@@ -7,13 +7,14 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-  const gerente = data.employees.filter((id) => id.managers.includes(managerId));
-  // filtra os dados dos empregrados para ver se neles tem o id de gerente
-  const listagerente = gerente.map((nome) => `${nome.firstName} ${nome.lastName}`);
-  // usa o map pra fazer a iteração, seguindo o ex da página do free code camp. não precisei usar o index.
   if (isManager(managerId) === false) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
+  const gerente = data.employees.filter((id) => id.managers.includes(managerId));
+  // filtra os dados dos empregrados para ver se neles tem o id de gerente
+  const listagerente = gerente.map((nome) => `${nome.firstName} ${nome.lastName}`);
+  // usa o map pra fazer a iteração, seguindo o ex da página do free code camp. não precisei usar o index pq o map já percorre todos, e dá um retorno pra cada.
+
   return listagerente;
 }
 
