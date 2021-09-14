@@ -1,8 +1,7 @@
 const data = require('../data/zoo_data');
 
-const { species, employees } = data;
-
 function getParameters(employeeFound) {
+  const { species } = data;
   const { id, firstName, lastName, responsibleFor } = employeeFound;
 
   const fullName = `${firstName} ${lastName}`;
@@ -24,7 +23,7 @@ const createObjectCoverage = (id, fullName, species, locations) => ({
 });
 
 function getEmployeesCoverage(myEmployee) {
-  // seu código aqui
+  const { employees } = data;
   if (myEmployee === undefined) {
     return employees.map((element) => createObjectCoverage(...getParameters(element)));
   }
@@ -48,7 +47,5 @@ function getEmployeesCoverage(myEmployee) {
   );
   return createObjectCoverage(...getParameters(findEmployee));
 }
-
-console.log(getEmployeesCoverage());
 
 module.exports = getEmployeesCoverage;
