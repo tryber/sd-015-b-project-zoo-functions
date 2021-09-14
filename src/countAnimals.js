@@ -3,10 +3,16 @@ const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
   // finding specie
-  const findingAnimal = species.find((elemento) => animal === elemento.specie);
-  return findingAnimal;
+  if (animal === undefined) {
+    // encontrando todos animais
+    const gettingAnimals = species.map((elemento) => elemento.name);
+    // recolhendo a popularity
+    const gettinPopularity = species.map((elemento) => elemento.popularity);
+    // juntando os dois resultados
+  }
+
 }
 
 module.exports = countAnimals;
 
-console.log(countAnimals({ specie: 'penguins' }))
+console.log(countAnimals());
