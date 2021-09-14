@@ -9,7 +9,7 @@ function getOldestFromFirstSpecies(...ids) {
     const { name, sex, age } = maxAgeAnimal;
     return [name, sex, age];
   });
-  if (id.length === 1) {
+  if (ids.length === 1) {
     return oldestFromSpecieArray.flat();
   }
   return oldestFromSpecieArray;
