@@ -10,7 +10,7 @@ function paramVoid() {
     return {
       ...obj,
       [specie.name]: specie.residents.length,
-    };
+    }
   }, initialValue);
   return transformArray;
 }
