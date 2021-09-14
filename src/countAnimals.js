@@ -11,7 +11,7 @@ function getDefaultAnimals() {
 }
 
 function countAnimals(animal) {
-  if (!animal) return defaultAnimals();
+  if (!animal) return getDefaultAnimals();
 
   const { residents } = species.find((specie) => specie.name === animal.specie);
   const filteredByGender = residents.filter((resident) => resident.sex === animal.sex).length;
