@@ -7,10 +7,7 @@ function paramVoid() {
   // FONTE:https://www.instagram.com/p/BziTc90D382/
   const initialValue = {};
   const transformArray = species.reduce((obj, specie) => {
-    return {
-      ...obj,
-      [specie.name]: specie.residents.length,
-    }
+    return {...obj, [specie.name]: specie.residents.length,}
   }, initialValue);
   return transformArray;
 }
