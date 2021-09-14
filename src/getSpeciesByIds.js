@@ -9,7 +9,7 @@ function getSpeciesByIds(...ids) {
     if (atual.id === idUnico) {
       idsFound.push(atual);
     }
-  }, []));
+  }));
   return idsFound;
 }
 module.exports = getSpeciesByIds;
