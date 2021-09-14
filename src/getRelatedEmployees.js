@@ -1,12 +1,9 @@
 const data = require('../data/zoo_data');
 
-function isManager(id) {
-  const stephanieId = '9e7d4524-363c-416a-8759-8aa7e50c0992';
-  const olaId = 'fdb2543b-5662-46a7-badc-93d960fdc0a8';
-  const burlId = '0e7b460e-acf4-4e17-bcb3-ee472265db83';
-  const managers = [stephanieId, olaId, burlId];
+const { employees } = data;
 
-  return managers.some((managerId) => managerId === id);
+function isManager(id) {
+  return employees.some((employee) => employee.managers.includes(id));
 }
 
 function checkManager(managerId) {
@@ -16,8 +13,6 @@ function checkManager(managerId) {
 }
 
 function getRelatedEmployees(managerId) {
-  const { employees } = data;
-
   checkManager(managerId);
 
   const relatedEmployees = employees.filter((employee) => employee.managers.includes(managerId));
