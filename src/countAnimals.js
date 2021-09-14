@@ -1,6 +1,6 @@
 const { species } = require('../data/zoo_data');
 
-function defaultAnimals() {
+function getDefaultAnimals() {
   const output = {};
 
   species.forEach(({ name, residents }) => {
