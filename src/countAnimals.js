@@ -14,7 +14,7 @@ function countAnimals(animal) {
     return bicho.residents.length;
   }
   const bicho = species.find((elem) => animal.specie === elem.name);
-  const bichoPorSexo = bicho.residents.filter((elem) => animal.gender === elem.sex);
+  const bichoPorSexo = bicho.residents.filter((elem) => animal.sex === elem.sex);
   return bichoPorSexo.length;
 }
 
