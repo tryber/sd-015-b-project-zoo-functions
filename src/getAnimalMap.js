@@ -18,8 +18,9 @@ function returnNames(options) {
     }
     let list = [];
     if (sex) {
-      list = specie.residents.filter((resident) => resident.sex === sex).map((resident) => resident.name);
-    }else {
+      list = specie.residents.filter((resident) => resident.sex === sex)
+        .map((resident) => resident.name);
+    } else {
       list = specie.residents.map((resident) => resident.name);
     }
     if (sorted) {
@@ -32,11 +33,11 @@ function returnNames(options) {
 
 function getAnimalMap(options) {
   // seu código aqui
-  if (options) {
-    if (options.includeNames) {
-      return returnNames(options);
-    }
+
+  if (options.includeNames) {
+    return returnNames(options);
   }
+
   return returnAll();
 }
 
