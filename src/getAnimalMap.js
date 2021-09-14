@@ -2,9 +2,15 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getResidents(animalName, locationAnimals, options) {
-  const animalInfo = species.filter((element) => element.name === animalName);
-  const { residents } = animalInfo[0];
-  const residentsNames = residents.map((resident) => resident.name);
+  let animalInfo = '';
+  let residentsNames = '';
+  animalInfo = species.filter((element) => element.name === animalName);
+  let { residents } = animalInfo[0];
+  if (options.sex) {
+    const { sex } = options;
+    residents = residents.filter((resident) => resident.sex === sex);
+  }
+  residentsNames = residents.map((resident) => resident.name);
   locationAnimals[animalName].push(...residentsNames);
   if (options.sorted) {
     locationAnimals[animalName].sort();
@@ -33,9 +39,9 @@ function mapToObj(locations, options) {
 }
 
 function dealWithOptions(options, locations) {
-  const { includeNames, sorted, sex } = options;
+  const { includeNames } = options;
   if (includeNames) {
-    console.log('includeNames');
+    // console.log('includeNames');
     mapToObj(locations, options);
   }
 }
@@ -47,16 +53,15 @@ function getAnimalMap(options) {
     SE: [],
     SW: [],
   };
-  if (options) {
-    dealWithOptions(options, locations);
-  }
-  if (!options) {
+  if (!options || (!options.includeNames && (options.sorted || options.sex))) {
     // makes object location: name
     data.species.forEach((specie) => locations[specie.location].push(specie.name));
+  } else {
+    dealWithOptions(options, locations);
   }
   return locations;
 }
 
-// console.log(getAnimalMap({ includeNames: true, sorted: true }).NE[0]);
+console.log(getAnimalMap({ sorted: true, sex: 'female' }));
 
 module.exports = getAnimalMap;
