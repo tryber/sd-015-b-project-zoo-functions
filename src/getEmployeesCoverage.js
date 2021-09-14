@@ -30,7 +30,7 @@ function generateObjectPropertys(employee) {
   return returnObj;
 }
 
-function checkOptions(options) {
+function checkOptions(options) {  
   if (options.id) {
     checkExistentId(options.id);
     const employeeObj = data.employees.find((employee) => employee.id === options.id);

@@ -58,7 +58,7 @@ function checkArgs(args, filteredSpecies) {
   return location;
 }
 
-function getAnimalMap({ ...args } = {}) {
+function getAnimalMap( args = {}) {
   const locations = ['NE', 'NW', 'SE', 'SW'];
   const returnObj = {};
   locations.forEach((location) => {
