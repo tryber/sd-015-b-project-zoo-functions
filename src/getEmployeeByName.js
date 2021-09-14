@@ -1,7 +1,19 @@
+/* eslint-disable array-callback-return */
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
-  // seu código aqui
-}
+  if (employeeName === undefined) {
+    return {};
+  }
 
+  const resultado = employees.find((elemento) => {
+    if (elemento.firstName === employeeName || elemento.lastName === employeeName) {
+      return true;
+    }
+  });
+
+  return resultado;
+}
+console.log(getEmployeeByName());
 module.exports = getEmployeeByName;
