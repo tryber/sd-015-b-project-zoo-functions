@@ -1,7 +1,7 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function countAnimals(animal, gender) {
+function countAnimals(animal) {
   const allAnimals = {};
   if (!animal) {
     species.forEach(({ name, residents }) => {
@@ -9,15 +9,14 @@ function countAnimals(animal, gender) {
     });
     return allAnimals;
   }
-  const findAnimal = species.find((specie) => specie.name === animal);
-  const residentsFound = findAnimal.residents.length;
-  if (animal && gender) {
-    const selectedResidents = findAnimal.residents;
-    const filterSex = selectedResidents.filter((resident) => resident.sex === gender);
-    return filterSex.length;
+  const findAnimal = species.find((specie) => specie.name === animal.specie);
+  if (!animal.gender) {
+    const residentsFound = findAnimal.residents.length;
+    return residentsFound;
   }
-  return residentsFound;
+  const selectedResidents = findAnimal.residents;
+  const filterSex = selectedResidents.filter((resident) => resident.sex === animal.gender);
+  return filterSex.length;
 }
 
-console.log(countAnimals('giraffes', 'female'));
 module.exports = countAnimals;
