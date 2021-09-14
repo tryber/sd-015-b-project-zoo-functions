@@ -1,35 +1,43 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function returnNames(animal, needAppend) {
-  console.log('needAppend:', needAppend);
-  const currentAnimal = species.find((element) => element.name === animal);
-  const residentsNames = currentAnimal.residents.map((item) => item.name);
-  // console.log('residentsNames:', residentsNames);
-  needAppend.forEach((element) => element[Object.keys(element)[0]].push(residentsNames));
-  needAppend.
+function getResidents(animalName, locationAnimals, options) {
+  const animalInfo = species.filter((element) => element.name === animalName);
+  const { residents } = animalInfo[0];
+  const residentsNames = residents.map((resident) => resident.name);
+  locationAnimals[animalName].push(...residentsNames);
+  if (options.sorted) {
+    locationAnimals[animalName].sort();
+  }
   return residentsNames;
 }
 
-function getName(needAppendNames) {
-  for (let i = 0; i < needAppendNames.length; i += 1) {
-    const index = needAppendNames[i];
-    const animalName = Object.keys(index)[0];
-    returnNames(animalName, needAppendNames);
+function loopThroughLocationAnimals(locationAnimals, locations, options) {
+  for (let i = 0; i < locationAnimals.length; i += 1) {
+    const animalName = Object.keys(locationAnimals[i])[0];
+    getResidents(animalName, locationAnimals[i], options);
   }
 }
 
-function createObject(animals) {
-  const needAppendNames = animals.map((element) => ({ [element]: [] }));
-  getName(needAppendNames);
+function loopThroughLocations(locations, options) {
+  const locationsKeys = Object.keys(locations);
+  for (let i = 0; i < locationsKeys.length; i += 1) {
+    const locationAnimals = locations[locationsKeys[i]];
+    loopThroughLocationAnimals(locationAnimals, locations, options);
+  }
 }
 
-function doIncludeNames(locations) {
-  const keys = Object.keys(locations);
-  for (let i = 0; i < keys.length; i += 1) {
-    createObject(locations[keys[i]]);
+function mapToObj(locations, options) {
+  data.species.forEach((specie) => locations[specie.location].push({ [specie.name]: [] }));
+  loopThroughLocations(locations, options);
+}
+
+function dealWithOptions(options, locations) {
+  const { includeNames, sorted, sex } = options;
+  if (includeNames) {
+    console.log('includeNames');
+    mapToObj(locations, options);
   }
-  // console.log(locations)
 }
 
 function getAnimalMap(options) {
@@ -39,12 +47,16 @@ function getAnimalMap(options) {
     SE: [],
     SW: [],
   };
-  // makes object location: name
-  data.species.forEach((specie) => locations[specie.location].push(specie.name));
-  if (options.includeNames) {
-    doIncludeNames(locations);
+  if (options) {
+    dealWithOptions(options, locations);
   }
+  if (!options) {
+    // makes object location: name
+    data.species.forEach((specie) => locations[specie.location].push(specie.name));
+  }
+  return locations;
 }
 
-getAnimalMap({ includeNames: true });
+// console.log(getAnimalMap({ includeNames: true, sorted: true }).NE[0]);
+
 module.exports = getAnimalMap;
