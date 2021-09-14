@@ -36,7 +36,7 @@ function getNamesMap(option) {
 function getAnimalMap(options) {
   if (!options) return getMap();
   if (options.includeNames) return getNamesMap();
-  if (options.sorted) return getNamesMap(options.sorted);
+  if (options) return getNamesMap(options);
 }
 
 getAnimalMap({ includeNames: true });

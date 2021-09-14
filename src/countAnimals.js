@@ -21,7 +21,7 @@ function animalSelectGender(animalSelected, animal) {
 function countAnimals(animal) {
   if (!animal) return animalsCount();
   const animalSelected = animalSelect(animal);
-  if (animal.gender) return animalSelectGender(animalSelected, animal);
+  if (animal.sex) return animalSelectGender(animalSelected, animal);
 
   return animalSelected.residents.length;
 }
