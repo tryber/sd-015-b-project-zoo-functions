@@ -1,8 +1,10 @@
 const data = require('../data/zoo_data');
 
+const { species } = data;
+
 const getNames = (animal, options) => {
   const { sex, sorted } = options;
-  const selectedAnimal = data.species.find(({ name }) => (name === animal));
+  const selectedAnimal = species.find(({ name }) => (name === animal));
   const { residents } = selectedAnimal;
   const animalObject = {
     [animal]: residents.map(({ name }) => name),
@@ -18,20 +20,25 @@ const getNames = (animal, options) => {
   return animalObject;
 };
 
+const getSpeciesByLocation = (local) => {
+  const speciesByLocation = species.filter(({ location }) => location === local);
+  return speciesByLocation.map(({ name }) => name);
+};
+
 const getAnimalMap = (options) => {
   const directions = {
-    NE: data.species.filter(({ location }) => location === 'NE').map(({ name }) => name),
-    NW: data.species.filter(({ location }) => location === 'NW').map(({ name }) => name),
-    SE: data.species.filter(({ location }) => location === 'SE').map(({ name }) => name),
-    SW: data.species.filter(({ location }) => location === 'SW').map(({ name }) => name),
+    NE: getSpeciesByLocation('NE'),
+    NW: getSpeciesByLocation('NW'),
+    SE: getSpeciesByLocation('SE'),
+    SW: getSpeciesByLocation('SW'),
   };
 
   if (!options || !options.includeNames) return directions;
 
-  directions.NE = directions.NE.map((animal) => (getNames(animal, options)));
-  directions.NW = directions.NW.map((animal) => (getNames(animal, options)));
-  directions.SE = directions.SE.map((animal) => (getNames(animal, options)));
-  directions.SW = directions.SW.map((animal) => (getNames(animal, options)));
+  Object.keys(directions).forEach((key) => {
+    directions[key] = directions[key].map((animal) => (getNames(animal, options)));
+  });
+
   return directions;
 };
 

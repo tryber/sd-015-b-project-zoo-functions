@@ -21,7 +21,7 @@ const getEmployeesCoverage = (infoObj) => {
   const { id, firstName, lastName, responsibleFor } = employee;
   const species = responsibleFor.map((specieId) => getSpeciesByIds(specieId)[0].name);
   const locations = getLocationsBySpecies(species);
-  //FALTA ARRUMAR ESSAS LOCATIONS AQUI
+  //  FALTA ARRUMAR ESSAS LOCATIONS AQUI
   return {
     id,
     fullName: `${firstName} ${lastName}`,
