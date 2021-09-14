@@ -10,6 +10,6 @@ const getRelatedEmployees = (managerId) => {
       employee.managers.includes(managerId) === true);
     return checkManager.map((employee) => `${employee.firstName} ${employee.lastName}`);
   }
-}
+};
 
 module.exports = { isManager, getRelatedEmployees };
