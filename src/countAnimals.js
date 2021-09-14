@@ -4,7 +4,6 @@ const { species } = data;
 
 function countAnimals(animal) {
   // seu código aqui
-
   if (animal === undefined) {
     const animalOccurrences = {};
     species.forEach((obj) => {
@@ -13,13 +12,17 @@ function countAnimals(animal) {
 
     return animalOccurrences;
   }
-  const { specie: myAnimal } = animal;
-  const { name, residents } = species.find((obj) => obj.name.includes(myAnimal.slice(0, -2)));
-  const myAnimalOccurrences = {
-    [name]: residents.length,
-  };
 
-  return myAnimalOccurrences;
+  const { specie: myAnimal, gender: animalGender } = animal;
+  if (animalGender === undefined) {
+    const { residents } = species.find((obj) => obj.name.includes(myAnimal.slice(0, -2)));
+
+    return residents.length;
+  }
+  const { residents } = species.find((obj) => obj.name.includes(myAnimal.slice(0, -2)));
+  const genderResidents = residents.filter(({ sex }) => sex === animalGender);
+
+  return genderResidents.length;
 }
 
 module.exports = countAnimals;
