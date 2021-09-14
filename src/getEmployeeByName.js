@@ -7,12 +7,8 @@ function getEmployeeByName(employeeName) {
     return {};
   }
 
-  const resultado = employees.find((elemento) => {
-    if (elemento.firstName === employeeName || elemento.lastName === employeeName) {
-      return true;
-    }
-  });
-
+  const resultado = employees.find((elemento) =>
+    elemento.firstName === employeeName || elemento.lastName === employeeName);
   return resultado;
 }
 console.log(getEmployeeByName());
