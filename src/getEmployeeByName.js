@@ -3,9 +3,10 @@ const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
   // seu código aqui
-  const pessoas = employees.filter(() => employeeName.includes());
-
-  return pessoas;
+  if (employeeName === undefined) return {};
+  return employees.find(
+    (pessoas) => pessoas.firstName === employeeName || pessoas.lastName === employeeName,
+  );
 }
 
 module.exports = getEmployeeByName;
