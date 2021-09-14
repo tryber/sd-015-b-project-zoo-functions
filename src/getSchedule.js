@@ -1,7 +1,16 @@
 const data = require('../data/zoo_data');
 
+
 function getSchedule(scheduleTarget) {
   // seu código aqui
 }
 
 module.exports = getSchedule;
+
+// LÓGICA DA FUNÇÃO:
+// ** A função é chamada, com ou sem parâmetro
+// **** Se o parâetro não é passado, ou não é encontrado, retorna-se um objeto
+// com o dia, horário de funcionamento daquele dia, e animais em exibição.
+// ** Se o parâmetro é passado, a arrowFunction retorna um obj construído com reduce,
+// com todos os dias e horários que aquele animal está disponível
+// ** 
