@@ -11,11 +11,11 @@ function nullAnimals() {
 }
 
 function selectedAnimals({ specie, sex }) {
-  let { residents } = species.find((x) => x.name === specie);
+  let { residents } = species.find((nature) => nature.name === specie);
   residents = !sex ? residents : residents.filter((resident) => resident.sex === sex);
   return residents.length;
 }
-selectedAnimals({ specie: 'bears', sex: 'female' })
+selectedAnimals({ specie: 'bears', sex: 'female' });
 
 function countAnimals(animal) {
   // seu código aqui
