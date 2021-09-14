@@ -7,7 +7,7 @@ function paramVoid() {
   // FONTE:https://www.instagram.com/p/BziTc90D382/
   const initialValue = {};
   const transformArray = species.reduce((obj, specie) => {
-    return {...obj, [specie.name]: specie.residents.length,}
+    return { ...obj, [specie.name]: specie.residents.length, };
   }, initialValue);
   return transformArray;
 }
@@ -22,19 +22,18 @@ function countAnimals(animal) {
   let retornoDoAnimal = {};
   const possuiGenero = Object.keys(animal).includes('gender');
 
-  retornoDoAnimal = species.find( (specie) => specie.name === animal.specie)
-    .residents.map( (cadaAnimal) => {
+  retornoDoAnimal = species.find((specie) => specie.name === animal.specie)
+    .residents.map((cadaAnimal) => {
       if (possuiGenero && cadaAnimal.sex === animal.gender) {
         quantidadeAnimais += 1;
       }
-      
       return quantidadeAnimais;
-    })
-    if (!possuiGenero) {
-      retornoDoAnimal = species.find( (specie) => specie.name === animal.specie);
-      quantidadeAnimais = retornoDoAnimal.residents.length;
-    }
-    return quantidadeAnimais;
+    });
+  if (!possuiGenero) {
+    retornoDoAnimal = species.find((specie) => specie.name === animal.specie);
+    quantidadeAnimais = retornoDoAnimal.residents.length;
+  }
+  return quantidadeAnimais;
   // if (possuiGenero) {
   //   retornoDoAnimal = species.find((specie) => (specie.name === animal.specie))
   //     .residents.map((cadaAnimal) => {
@@ -42,7 +41,7 @@ function countAnimals(animal) {
   //         quantidadeAnimais += 1;
   //       }
   //       return quantidadeAnimais;
-      // });
+  // });
   // }
 //   if (!possuiGenero) {
 //     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
