@@ -3,12 +3,6 @@ const data = require('../data/zoo_data');
 const { species } = data;
 
 function paramVoid() {
-  // const defaultAnimals = [];
-  // const mapAnimals = species.map( (specie) => {
-  //   const formatedString = `${specie.name}:, ${specie.residents.length}`;
-  //   defaultAnimals.push(formatedString);
-  // });
-  // return defaultAnimals.sort();
   // Implementa função reduce!
   // FONTE:https://www.instagram.com/p/BziTc90D382/
   const initialValue = {};
@@ -18,16 +12,14 @@ function paramVoid() {
       [specie.name]: specie.residents.length,
     };
   }, initialValue);
-  // console.log(transformArray);
   return transformArray;
 }
-// console.log(`Retorno paramVoid: ${paramVoid()}`);
-// console.log(paramVoid());
 
 function countAnimals(animal) {
   // seu código aqui
   if (!animal) {
-    return paramVoid();
+    const functionResult = paramVoid();
+    return functionResult;
   }
   let quantidadeAnimais = 0;
   let retornoDoAnimal = {};
