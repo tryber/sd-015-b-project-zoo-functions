@@ -30,6 +30,6 @@ function countAnimals(animal) {
   return lastOption(animal);
 }
 
-// console.log(countAnimals({ specie: 'bears', sex: 'female' }));
+console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 
 module.exports = countAnimals;
