@@ -8,10 +8,10 @@ function countAnimals(...animal) {
     return animalObj;
   }
 
-  if (animal[0].gender) {
+  if (animal[0].sex) {
     return species.find((specieObj) => animal[0]
       .specie === specieObj.name).residents.filter((sGender) => sGender
-      .sex === animal[0].gender).length;
+      .sex === animal[0].sex).length;
   }
 
   return species.find((animalSearch) => animalSearch.name === animal[0].specie).residents.length;
