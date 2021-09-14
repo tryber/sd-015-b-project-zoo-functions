@@ -8,7 +8,7 @@ describe('10 - Crie uma associação de informações para cobertura das pessoas
       id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad',
       fullName: 'Sharonda Spry',
       species: [ 'otters', 'frogs' ],
-      locations: [ 'SE', 'SW' ],
+      locations: [ 'SE', 'SW' ]
     };
 
     expect(actual).toEqual(expected);
