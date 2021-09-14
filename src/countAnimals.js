@@ -13,7 +13,7 @@ const genderCheck = (animals, animal) => ((animal === undefined) ? animals.sex
 function countAnimals(animal) {
   return (!animal) ? allSpecies(data.species)
     : data.species.find((animalZoo) => animalZoo.name === animal.specie).residents
-      .filter((sa) => genderCheck(sa, animal.gender)).length;
+      .filter((sa) => genderCheck(sa, animal.sex)).length;
 }
 
 module.exports = countAnimals;
