@@ -1,9 +1,22 @@
 const data = require('../data/zoo_data');
 
-const {species} = data;
+const { species } = data;
 
 const printAllData = () => {
-  console.log(`Função chamada quando todos os dados serão exibidos`);
+  // console.log(`Função chamada quando todos os dados serão exibidos`);
+  // Esta função deve buscar, no array species cada specie e mostrar uma mensagem
+  /*
+  'Dia': {
+    'HorárioDeFuncionamento': 'Open from 8am until 6pm',
+    'AnimaisEmExibição': [ 'lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes' ],
+  },
+  // EX:
+  'Sunday': {
+    'officeHour': 'Open from 8am until 8pm',
+    'exhibition': [ 'lions', 'bears', 'penguins', 'snakes', 'elephants' ],
+  },
+};
+ */
   const objComtodosOsAnimais = {};
   return objComtodosOsAnimais;
 }
