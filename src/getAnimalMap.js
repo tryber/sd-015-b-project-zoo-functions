@@ -40,6 +40,4 @@ function getAnimalMap(options) {
   }
 }
 
-// console.table(getAnimalMap({ includeNames: true }));
-
 module.exports = getAnimalMap;
