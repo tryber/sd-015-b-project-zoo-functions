@@ -16,6 +16,9 @@ function countEntrants(entrants) {
 
 function calculateEntry(entrants) {
   // seu código aqui
+  if (!entrants) return 0;
+  if (Object.keys(entrants).length === 0) return 0;
+
   const entrandsQty = countEntrants(entrants);
   const [priceChild, priceAdult, priceSenior] = [20.99, 49.99, 24.99];
 
@@ -23,15 +26,5 @@ function calculateEntry(entrants) {
     + entrandsQty.adult * priceAdult
     + entrandsQty.senior * priceSenior;
 }
-
-const entrants = [
-  { name: 'Lara Carvalho', age: 5 },
-  { name: 'Frederico Moreira', age: 5 },
-  { name: 'Pedro Henrique Carvalho', age: 5 },
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
-];
-
-console.log(calculateEntry(entrants));
+console.log(calculateEntry({}));
 module.exports = { calculateEntry, countEntrants };
