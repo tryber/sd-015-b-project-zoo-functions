@@ -80,12 +80,12 @@ function animalsSexSorted(sex) {
 }
 
 function includeName(options) {
-  if (options.sorted === true) {
+  if ((!options.sex) && (options.sorted === true)) {
     const animalMap = animalsIncludeNameSorted();
     return animalMap;
   }
   if (options.sex) {
-    if (options.sort === true) {
+    if (options.sorted === true) {
       const animalMap = animalsSexSorted(options.sex);
       return animalMap;
     }
@@ -106,6 +106,9 @@ function getAnimalMap(options) {
     return includeName(options);
   }
 }
-const a = getAnimalMap({ includeNames: true, sex: 'female', sort: true });
+const a = getAnimalMap({ includeNames: true, sex: 'female', sorted: true });
 console.log(a.NE);
+console.log(a.NW);
+console.log(a.SE);
+console.log(a.SW);
 module.exports = getAnimalMap;
