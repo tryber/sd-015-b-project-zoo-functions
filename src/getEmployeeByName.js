@@ -1,9 +1,8 @@
 const data = require('../data/zoo_data');
 
-const findEmployee = (employees, employeeName) => {
-  return employees.find((employee) =>
+const findEmployee = (employees, employeeName) =>
+  employees.find((employee) =>
     employee.firstName === employeeName || employee.lastName === employeeName);
-};
 
 const getEmployeeByName = (employeeName, func = findEmployee) => {
   let result = {};
@@ -11,6 +10,6 @@ const getEmployeeByName = (employeeName, func = findEmployee) => {
     result = func(data.employees, employeeName);
   }
   return result;
-}
+};
 
 module.exports = getEmployeeByName;
