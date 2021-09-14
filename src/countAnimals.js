@@ -6,10 +6,10 @@ function paramVoid() {
   // Implementa função reduce!
   // FONTE:https://www.instagram.com/p/BziTc90D382/
   const initialValue = {};
-  const transformArray = species.reduce((obj, specie) => {
+  return species.reduce((obj, specie) => {
     return ({ ...obj, [specie.name]: specie.residents.length });
   }, initialValue);
-  return transformArray;
+  // return transformArray;
 }
 
 function countAnimals(animal) {
