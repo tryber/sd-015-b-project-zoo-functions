@@ -15,12 +15,11 @@ function animalSelect(animal) {
 
 function animalSelectGender(animalSelected, animal) {
   const selectedGender = animalSelected.residents
-    .filter((resident) => resident.sex === animal.gender);
+    .filter((resident) => resident.sex === animal.sex);
   return selectedGender.length;
 }
 function countAnimals(animal) {
   if (!animal) return animalsCount();
-
   const animalSelected = animalSelect(animal);
   if (animal.gender) return animalSelectGender(animalSelected, animal);
 

@@ -1,31 +1,35 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const animalsLocation = {
-  NE: [],
-  NW: [],
-  SE: [],
-  SW: [],
-};
 function getMap() {
-  const animals1 = { ...animalsLocation };
+  const animalsLocation = {
+    NE: [],
+    NW: [],
+    SE: [],
+    SW: [],
+  };
   species.forEach(({ name, location }) => {
-    animals1[location].push(name);
+    animalsLocation[location].push(name);
   });
-  console.log(animals1);
-  return animals1;
+  console.log(animalsLocation);
+  return animalsLocation;
 }
 
 function getNamesMap() {
-  const animals2 = { ...animalsLocation };
+  const animalsLocation = {
+    NE: [],
+    NW: [],
+    SE: [],
+    SW: [],
+  };
   species.forEach(({ name, location, residents }) => {
     const obj = {};
     const animalNames = residents.map((resident) => resident.name);
     obj[name] = animalNames;
-    animals2[location].push(obj);
+    animalsLocation[location].push(obj);
   });
-  console.log(animals2);
-  return animals2;
+  console.log(animalsLocation);
+  return animalsLocation;
 }
 
 function getAnimalMap(options) {
@@ -33,7 +37,7 @@ function getAnimalMap(options) {
   if (options.includeNames) return getNamesMap();
 }
 
-getAnimalMap({ includeNames: true });
-getAnimalMap();
+// getAnimalMap({ includeNames: true });
+// getAnimalMap();
 
 module.exports = getAnimalMap;
