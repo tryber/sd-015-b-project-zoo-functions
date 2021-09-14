@@ -64,6 +64,4 @@ function getEmployeesCoverage(myEmployee) {
   throw new Error('Informações inválidas');
 }
 
-getEmployeesCoverage({ name: 'Spry' });
-
 module.exports = getEmployeesCoverage;
