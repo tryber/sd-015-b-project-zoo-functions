@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 const speciesByIds = (species, ids) =>
   ids.map((id) =>
     species.find((specie) =>
-    specie.id === id));
+      specie.id === id));
 
 const getSpeciesByIds = (...ids) => {
   // seu código aqui
