@@ -53,7 +53,7 @@ function getRelatedEmployees(managerId) {
     // });
     // return employeFinded;
   // }
-  return 'O id inserido não é de uma pessoa colaboradora gerente!';
+  throw new Error ('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
 // getRelatedEmployees('123456');
