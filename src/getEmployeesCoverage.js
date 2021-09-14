@@ -1,6 +1,7 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+// Fonte: https://github.com/tryber/sd-015-b-project-zoo-functions/blob/annie-haurani-zoo-functions/src/getEmployeesCoverage.js
 function getEmployee(person) {
   return employees.find(({ firstName, lastName, id }) =>
     firstName === person.name
