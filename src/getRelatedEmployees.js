@@ -6,27 +6,22 @@ function isManager(id) {
   const checkManager = employees.some((elemento) => {
     const manag = elemento.managers;
     if (manag.includes(id)) {
-      return true
+      return true;
     }
-    return false
-  })
+    return false;
+  });
   return checkManager;
 }
 
 function getRelatedEmployees(managerId) {
   // recolhe os gerentes
   if (isManager(managerId) === true) {
-    return employees.filter((elemento) => {
-      if (elemento.managers.includes(managerId)) {
-        const arrayEmp = [];
-        return arrayEmp.push(`${elemento.firstName} ${elemento.lastName}`);
-      };
-    });
+    const empFilt = employees.filter((elemento) => (elemento.managers.includes(managerId)));
+    const mapingEmp = empFilt.map((employee) => `${employee.firstName} ${employee.lastName}`);
+    return mapingEmp;
   }
   // recolhido do exemplo no README.md
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
 module.exports = { isManager, getRelatedEmployees };
-
-console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992'));
