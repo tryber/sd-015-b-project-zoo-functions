@@ -72,6 +72,4 @@ function getAnimalMap({ ...args } = {}) {
   return returnObj;
 }
 
-console.log('resultado', getAnimalMap({ sorted: true, includeNames: true }));
-
 module.exports = getAnimalMap;

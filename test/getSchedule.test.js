@@ -36,7 +36,6 @@ describe('8 - Crie o agendamento que disponibilize as informações de horário 
       },
       'Monday': { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' },
     };
-
     expect(actual).toEqual(expected);
   });
   
