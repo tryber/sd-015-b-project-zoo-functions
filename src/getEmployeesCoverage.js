@@ -1,17 +1,15 @@
 const data = require('../data/zoo_data');
 
 function lista() {
-  const array = [];
-  const obj = data.employees.reduce((acc, { id, firstName, lastName, responsibleFor }) => {
+  const obj = data.employees.map(({ id, firstName, lastName, responsibleFor }) => {
     const fullName = `${firstName} ${lastName}`;
     const species = responsibleFor.map((idAnimal) =>
       data.species.find((elemento) => elemento.id === idAnimal).name);
 
     const locations = responsibleFor.map((idAnimal) =>
       data.species.find((elemento) => elemento.id === idAnimal).location);
-
-    array.push(acc = { id, fullName, species, locations });
-    return array;
+    const empregados = { id, fullName, species, locations };
+    return empregados;
   }, ' ');
   return obj;
 }
@@ -21,9 +19,9 @@ function getEmploye(objeto) {
   const empregado = data.employees.find(({ id, firstName, lastName }) =>
     firstName === name || lastName === name || id === ident);
   if (!empregado) throw new Error('Informações inválidas');
-  const id = empregado.id;
-  const fullName = `${empregado.firstName} ${empregado.lastName}`;
-  const resp = empregado.responsibleFor;
+  const { id, firstName, lastName, responsibleFor } = empregado;
+  const fullName = `${firstName} ${lastName}`;
+  const resp = responsibleFor;
   const species = resp.map((idAnimal) =>
     data.species.find((elemento) => elemento.id === idAnimal).name);
   const locations = resp.map((idAnimal) =>
@@ -39,6 +37,6 @@ function getEmployeesCoverage(objeto) {
   return getEmploye(objeto);
 }
 
-console.log(getEmployeesCoverage());
+// console.log(getEmployeesCoverage());
 
 module.exports = getEmployeesCoverage;
