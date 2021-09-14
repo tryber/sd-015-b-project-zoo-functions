@@ -19,7 +19,6 @@ function countAnimals(animal) {
 
     return animalGender.length;
   }
-
   return animalName.residents.length;
 }
 
