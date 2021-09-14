@@ -23,7 +23,7 @@ function getRelatedEmployees(managerId) {
     // console.log(managers.map((name) => `${name.firstName} ${name.lastName}`)); // Verifica retorno da Função
     return managers.map((name) => `${name.firstName} ${name.lastName}`);
   }
-  throw new Error ('O id inserido não é de uma pessoa colaboradora gerente!');
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
 // getRelatedEmployees('123456');
