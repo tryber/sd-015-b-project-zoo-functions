@@ -1,11 +1,10 @@
-/* eslint-disable no-return-assign */
 const data = require('../data/zoo_data');
 
 const { species } = data;
 
 const createAnimalObject = () => {
   const obj = {};
-  species.forEach((element) => obj[element.name] = element.residents.length);
+  species.forEach((element) => { obj[element.name] = element.residents.length; });
 
   return obj;
 };
