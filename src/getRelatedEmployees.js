@@ -1,13 +1,13 @@
 const data = require('../data/zoo_data');
-const {employees} = data;
+
+const { employees } = data;
 
 function isManager(id) {
   // seu código aqui
-  const managers =
-  [
+  const managers = [
     '9e7d4524-363c-416a-8759-8aa7e50c0992',
     'fdb2543b-5662-46a7-badc-93d960fdc0a8',
-    '0e7b460e-acf4-4e17-bcb3-ee472265db83'
+    '0e7b460e-acf4-4e17-bcb3-ee472265db83',
   ];
   const idIsManager = managers.includes(id);
   return idIsManager;
@@ -18,8 +18,6 @@ function getRelatedEmployees(managerId) {
   const resultOfId = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
   // console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
   if (resultOfId === true) {
-    // console.log(`resultOfId: ${resultOfId}`); // [DEBUG] Verifica o retorno da função
-    // return `resultOfId === ${resultOfId}`; // [DEBUG] Verifica o retorno da função
     const employeFinded = employees.find( (employee) => {
       if (employee.id === managerId ) {
         // Esta condicional deve retornar os nomes referentes aos ids
