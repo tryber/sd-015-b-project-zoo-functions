@@ -7,9 +7,7 @@ function getOldestFromFirstSpecies(id) {
   const firstSpecie = getSpeciesByIds(species[0]);
   const { residents } = firstSpecie[0];
   const oldest = residents.reduce((acc, animal) => (acc.age >= animal.age ? acc : animal));
-  // console.log(oldest);
   return Object.values(oldest);
 }
 
-// console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 module.exports = getOldestFromFirstSpecies;
