@@ -9,8 +9,15 @@ function countAnimals(animal) {
     // recolhendo a popularity
     const gettinPopularity = species.map((elemento) => elemento.popularity);
     // juntando os dois resultados
+    const obj = {};
+    for (let i = 0; i < gettingAnimals.length; i++) {
+      const animal = gettingAnimals[i];
+      for (j in animal) {
+        obj[animal] = gettinPopularity[j];
+      };
   }
-
+  return obj
+}
 }
 
 module.exports = countAnimals;
