@@ -26,17 +26,7 @@ function allAnimalsMaps(allAnimals) {
   return animalsMaps;
 }
 
-function residentsOf(location, gender) {
-  if (gender !== undefined) {
-    const result = location.map((specie) => {
-      const specieName = specie.name;
-      const residents = specie.residents.filter((resident) => resident.sex === gender);
-      const names = residents.map((resident) => resident.name);
-      return { [specieName]: names };
-    });
-    return result;
-  }
-
+function residentsOf(location) {
   const result = location.map((specie) => {
     const specieName = specie.name;
     const names = specie.residents.map((resident) => resident.name);
@@ -46,11 +36,11 @@ function residentsOf(location, gender) {
   return result;
 }
 
-function animalsNameMap(animals, sex) {
-  const speciesNE = residentsOf(animals.NE, sex);
-  const speciesNW = residentsOf(animals.NW, sex);
-  const speciesSE = residentsOf(animals.SE, sex);
-  const speciesSW = residentsOf(animals.SW, sex);
+function animalsNameMap(animals) {
+  const speciesNE = residentsOf(animals.NE);
+  const speciesNW = residentsOf(animals.NW);
+  const speciesSE = residentsOf(animals.SE);
+  const speciesSW = residentsOf(animals.SW);
 
   const map = {
     NE: speciesNE,
@@ -68,25 +58,8 @@ function sortAnimalsNames(animals) {
   animals.SW.forEach((specie) => Object.values(specie)[0].sort());
 }
 
-function animalsByGender(sex, allAnimals) {
-  return animalsNameMap(allAnimals, sex);
-}
+function animalsByGender(sex) {
 
-function ifIncludeNames(options, allAnimals) {
-  if (options.sorted === true && options.sex !== undefined) {
-    const animalsName = animalsByGender(options.sex, allAnimals);
-    sortAnimalsNames(animalsName);
-    return animalsName;
-  }
-  if (options.sorted === true) {
-    const allAnimalsName = animalsNameMap(allAnimals);
-    sortAnimalsNames(allAnimalsName);
-    return allAnimalsName;
-  }
-  if (options.sex !== undefined) {
-    return animalsByGender(options.sex, allAnimals);
-  }
-  return animalsNameMap(allAnimals);
 }
 
 function getAnimalMap(options) {
@@ -95,9 +68,16 @@ function getAnimalMap(options) {
     return allAnimalsMaps(allAnimals);
   }
   if (options.includeNames === true) {
-    return ifIncludeNames(options, allAnimals);
+    if (options.sorted === true) {
+      const allAnimalsName = animalsNameMap(allAnimals);
+      sortAnimalsNames(allAnimalsName);
+      return allAnimalsName;
+    }
+    if (options.sex !== undefined) {
+      return animalsByGender(options.sex);
+    }
+    return animalsNameMap(allAnimals);
   }
-  return allAnimalsMaps(allAnimals);
 }
 
 module.exports = getAnimalMap;
