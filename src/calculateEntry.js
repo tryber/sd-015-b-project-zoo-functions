@@ -19,6 +19,7 @@ function countEntrants(arrayEntrants) {
 
 function calculateEntry(...entrants) {
   // seu código aqui
+  const valorTotal = 0;
   const arrayNovo = [];
   const functionEntrants = entrants.forEach( (entrant) => { // Para cada pessoa no Array Recebido
     arrayNovo.push(entrant.age); // Capture sua idade
@@ -27,6 +28,8 @@ function calculateEntry(...entrants) {
   const contagem = countEntrants(arrayNovo); // Chama a função que irá contar quantas pessoas de cada faixa etária entrarão,
   // console.log(contagem); // [DEBUG] Verifica se o retorno é o esperado, com o formato correto.
   // passando como parâmetro, o valor do array com a idade de Cada um.
+  // console.log(valorTotal) // [DEBUG] Verifica valor somado ao final da execução da Função
+  return valorTotal;
 }
 
 const pessoasVisitantes = [
@@ -39,12 +42,13 @@ const pessoasVisitantes = [
 ];
 
 // calculateEntry({ name: 'Lara Carvalho', age: 5 }, { name: 'Frederico Moreira', age: 5 });
-calculateEntry(pessoasVisitantes[0],
-  pessoasVisitantes[1],
-  pessoasVisitantes[2],
-  pessoasVisitantes[3],
-  pessoasVisitantes[4],
-  pessoasVisitantes[5]);
+// calculateEntry(pessoasVisitantes[0],
+//   pessoasVisitantes[1],
+//   pessoasVisitantes[2],
+//   pessoasVisitantes[3],
+//   pessoasVisitantes[4],
+//   pessoasVisitantes[5]);
+// calculateEntry();
 
 module.exports = { calculateEntry, countEntrants };
 
