@@ -8,10 +8,10 @@ function getSpeciesByIds(id, otherId) {
     return speciesResult;
   }
 
-  speciesResult.push(data.species.find( specie => specie.id === id ));
+  speciesResult.push(data.species.find((specie) => specie.id === id));
 
   if (otherId) {
-    speciesResult.push(data.species.find( specie => specie.id === otherId ));
+    speciesResult.push(data.species.find((specie) => specie.id === otherId));
   }
 
   return speciesResult;
