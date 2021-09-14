@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-// const { employees } = data;
+const { employees } = data;
 
 function isManager(id) {
   // seu código aqui
@@ -12,43 +12,51 @@ function isManager(id) {
   const idIsManager = managers.includes(id);
   return idIsManager;
 }
+
 function getRelatedEmployees(managerId) {
-  return managerId;
+
+  const manager = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
+
+  if (manager) { // Se a ID do manager é válida
+    // Percorre o array dos funcionários e verifica se possui o id informado na manager
+    const managers = employees.filter((employee) => employee.managers.includes(managerId));
+    console.log(managers);
+  }
+
+    // const employeFinded = employees.find((employee) => {
+
+    //   if (employee.id === managerId) {
+
+    //     const gerenciados = employee.responsibleFor; // Armazena id dos Gerenciados
+    //     const arraySubordinados = []; // Valor inicial do array com nome dos subordinados
+    //     gerenciados.forEach((idPessoa) => { // Para cada elemento dentro do array responsavelPor
+
+    //       employees.map((employee) => {
+    //         console.log(`NOME PESSOA: ${employee.firstName} ${employee.lastName}`);
+    //         console.log(`ID PESSOA ${employee.id}`);
+    //         console.log(`ID BUSCADO: ${idPessoa}`);
+    //         console.log('***');
+
+    //         // if (employee.id === idPessoa) {
+    //         //   console.log(`${employee.firstName} ${employee.lastName}`);
+    //         //   arraySubordinados.push(`${employee.firstName} ${employee.lastName}`);
+    //         // }
+    //       });
+    //     });
+
+    //     // console.log(responsavelPor);
+    //     console.log(arraySubordinados);
+    //     // return employee; // [RETORNA O OBJ REFERENTE AO ID PASSADO]
+    //   }
+    // });
+    // return employeFinded;
+  // }
+  return "O id inserido não é de uma pessoa colaboradora gerente!";
 }
-
-// function getRelatedEmployees(managerId) {
-//   // seu código aqui
-//   const resultOfId = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
-//   // console.log(resultOfId); // [REBUG] Consola o retorno da função isManager;
-//   if (resultOfId === true) {
-//     const employeFinded = employees.find((employee) => {
-//       if (employee.id === managerId) {
-//         const responsavelPor = employee.responsibleFor; // Armazena em um array as ids dos subordinados
-//         const arraySubordinados = []; // Valor inicial do array com nome dos subordinados
-//         responsavelPor.forEach((pessoa) => { // Para cada elemento dentro do array responsavelPor
-//           employees.find(() => {
-//             console.log(`Pessoa comparada no Obj: ${employee.managers}`); // [DEBUG] Verifica o ID da pessoa no Obj Atual
-//             console.log(`Pessoa Subordinada: ${pessoa}`); // [DEBUG] Verifica o ID na posição n do array 'responsavelPor'
-//             console.log('**');
-//             if (employee.id === pessoa) {
-//               arraySubordinados.push(employee.firstName);
-//             }
-//           });
-//         });
-
-//         // console.log(responsavelPor);
-//         console.log(arraySubordinados);
-//         // return employee; // [RETORNA O OBJ REFERENTE AO ID PASSADO]
-//       }
-//     });
-//     // return employeFinded;
-//   }
-//   return "O id inserido não é de uma pessoa colaboradora gerente!";
-// }
 
 // getRelatedEmployees('123456');
 // console.log(getRelatedEmployees('123456')); // [DEBUG] Verifica retorno da Função
-// console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
+console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
 
 module.exports = { isManager, getRelatedEmployees };
 
