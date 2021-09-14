@@ -6,7 +6,8 @@ function getOldestAnimal(animalId) {
   species.forEach(({ id, residents }) => {
     if (id === animalId) {
       oldestAnimal = residents.reduce((acc, resident) => {
-        if (acc.age < residents.age) return acc;
+        console.log(acc);
+        if (acc.age > residents.age) return acc;
         return resident;
       });
     }
@@ -26,6 +27,6 @@ function getOldestFromFirstSpecies(identifier) {
   return getOldestAnimal(animalIdentifier);
 }
 
-// getOldestFromFirstSpecies('b0dc644a-5335-489b-8a2c-4e086c7819a2');
+getOldestFromFirstSpecies('b0dc644a-5335-489b-8a2c-4e086c7819a2');
 
 module.exports = getOldestFromFirstSpecies;
