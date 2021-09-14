@@ -20,7 +20,9 @@ function getRelatedEmployees(managerId) {
   if (manager) { // Se a ID do manager é válida
     // Percorre o array dos funcionários e verifica se possui o id informado na manager
     const managers = employees.filter((employee) => employee.managers.includes(managerId));
-    console.log(managers);
+    // console.log(managers); // Retorna array de objetos que possuem ID managerId
+    // console.log(managers.map((name) => `${name.firstName} ${name.lastName}`)); // Verifica retorno da Função
+    return managers.map((name) => `${name.firstName} ${name.lastName}`);
   }
 
     // const employeFinded = employees.find((employee) => {
