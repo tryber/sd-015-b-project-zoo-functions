@@ -16,11 +16,11 @@ function countAnimals(animal = { specie: 'none' }) {
     aux = createAnimalObject();
   } else {
     const objAnimal = species.find((specie) => specie.name === animal.specie);
-    if (!animal.gender) {
+    if (!animal.sex) {
       aux = objAnimal.residents.length;
     } else {
       const countByGender = objAnimal.residents.filter((beast) =>
-        beast.sex === animal.gender);
+        beast.sex === animal.sex);
       aux = countByGender.length;
     }
   }
