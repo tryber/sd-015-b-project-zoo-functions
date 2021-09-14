@@ -23,6 +23,7 @@ const includeNameSortedSex = (sorted, sex) => {
   });
   return object;
 };
+// console.log();
 
 function getAnimalMap(options = {}) {
   // seu código aqui
