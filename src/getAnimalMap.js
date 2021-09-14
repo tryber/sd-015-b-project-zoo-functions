@@ -11,17 +11,17 @@ function searchAnimal() {
 }
 
 function returnAll(sorted, sex) {
-  const arrReturnAllways = {};
+  const arrInclud = {};
   species.forEach((specie) => {
-    if (arrReturnAllways[specie.location]) arrReturnAllways[specie.location] = [];
+    if (!arrInclud[specie.location]) arrInclud[specie.location] = [];
     let residents = [...specie.residents];
     if (sex) residents = residents.filter((specieSex) => specieSex.sex === sex);
     residents = residents.map((resident) => resident.name);
     if (sorted) residents.sort();
 
-    arrReturnAllways[specie.location].push({ [specie.name]: residents });
+    arrInclud[specie.location].push({ [specie.name]: residents });
   });
-  return arrReturnAllways;
+  return arrInclud;
 }
 
 function getAnimalMap(options) {
