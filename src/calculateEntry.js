@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   // seu código aqui
-  entrants.reduce((accumulator, entrant) => {
+  entrants.reduce((acc, entrant) => {
     if (entrant.age < 18) return { ...acc, child: acc.child += 1 };
     if (entrant.age >= 18 && ageEntrant < 50) return { ...acc, adult: acc.adult += 1 };
     if (entrant.age >= 50) {return { ...acc, senior: acc.senior += 1 } }
