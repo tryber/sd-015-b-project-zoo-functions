@@ -50,14 +50,12 @@ const mapWithAnimalNames = (sorted, animalsSex) => {
   return animalsMap;
 };
 
-const verifySortedBySex = (sorted, sex) => mapWithAnimalNames(sorted, sex);
-
 const verifyData = (includeNames, sorted, sex) => {
   if (!includeNames && sex === 'female') return mapWithoutParameters();
 
   const isMapBySort = includeNames && !sex;
 
-  const map = isMapBySort ? mapWithAnimalNames(sorted) : verifySortedBySex(sorted, sex);
+  const map = isMapBySort ? mapWithAnimalNames(sorted) : mapWithAnimalNames(sorted, sex);
 
   return map;
 };
