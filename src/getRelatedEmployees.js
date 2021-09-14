@@ -25,14 +25,27 @@ function getRelatedEmployees(managerId) {
         // Esta condicional deve retornar os nomes referentes aos ids
         // localizados na propriedade responsibleFor [USAR MAP]
         const responsavelPor = employee.responsibleFor; // Armazena em um array as ids dos subordinados
-        const arraySubordinados = employees.map( (employee) => {
+        // É necessário percorrer o elemento que armazena os funcionários, filtrar 
+        const arraySubordinados = []; // Valor inicial do array com nome dos subordinados
 
-        });
-        console.log(responsavelPor);
+        responsavelPor.forEach( (pessoa) => { // Para cada elemento dentro do array responsavelPor
+          // console.log(pessoa); // [DEBUG] Verifica se o dado trabalha com o ID de cada pessoa
+          employees.find( (employee) => {
+            console.log(`Pessoa comparada no Obj: ${employee.managers}`); // [DEBUG] Verifica o ID da pessoa no Obj Atual
+            console.log(`Pessoa Subordinada: ${pessoa}`) // [DEBUG] Verifica o ID na posição n do array 'responsavelPor'
+            console.log('**');
+            if (employee.id === pessoa) {
+              arraySubordinados.push(employee.firstName);
+            }
+          })
+        })
+
+        // console.log(responsavelPor);
+        console.log(arraySubordinados);
         // return employee; // [RETORNA O OBJ REFERENTE AO ID PASSADO]
       }
     })
-    return employeFinded;
+    // return employeFinded;
   } else return "O id inserido não é de uma pessoa colaboradora gerente!";
 }
 
