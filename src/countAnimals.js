@@ -17,7 +17,7 @@ function countAnimals(animal) {
     arrayAnimals.push(paramVoid());
     return arrayAnimals;
   }
-
+  let valueGender = false; // Define a propriedade gênero inicialmente para false
 
 }
 // const argument = { specie: 'penguins' };
