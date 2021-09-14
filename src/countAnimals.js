@@ -9,15 +9,14 @@ function countAnimals(animal) {
     species.forEach((obj) => {
       animalOccurrences[obj.name] = obj.residents.length;
     });
-
     return animalOccurrences;
   }
   const { specie: myAnimal, gender: animalGender } = animal;
   if (animalGender === undefined) {
     const { residents } = species.find((obj) => obj.name.includes(myAnimal.slice(0, -2)));
-
     return residents.length;
   }
+
   const { residents } = species.find((obj) => obj.name.includes(myAnimal.slice(0, -2)));
   const genderResidents = residents.filter(({ sex }) => sex === animalGender);
 
