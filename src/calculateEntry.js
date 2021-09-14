@@ -17,7 +17,7 @@ function countEntrants(arrayEntrants) {
   return { adult, child, senior };
 }
 
-function calculateEntry(...entrants) {
+function calculateEntry(entrants) {
   // seu código aqui
   const valorTotal = 0;
   const arrayNovo = [];
@@ -49,6 +49,7 @@ const pessoasVisitantes = [
 //   pessoasVisitantes[4],
 //   pessoasVisitantes[5]);
 // calculateEntry();
+// calculateEntry(pessoasVisitantes);
 
 module.exports = { calculateEntry, countEntrants };
 
