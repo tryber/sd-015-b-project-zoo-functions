@@ -20,10 +20,13 @@ function getEmployee(employeeID) {
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
   const resultEmployee = getEmployee(id); // Retorna a pessoa com a ID
+  const primeiroConjuntoAnimal = resultEmployee.responsibleFor[0];
+  console.log(primeiroConjuntoAnimal); // ID do Primeiro animal da pessoa
+
   // console.log(resultEmployee);
 }
 
-// console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
+console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 
 module.exports = getOldestFromFirstSpecies;
 
