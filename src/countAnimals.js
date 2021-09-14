@@ -34,12 +34,12 @@ function countAnimals(animal) {
   const possuiGenero = Object.keys(animal).includes('gender');
   if (possuiGenero) {
     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie))
-    .residents.map((cadaAnimal) => {
-      if (cadaAnimal.sex === animal.gender) {
-        quantidadeAnimais += 1;
-      }
-      return quantidadeAnimais;
-    });
+      .residents.map((cadaAnimal) => {
+        if (cadaAnimal.sex === animal.gender) {
+          quantidadeAnimais += 1;
+        }
+        return quantidadeAnimais;
+      });
   }
   if (!possuiGenero) {
     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
