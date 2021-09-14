@@ -32,11 +32,11 @@ function getDaySchedule(scheduleTarget) {
 }
 
 function getAimalExhibitionDays(animal) {
-  let animalExhibitionDays;
-  species.forEach(({name, availability}) => {
-    if (name === animal) animalExhibitionDays = availability
-  })
-  return animalExhibitionDays
+  let animalExhibitionDays = [];
+  species.forEach(({ name, availability }) => {
+    if (name === animal) animalExhibitionDays = availability;
+  });
+  return animalExhibitionDays;
 }
 
 function getAnimalsArray() {
