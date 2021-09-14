@@ -1,19 +1,19 @@
 const data = require('../data/zoo_data');
 
-function countByGender(selectedSpecies, gender) {
+function countBySex(selectedSpecies, sex) {
   const returnObj = {};
   if (selectedSpecies.length > 1) {
     selectedSpecies.forEach((specie) => {
-      const selectedResidents = specie.residents.filter((resident) => resident.sex === gender);
+      const selectedResidents = specie.residents.filter((resident) => resident.sex === sex);
       returnObj[specie.name] = selectedResidents.length;
     });
     return returnObj;
   }
-  const filteredResid = selectedSpecies[0].residents.filter((resident) => resident.sex === gender);
+  const filteredResid = selectedSpecies[0].residents.filter((resident) => resident.sex === sex);
   return filteredResid.length;
 }
 
-function countGeneralGender(selectedSpecies) {
+function countGeneralSex(selectedSpecies) {
   const returnObj = {};
   if (selectedSpecies.length > 1) {
     selectedSpecies.forEach((specie) => {
@@ -24,17 +24,17 @@ function countGeneralGender(selectedSpecies) {
   return selectedSpecies[0].residents.length;
 }
 
-function countAnimals({ specie = '', gender = '' } = {}) {
+function countAnimals({ specie = '', sex = '' } = {}) {
   let selectedSpecies;
   if (specie) {
     selectedSpecies = data.species.filter((specie2) => specie2.name === specie);
   } else {
     selectedSpecies = data.species;
   }
-  if (gender) {
-    return countByGender(selectedSpecies, gender);
+  if (sex) {
+    return countBySex(selectedSpecies, sex);
   }
-  return countGeneralGender(selectedSpecies);
+  return countGeneralSex(selectedSpecies);
 }
 
 module.exports = countAnimals;
