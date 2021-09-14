@@ -15,11 +15,11 @@ function countAnimals(animal) {
   if (!animal) return paramVoid();
   let quantidadeAnimais = 0;
   let retornoDoAnimal = {};
-  const possuiGenero = Object.keys(animal).includes('sex'); //
+  const possuiGenero = Object.keys(animal).includes('sex');
 
-  retornoDoAnimal = species.find((specie) => specie.name === animal.specie) //
+  retornoDoAnimal = species.find((specie) => specie.name === animal.specie)
     .residents.map((cadaAnimal) => {
-      if (possuiGenero && cadaAnimal.sex === animal.sex) { //
+      if (possuiGenero && cadaAnimal.sex === animal.sex) {
         quantidadeAnimais += 1;
       }
       return quantidadeAnimais;
