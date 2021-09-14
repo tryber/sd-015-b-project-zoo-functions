@@ -12,6 +12,9 @@ function isManager(id) {
   const idIsManager = managers.includes(id);
   return idIsManager;
 }
+function getRelatedEmployees(managerId) {
+  return managerId;
+}
 
 // function getRelatedEmployees(managerId) {
 //   // seu código aqui
@@ -45,7 +48,7 @@ function isManager(id) {
 
 // getRelatedEmployees('123456');
 // console.log(getRelatedEmployees('123456')); // [DEBUG] Verifica retorno da Função
-console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
+// console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')); // [DEBUG] Retorna True
 
 module.exports = { isManager, getRelatedEmployees };
 
