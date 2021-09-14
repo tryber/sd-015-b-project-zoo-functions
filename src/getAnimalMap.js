@@ -1,72 +1,92 @@
 const data = require('../data/zoo_data');
 
-// const mapWithoutParameters = () => {
-//   const animalsMap = data.species.reduce((acc, { location, name }) => {
-//     acc[location] = acc[location] || [];
-//     acc[location].push(name);
+const mapWithoutParameters = () => {
+  const animalsMap = data.species.reduce((acc, { location, name }) => {
+    acc[location] = acc[location] || [];
+    acc[location].push(name);
 
-//     return acc;
-//   }, {});
+    return acc;
+  }, {});
 
-//   return animalsMap;
-// };
+  return animalsMap;
+};
 
-// const sortAnimalsName = (sorted, animalsName, specie) => {
-//   const arrOfNames = animalsName;
+const sortAnimalsName = (sorted, animalsName, specie) => {
+  const arrOfNames = animalsName;
 
-//   if (sorted) {
-//     arrOfNames[specie].sort();
-//   }
+  if (sorted) {
+    arrOfNames[specie].sort();
+  }
 
-//   return arrOfNames;
-// };
+  return arrOfNames;
+};
 
-// const getAnimalsName = (specie, animalsList, sorted, animalsSex) => {
-//   const animalsName = animalsList.residents.reduce((acc, { name, sex }) => {
-//     acc[specie] = acc[specie] || [];
+const getAnimalsName = (specie, animalsList, sorted, animalsSex) => {
+  const animalsName = animalsList.residents.reduce((acc, { name, sex }) => {
+    acc[specie] = acc[specie] || [];
 
-//     if (animalsSex === sex) acc[specie].push(name);
+    if (animalsSex === sex) acc[specie].push(name);
 
-//     if (!animalsSex) acc[specie].push(name);
+    if (!animalsSex) acc[specie].push(name);
 
-//     return acc;
-//   }, {});
+    return acc;
+  }, {});
 
-//   const sortedArrayOfAnimals = sortAnimalsName(sorted, animalsName, specie);
+  const sortedArrayOfAnimals = sortAnimalsName(sorted, animalsName, specie);
 
-//   return sortedArrayOfAnimals;
-// };
+  return sortedArrayOfAnimals;
+};
 
-// const mapWithAnimalNames = (sorted, animalsSex) => {
-//   const animalsMap = data.species.reduce((acc, currentSpecie) => {
-//     const { location, name } = currentSpecie;
-//     acc[location] = acc[location] || [];
-//     const arrOfAnimalsName = getAnimalsName(name, currentSpecie, sorted, animalsSex);
-//     acc[location].push(arrOfAnimalsName);
+const mapWithAnimalNames = (sorted, animalsSex) => {
+  const animalsMap = data.species.reduce((acc, currentSpecie) => {
+    const { location, name } = currentSpecie;
+    acc[location] = acc[location] || [];
+    const arrOfAnimalsName = getAnimalsName(name, currentSpecie, sorted, animalsSex);
+    acc[location].push(arrOfAnimalsName);
 
-//     return acc;
-//   }, {});
+    return acc;
+  }, {});
 
-//   return animalsMap;
-// };
-// if (!includeNames && sex === 'female') return mapWithoutParameters();
+  return animalsMap;
+};
 
-// if (includeNames && sex) return mapWithAnimalNames(sorted, sex);
+const verifySortedBySex = (currentMap, includeNames, sorted, sex) => {
+  let map = currentMap;
 
-// if (includeNames && sex && sorted) return mapWithAnimalNames(sorted, sex);
+  const isSortedBySex = includeNames && sex && sorted;
 
-// if (includeNames && sorted) return mapWithAnimalNames(sorted);
+  if (isSortedBySex) map = mapWithAnimalNames(sorted, sex);
+
+  else map = mapWithAnimalNames(sorted, sex);
+
+  return map;
+};
+
+const verifyData = (includeNames, sorted, sex) => {
+  let map;
+
+  if (!includeNames && sex === 'female') return mapWithoutParameters();
+
+  const isMapBySort = includeNames && !sex;
+
+  if (isMapBySort) map = mapWithAnimalNames(sorted);
+
+  else map = verifySortedBySex(map, includeNames, sorted, sex);
+
+  return map;
+};
+
 function getAnimalMap(options) {
   // seu código aqui
-  // if (!options) return mapWithoutParameters();
+  if (!options) return mapWithoutParameters();
 
-  // const { includeNames, sorted, sex } = options;
+  const { includeNames, sorted, sex } = options;
 
-  // if (includeNames) return mapWithAnimalNames();
+  if (includeNames && !sorted && !sex) return mapWithAnimalNames();
 
-  // const test = verifyData(includeNames, sorted, sex);
+  const zooMap = verifyData(includeNames, sorted, sex);
 
-  // return test;
+  return zooMap;
 }
 
 module.exports = getAnimalMap;
