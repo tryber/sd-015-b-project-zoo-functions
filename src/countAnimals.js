@@ -9,11 +9,8 @@ function countAnimals(animal) {
     });
     console.log(expected);
   }
-
   // const filteredSpecie = species.filter((specie) => specie.name === animal.specie);
   // return filteredSpecie[0].residents.length;
 }
-
-console.log(countAnimals({ specie: 'giraffes' }));
 
 module.exports = countAnimals;

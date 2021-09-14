@@ -1,7 +1,6 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-// Iniciei porém não conclui
 function getAnimalsOlderThan(animal, age) {
   const filteredSpecie = species.filter((specie) => specie.name === animal);
   const individos = filteredSpecie[0].residents;
