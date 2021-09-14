@@ -16,7 +16,6 @@ function getRelatedEmployees(managerId) {
       if (employee.managers.includes(managerId)) {
         responsibleFor.push(`${employee.firstName} ${employee.lastName}`);
       }
-      console.log(responsibleFor);
       return responsibleFor;
     }); return responsibleFor;
   }

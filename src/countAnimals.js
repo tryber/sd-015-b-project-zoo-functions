@@ -27,17 +27,17 @@ function countGenderSpecies({ specie: animal, gender: sex }) {
   return gender.length;
 }
 
-function countAnimals(...argument) {
+function countAnimals(argument) {
   // seu código aqui
-  if (!argument[0]) {
+  if (!argument) {
     return countEmpty();
   }
 
-  if (Object.keys(argument[0]).length === 1) {
-    return countSpecies(argument[0]);
+  if (!argument.gender) {
+    return countSpecies(argument);
   }
 
-  return countGenderSpecies(argument[0]);
+  return countGenderSpecies(argument);
 }
 module.exports = countAnimals;
 
