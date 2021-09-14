@@ -41,5 +41,4 @@ function getEmployeesCoverage(obj) {
   }
   throw new Error('Informações inválidas');
 }
-
 module.exports = getEmployeesCoverage;
