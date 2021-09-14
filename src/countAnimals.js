@@ -20,6 +20,7 @@ function countAnimals(animal) {
   }
   const { residents } = species.find((obj) => obj.name.includes(myAnimal.slice(0, -2)));
   const genderResidents = residents.filter(({ sex }) => sex === animalGender);
+
   return genderResidents.length;
 }
 
