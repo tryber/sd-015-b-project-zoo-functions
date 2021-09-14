@@ -6,7 +6,14 @@ function countAnimals(animal) {
     return species
       .reduce((acc, current) => ({ ...acc, [current.name]: current.residents.length }), {});
   }
-  return species.find((specie) => specie.name === animal);
+  if (animal.specie && animal.gender) {
+    const objectAnimalGender = species
+      .find((element) => element.name === animal.specie).residents
+      .filter((element) => element.sex === animal.gender);
+    return objectAnimalGender.length;
+  }
+  const objectAnimal = species.find((element) => element.name === animal.specie).residents;
+  return objectAnimal.length;
 }
 
 module.exports = countAnimals;
