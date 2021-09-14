@@ -6,9 +6,8 @@ function paramVoid() {
   // Implementa função reduce!
   // FONTE:https://www.instagram.com/p/BziTc90D382/
   const initialValue = {};
-  return species.reduce((obj, specie) => {
-    return ({ ...obj, [specie.name]: specie.residents.length });
-  }, initialValue);
+  return species.reduce((obj, specie) =>
+    ({ ...obj, [specie.name]: specie.residents.length }), initialValue);
   // return transformArray;
 }
 
@@ -34,20 +33,6 @@ function countAnimals(animal) {
     quantidadeAnimais = retornoDoAnimal.residents.length;
   }
   return quantidadeAnimais;
-  // if (possuiGenero) {
-  //   retornoDoAnimal = species.find((specie) => (specie.name === animal.specie))
-  //     .residents.map((cadaAnimal) => {
-  //       if (cadaAnimal.sex === animal.gender) {
-  //         quantidadeAnimais += 1;
-  //       }
-  //       return quantidadeAnimais;
-  // });
-  // }
-//   if (!possuiGenero) {
-//     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
-//     quantidadeAnimais = retornoDoAnimal.residents.length;
-//   }
-//   return quantidadeAnimais;
 }
 
 module.exports = countAnimals;
