@@ -9,8 +9,8 @@ function countAnimals(animal) {
     }, {});
   }
   const selectedAnimal = allAnimals.find((specie) => specie.name === animal.specie);
-  if (!animal.gender) return selectedAnimal.residents.length;
-  const residentsByGender = selectedAnimal.residents.filter((spc) => spc.sex === animal.gender);
+  if (!animal.sex) return selectedAnimal.residents.length;
+  const residentsByGender = selectedAnimal.residents.filter((spc) => spc.sex === animal.sex);
   return residentsByGender.length;
 }
 
