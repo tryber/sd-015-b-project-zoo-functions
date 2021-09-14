@@ -13,8 +13,8 @@ function countAnimals(animal) {
 
   const selectedSpecie = data.species.find((specie) => specie.name === animal.specie);
 
-  if (animal.gender) {
-    const gender = selectedSpecie.residents.filter((resident) => resident.sex === animal.gender);
+  if (animal.sex) {
+    const gender = selectedSpecie.residents.filter((resident) => resident.sex === animal.sex);
     return gender.length;
   }
 
