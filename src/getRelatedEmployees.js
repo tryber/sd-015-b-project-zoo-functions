@@ -1,14 +1,13 @@
-const { species, employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function isManager(id) {
   // seu código aqui
-  return data.employees.some((employee) => employee.managers.includes(id))
+  return data.employees.some((employee) => employee.managers.includes(id));
 }
 
 function getRelatedEmployees(managerId) {
-  const teste = isManager(managerId);
   // seu código aqui
+  const teste = isManager(managerId);
   if (!teste) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }

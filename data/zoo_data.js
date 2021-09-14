@@ -47,7 +47,7 @@ module.exports = {
       popularity: 5,
       location: 'NW',
       availability: ['Wednesday', 'Friday', 'Saturday', 'Tuesday'],
-      s: [
+      residents: [
         {
           name: 'Shu',
           sex: 'female',
@@ -341,4 +341,3 @@ module.exports = {
     child: 20.99,
   },
 };
-
