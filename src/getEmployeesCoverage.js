@@ -17,7 +17,7 @@ function generalEmployeesCoverage() {
       species: animalsIdToSpecies(responsibleFor),
       locations: animalsIdToLocations(responsibleFor),
     };
-  })
+  });
 }
 
 function getEmployeesCoverage(obj) {
@@ -30,12 +30,11 @@ function getEmployeesCoverage(obj) {
     const [firstNameElement, lastNameElement] = fullNameElement.split(' ');
     return firstNameElement === name || lastNameElement === name || idElement === id;
   });
-  if (employeesCoverageFilter === undefined) {
+  if (employeesCoverageFilter !== undefined) {
+    return employeesCoverageFilter;
+  } else {
     throw new Error ('Informações inválidas');
   }
-  return employeesCoverageFilter;
 }
-
-console.log(getEmployeesCoverage())
 
 module.exports = getEmployeesCoverage;
