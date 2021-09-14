@@ -8,9 +8,13 @@ const ruleUndefined = (acc, specie) => {
 const ruleSpecie = (acc, specie, spec) =>
   (specie.name === spec ? specie.residents.length : acc);
 
+const ruleGetGender = (specie, gen) => {
+  return (specie.residents.reduce((accumulator, resident) =>
+    resident.sex === gen ? accumulator += 1 : accumulator, 0));
+};
+
 const ruleSpecieAndGender = (acc, specie, spec, gen) =>
-  (specie.name === spec ? (specie.residents.reduce((accumulator, resident) =>
-    resident.sex === gen ? accumulator += 1 : accumulator, acc)) : acc);
+  (specie.name === spec ? ruleGetGender(specie, gen) : acc);
 
 const myReduce = (spec, gen, func, defaultValue) =>
   data.species.reduce((acc, specie) => func(acc, specie, spec, gen), defaultValue);
