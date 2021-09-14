@@ -14,12 +14,13 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === 0 || entrants === undefined || Object.keys(entrants).length === 0) {
+  if (!entrants || Object.keys(entrants).length === 0) {
     return 0;
   }
-  const priceChild = (countEntrants(entrants).child * prices.child);
-  const priceAdult = (countEntrants(entrants).adult * prices.adult);
-  const priceSenior = (countEntrants(entrants).senior * prices.senior);
+  const count = (countEntrants(entrants));
+  const priceChild = (count.child * prices.child);
+  const priceAdult = (count.adult * prices.adult);
+  const priceSenior = (count.senior * prices.senior);
   return (priceChild + priceAdult + priceSenior);
 }
 
