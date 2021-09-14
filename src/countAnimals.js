@@ -13,14 +13,14 @@ function countAnimals(animal) {
   if (animal === undefined) {
     return countAllAnimals();
   }
-  if (animal.gender === undefined) {
+  if (animal.sex === undefined) {
     const specie = species.find((spec) => spec.name === animal.specie);
     return specie.residents.length;
   }
   let count = 0;
   const especie = species.find((specie1) => specie1.name === animal.specie);
   especie.residents.forEach((resident) => {
-    if (resident.sex === animal.gender) {
+    if (resident.sex === animal.sex) {
       count += 1;
     }
   });
