@@ -12,11 +12,7 @@ function paramVoid() {
 }
 
 function countAnimals(animal) {
-  // seu código aqui
-  if (!animal) {
-    const functionResult = paramVoid();
-    return functionResult;
-  }
+  if (!animal) return paramVoid();
   let quantidadeAnimais = 0;
   let retornoDoAnimal = {};
   const possuiGenero = Object.keys(animal).includes('gender');
