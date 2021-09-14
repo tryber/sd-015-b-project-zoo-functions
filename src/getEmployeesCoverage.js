@@ -1,14 +1,34 @@
-const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
+const getSpeciesByIds = require('./getSpeciesByIds');
 
-function getEmployeesCoverage(infoObj) {
+const findEmployee = (info) => {
+  const { employees } = data;
   const selectedEmployee = employees.find((employee) => {
-    const firstNameIsEqual = infoObj.name === employee.name;
-    const lastNameIsEqual = infoObj.name === employee.lastName;
-    const idIsEqual = infoObj.id === employee.id;
+    const firstNameIsEqual = info.name === employee.firstName;
+    const lastNameIsEqual = info.name === employee.lastName;
+    const idIsEqual = info.id === employee.id;
     return (firstNameIsEqual || lastNameIsEqual || idIsEqual);
   });
   return selectedEmployee;
-}
+};
+
+const getLocationsBySpecies = (species) => {
+
+};
+
+const getEmployeesCoverage = (infoObj) => {
+  const employee = findEmployee(infoObj);
+  const { id, firstName, lastName, responsibleFor } = employee;
+  const species = responsibleFor.map((specieId) => getSpeciesByIds(specieId)[0].name);
+  const locations = getLocationsBySpecies(species);
+  return {
+    id,
+    fullName: `${firstName} ${lastName}`,
+    species,
+    locations,
+  };
+};
+
+console.log(getEmployeesCoverage({ id: '0e7b460e-acf4-4e17-bcb3-ee472265db83' }));
 
 module.exports = getEmployeesCoverage;

@@ -32,7 +32,6 @@ const getAnimalMap = (options) => {
   directions.NW = directions.NW.map((animal) => (getNames(animal, options)));
   directions.SE = directions.SE.map((animal) => (getNames(animal, options)));
   directions.SW = directions.SW.map((animal) => (getNames(animal, options)));
-
   return directions;
 };
 
