@@ -20,7 +20,7 @@ function countAnimals(animal) {
   if (!animal) {
     return emptyObject();
   }
-  return animal.gender
+  return animal.sex
     ? filterGender(animal).length
     : findResidents(animal).length;
 }
