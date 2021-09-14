@@ -1,16 +1,11 @@
 const { species } = require('../data/zoo_data');
 
-function searchDefault(sorted, sex) {
+function searchDefault() {
   const regions = {};
 
   species.forEach((specie) => {
     if (!regions[specie.location]) regions[specie.location] = [];
-    if (sex) {
-      const verifyGender = specie.residents.some((resident) => resident.sex === sex);
-      if (!verifyGender) return;
-    }
     regions[specie.location].push(specie.name);
-    if (sorted) regions[specie.location].sort();
   });
 
   return regions;
@@ -35,7 +30,7 @@ function getAnimalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
 
   if (includeNames) return animalNames(sorted, sex);
-  return searchDefault(sorted, sex);
+  return searchDefault();
 }
 
 module.exports = getAnimalMap;
