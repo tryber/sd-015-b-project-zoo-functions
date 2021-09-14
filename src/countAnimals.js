@@ -21,5 +21,3 @@ const countAnimals = ({ specie: specieName, gender } = {}) => {
 };
 
 module.exports = countAnimals;
-
-console.log(countAnimals());
