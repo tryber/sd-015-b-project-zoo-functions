@@ -24,16 +24,18 @@ function countAnimals(animal) {
   // console.log(`Busca dos animais possui gênero: ${possuiGenero}`);
 
   if (possuiGenero) {
-    console.log("Possui Gênero!!!");
+    // console.log("Possui Gênero!!!");
      // Retorna um array com todos os animais da espécie
     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
     // Faz um filter para capturar apenas os animais que possuem o gênero passado
     // console.log(retornoDoAnimal.residents);
-    quantidadeAnimais = retornoDoAnimal.residents.filter( (cadaAnimal) => {
-      // console.log(`GÊNERO CADA ANIMAL: ${cadaAnimal.gender}`);
+    const retornoDoAnimal2 = retornoDoAnimal.residents.map( (cadaAnimal) => {
+      // console.log(`GÊNERO CADA ANIMAL: ${cadaAnimal.sex}`);
       // console.log(`GÊNERO BUSCADO: ${animal.gender}`);
-      (cadaAnimal.sex === animal.gender);
-    })
+      if (cadaAnimal.sex === animal.gender) {
+        quantidadeAnimais += 1;
+      }
+    });
   }
 
   if (!possuiGenero) {
