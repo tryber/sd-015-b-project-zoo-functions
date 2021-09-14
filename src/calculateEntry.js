@@ -1,7 +1,8 @@
 const { prices } = require('../data/zoo_data');
 
 const countEntrants = (entrants) => {
-  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
+  const entrantsKeys = Object.keys(entrants);
+  if (entrants === undefined || entrantsKeys.length === 0) return 0;
 
   const entries = {
     child: entrants.filter((child) => child.age < 18).length,
