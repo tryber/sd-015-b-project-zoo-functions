@@ -1,3 +1,4 @@
+const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 const { employees } = data;
 
@@ -13,15 +14,28 @@ function getEmployee(employeeID) {
   return findEmployee;
 }
 
-// console.log(getEmployee('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'))
-// function getAnimal(animalType) {
+function getOldestAnimal(idDoConjunto) {
+  // Varre o array de animais
+  // busca pelo conjunto de animais com essa id específica
+  // aplica o sort para ordenar do mais velho para o mais novo
+  // Captura e retorna o mais velho POSIÇÃO 0
+  const findAnimals = species.find( (specie) => {
+    // console.log('Varredura das Espécies: ', specie);
+    if (specie.id === idDoConjunto) {
+      // console.log('Espécie encontrada: ', specie);
+      return specie;
+    }
+    return specie;
+  });
+  return findAnimals;
 
-// }
+}
+
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
   const resultEmployee = getEmployee(id); // Retorna a pessoa com a ID
   const primeiroConjuntoAnimal = resultEmployee.responsibleFor[0];
-  console.log(primeiroConjuntoAnimal); // ID do Primeiro animal da pessoa
+  // console.log(primeiroConjuntoAnimal); // ID do Primeiro animal da pessoa
 
   // console.log(resultEmployee);
 }
