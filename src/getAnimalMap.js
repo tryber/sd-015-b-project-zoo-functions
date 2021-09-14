@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-function getNames(animal, options) {
+const getNames = (animal, options) => {
   const { sex, sorted } = options;
   const selectedAnimal = data.species.find(({ name }) => (name === animal));
   const { residents } = selectedAnimal;
@@ -16,9 +16,9 @@ function getNames(animal, options) {
     animalObject[animal] = animalObject[animal].sort();
   }
   return animalObject;
-}
+};
 
-function getAnimalMap(options) {
+const getAnimalMap = (options) => {
   const directions = {
     NE: data.species.filter(({ location }) => location === 'NE').map(({ name }) => name),
     NW: data.species.filter(({ location }) => location === 'NW').map(({ name }) => name),
@@ -34,6 +34,6 @@ function getAnimalMap(options) {
   directions.SW = directions.SW.map((animal) => (getNames(animal, options)));
 
   return directions;
-}
+};
 
 module.exports = getAnimalMap;
