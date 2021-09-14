@@ -22,30 +22,48 @@ const createObjectCoverage = (id, fullName, species, locations) => ({
   locations,
 });
 
+function everyEmployeeCoverage(element) {
+  return createObjectCoverage(...getParameters(element));
+}
+
+function getArrayOfNames(obj) {
+  return [obj.firstName, obj.lastName];
+}
+
+function flattenArray(acc, curVal) {
+  return acc.concat(curVal);
+}
+
+function isValid(myEmployee) {
+  const { name: employeeName, id: employeeId } = myEmployee;
+  const { employees } = data;
+
+  const arrayOfIds = employees.map((obj) => obj.id);
+  const arrayOfNames = employees.map(getArrayOfNames).reduce(flattenArray);
+
+  return (
+    (employeeName !== undefined && arrayOfNames.includes(employeeName))
+    || (employeeId !== undefined && arrayOfIds.includes(employeeId))
+  );
+}
+
 function getEmployeesCoverage(myEmployee) {
   const { employees } = data;
   if (myEmployee === undefined) {
-    return employees.map((element) => createObjectCoverage(...getParameters(element)));
+    return employees.map(everyEmployeeCoverage);
   }
 
-  const { name: employeeName, id: employeeId } = myEmployee;
-
-  const arrayOfIds = employees.map((obj) => obj.id);
-  const arrayOfNames = employees
-    .map((obj) => [obj.firstName, obj.lastName])
-    .reduce((acc, curVal) => acc.concat(curVal));
-  if (
-    (employeeName !== undefined && arrayOfNames.includes(employeeName) === false)
-    || (employeeId !== undefined && arrayOfIds.includes(employeeId) === false)
-  ) {
-    throw new Error('Informações inválidas');
+  if (isValid(myEmployee)) {
+    const { name: employeeName, id: employeeId } = myEmployee;
+    const findEmployee = employees.find(
+      ({ id, firstName, lastName }) =>
+        id === employeeId || firstName === employeeName || lastName === employeeName,
+    );
+    return createObjectCoverage(...getParameters(findEmployee));
   }
-
-  const findEmployee = employees.find(
-    ({ id, firstName, lastName }) =>
-      id === employeeId || firstName === employeeName || lastName === employeeName,
-  );
-  return createObjectCoverage(...getParameters(findEmployee));
+  throw new Error('Informações inválidas');
 }
+
+getEmployeesCoverage({ name: 'Spry' });
 
 module.exports = getEmployeesCoverage;
