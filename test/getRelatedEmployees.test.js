@@ -9,7 +9,7 @@ const managers = [stephanieId, olaId, burlId];
 describe('4 - Crie a gestão dos funcionários de acordo com o respectivo gerente', () => {
   it('retorna true se o id passado é de um gerente', () => {
     const expected = true;
-    
+
     managers.forEach((managerId) => {
       const actual = isManager(managerId);
       expect(actual).toBe(expected);
@@ -25,7 +25,7 @@ describe('4 - Crie a gestão dos funcionários de acordo com o respectivo gerent
 
   it('retorna uma array com o nome dos funcionários do respectivo gerente passado pelo id', () => {
     const actual = getRelatedEmployees(stephanieId);
-    const expected = [ 'Burl Bethea', 'Ola Orloff', 'Emery Elser' ];
+    const expected = ['Burl Bethea', 'Ola Orloff', 'Emery Elser'];
     expect(actual).toEqual(expected);
   });
 
