@@ -5,7 +5,7 @@ function getAnimalsOlderThan(animal, age) {
   // seu código aqui
   const findSpecie = (specie) => specie.name === animal.toLowerCase();
   const foundSpecie = species.find(findSpecie);
-  const checkAge = (individual) => individual.age >= age;
+  const checkAge = (resident) => resident.age >= age;
   const checkedAges = foundSpecie.residents.every(checkAge);
   return checkedAges;
 }
