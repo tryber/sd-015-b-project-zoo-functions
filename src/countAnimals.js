@@ -7,9 +7,10 @@ function countAnimals(animals) {
     const { specie, gender } = animals;
     const acessSpecie = data.species
       .find((elemento) => elemento.name.toLocaleLowerCase() === specie.toLocaleLowerCase());
-    const acessResidents = acessSpecie.residents;
+    let acessResidents = acessSpecie.residents;
     if (gender) {
-      acessResidents.filter((item) => item.sex.toLocaleLowerCase() === gender.toLocaleLowerCase());
+      acessResidents = acessResidents
+        .filter((item) => item.sex.toLocaleLowerCase() === gender.toLocaleLowerCase());
     } return acessResidents.length;
   }
   const newObject = {};
@@ -21,5 +22,5 @@ function countAnimals(animals) {
   return newObject;
 }
 
-console.log(countAnimals());
+console.log(countAnimals({ specie: 'giraffes', sex: 'female' }));
 module.exports = countAnimals;
