@@ -8,8 +8,7 @@ const findAnimal = (species, animal, age) =>
   species.some((specie) =>
     specie.name === animal && verifyAge(specie, age));
 
-const getAnimalsOlderThan = (animal, age, func = findAnimal) => 
-  // seu código aqui
+const getAnimalsOlderThan = (animal, age, func = findAnimal) =>
   func(data.species, animal, age);
 
 module.exports = getAnimalsOlderThan;
