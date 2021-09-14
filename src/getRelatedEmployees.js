@@ -2,19 +2,20 @@ const data = require('../data/zoo_data');
 
 function isManager(id) {
   // verifica se é gerente ou não
-  const findManage = data.employees.filter((findId) => findId.id === id).shift();
-  return findManage.managers.length !== 0;
+  return data.employees.some((peopleInfo) => peopleInfo.managers
+    .some((checkId) => checkId === id));
 }
 
-const colaborator = (idcolabe) => data.employees.filter((findId) => findId.id === idcolabe);
 function getRelatedEmployees(managerId) {
-  const getManager = isManager(managerId);
-  const getIdPeople = colaborator(managerId).shift().responsibleFor;
-  const error = new Error('O id inserido não é de uma pessoa colaboradora gerente!');
+  if (isManager(managerId)) {
+    return data.employees.filter((element) => element.managers
+      .some((id) => id === managerId))
+      .map((fullname) => `${fullname.firstName} ${fullname.lastName}`);
+  }
 
-  return (getManager) ? getIdPeople : error;
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
-console.log(getRelatedEmployees('56d43ba3-a5a7-40f6-8dd7-cbb05082383f'));
+console.log(`Employees = ${getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992')}`);
 // [ 'Burl Bethea', 'Ola Orloff', 'Emery Elser' ]
 module.exports = { isManager, getRelatedEmployees };
