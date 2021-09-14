@@ -102,13 +102,14 @@ function getAnimalMap(options) {
     return animalMap;
   }
 
+  if (!options.includeNames) {
+    const animalMap = animalsSortedByLocation();
+    return animalMap;
+  }
+
   if (options.includeNames === true) {
     return includeName(options);
   }
 }
-const a = getAnimalMap({ includeNames: true, sex: 'female', sorted: true });
-console.log(a.NE);
-console.log(a.NW);
-console.log(a.SE);
-console.log(a.SW);
+
 module.exports = getAnimalMap;
