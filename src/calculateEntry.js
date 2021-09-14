@@ -26,8 +26,9 @@ function calculateEntry(entrants) {
   if (!Array.isArray(entrants)) return 0;
 
   const { child, adult, senior } = countEntrants(entrants);
+  const { prices } = data;
 
-  return child * 20.99 + adult * 49.99 + senior * 24.99;
+  return child * prices.child + adult * prices.adult + senior * prices.senior;
 }
 
 module.exports = { calculateEntry, countEntrants };
