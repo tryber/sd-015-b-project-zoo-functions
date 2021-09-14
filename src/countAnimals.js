@@ -13,16 +13,18 @@ function showAllAnimals() {
 
 function countAnimals(animal, gender) {
   const animalsAndResidentsObject = showAllAnimals();
-  const lookFor = animal;
-  const residents = animalsAndResidentsObject[animal];
-
   if (!animal) return animalsAndResidentsObject;
 
-  if (!gender) return { [lookFor]: residents };
+  const a = Object.values(animal)[0];
+  if (!gender) return animalsAndResidentsObject[a];
 
-  const x = species.find((e) => e.name === animal).residents.filter((e) => e.sex === gender).length;
-  return { [animal]: x };
+  console.log('AAAAA', a);
+  const g = Object.values(gender)[0];
+  console.log('GGG', g);
+  const x = species.find((e) => e.name === a).residents.filter((e) => e.sex === g).length;
+
+  return x;
 }
-console.log(countAnimals('bears', 'female'));
+console.log(countAnimals({ specie: 'bears' }, { gender: 'female' }));
 
 module.exports = countAnimals;
