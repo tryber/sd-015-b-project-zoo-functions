@@ -1,9 +1,8 @@
-const { employees } = require('../data/zoo_data');
+const { emps } = require('../data/zoo_data');
 
-function getEmployeeByName(employeeName) {
-  if (!employeeName) { return {}; }
-  const employee = employees.find((_employee) => employeeName.includes(_employee.firstName) || employeeName.includes(_employee.lastName));
-  return employee;
+function getEmployeeByName(empName) {
+  if (!empName) { return {}; }
+  return emps.find((_emp) => empName.includes(_emp.firstName) || empName.includes(_emp.lastName));
 }
 
 module.exports = getEmployeeByName;
