@@ -1,17 +1,20 @@
 const data = require('../data/zoo_data');
 
+const { employees } = require('../data/zoo_data');
+
 function isManager(id) {
-//   const employees = data.employees;
-//   employees.forEach((element) => {
-//     console.log(element.managers);
-//   })
+  return employees.some((employee) => employee.managers.includes(id));
 }
 
 function getRelatedEmployees(managerId) {
-  // seu código aqui
-}
+  if (isManager(managerId)) {
+    const employeeList = employees.filter((employee) => employee.managers.includes(managerId));
 
-// const employees = data.employees;
-// console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'))
+    return employeeList.map((name) => `${name.firstName} ${name.lastName}`);
+  }
+
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
+}
+// Requisito entendido e feito seguindo consulta ao commit de Denis Jonathan
 
 module.exports = { isManager, getRelatedEmployees };
