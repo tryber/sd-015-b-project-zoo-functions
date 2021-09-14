@@ -18,8 +18,14 @@ function calculateEntry(entrants) {
   
   // Captura valor de cada chave retornada pela função
   const {child, adult, senior} = countEntrants(entrants);
-  console.log(prices);
+  // const {pChild, pAdult, pSenior} = prices;
+  // console.log("Preços: ", prices);
+  // console.log(prices.adult);
 
+  valorTotal = ( child * prices.child ) + ( adult * prices.adult ) + ( senior * prices.senior );
+  // console.log(valorTotal);
+
+  return valorTotal;
 }
 
 const pessoasVisitantes = [
@@ -32,14 +38,9 @@ const pessoasVisitantes = [
 ];
 
 // calculateEntry({ name: 'Lara Carvalho', age: 5 }, { name: 'Frederico Moreira', age: 5 });
-// calculateEntry(pessoasVisitantes[0],
-//   pessoasVisitantes[1],
-//   pessoasVisitantes[2],
-//   pessoasVisitantes[3],
-//   pessoasVisitantes[4],
-//   pessoasVisitantes[5]);
 // calculateEntry();
 // calculateEntry(pessoasVisitantes);
+// console.log(calculateEntry(pessoasVisitantes));
 
 module.exports = { calculateEntry, countEntrants };
 
