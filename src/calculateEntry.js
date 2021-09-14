@@ -1,11 +1,7 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entries) {
-  // seu código aqui
-  if (!entries) {
-    return 0;
-  }
-
+  // seu código aqui((
   const child = entries.filter((element) => element.age < 18);
   const adult = entries.filter((element) => element.age >= 18 && element.age < 50);
   const senior = entries.filter((element) => element.age >= 50);
@@ -29,7 +25,11 @@ const totalPrice = (adult, child, senior) => {
 
 function calculateEntry(entries) {
   // seu código aqui
-  if (!entries) {
+  if (entries === undefined) {
+    return 0;
+  }
+  const entriesKeys = Object.keys(entries);
+  if (entriesKeys.length === 0) {
     return 0;
   }
 
