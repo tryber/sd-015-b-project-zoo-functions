@@ -3,11 +3,9 @@ const data = require('../data/zoo_data');
 
 function getAnimalsOlderThan(animal, age) {
   const filteredSpecie = species.filter((specie) => specie.name === animal);
-  const individos = filteredSpecie[0].residents;
-  return individos.every((individuo) =>
+  const individuos = filteredSpecie[0].residents;
+  return individuos.every((individuo) =>
     individuo.age >= age);
 }
-
-console.log(getAnimalsOlderThan('otters', 7));
 
 module.exports = getAnimalsOlderThan;
