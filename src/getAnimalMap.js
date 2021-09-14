@@ -12,30 +12,25 @@ const getAnimalLocation = () => {
   return object;
 };
 
-const getAnimalIncludeName = () => {
+const getAnimalIncludeName = (sorted) => {
   const object = {};
   species.forEach(({ location, name, residents }) => {
     if (!object[location]) {
       object[location] = [];
     }
-    let resid = [...residents];
-    resid = residents.map((resident) => resident.name);
-    object[location].push({ [name]: resid });
+    let residentsMap = [...residents];
+    residentsMap = residents.map((resident) => resident.name);
+    if (sorted) residentsMap.sort();
+    object[location].push({ [name]: residentsMap });
   });
   return object;
 };
 
 function getAnimalMap(options) {
-  if (!options) {
-    return getAnimalLocation();
-  }
+  if (!options) return getAnimalLocation();
 
-  if (options.includeNames) {
-    return getAnimalIncludeName();
-  }
+  const { includeNames, sorted } = options;
+  if (includeNames) return getAnimalIncludeName(sorted);
 }
-
-console.log(getAnimalMap());
-console.log(getAnimalMap({ includeNames: true }));
 
 module.exports = getAnimalMap;
