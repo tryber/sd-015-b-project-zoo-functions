@@ -15,14 +15,14 @@ function countAnimals(animal) {
   // Função que é executada quando não é passado nenhum parâmetro
   if (!animal) {
     arrayAnimals.push(paramVoid());
+    return arrayAnimals;
   }
 
-  
 
-  return arrayAnimals;
 }
-
-console.log(countAnimals());
+// const argument = { specie: 'penguins' };
+// console.log(countAnimals());
+// console.log(countAnimals(argument));
 
 module.exports = countAnimals;
 
