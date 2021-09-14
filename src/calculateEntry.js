@@ -1,10 +1,20 @@
 const data = require('../data/zoo_data');
 
-function countEntrants(entrants) {
+function countEntrants(arrayEntrants) {
   // seu código aqui
   let adult = 0; // Define o contador inicialmente com 0
   let child = 0; // Define o contador inicialmente com 0
   let senior = 0; // Define o contador inicialmente com 0
+  arrayEntrants.forEach((ageEntrant) => { // Para cada elemento no array Recebidos
+    if (ageEntrant < 18) { // Verifica idade
+      child += 1; // Soma se a verificação da expressão retornar verdadeira
+    } else if (ageEntrant >= 18 && ageEntrant < 50) { // Verifica idade
+      adult += 1; // Soma se a verificação da expressão retornar verdadeira
+    } else if (ageEntrant >= 50) { // Verifica idade
+      senior += 1; // Soma se a verificação da expressão retornar verdadeira
+    }
+  });
+  return { adult, child, senior };
 }
 
 function calculateEntry(...entrants) {
@@ -13,7 +23,8 @@ function calculateEntry(...entrants) {
   const functionEntrants = entrants.forEach( (entrant) => { // Para cada pessoa no Array Recebido
     arrayNovo.push(entrant.age); // Capture sua idade
     // console.log(arrayNovo); // [DEBUG] Verifica entrada do Array
-    countEntrants(arrayNovo); // Chama a função que irá contar quantas pessoas de cada faixa etária entrarão,
+    const contagem = countEntrants(arrayNovo); // Chama a função que irá contar quantas pessoas de cada faixa etária entrarão,
+    // console.log(contagem); // [DEBUG] Verifica se o retorno é o esperado, com o formato correto.
     // passando como parâmetro, o valor do array com a idade de Cada um.
   });
 }
