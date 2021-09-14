@@ -11,28 +11,45 @@ const entrants = [
   { name: 'Carlos Nogueira', age: 50 },
 ];
 
-const contador = {
-  child: 0,
-  adult: 0,
-  senior: 0,
-}
+
 function countEntrants(entrants) {
-  entrants.filter((entrant) => {
+  const contador = {
+    child: 0,
+    adult: 0,
+    senior: 0,
+  }
+  entrants.forEach((entrant) => {
     if(entrant.age < 18) {
       contador.child += 1;
-    } else if (entrant.age < 50) {
+    }
+    if (entrant.age < 50 && entrant.age >= 18) {
       contador.adult += 1;
     }
-    else contador.senior += 1;
+    if(entrant.age >= 50) {
+    contador.senior += 1;
+    }
+      
   });
   return contador;
 }
-
 function calculateEntry(entrants) {
-  
-}
+  if (!entrants || Object.entries(entrants).length === 0) {
+    return 0;
+  } 
+  const contador = countEntrants(entrants);
+  const totalChild = contador.child * prices.child;
+  const totalAdult = contador.adult * prices.adult;
+  const totalSenior = contador.senior * prices.senior;
+  const total = totalChild + totalAdult + totalSenior;
+  return total;
 
-console.log(countEntrants(entrants));
+}
 console.log(calculateEntry(entrants));
+// const totalEntry = prices.find(() => {
+//   if (Object.keys(prices) === Object.keys(entrants)) {
+//     return Object.values(prices) * Object.values(entrants);
+//   }
+// });
+// return totalEntry;
 
 module.exports = { calculateEntry, countEntrants };
