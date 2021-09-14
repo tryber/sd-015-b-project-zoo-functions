@@ -9,9 +9,9 @@ function countAnimals(animal) {
     });
     return obj;
   }
-  if (animal.gender) {
+  if (animal.sex) {
     return data.species.find((specie) => specie.name === animal.specie)
-      .residents.filter((e) => e.sex === animal.gender).length;
+      .residents.filter((e) => e.sex === animal.sex).length;
   }
   if (animal.specie) {
     return data.species.find((specie) => specie.name === animal.specie).residents.length;

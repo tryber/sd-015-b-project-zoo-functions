@@ -31,14 +31,13 @@ function returnNames(options) {
   }, {});
 }
 
-function getAnimalMap(options) {
+function getAnimalMap(options = {}) {
   // seu código aqui
 
-  if (options.includeNames) {
-    return returnNames(options);
+  if (!options.includeNames) {
+    return returnAll();
   }
-
-  return returnAll();
+  return returnNames(options);
 }
 
 module.exports = getAnimalMap;
