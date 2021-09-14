@@ -6,7 +6,7 @@ function getAnimalsOlderThan(animal, age) {
     resident.age > age).reduce((acc, actual) =>
     (!(acc === false || actual === false)));
 }
-
+//  false true true false
 console.log(getAnimalsOlderThan('otters', 7));
 
 module.exports = getAnimalsOlderThan;
