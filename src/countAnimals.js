@@ -27,14 +27,17 @@ function countAnimals(animal) {
 
   retornoDoAnimal = species.find( (specie) => specie.name === animal.specie)
     .residents.map( (cadaAnimal) => {
-      if (gender && cadaAnimal.sex === animal.gender) {
+      if (possuiGenero && cadaAnimal.sex === animal.gender) {
         quantidadeAnimais += 1;
-      } else {
-        quantidadeAnimais = retornoDoAnimal.residents.length;
       }
+      
       return quantidadeAnimais;
     })
-
+    if (!possuiGenero) {
+      retornoDoAnimal = species.find( (specie) => specie.name === animal.specie);
+      quantidadeAnimais = retornoDoAnimal.residents.length;
+    }
+    return quantidadeAnimais;
   // if (possuiGenero) {
   //   retornoDoAnimal = species.find((specie) => (specie.name === animal.specie))
   //     .residents.map((cadaAnimal) => {
