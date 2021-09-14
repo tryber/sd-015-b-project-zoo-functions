@@ -32,9 +32,8 @@ function getEmployeesCoverage(obj) {
   });
   if (employeesCoverageFilter !== undefined) {
     return employeesCoverageFilter;
-  } else {
-    throw new Error ('Informações inválidas');
   }
+  throw new Error('Informações inválidas');
 }
 
 module.exports = getEmployeesCoverage;
