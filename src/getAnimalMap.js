@@ -34,6 +34,7 @@ function getAnimalMap(options) {
   if (!options) return getArrayAnimals();
   const { includeNames, sorted, sex } = options;
   if (includeNames) return includeName(sorted, sex);
+  return getAnimalMap();
 }
 
 module.exports = getAnimalMap;
