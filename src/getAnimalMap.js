@@ -1,13 +1,6 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const expected = {
-  NE: ['lions', 'giraffes'],
-  NW: ['tigers', 'bears', 'elephants'],
-  SE: ['penguins', 'otters'],
-  SW: ['frogs', 'snakes'],
-};
-
 function getArrayAnimals() {
   const emptyObject = {};
   species.forEach((specie) => {
