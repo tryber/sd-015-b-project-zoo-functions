@@ -20,12 +20,12 @@ const myReduce = (spec, gen, func, defaultValue) =>
 const animalNotFound = () =>
   myReduce(undefined, undefined, ruleUndefined, {});
 
-const animalFound = (specie, gender) =>
-  (gender === undefined ? myReduce(specie, gender, ruleSpecie, 0)
-    : myReduce(specie, gender, ruleSpecieAndGender, 0));
+const animalFound = (specie, sex) =>
+  (sex === undefined ? myReduce(specie, sex, ruleSpecie, 0)
+    : myReduce(specie, sex, ruleSpecieAndGender, 0));
 
 const countAnimals = (...animal) =>
   (animal.length === 0 ? animalNotFound()
-    : animalFound(animal[0].specie, animal[0].gender));
+    : animalFound(animal[0].specie, animal[0].sex));
 
 module.exports = countAnimals;
