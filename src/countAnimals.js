@@ -15,7 +15,6 @@ function selectedAnimals({ specie, sex }) {
   residents = !sex ? residents : residents.filter((resident) => resident.sex === sex);
   return residents.length;
 }
-selectedAnimals({ specie: 'bears', sex: 'female' });
 
 function countAnimals(animal) {
   // seu código aqui
