@@ -9,12 +9,8 @@ const ruleSpecie = (acc, specie, spec) =>
   specie.name === spec ? specie.residents.length : acc;
 
 const ruleSpecieAndGender = (acc, specie, spec, gen) =>
-  specie.name === spec ?
-    specie.residents.reduce((acc, resident) =>
-      resident.sex === gen ?
-        acc += 1 :
-          acc, 0) :
-            acc;
+  specie.name === spec ? specie.residents.reduce((accumulator, resident) =>
+    resident.sex === gen ? accumulator += 1 : accumulator, acc) : acc;
 
 const myReduce = (spec, gen, func, defaultValue) =>
   data.species.reduce((acc, specie) => {
@@ -22,29 +18,17 @@ const myReduce = (spec, gen, func, defaultValue) =>
     return acc;
   }, defaultValue);
 
+const animalNotFound = () =>
+  myReduce(undefined, undefined, ruleUndefined, {});
 
-  const animalNotFound = () =>
-    myReduce(undefined, undefined, ruleUndefined, {});
+const animalFound = (specie, gender) =>
+  gender === undefined ?
+    myReduce(specie, gender, ruleSpecie, 0) :
+      myReduce(specie, gender, ruleSpecieAndGender, 0);
 
-  const animalFound = (specie, gender) => {
-    let result;
-    if (gender === undefined) {
-      result = myReduce(specie, gender, ruleSpecie, 0);
-    } else {
-      result = myReduce(specie, gender, ruleSpecieAndGender, 0);
-    }
-    return result;
-  };
+const countAnimals = (...animal) =>
+  animal.length === 0 ?
+    animalNotFound() :
+      animalFound(animal[0].specie, animal[0].gender);
 
-const countAnimals = (...animal) => {
-  let result = {};
-  if (animal.length === 0) {
-    result = animalNotFound();
-  } else {
-    const {specie, gender} = animal[0];
-    result = animalFound(specie, gender);
-  }
-  return result;
-};
-
-module.exports = countAnimals;
+// module.exports = countAnimals;
