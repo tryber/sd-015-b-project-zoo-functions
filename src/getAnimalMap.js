@@ -12,25 +12,27 @@ const getAnimalLocation = () => {
   return object;
 };
 
-const getAnimalIncludeName = (sorted) => {
+const animalManagement = (sorted, sex) => {
   const object = {};
   species.forEach(({ location, name, residents }) => {
     if (!object[location]) {
       object[location] = [];
     }
     let residentsMap = [...residents];
-    residentsMap = residents.map((resident) => resident.name);
+    if (sex) {
+      residentsMap = residentsMap.filter((gender) => gender.sex === sex);
+    }
+    residentsMap = residentsMap.map((resident) => resident.name);
     if (sorted) residentsMap.sort();
     object[location].push({ [name]: residentsMap });
   });
   return object;
 };
 
-function getAnimalMap(options) {
-  if (!options) return getAnimalLocation();
-
-  const { includeNames, sorted } = options;
-  if (includeNames) return getAnimalIncludeName(sorted);
+function getAnimalMap(options = {}) {
+  const { includeNames, sorted, sex } = options;
+  if (includeNames) return animalManagement(sorted, sex);
+  return getAnimalLocation();
 }
 
 module.exports = getAnimalMap;
