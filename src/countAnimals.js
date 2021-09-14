@@ -6,20 +6,18 @@ function countAnimals(animal) {
   // seu código aqui
   const animals = {};
   if (!animal) {
-    species.forEach((specie) => {
-      const { name } = specie;
-      const quantity = species.residents.length;
-      animals[name] = quantity;
+    species.forEach(({ name, residents }) => {
+      animals[name] = residents.length;
     });
     return animals;
   }
   const animalSelected = species.find((specie) => specie.name === animal.specie);
-  if (animal.sex) {
-    const sexSelected = animalSelected.residents;
-    sexSelected.filter((resident) => resident.sex === animal.sex);
+
+  if (animal.gender) {
+    const sexSelected = animalSelected.residents
+      .filter((resident) => resident.sex === animal.gender);
     return sexSelected.length;
   }
   return animalSelected.residents.length;
-
-  module.exports = countAnimals;
 }
+module.exports = countAnimals;
