@@ -13,8 +13,8 @@ function countAnimals(animal) {
   const getAnimal = data.species.find((specie) => specie.name === animal.specie);
   const howManyResidents = getAnimal.residents;
 
-  return (!animal.gender) ? howManyResidents.length : howManyResidents.filter((resident) =>
-    resident.sex === animal.gender).length;
+  return (!animal.sex) ? howManyResidents.length : howManyResidents.filter((resident) =>
+    resident.sex === animal.sex).length;
 }
 
 countAnimals({ specie: 'penguins' });
