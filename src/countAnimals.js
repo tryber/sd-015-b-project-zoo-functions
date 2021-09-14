@@ -14,7 +14,7 @@ function countAnimals(object) {
     return retornaTudo();
   }
   const animal = object.specie;
-  const genero = object.gender;
+  const genero = object.sex;
   const quantidade = animais.find((element) => element.name === animal);
   const numero = quantidade.residents.length;
   let contador = 0;
