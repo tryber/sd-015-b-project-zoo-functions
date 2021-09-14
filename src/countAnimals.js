@@ -3,13 +3,13 @@ const data = require('../data/zoo_data');
 function countAnimals(animals) {
   // seu código aqui
   if (animals) {
-    const { specie, gender } = animals;
+    const { specie, sex } = animals;
     const acessSpecie = data.species
       .find((elemento) => elemento.name.toLocaleLowerCase() === specie.toLocaleLowerCase());
     let acessResidents = acessSpecie.residents;
-    if (gender) {
+    if (sex) {
       acessResidents = acessResidents
-        .filter((item) => item.sex.toLocaleLowerCase() === gender.toLocaleLowerCase());
+        .filter((item) => item.sex.toLocaleLowerCase() === sex.toLocaleLowerCase());
     } return acessResidents.length;
   }
   const newObject = {};
