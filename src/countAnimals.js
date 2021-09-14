@@ -12,7 +12,7 @@ function paramVoid() {
   // Implementa função reduce!
   // FONTE:https://www.instagram.com/p/BziTc90D382/
   const initialValue = {};
-  const transformArray = species.reduce( (obj, specie) => {
+  const transformArray = species.reduce((obj, specie) => {
     return {
       ...obj,
       [specie.name]: specie.residents.length,
@@ -37,23 +37,15 @@ function countAnimals(animal) {
   // console.log(`Busca dos animais possui gênero: ${possuiGenero}`);
 
   if (possuiGenero) {
-    // console.log("Possui Gênero!!!");
-    // Retorna um array com todos os animais da espécie
-    retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
-    // Faz um filter para capturar apenas os animais que possuem o gênero passado
-    // console.log(retornoDoAnimal.residents);
-    const retornoDoAnimal2 = retornoDoAnimal.residents.map((cadaAnimal) => {
-      // console.log(`GÊNERO CADA ANIMAL: ${cadaAnimal.sex}`);
-      // console.log(`GÊNERO BUSCADO: ${animal.gender}`);
+    retornoDoAnimal = species.find((specie) => (specie.name === animal.specie))
+    .residents.map((cadaAnimal) => {
       if (cadaAnimal.sex === animal.gender) {
         quantidadeAnimais += 1;
       }
       return quantidadeAnimais;
     });
   }
-
   if (!possuiGenero) {
-    // console.log("Não Possui Gênero!!!");
     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie));
     quantidadeAnimais = retornoDoAnimal.residents.length;
   }
