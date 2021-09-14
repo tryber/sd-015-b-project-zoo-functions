@@ -1,7 +1,8 @@
 const data = require('../data/zoo_data');
+
 const { species } = data;
 
-function paramVoid () {
+function paramVoid() {
   // const defaultAnimals = [];
   // const mapAnimals = species.map( (specie) => {
   //   const formatedString = `${specie.name}:, ${specie.residents.length}`;
@@ -13,10 +14,10 @@ function paramVoid () {
   const initialValue = {};
   const transformArray = species.reduce( (obj, specie) => {
     return {
-      ... obj,
+      ...obj,
       [specie.name]: specie.residents.length,
-      };
-    }, initialValue);
+    };
+  }, initialValue);
   // console.log(transformArray);
   return transformArray;
 }
