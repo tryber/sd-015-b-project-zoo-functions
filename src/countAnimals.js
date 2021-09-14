@@ -20,7 +20,7 @@ const selectedAnimalCount = (specie, gender) => {
 
 function countAnimals(animal) {
   // seu código aqui
-  const count = animal ? selectedAnimalCount(animal.specie, animal.gender) : allAnimalsCount();
+  const count = animal ? selectedAnimalCount(animal.specie, animal.sex) : allAnimalsCount();
   return count;
 }
 
