@@ -11,7 +11,7 @@ console.log(printAllData());
 function getSchedule(scheduleTarget) {
   // seu código aqui
 
-  if (!scheduleTarget || scheduleTarget != 'a') {
+  if (!scheduleTarget) {
     return printAllData();
   }
   return 'Retorno da Função Principal';
