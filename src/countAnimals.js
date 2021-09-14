@@ -15,14 +15,14 @@ function objEmpty() {
   return obj;
 }
 // const specie2 = (animal) => species.find((specie) => specie.name === animal.specie).residents
-// .filter((resident) => animal.gender === resident.sex);
+// .filter((resident) => animal.sex === resident.sex);
 
 // const specie1 = (animal) => species.find((specie) => specie.name === animal.specie);
 
 function specie3(animal) {
   const specie1 = species.find((specie) => specie.name === animal.specie).residents;
-  if (animal.gender) {
-    return specie1.filter((resident) => animal.gender === resident.sex).length;
+  if (animal.sex) {
+    return specie1.filter((resident) => animal.sex === resident.sex).length;
   }
   return specie1.length;
 }
@@ -32,10 +32,10 @@ function countAnimals(animal) {
     return objEmpty();
   }
   return specie3(animal);
-  // return animal.gender
+  // return animal.sex
   //   ? specie2(animal).length
   //   : specie1(animal).residents.length;
 }
 
-// console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
+// console.log(countAnimals({ specie: 'giraffes', sex: 'female' }));
 module.exports = countAnimals;
