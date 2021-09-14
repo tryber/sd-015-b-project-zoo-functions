@@ -18,9 +18,9 @@ function countAnimals(animal, gender) {
   const a = Object.values(animal)[0];
   if (!gender) return animalsAndResidentsObject[a];
 
-  console.log('AAAAA', a);
+  // console.log('AAAAA', a);
   const g = Object.values(gender)[0];
-  console.log('GGG', g);
+  // console.log('GGG', g);
   const x = species.find((e) => e.name === a).residents.filter((e) => e.sex === g).length;
 
   return x;
