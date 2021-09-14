@@ -1,5 +1,19 @@
-const { employees } = require('../data/zoo_data');
+const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
+
+function getOldestAnimal(animalId) {
+  let oldestAnimal;
+  species.forEach(({ id, residents }) => {
+    if (id === animalId) {
+      oldestAnimal = residents.reduce((acc, resident) => {
+        if (acc.age < residents.age) return acc;
+        return resident;
+      });
+    }
+  });
+  oldestAnimal = [oldestAnimal.name, oldestAnimal.sex, oldestAnimal.age];
+  return oldestAnimal;
+}
 
 function getOldestFromFirstSpecies(identifier) {
   let animalIdentifier = '';
@@ -9,9 +23,9 @@ function getOldestFromFirstSpecies(identifier) {
       animalIdentifier = animalId;
     }
   });
-  console.log(animalIdentifier);
+  return getOldestAnimal(animalIdentifier);
 }
 
-getOldestFromFirstSpecies('b0dc644a-5335-489b-8a2c-4e086c7819a2')
+// getOldestFromFirstSpecies('b0dc644a-5335-489b-8a2c-4e086c7819a2');
 
 module.exports = getOldestFromFirstSpecies;
