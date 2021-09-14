@@ -23,7 +23,7 @@ function countSpeciesByName(animal) {
   if (Object.keys(animal).length === 1) {
     return filteredSpecie.residents.length;
   }
-  return countSpeciesByGender(filteredSpecie.residents, animal.gender);
+  return countSpeciesByGender(filteredSpecie.residents, animal.sex);
 }
 function countAnimals(animal) {
   // seu código aqui
