@@ -18,11 +18,9 @@ function countAnimals(...animal) {
   } if (Object.keys(animal[0]).length > 1) {
     const animall = species.find((especime) => especime.name === animal[0].specie);
     const animais = animall.residents;
-    const filtrado = animais.filter((animals) => animals.sex === animal[0].gender);
+    const filtrado = animais.filter((animals) => animals.sex === animal[0].sex);
     return filtrado.length;
   }
 }
 
 module.exports = countAnimals;
-
-console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
