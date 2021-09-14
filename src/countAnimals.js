@@ -19,7 +19,7 @@ function countAnimals(animal, gender) {
   // };
   return reduceSpecies;
 }
-console.log(countAnimals())
+console.log(countAnimals());
 // console.log(data.species.length)
 
 module.exports = countAnimals;
