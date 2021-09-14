@@ -28,5 +28,4 @@ function countAnimals(object) {
   } return contador;
 }
 
-console.log(countAnimals());
 module.exports = countAnimals;
