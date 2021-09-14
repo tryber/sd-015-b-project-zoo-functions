@@ -2,10 +2,9 @@ const { prices } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  const entradas = entrants;
-  const child = entradas.filter(({ age }) => age < 18).length;
-  const adult = entradas.filter(({ age }) => age >= 18 && age < 50).length;
-  const senior = entradas.filter(({ age }) => age >= 50).length;
+  const child = entrants.filter(({ age }) => age < 18).length;
+  const adult = entrants.filter(({ age }) => age >= 18 && age < 50).length;
+  const senior = entrants.filter(({ age }) => age >= 50).length;
   const object = { child, adult, senior };
   return object;
 }
