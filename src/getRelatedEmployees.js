@@ -14,7 +14,6 @@ function isManager(id) {
 }
 
 function getRelatedEmployees(managerId) {
-
   const manager = isManager(managerId); // Resultado da verificação do ID (retorna True ou False);
 
   if (manager) { // Se a ID do manager é válida
@@ -24,35 +23,6 @@ function getRelatedEmployees(managerId) {
     // console.log(managers.map((name) => `${name.firstName} ${name.lastName}`)); // Verifica retorno da Função
     return managers.map((name) => `${name.firstName} ${name.lastName}`);
   }
-
-    // const employeFinded = employees.find((employee) => {
-
-    //   if (employee.id === managerId) {
-
-    //     const gerenciados = employee.responsibleFor; // Armazena id dos Gerenciados
-    //     const arraySubordinados = []; // Valor inicial do array com nome dos subordinados
-    //     gerenciados.forEach((idPessoa) => { // Para cada elemento dentro do array responsavelPor
-
-    //       employees.map((employee) => {
-    //         console.log(`NOME PESSOA: ${employee.firstName} ${employee.lastName}`);
-    //         console.log(`ID PESSOA ${employee.id}`);
-    //         console.log(`ID BUSCADO: ${idPessoa}`);
-    //         console.log('***');
-
-    //         // if (employee.id === idPessoa) {
-    //         //   console.log(`${employee.firstName} ${employee.lastName}`);
-    //         //   arraySubordinados.push(`${employee.firstName} ${employee.lastName}`);
-    //         // }
-    //       });
-    //     });
-
-    //     // console.log(responsavelPor);
-    //     console.log(arraySubordinados);
-    //     // return employee; // [RETORNA O OBJ REFERENTE AO ID PASSADO]
-    //   }
-    // });
-    // return employeFinded;
-  // }
   throw new Error ('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
