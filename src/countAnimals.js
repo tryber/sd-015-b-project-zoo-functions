@@ -4,4 +4,6 @@ function countAnimals(animal) {
   // seu código aqui
 }
 
+console.log(countAnimals());
+
 module.exports = countAnimals;
