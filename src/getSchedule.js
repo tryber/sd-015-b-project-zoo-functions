@@ -1,9 +1,23 @@
 const data = require('../data/zoo_data');
 
+const {species} = data;
+
+const printAllData = () => {
+  console.log(`Função chamada quando todos os dados serão exibidos`);
+  const objComtodosOsAnimais = {};
+  return objComtodosOsAnimais;
+}
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
+
+  if (!scheduleTarget || scheduleTarget != 'a') {
+    return printAllData();
+  }
+  return 'Retorno da Função Principal';
 }
+
+console.log(getSchedule());
 
 module.exports = getSchedule;
 
