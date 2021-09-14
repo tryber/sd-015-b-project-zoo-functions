@@ -1,18 +1,36 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function makeObjectWithoutParameters() {
-  const cardinalDirections = {};
+function getAnimalsByLocation() {
+  const regions = {};
 
   species.forEach((specie) => {
-    if (!cardinalDirections[specie.location]) cardinalDirections[specie.location] = [];
-
-    cardinalDirections[specie.location].push(specie.name);
+    if (!regions[specie.location]) regions[specie.location] = [];
+    regions[specie.location].push(specie.name);
   });
-  return cardinalDirections;
+
+  return regions;
 }
-function getAnimalMap(options) {
-  if (!options) return makeObjectWithoutParameters();
+
+function animalsManagement(sorted, sex) {
+  const emptyObject = {};
+
+  species.forEach((specie) => {
+    if (!emptyObject[specie.location]) emptyObject[specie.location] = [];
+    let residents = [...specie.residents];
+    if (sex) residents = residents.filter((specieGender) => specieGender.sex === sex);
+    residents = residents.map((resident) => resident.name);
+    if (sorted) residents.sort();
+    emptyObject[specie.location].push({ [specie.name]: residents });
+  });
+
+  return emptyObject;
 }
-console.log(getAnimalMap());
+
+function getAnimalMap(options = {}) {
+  const { includeNames, sorted, sex } = options;
+  if (includeNames) return animalsManagement(sorted, sex);
+  return getAnimalsByLocation();
+}
+
 module.exports = getAnimalMap;
