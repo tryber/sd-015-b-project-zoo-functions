@@ -8,7 +8,7 @@ const ruleUndefined = (acc, specie) => {
 const ruleSpecie = (acc, specie, spec) =>
   (specie.name === spec ? specie.residents.length : acc);
 
-const ruleGetGender = (specie, gen) => 
+const ruleGetGender = (specie, gen) =>
   (specie.residents.filter((resident) => resident.sex === gen).length);
 
 const ruleSpecieAndGender = (acc, specie, spec, gen) =>
@@ -28,4 +28,4 @@ const countAnimals = (...animal) =>
   (animal.length === 0 ? animalNotFound()
     : animalFound(animal[0].specie, animal[0].gender));
 
-// module.exports = countAnimals;
+module.exports = countAnimals;
