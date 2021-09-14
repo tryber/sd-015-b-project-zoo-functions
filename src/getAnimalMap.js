@@ -10,7 +10,7 @@ function getNames(animal, options) {
 
   if (sex) {
     const residentesFromSex = residents.filter(({ sex: residentSex }) => residentSex === sex);
-    animalObject[animal] = residentesFromSex.map((resident) => resident.name);
+    animalObject[animal] = residentesFromSex.map(({ name }) => name);
   }
   if (sorted) {
     animalObject[animal] = animalObject[animal].sort();
@@ -25,17 +25,15 @@ function getAnimalMap(options) {
     SE: data.species.filter(({ location }) => location === 'SE').map(({ name }) => name),
     SW: data.species.filter(({ location }) => location === 'SW').map(({ name }) => name),
   };
+
   if (!options || !options.includeNames) return directions;
-  function insertNames() {
-    directions.NE = directions.NE.map((animal) => (getNames(animal, options)));
-    directions.NW = directions.NW.map((animal) => (getNames(animal, options)));
-    directions.SE = directions.SE.map((animal) => (getNames(animal, options)));
-    directions.SW = directions.SW.map((animal) => (getNames(animal, options)));
-  }
-  if (options.includeNames) {
-    insertNames();
-    return directions;
-  }
+
+  directions.NE = directions.NE.map((animal) => (getNames(animal, options)));
+  directions.NW = directions.NW.map((animal) => (getNames(animal, options)));
+  directions.SE = directions.SE.map((animal) => (getNames(animal, options)));
+  directions.SW = directions.SW.map((animal) => (getNames(animal, options)));
+
+  return directions;
 }
 
 module.exports = getAnimalMap;
