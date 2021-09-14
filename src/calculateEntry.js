@@ -2,20 +2,20 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   // seu código aqui
-  let adult = 0; // Define o contador inicialmente com 0
-  let child = 0; // Define o contador inicialmente com 0
-  let senior = 0; // Define o contador inicialmente com 0
-  entrants.forEach((ageEntrant) => { // Para cada elemento no array Recebidos
-    if (ageEntrant < 18) { // Verifica idade
-      child += 1; // Soma se a verificação da expressão retornar verdadeira
-    } else if (ageEntrant >= 18 && ageEntrant < 50) { // Verifica idade
-      adult += 1; // Soma se a verificação da expressão retornar verdadeira
-    } else if (ageEntrant >= 50) { // Verifica idade
-      senior += 1; // Soma se a verificação da expressão retornar verdadeira
-    }
-  });
-  // console.log({ adult, child, senior }); // [DEBUG]
-  return { adult, child, senior };
+  // let adult = 0; // Define o contador inicialmente com 0
+  // let child = 0; // Define o contador inicialmente com 0
+  // let senior = 0; // Define o contador inicialmente com 0
+  // entrants.forEach((ageEntrant) => { // Para cada elemento no array Recebidos
+  //   if (ageEntrant < 18) { // Verifica idade
+  //     child += 1; // Soma se a verificação da expressão retornar verdadeira
+  //   } else if (ageEntrant >= 18 && ageEntrant < 50) { // Verifica idade
+  //     adult += 1; // Soma se a verificação da expressão retornar verdadeira
+  //   } else if (ageEntrant >= 50) { // Verifica idade
+  //     senior += 1; // Soma se a verificação da expressão retornar verdadeira
+  //   }
+  // });
+  // // console.log({ adult, child, senior }); // [DEBUG]
+  // return { adult, child, senior };
 }
 
 function calculateEntry(entrants) {
