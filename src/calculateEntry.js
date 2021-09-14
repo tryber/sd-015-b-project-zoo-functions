@@ -1,8 +1,7 @@
 const data = require('../data/zoo_data');
 
-const clients = { adult: 0, child: 0, senior: 0 };
-
 function countEntrants(entrants) {
+  const clients = { adult: 0, child: 0, senior: 0 };
   entrants.forEach((person) => {
     if (person.age < 18) {
       clients.child += 1;
