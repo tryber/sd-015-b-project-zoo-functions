@@ -1,4 +1,6 @@
-const { emps } = require('../data/zoo_data');
+const { employees } = require('../data/zoo_data');
+
+const emps = employees;
 
 function getEmployeeByName(empName) {
   if (!empName) { return {}; }
