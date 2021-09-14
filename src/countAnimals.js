@@ -26,16 +26,12 @@ function paramVoid() {
 
 function countAnimals(animal) {
   // seu código aqui
-  // Função que é executada quando não é passado nenhum parâmetro
   if (!animal) {
-    // console.log(arrayAnimals);
     return paramVoid();
   }
   let quantidadeAnimais = 0;
   let retornoDoAnimal = {};
-  const possuiGenero = Object.keys(animal).includes('gender'); // Verifica se o obj animal possui gender definido.
-  // console.log(`Busca dos animais possui gênero: ${possuiGenero}`);
-
+  const possuiGenero = Object.keys(animal).includes('gender');
   if (possuiGenero) {
     retornoDoAnimal = species.find((specie) => (specie.name === animal.specie))
     .residents.map((cadaAnimal) => {
@@ -51,11 +47,6 @@ function countAnimals(animal) {
   }
   return quantidadeAnimais;
 }
-// const argumentGender = { specie: 'penguins', gender: 'female' };
-// const argument = { specie: 'penguins' };
-// console.log(countAnimals());
-// console.log(countAnimals(argument));
-// console.log(countAnimals(argumentGender));
 
 module.exports = countAnimals;
 
