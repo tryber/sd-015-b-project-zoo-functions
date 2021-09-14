@@ -3,10 +3,10 @@ const data = require('../data/zoo_data');
 
 function countSpecies(animal) {
   const obj = species.find((elem) => elem.name === animal.specie);
-  if (animal.specie !== undefined && animal.gender === undefined) {
+  if (animal.specie !== undefined && animal.sex === undefined) {
     return obj.residents.length;
   }
-  return obj.residents.filter((elem) => elem.sex === animal.gender).length;
+  return obj.residents.filter((elem) => elem.sex === animal.sex).length;
 }
 
 function countAnimals(animal) {
