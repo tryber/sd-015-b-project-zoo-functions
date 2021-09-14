@@ -10,9 +10,10 @@ function emptyObject() {
   return object;
 }
 
-const findSpecie = (animal) => species.find((specie) => specie.name === (animal.specie));
+const findResidents = (animal) =>
+  species.find((specie) => specie.name === (animal.specie)).residents;
 
-const filterGender = (animal) => findSpecie(animal).residents
+const filterGender = (animal) => findResidents(animal)
   .filter((resident) => resident.sex === (animal.gender));
 
 function countAnimals(animal) {
@@ -21,7 +22,7 @@ function countAnimals(animal) {
   }
   return animal.gender
     ? filterGender(animal).length
-    : findSpecie(animal).residents.length;
+    : findResidents(animal).length;
 }
 
 module.exports = countAnimals;
