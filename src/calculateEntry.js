@@ -32,11 +32,5 @@ function calculateEntry(entrants) {
   const total = totalChild + totalAdult + totalSenior;
   return total;
 }
-// const totalEntry = prices.find(() => {
-//   if (Object.keys(prices) === Object.keys(entrants)) {
-//     return Object.values(prices) * Object.values(entrants);
-//   }
-// });
-// return totalEntry;
 
 module.exports = { calculateEntry, countEntrants };
