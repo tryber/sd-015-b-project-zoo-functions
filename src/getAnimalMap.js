@@ -11,11 +11,10 @@ function getMap() {
   species.forEach(({ name, location }) => {
     animalsLocation[location].push(name);
   });
-  console.log(animalsLocation);
   return animalsLocation;
 }
 
-function getNamesMap() {
+function getNamesMap(option) {
   const animalsLocation = {
     NE: [],
     NW: [],
@@ -25,6 +24,8 @@ function getNamesMap() {
   species.forEach(({ name, location, residents }) => {
     const obj = {};
     const animalNames = residents.map((resident) => resident.name);
+    if (option) animalNames.sort();
+    console.log(animalNames);
     obj[name] = animalNames;
     animalsLocation[location].push(obj);
   });
@@ -35,9 +36,10 @@ function getNamesMap() {
 function getAnimalMap(options) {
   if (!options) return getMap();
   if (options.includeNames) return getNamesMap();
+  if (options.sorted) return getNamesMap(options.sorted);
 }
 
-// getAnimalMap({ includeNames: true });
-// getAnimalMap();
+getAnimalMap({ includeNames: true });
+getAnimalMap({ sorted: true });
 
 module.exports = getAnimalMap;
