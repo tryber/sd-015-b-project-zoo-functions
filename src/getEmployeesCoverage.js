@@ -9,19 +9,25 @@ const findEmployee = (info) => {
     const idIsEqual = info.id === employee.id;
     return (firstNameIsEqual || lastNameIsEqual || idIsEqual);
   });
+  if (!selectedEmployee) {
+    throw new Error('Informações inválidas');
+  }
   return selectedEmployee;
 };
 
-const getLocationsBySpecies = (species) => {
-
+const getLocationsBySpecies = (speciesToFind) => {
+  const locationsArray = speciesToFind.reduce((acc, specieName) => {
+    const currentSpecie = data.species.find((specie) => specie.name === specieName);
+    acc.push(currentSpecie.location);
+    return acc;
+  }, []);
+  return locationsArray;
 };
 
-const getEmployeesCoverage = (infoObj) => {
-  const employee = findEmployee(infoObj);
+const createEmployeeObject = (employee) => {
   const { id, firstName, lastName, responsibleFor } = employee;
   const species = responsibleFor.map((specieId) => getSpeciesByIds(specieId)[0].name);
   const locations = getLocationsBySpecies(species);
-  //  FALTA ARRUMAR ESSAS LOCATIONS AQUI
   return {
     id,
     fullName: `${firstName} ${lastName}`,
@@ -30,6 +36,14 @@ const getEmployeesCoverage = (infoObj) => {
   };
 };
 
-console.log(getEmployeesCoverage({ id: '0e7b460e-acf4-4e17-bcb3-ee472265db83' }));
+const getEmployeesCoverage = (infoObj) => {
+  if (!infoObj) {
+    const { employees } = data;
+    const employeesList = employees.map((employee) => createEmployeeObject(employee));
+    return employeesList;
+  }
+  const employee = findEmployee(infoObj);
+  return createEmployeeObject(employee);
+};
 
 module.exports = getEmployeesCoverage;
