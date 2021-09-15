@@ -1,6 +1,6 @@
 const { prices } = require('../data/zoo_data');
 
-const countEntrants = (entrants) => {
+const countEntrants = (entrants = {}) => {
   const entrantsKeys = Object.keys(entrants);
   if (entrants === undefined || entrantsKeys.length === 0) return 0;
 
