@@ -1,12 +1,14 @@
 const data = require('../data/zoo_data');
 
+// requisito finalizado com ajuda de `Denis Jonathan` na sala de estudos do zoom
+
 const { employees, species } = data;
 
-const verify = (ids) => {
-  const { id, name } = ids;
+const verify = (employee) => {
+  const { id, name } = employee;
   let names;
   if (id) {
-    names = employees.find((ele) => ele.id === id);
+    names = employees.find((people) => people.id === id);
   } else {
     names = employees.find(({ firstName, lastName }) => firstName === name || lastName === name);
   }
