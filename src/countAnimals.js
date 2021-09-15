@@ -7,12 +7,15 @@ species.forEach((specie) => {
   const qtdAnimal = specie.residents.length;
   objtAnimals[keyAnimal] = qtdAnimal;
 });
-
+// const numberOfAnimals = (animal) => {
+// const objtParameter = Object.values(animal);
+// return species.find((specie) => specie.name === specie.objtParameter)
+// .residents.length;
+// };
 // console.log(objtAnimals);
 function countAnimals(animal) {
-  if (animal === undefined) {
-    return objtAnimals;
-  }
+  if (animal === undefined) return objtAnimals;
 }
 
 module.exports = countAnimals;
+console.log(countAnimals());
