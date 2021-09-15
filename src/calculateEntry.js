@@ -11,7 +11,7 @@ function countEntrants(entrants) {
 
 function calculateEntry(entrants) {
   // seu código aqui
-  if (entrants === undefined || entrants.length === undefined) return 0;
+  if (entrants === undefined || Object.keys(entrants).length === 0) return 0;
   const cliente = countEntrants(entrants);
   const valor = data.prices;
   const valorCrianca = cliente.child * valor.child;
