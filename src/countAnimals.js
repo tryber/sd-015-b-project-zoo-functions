@@ -1,12 +1,13 @@
 const data = require('../data/zoo_data');
 
+const todasSpecies = {};
+data.species.forEach((qtdCadaAnimal) => {
+  todasSpecies[qtdCadaAnimal.name] = qtdCadaAnimal.residents.length;
+});
+
 function countAnimals(animal) {
   // seu código aqui
   if (!animal) {
-    const todasSpecies = {};
-    data.species.forEach((qtdCadaAnimal) => {
-      todasSpecies[qtdCadaAnimal.name] = qtdCadaAnimal.residents.length;
-    });
     return todasSpecies;
   }
   if (animal.specie && animal.gender === undefined) {

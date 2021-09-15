@@ -2,14 +2,15 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   // seu código aqui
-  if (entrants === undefined || Object.keys(entrants).length === 0) {
-    return 0;
+  const valorZero = 0;
+  if (entrants === undefined || Object.keys(entrants).length === valorZero) {
+    return valorZero;
   }
 
   const visitantes = {
-    child: entrants.filter((crianca) => crianca.age < 18).length,
-    adult: entrants.filter((adulto) => adulto.age >= 18 && adulto.age < 50).length,
-    senior: entrants.filter((idoso) => idoso.age >= 50).length,
+    child: entrants.filter((idade) => idade.age < 18).length,
+    adult: entrants.filter((idade) => idade.age >= 18 && idade.age < 50).length,
+    senior: entrants.filter((idade) => idade.age >= 50).length,
   };
   return visitantes;
 }
