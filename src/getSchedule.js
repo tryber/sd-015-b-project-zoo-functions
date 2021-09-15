@@ -1,20 +1,39 @@
 const data = require('../data/zoo_data');
 
 // {
-//   Tuesday: { officeHour: 'Open from 8am until 6pm' },
-//   Wednesday: { officeHour: 'Open from 8am until 6pm' },
-//   Thursday: { officeHour: 'Open from 10am until 8pm' },
-//   Friday: { officeHour: 'Open from 10am until 8pm' },
-//   Saturday: { officeHour: 'Open from 8am until 10pm' },
-//   Sunday: { officeHour: 'Open from 8am until 8pm' },
-//   Monday: { officeHour: 'CLOSED' }
+//   Tuesday: { officeHour: 'Open from 8am until 6pm', exhibition: [] },
+//   Wednesday: { officeHour: 'Open from 8am until 6pm', exhibition: [] },
+//   Thursday: { officeHour: 'Open from 10am until 8pm', exhibition: [] },
+//   Friday: { officeHour: 'Open from 10am until 8pm', exhibition: [] },
+//   Saturday: { officeHour: 'Open from 8am until 10pm', exhibition: [] },
+//   Sunday: { officeHour: 'Open from 8am until 8pm', exhibition: [] },
+//   Monday: { officeHour: 'CLOSED', exhibition: [] }
 // }
 
-function addAvail(object, day, exhibitionDays) {
+function addAvail(exhibitionList, currDay, exhibitionDays) {
+  // console.log('exhibitionList', exhibitionList);
+  // console.log('currDay', currDay);
+  // console.log('exhibitionDays', exhibitionDays);
+  exhibitionDays.forEach((animalDays) => {
+    if (animalDays.availability.includes(currDay)) {
+      exhibitionList.push(animalDays.name);
+    }
+  });
+  // console.log('after exhibitionList', exhibitionList);
+}
+
+function loopExhibition(object, exhibitionDays) {
   const keys = Object.keys(object);
   const objectAvail = object;
+  // console.log(objectAvail);
   for (let i = 0; i < keys.length; i += 1) {
-    console.log(objectAvail[keys[i]]);
+    const exhibitionList = objectAvail[keys[i]].exhibition;
+    const currDay = keys[i];
+    if (currDay === 'Monday') {
+      objectAvail[keys[i]].exhibition = 'The zoo will be closed!';
+    } else {
+      addAvail(exhibitionList, currDay, exhibitionDays);
+    }
   }
 }
 
@@ -23,8 +42,8 @@ function createAnimalAvail(object, days) {
     name: animal.name,
     availability: animal.availability,
   }));
-  // console.log(exhibitionDays);
-  addAvail(object, days, exhibitionDays);
+  // console.log('exhibitionDays', exhibitionDays);
+  loopExhibition(object, exhibitionDays);
 }
 
 function addOfficeHours(object, days) {
@@ -42,6 +61,7 @@ function addOfficeHours(object, days) {
   }
   // console.log(objectHour);
   createAnimalAvail(objectHour, days);
+  // console.log(objectHour);
 }
 
 function addDaysKeys(days) {
@@ -54,14 +74,21 @@ function addDaysKeys(days) {
     return newAccum;
   }, {});
   addOfficeHours(returnObj, days);
+  return returnObj;
 }
 
 function getSchedule(scheduleTarget) {
   const days = Object.keys(data.hours);
+  const returnObj = addDaysKeys(days);
   if (!scheduleTarget || !days.includes(scheduleTarget)) {
-    addDaysKeys(days);
+    return returnObj;
+  }
+  if (days.includes(scheduleTarget)) {
+    const filteredObj = { [scheduleTarget]: returnObj[scheduleTarget] };
+    return filteredObj;
   }
 }
-getSchedule();
+
+// getSchedule('Tuesday');
 
 module.exports = getSchedule;
