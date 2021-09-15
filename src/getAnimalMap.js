@@ -27,19 +27,20 @@ const includeNamesTrue = () => {
 // };
 // função principal
 function getAnimalMap(options = {}) {
-  if (options.includeNames) {
-    includeNamesTrue();
-    console.log(animalMap);
-    if (options.sex) {
-      console.log('cheguei');
-    }
-  }
-  if (Object.keys(options).length === 0) {
-    getAnimalsLocation();
-    return console.log(animalMap);
-  }
-}
+  // if (options.includeNames && !options.sex) {
+  //   includeNamesTrue();
+  //   return animalMap;
+  // }
+  // if (options.includeNames && options.sex) {
+  // }
+  // if (options.includeNames && options.sex && options.sorted) {
+  //   if (Object.keys(options).length === 0) {
+  //     getAnimalsLocation();
+  //     return animalMap;
+  //   }
+  // }
+  
 
 // getAnimalMap({ includeNames: true, sex: 'female', sorted: true });
-getAnimalMap();
+getAnimalMap({ includeNames: true });
 module.exports = getAnimalMap;
