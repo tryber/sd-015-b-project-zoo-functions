@@ -22,9 +22,9 @@ const includeNamesTrue = () => {
   }
 };
 // caso receba o parametro sex
-const returnAnimalsBySex = () => {
-  //  aqui
-};
+// const returnAnimalsBySex = () => {
+//   //  aqui
+// };
 // função principal
 function getAnimalMap(options = {}) {
   if (options.includeNames) {

@@ -8,7 +8,7 @@ function isManager(id) {
   }
   return false;
 }
-console.log(isManager('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
+
 // devolve as pessoas de que o gerente é responsável
 function getRelatedEmployees(managerId) {
   if (isManager(managerId)) {
@@ -18,6 +18,5 @@ function getRelatedEmployees(managerId) {
   }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
-// getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992');
 
 module.exports = { isManager, getRelatedEmployees };
