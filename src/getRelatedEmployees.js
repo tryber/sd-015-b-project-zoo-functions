@@ -6,11 +6,11 @@ function isManager(...id) {
   return resultado;
 }
 
-function getRelatedEmployees(...managerId) {
-  const test = employees.some((elemento) => elemento.managers.includes(managerId.toString()));
+function getRelatedEmployees(managerId) {
+  const test = employees.some((elemento) => elemento.managers.includes(managerId));
 
   if (test) {
-    const test2 = employees.filter((elemento) => elemento.managers.includes(managerId.toString()));
+    const test2 = employees.filter((elemento) => elemento.managers.includes(managerId));
     const resultado = test2.reduce((acumulador, elemento2) => acumulador
       .concat(`${elemento2.firstName} ${elemento2.lastName}`), []);
     return resultado;
