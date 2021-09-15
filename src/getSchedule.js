@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-// const { species, hours } = data;
+const { species, hours } = data;
 
 // const printAllData = () => {
 //   // const objComtodosOsAnimais = {};
@@ -10,11 +10,8 @@ const data = require('../data/zoo_data');
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
-
-  if (!scheduleTarget) {
-    // return printAllData();
-  }
-  return 0;
+  
+  // return 0;
 }
 
 console.log(getSchedule());
