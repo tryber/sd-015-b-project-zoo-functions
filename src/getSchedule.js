@@ -13,10 +13,19 @@ function getSchedule(scheduleTarget) {
   const objetoRetorno = {};
   const diasDaSemana = Object.keys(hours);
   const found = diasDaSemana.includes(scheduleTarget);
+
+  diasDaSemana.forEach((day) => {
+    if (day === 'Monday') {
+      objetoRetorno[day] = { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' };
+    } else {
+      objetoRetorno[day] = `{Open from ${hours[day].open}am until ${hours[day].close}pm}`;
+    }
+  });
+
   if (!scheduleTarget || !found) {
-    console.log("Objeto não informado, ou não encontrado!");
-    console.log(`Valor do Objeto: ${scheduleTarget}`);
-    console.log(found);
+    // console.log("Objeto não informado, ou não encontrado!");
+    // console.log(`Valor do Objeto: ${scheduleTarget}`);
+    // console.log(found);
   }
   // console.log(diasDaSemana);
 
