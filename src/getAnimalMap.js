@@ -56,8 +56,8 @@ function createSortedMaleNames(specie) {
   });
 }
 
-function animalsNames(...defaultPar) {
-  const receivedDefault = defaultPar[0]
+function animalsNames(...defaultPar1) {
+  const receivedDefault = defaultPar1[0];
   receivedDefault.NE = filterNe.map(createObjNames);
   receivedDefault.NW = filterNw.map(createObjNames);
   receivedDefault.SE = filterSe.map(createObjNames);
@@ -65,9 +65,8 @@ function animalsNames(...defaultPar) {
   return receivedDefault;
 }
 
-
-function sortedAnimalsNames(...defaultPar) {
-  const receivedDefault = defaultPar[0];
+function sortedAnimalsNames(...defaultPar2) {
+  const receivedDefault = defaultPar2[0];
   receivedDefault.NE = filterNe.map(createSortedObjNames);
   receivedDefault.NW = filterNw.map(createSortedObjNames);
   receivedDefault.SE = filterSe.map(createSortedObjNames);
@@ -75,8 +74,8 @@ function sortedAnimalsNames(...defaultPar) {
   return receivedDefault;
 }
 
-function femaleAnimalsNames(...defaultPar) {
-  const receivedDefault = defaultPar[0];
+function femaleAnimalsNames(...defaultPar3) {
+  const receivedDefault = defaultPar3[0];
   receivedDefault.NE = filterNe.map(createObjFemaleNames);
   receivedDefault.NW = filterNw.map(createObjFemaleNames);
   receivedDefault.SE = filterSe.map(createObjFemaleNames);
@@ -84,8 +83,8 @@ function femaleAnimalsNames(...defaultPar) {
   return receivedDefault;
 }
 
-function maleAnimalsNames(...defaultPar) {
-  const receivedDefault = defaultPar[0];
+function maleAnimalsNames(...defaultPar4) {
+  const receivedDefault = defaultPar4[0];
   receivedDefault.NE = filterNe.map(createObjMaleNames);
   receivedDefault.NW = filterNw.map(createObjMaleNames);
   receivedDefault.SE = filterSe.map(createObjMaleNames);
@@ -93,8 +92,8 @@ function maleAnimalsNames(...defaultPar) {
   return receivedDefault;
 }
 
-function sortedFemaleNames(...defaultPar) {
-  const receivedDefault = defaultPar[0];
+function sortedFemaleNames(...defaultPar5) {
+  const receivedDefault = defaultPar5[0];
   receivedDefault.NE = filterNe.map(createSortedFemaleNames);
   receivedDefault.NW = filterNw.map(createSortedFemaleNames);
   receivedDefault.SE = filterSe.map(createSortedFemaleNames);
@@ -102,8 +101,8 @@ function sortedFemaleNames(...defaultPar) {
   return receivedDefault;
 }
 
-function sortedMaleNames(...defaultPar) {
-  const receivedDefault = defaultPar[0];
+function sortedMaleNames(...defaultPar6) {
+  const receivedDefault = defaultPar6[0];
   receivedDefault.NE = filterNe.map(createSortedMaleNames);
   receivedDefault.NW = filterNw.map(createSortedMaleNames);
   receivedDefault.SE = filterSe.map(createSortedMaleNames);
@@ -141,10 +140,8 @@ function ifIncludes(options) {
 
 function getAnimalMap(options = defaultPar()) {
   // seu código aqui
-  if(!options.includeNames) { return defaultPar() }
+  if (!options.includeNames) { return defaultPar(); }
   if (options.includeNames) { return ifIncludes(options); }
-
 }
 
 module.exports = getAnimalMap;
-console.log(getAnimalMap( { sex: 'female', sorted: true }));
