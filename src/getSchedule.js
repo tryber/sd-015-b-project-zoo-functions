@@ -10,11 +10,23 @@ const { species, hours } = data;
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
-  
-  // return 0;
+  const objetoRetorno = {};
+  const diasDaSemana = Object.keys(hours);
+  const found = diasDaSemana.includes(scheduleTarget);
+  if (!scheduleTarget || !found) {
+    console.log("Objeto não informado, ou não encontrado!");
+    console.log(`Valor do Objeto: ${scheduleTarget}`);
+    console.log(found);
+  }
+  // console.log(diasDaSemana);
+
+
+  return objetoRetorno;
 }
 
-console.log(getSchedule());
+console.log(getSchedule()); // Elemento Vazio
+// console.log(getSchedule('abc')); // Elemento Inválido
+// console.log(getSchedule('Thursday')); // Elemento Válido
 
 module.exports = getSchedule;
 
