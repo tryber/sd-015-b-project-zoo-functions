@@ -1,10 +1,9 @@
 const data = require('../data/zoo_data');
 
-const { employees, species } = data;
+const { employees } = data;
 
 function createJob(employee) {
   const createObj = employees.reduce((acc, { id, firstName, lastName, responsibleFor }) => {
-
     const name = `${firstName} ${lastName}`;
     const nomeId = 'id';
     const obj = {
