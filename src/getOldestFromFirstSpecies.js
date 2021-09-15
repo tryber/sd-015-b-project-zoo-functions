@@ -25,11 +25,15 @@ function getOldestAnimal(idDoConjunto) {
       // console.log('Espécie encontrada: ', specie);
       return specie;
     }
-    return specie;
+    return specie
   });
-  return findAnimals;
-
+  const allResidents = findAnimals.residents.sort( (a, b) => b.age - a.age);
+  // const sortResidents = allResidents
+  // console.log(allResidents[0]);
+  const arrayNovoFormato = [allResidents[0].name, allResidents[0].sex, allResidents[0].age];
+  return arrayNovoFormato;
 }
+console.log(getOldestAnimal('0938aa23-f153-4937-9f88-4858b24d6bce'));
 
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
@@ -40,7 +44,7 @@ function getOldestFromFirstSpecies(id) {
   // console.log(resultEmployee);
 }
 
-console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
+// console.log(getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1'));
 
 module.exports = getOldestFromFirstSpecies;
 
