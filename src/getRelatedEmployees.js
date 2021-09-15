@@ -4,12 +4,16 @@ const data = require('../data/zoo_data');
 function isManager(id) {
   const objEmployee = employees.some((employee) => employee.managers.includes(id));
   return objEmployee;
-  // return employees[0].managers;
 }
+
+// let maneged = [];
+// const getManeged = employees.reduce((acc, employee) => (employee.managers.includes(managerId)))
 
 function getRelatedEmployees(managerId) {
-  // seu código aqui
+  if (isManager(managerId) === true) {
+    return employees.filter((employee) => employee.managers.includes(managerId))
+      .map((managed) => `${managed.firstName} ${managed.lastName}`);
+  }
 }
-
 // module.exports = { isManager, getRelatedEmployees };
-console.log(isManager('56d43ba3-a5a7-40f6-8dd7-cbb05082383f'));
+console.log(getRelatedEmployees('0e7b460e-acf4-4e17-bcb3-ee472265db83'));
