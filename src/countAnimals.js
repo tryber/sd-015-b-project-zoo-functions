@@ -15,7 +15,7 @@ function speciesObjectParameter(animal) {
 
 function speciesAndGenderObjectParameter(animal) {
   const animalKind = data.species.find((animalSpecie) => animalSpecie.name === animal.specie);
-  const beasts = animalKind.residents.filter((beast) => beast.sex === animal.gender);
+  const beasts = animalKind.residents.filter((beast) => beast.sex === animal.sex);
   return beasts.length;
 }
 
