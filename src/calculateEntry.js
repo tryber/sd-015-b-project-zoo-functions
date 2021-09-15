@@ -7,7 +7,7 @@ const countEntrants = (entrants) => {
   const entries = {
     child: entrants.filter((entrant) => entrant.age < 18).length,
     adult: entrants.filter((entrant) => entrant.age >= 18 && entrant.age < 50).length,
-    senior: entrants.filter((senior) => senior.age >= 50).length,
+    senior: entrants.filter((entrant) => entrant.age >= 50).length,
   };
 
   return entries;
