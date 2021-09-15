@@ -2,41 +2,48 @@ const data = require('../data/zoo_data');
 
 const { species, hours } = data;
 
-// const printAllData = () => {
-//   // const objComtodosOsAnimais = {};
-//   // return objComtodosOsAnimais;
-// };
-// // console.log(printAllData());
-
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
   const diasDaSemana = Object.keys(hours);
   const found = diasDaSemana.includes(scheduleTarget);
 
-  diasDaSemana.forEach((day) => {
-    const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-    if (day === 'Monday') {
-      objetoRetorno[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
-    } else {
-      objetoRetorno[day] = `{'officeHour': '${messageOffice}','exhibition': 'Test'}`;
-    }
-  });
-
+  if(found) { // Se encontrar o nome do dia passado no: diasDaSemana
+    // console.log("ENCONTRADO!!!");
+    diasDaSemana.forEach((day) => {
+      const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
+      const animaisExibicao = species //Verifica as espécies
+      .filter( (animal) => animal.availability // Verifica se o animal está disponível naquele dia
+      .includes(day)) // Para isso, verifica se o dia passado no scheduleTarget está localizado no specie.avaliability 
+      .map((day) => day.name);
+      // console.log(animaisExibicao);
+      if (day === 'Monday') {
+        objetoRetorno[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
+      } else {
+        objetoRetorno[day] = `{ 'officeHour': '${messageOffice}','exhibition': '${animaisExibicao}'}`;
+      }
+    });
+  }
   if (!scheduleTarget || !found) {
     // console.log("Objeto não informado, ou não encontrado!");
     // console.log(`Valor do Objeto: ${scheduleTarget}`);
     // console.log(found);
+    diasDaSemana.forEach((day) => {
+      const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
+      if (day === 'Monday') {
+        objetoRetorno[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
+      } else {
+        objetoRetorno[day] = `{'officeHour': '${messageOffice}','exhibition': 'Test'}`;
+      }
+    });
   }
   // console.log(diasDaSemana);
-
-
   return objetoRetorno;
 }
 
-console.log(getSchedule()); // Elemento Vazio
+// console.log(getSchedule()); // Elemento Vazio
 // console.log(getSchedule('abc')); // Elemento Inválido
-// console.log(getSchedule('Thursday')); // Elemento Válido
+console.log(getSchedule('Thursday')); // Elemento Válido
 
 module.exports = getSchedule;
 
