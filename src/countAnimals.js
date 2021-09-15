@@ -11,9 +11,9 @@ function emptyParameters() {
   return animalQtd;
 }
 
-function speciesAndGenderParameter({ specie, gender }) {
+function speciesAndGenderParameter({ specie, sex }) {
   let { residents } = species.find((specieData) => specieData.name === specie);
-  residents = !gender ? residents : residents.filter((resident) => resident.sex === gender);
+  residents = !sex ? residents : residents.filter((resident) => resident.sex === sex);
   return residents.length;
 }
 
