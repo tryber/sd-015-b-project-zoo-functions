@@ -4,9 +4,16 @@ const data = require('../data/zoo_data');
 function countAnimals(animal) {
   if (animal === undefined) {
   // finding specie
-  const findingAnimals = species.find((elemento) => specie.includes(elemento.name));
-  // filtering popularity
-  return findingAnimal.residents.length;
+  const findingAnimals = species.map((elemento) => elemento.name);
+  // filtering residents
+  const findingResidest = species.map((elemento) => elemento.residents.length);
+  // construindo objeto
+  const obj = {};
+  for (let i = 0; i < findingAnimals.length; i++) {
+    const animal = findingAnimals[i];
+    obj[animal] = findingResidest;
+  }
+  return obj;
   }
 
   if (animal.gender === undefined) {
@@ -14,7 +21,7 @@ function countAnimals(animal) {
   const specie = animal.specie;
   // finding specie
   const findingAnimal = species.find((elemento) => specie.includes(elemento.name));
-  // filtering popularity
+  // filtering residents
   return findingAnimal.residents.length;
   }
 
