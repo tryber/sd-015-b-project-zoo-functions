@@ -15,7 +15,6 @@ function calculateEntry(entrants) {
   const priceAdults = ages.adult * prices.adult;
   const priceSeniors = ages.senior * prices.senior;
   return priceChildrens + priceAdults + priceSeniors;
-
 }
 
 module.exports = { calculateEntry, countEntrants };
