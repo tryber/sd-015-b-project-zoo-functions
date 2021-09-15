@@ -26,7 +26,7 @@ function getNameResidetsIsSorted(specie, sorted) {
     result[specie.name] = getNameResidents(specie);
   }
   return result;
-};
+}
 
 const getNameOfResidents = (allSpecies, sorted) =>
   allSpecies.map((specie) => getNameResidetsIsSorted(specie, sorted));
@@ -42,7 +42,7 @@ function getNameResidetsWithSexIsSorted(specie, sorted, sex) {
     result[specie.name] = getNameResidentsWithSex(specie, sex);
   }
   return result;
-};
+}
 
 const getNameOfResidentsWithSex = (allSpecies, sorted, sex) =>
   allSpecies.map((specie) => getNameResidetsWithSexIsSorted(specie, sorted, sex));
@@ -55,14 +55,15 @@ function getResidents(point, sorted, sex) {
     result = getNameOfResidentsWithSex(getAllSpecies(point), sorted, sex);
   }
   return result;
-};
+}
 
 function getAnimalDefaultMap() {
-  let result;
-  points.forEach((point) => cardinalPoints[point] = getNameOfSpecies(point));
-  result = cardinalPoints;
+  const result = [];
+  if (!points.forEach((point) => cardinalPoints[point] = getNameOfSpecies(point))) {
+    result = cardinalPoints;
+  }
   return result;
-};
+}
 
 function getAnimalsPersonalized(sex, sorted) {
   let result = [];
@@ -70,19 +71,20 @@ function getAnimalsPersonalized(sex, sorted) {
     result = getAnimalDefaultMap();
   }
   return result;
-};
+}
 
-const getAnimalParametersMap = function (options) {
+function getAnimalParametersMap(options) {
   let result = [];
   const { includeNames, sorted, sex } = options;
   if (includeNames) {
-    points.forEach((point) => cardinalPoints[point] = getResidents(point, sorted, sex));
-    result = cardinalPoints;
+    if (!points.forEach((point) => cardinalPoints[point] = getResidents(point, sorted, sex))) {
+      result = cardinalPoints;
+    }
   } else {
     result = getAnimalsPersonalized(sex, sorted);
   }
   return result;
-};
+}
 
 function getAnimalMap(options) {
   let result;
@@ -92,6 +94,6 @@ function getAnimalMap(options) {
     result = getAnimalParametersMap(options);
   }
   return result;
-};
+}
 
 module.exports = getAnimalMap;
