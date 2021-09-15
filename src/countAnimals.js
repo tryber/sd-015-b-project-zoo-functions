@@ -3,7 +3,12 @@ const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
   if (!animal) {
-    return species.map((animais, index) => (animais.name));
+    const acumulador = {};
+    species.forEach((objetosResidents) => {
+      acumulador[objetosResidents.name] = objetosResidents.residents.length;
+    });
+
+    return acumulador;
   }
 }
 
