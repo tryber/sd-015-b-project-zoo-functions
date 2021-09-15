@@ -1,13 +1,13 @@
 const { species } = require('../data/zoo_data');
 
 function getDefaultAnimals() {
-  const output = {};
+  const qntBySpecie = {};
 
   species.forEach(({ name, residents }) => {
-    output[name] = residents.length;
+    qntBySpecie[name] = residents.length;
   });
 
-  return output;
+  return qntBySpecie;
 }
 
 function countAnimals(animal) {
