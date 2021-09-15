@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 const { employees, species } = data;
 
-function getOldestAnimal(idDoConjunto) {
+// function getOldestAnimal(idDoConjunto) {
   // Varre o array de animais
   // busca pelo conjunto de animais com essa id específica
   // aplica o sort para ordenar do mais velho para o mais novo
@@ -15,12 +15,12 @@ function getOldestAnimal(idDoConjunto) {
   //   }
   //   return specie
   // });
-  const allResidents = findAnimals.residents.sort( (a, b) => b.age - a.age);
-  // const sortResidents = allResidents
-  // console.log(allResidents[0]);
-  const arrayNovoFormato = [allResidents[0].name, allResidents[0].sex, allResidents[0].age];
-  return arrayNovoFormato;
-}
+//   const allResidents = findAnimals.residents.sort( (a, b) => b.age - a.age);
+//   // const sortResidents = allResidents
+//   // console.log(allResidents[0]);
+//   const arrayNovoFormato = [allResidents[0].name, allResidents[0].sex, allResidents[0].age];
+//   return arrayNovoFormato;
+// }
 // console.log(getOldestAnimal('0938aa23-f153-4937-9f88-4858b24d6bce'));
 
 function getOldestFromFirstSpecies(id) {
@@ -28,11 +28,12 @@ function getOldestFromFirstSpecies(id) {
   const resultEmployee = employees.find((employee) => employee.id === id); // Retorna a pessoa com a ID
   const primeiroConjuntoAnimal = resultEmployee.responsibleFor[0]; // Captura ID do primeiro conjunto animal
   const buscaEspecie = species.find( (specie) => specie.id === primeiroConjuntoAnimal);
-  const animalMaisVelho = getOldestAnimal(primeiroConjuntoAnimal);
+  const residentsDaEspecie = buscaEspecie.residents;
+  const ordenaAnimalMaisVelho = residentsDaEspecie.sort( (a, b) => b.age - a.age);
+
+  // const animalMaisVelho = getOldestAnimal(primeiroConjuntoAnimal);
   // console.log(primeiroConjuntoAnimal); // ID do Primeiro animal da pessoa
-  console.log(resultEmployee);
   // console.log(resultEmployee);
-  // console.log(animalMaisVelho);
   return animalMaisVelho
 }
 
