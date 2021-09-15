@@ -15,7 +15,6 @@ function hasSex(animal) {
   const animalSex = species.find((animalName) => animalName.name === specie);
   const residents1 = animalSex.residents;
   const arraySex = residents1.filter((e) => e.sex === sex);
-  console.log(arraySex.length);
   return arraySex.length;
 }
 
@@ -23,7 +22,7 @@ function verify(animal) {
   const { specie } = animal;
   const { sex } = animal;
   if (sex !== undefined) {
-    hasSex(animal);
+    return hasSex(animal);
   }
   const findAnimalName = species.find((animalName) => animalName.name === specie);
   return findAnimalName.residents.length;
@@ -35,5 +34,6 @@ function countAnimals(animal) {
   }
   return verify(animal);
 }
-countAnimals({ specie: 'bears', gender: 'female' });
+
+console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 module.exports = countAnimals;
