@@ -2,6 +2,7 @@ const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
 function countAnimals(animal) {
+  // caso n seja passado nenhum parametro
   if (!animal) {
     const resultado = {};
     species.forEach((element) => {
@@ -11,6 +12,7 @@ function countAnimals(animal) {
     });
     return resultado;
   }
+  // desestruturando  o parametro para usar dados individuais
   const { specie, gender } = animal;
   if (!gender) {
     const animalsFounded = species.find((animals1) => (animals1.name === specie));
@@ -20,5 +22,4 @@ function countAnimals(animal) {
   return findAnimalByGender.residents.filter((animals3) => animals3.sex === gender).length;
 }
 console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
-// console.log(species.forEach((cada) => console.log(cada.id)));
 module.exports = countAnimals;
