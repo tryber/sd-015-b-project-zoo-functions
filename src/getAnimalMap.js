@@ -58,8 +58,8 @@ function getResidents(point, sorted, sex) {
 }
 
 function getAnimalDefaultMap() {
-  for (let point of points) {
-    cardinalPoints[point] = getNameOfSpecies(point);
+  for (let index = 0; index < points.length; index += 1) {
+    cardinalPoints[points[index]] = getNameOfSpecies(points[index]);
   }
   return cardinalPoints;
 }
@@ -76,8 +76,8 @@ function getAnimalParametersMap(options) {
   let result = [];
   const { includeNames, sorted, sex } = options;
   if (includeNames) {
-    for (let point of points) {
-      cardinalPoints[point] = getResidents(point, sorted, sex);
+    for (let index = 0; index < points.length; index += 1) {
+      cardinalPoints[points[index]] = getResidents(points[index], sorted, sex);
     }
     result = cardinalPoints;
   } else {
