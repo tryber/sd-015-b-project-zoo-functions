@@ -1,3 +1,5 @@
+// Agradecimentos à Caról, Nícolas Firmo e Claudio Cassimiro por me ajudarem a entender onde eu estava errando no meu código e a entender como acessar um parâmetro que não estava conseguindo.
+
 const data = require('../data/zoo_data');
 
 const { species } = data;
@@ -30,6 +32,6 @@ function countAnimals(animal) {
   return lastOption(animal);
 }
 
-console.log(countAnimals({ specie: 'bears', sex: 'female' }));
+// console.log(countAnimals({ specie: 'bears', sex: 'female' }));
 
 module.exports = countAnimals;
