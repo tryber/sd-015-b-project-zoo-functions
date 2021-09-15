@@ -19,7 +19,7 @@ function hourAndAnimals() {
   return object;
 }
 
-function day(scheduleTarget) {
+function dayWeek(scheduleTarget) {
   return { [scheduleTarget]: hourAndAnimals()[scheduleTarget] };
 }
 
@@ -28,7 +28,7 @@ function animale(scheduleTarget) {
 }
 
 function getSchedule(scheduleTarget) {
-  if (Object.keys(hours).includes(scheduleTarget)) return day(scheduleTarget);
+  if (Object.keys(hours).includes(scheduleTarget)) return dayWeek(scheduleTarget);
   if (species.map(({ name }) => name).includes(scheduleTarget)) return animale(scheduleTarget);
   return hourAndAnimals();
 }
