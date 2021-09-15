@@ -16,11 +16,9 @@ function idOrName(identifier) {
   const { id, name } = identifier;
   let employee;
 
-  if (id) {
-    employee = employees.find((people) => people.id === id);
-  } else {
-    employee = employees.find(({ firstName, lastName }) =>
-      firstName === name || lastName === name);
+  if (id) employee = employees.find((people) => people.id === id);
+  else {
+    employee = employees.find(({ firstName, lastName }) => firstName === name || lastName === name);
   }
 
   return employee;
