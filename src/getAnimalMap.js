@@ -18,7 +18,7 @@ const getAllSpecies = (point) =>
 const getNameResidents = (specie) =>
   specie.residents.map((resident) => resident.name);
 
-const getNameResidetsIsSorted = function (specie, sorted) {
+function getNameResidetsIsSorted(specie, sorted) {
   const result = {};
   if (sorted) {
     result[specie.name] = getNameResidents(specie).sort();
@@ -34,7 +34,7 @@ const getNameOfResidents = (allSpecies, sorted) =>
 const getNameResidentsWithSex = (specie, sex) =>
   specie.residents.filter((resident) => resident.sex === sex).map((res) => res.name);
 
-const getNameResidetsWithSexIsSorted = function (specie, sorted, sex) {
+function getNameResidetsWithSexIsSorted(specie, sorted, sex) {
   const result = {};
   if (sorted) {
     result[specie.name] = getNameResidentsWithSex(specie, sex).sort();
@@ -47,7 +47,7 @@ const getNameResidetsWithSexIsSorted = function (specie, sorted, sex) {
 const getNameOfResidentsWithSex = (allSpecies, sorted, sex) =>
   allSpecies.map((specie) => getNameResidetsWithSexIsSorted(specie, sorted, sex));
 
-const getResidents = function (point, sorted, sex) {
+function getResidents(point, sorted, sex) {
   let result;
   if (!sex) {
     result = getNameOfResidents(getAllSpecies(point), sorted);
@@ -57,14 +57,14 @@ const getResidents = function (point, sorted, sex) {
   return result;
 };
 
-const getAnimalDefaultMap = function () {
+function getAnimalDefaultMap() {
   let result;
-  result = points.forEach((point) => cardinalPoints[point] = getNameOfSpecies(point));
+  points.forEach((point) => cardinalPoints[point] = getNameOfSpecies(point));
   result = cardinalPoints;
   return result;
 };
 
-const getAnimalsPersonalized = function (sex, sorted) {
+function getAnimalsPersonalized(sex, sorted) {
   let result = [];
   if (sex === 'female' || (sex === 'female' && sorted === true)) {
     result = getAnimalDefaultMap();
@@ -72,11 +72,11 @@ const getAnimalsPersonalized = function (sex, sorted) {
   return result;
 };
 
-const getAnimalParametersMap = (options) => {
+const getAnimalParametersMap = function (options) {
   let result = [];
   const { includeNames, sorted, sex } = options;
   if (includeNames) {
-    result = points.forEach((point) => cardinalPoints[point] = getResidents(point, sorted, sex));
+    points.forEach((point) => cardinalPoints[point] = getResidents(point, sorted, sex));
     result = cardinalPoints;
   } else {
     result = getAnimalsPersonalized(sex, sorted);
@@ -84,7 +84,7 @@ const getAnimalParametersMap = (options) => {
   return result;
 };
 
-const getAnimalMap = function (options) {
+function getAnimalMap(options) {
   let result;
   if (options === undefined) {
     result = getAnimalDefaultMap();
