@@ -37,6 +37,4 @@ function getEmployeesCoverage(objeto) {
   return getEmploye(objeto);
 }
 
-// console.log(getEmployeesCoverage());
-
 module.exports = getEmployeesCoverage;
