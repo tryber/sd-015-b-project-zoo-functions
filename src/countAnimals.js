@@ -16,16 +16,16 @@ function countAnimals(animal) {
   if (!animal) {
     return allAnimals;
   }
-  const { specie, gender } = animal;
-  if (specie && gender) {
+  const { specie, sex } = animal;
+  if (specie && sex) {
     const animalSpecie = species.find((a) => a.name === specie);
-    const animalGender = animalSpecie.residents.filter((resident) => resident.sex === gender);
+    const animalGender = animalSpecie.residents.filter((resident) => resident.sex === sex);
     return animalGender.length;
   }
-  if (!gender) {
+  if (!sex) {
     const animalResidents = allAnimals[specie];
     return animalResidents;
   }
 }
-
+countAnimals({ specie: 'bears', sex: 'female' });
 module.exports = countAnimals;
