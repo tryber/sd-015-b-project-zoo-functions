@@ -2,10 +2,19 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  if (animal === undefined) return species.map((curr) => `${curr.name}: ${curr.residents.length}`);
-  const { residents } = species.find((specie) => specie.name === animal.specie);
-  const sexResidentsLength = residents.filter((resident) => resident.sex === animal.sex).length;
-  return (animal.sex) ? sexResidentsLength : residents.length;
+  if (!animal) {
+    const name = species.reduce((acc, interado) => {
+      acc[interado.name] = interado.residents.length;
+      return acc;
+    }, {});
+    return name;
+  }
+
+  const nameSpecie = species.find(({ name }) => name === animal.specie);
+  const { residents } = nameSpecie;
+  const residentSex = residents.filter(({ sex }) => sex === animal.sex);
+
+  return (animal.sex) ? residentSex.length : residents.length;
 }
 
 module.exports = countAnimals;
