@@ -32,7 +32,7 @@ describe('5 - Crie uma função que realiza a contagem dos animais de cada espé
     }
   });
 
-  it('recebendo como parâmetro um objeto com a chave \'specie\' e \'gender\', retorna um número, a quantidade de animais daquela espécie, no gênero selecionado', () => {
+  it('recebendo como parâmetro um objeto com a chave \'specie\' e \'sex\', retorna um número, a quantidade de animais daquela espécie, no sexo selecionado', () => {
     {
       const actual = countAnimals({ specie: 'bears', sex: 'female' });
       const expected = 0;
