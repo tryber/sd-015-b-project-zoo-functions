@@ -15,5 +15,3 @@ function getOldestFromFirstSpecies(id) {
 }
 
 module.exports = getOldestFromFirstSpecies;
-
-// console.log(getOldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
