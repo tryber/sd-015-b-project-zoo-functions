@@ -1,28 +1,33 @@
 const { species } = require('../data/zoo_data');
 
-const regioes = ['NE', 'NW', 'SE', 'SW'];
-
-const procurarRegioes = (regiao) => species.filter((specie) => specie.location === regiao);
-
-const criarListaRegioesAnimais = () => {
-  const objtRegioes = {
-    NE: [],
-    NW: [],
-    SE: [],
-    SW: [],
-  };
-
-  regioes.forEach((regiao) => Object.assign(objtRegioes[regiao],
-    procurarRegioes(regiao).map((residents) => residents.name)));
-
-  return objtRegioes;
-};
-
-function getAnimalMap(options) {
-  // seu código aqui
-  if (!options) {
-    return criarListaRegioesAnimais();
+const animais = (opcao, especie) => especie.residents.reduce((acumulador, animal) => {
+  if (opcao.sex === animal.sex) {
+    acumulador.push(animal.name);
   }
+
+  if (!opcao.sex) {
+    acumulador.push(animal.name);
+  }
+  return acumulador;
+}, []);
+
+function getAnimalMap(opcao = {
+  includeNames: false, sorted: false, sex: false }) {
+  const listaFinalPesquisa = species.reduce((todosAnimais, especie) => {
+    if (opcao.includeNames) {
+      const listaAnimais = animais(opcao, especie);
+      if (opcao.sorted) {
+        listaAnimais.sort();
+      }
+      todosAnimais[especie.location].push({ [especie.name]: listaAnimais });
+    } else {
+      todosAnimais[especie.location].push(especie.name);
+    }
+    return todosAnimais;
+  },
+  { NE: [], NW: [], SE: [], SW: [] });
+
+  return listaFinalPesquisa;
 }
 
 module.exports = getAnimalMap;
