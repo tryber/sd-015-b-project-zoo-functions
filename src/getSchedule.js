@@ -79,16 +79,18 @@ function addDaysKeys(days) {
 
 function getSchedule(scheduleTarget) {
   const days = Object.keys(data.hours);
+  const animals = data.species.map((element) => element.name);
+  // console.log(animals);
   const returnObj = addDaysKeys(days);
-  if (!scheduleTarget || !days.includes(scheduleTarget)) {
-    return returnObj;
-  }
   if (days.includes(scheduleTarget)) {
     const filteredObj = { [scheduleTarget]: returnObj[scheduleTarget] };
     return filteredObj;
   }
+  if (animals.includes(scheduleTarget)) {
+    const animalDays = data.species.filter((a) => a.name === scheduleTarget)[0].availability;
+    return animalDays;
+  }
+  return returnObj;
 }
-
-// getSchedule('Tuesday');
 
 module.exports = getSchedule;
