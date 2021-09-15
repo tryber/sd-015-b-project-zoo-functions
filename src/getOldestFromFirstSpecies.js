@@ -13,11 +13,7 @@ function getOldestFromFirstSpecies(...ids) {
     const animals = animal.residents.sort((a, b) => (a.age > b.age ? 1 : -1));
     const oldest = animals[animals.length - 1];
     result = [`${oldest.name}`, `${oldest.sex}`, oldest.age];
-    // result.push(`${oldest.name}`);
-    // result.push(`${oldest.sex}`);
-    // result.push(oldest.age);
   });
-  console.log(result);
   return result;
 }
 
