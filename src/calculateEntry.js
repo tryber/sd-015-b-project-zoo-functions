@@ -40,5 +40,5 @@ const entrants = [
   { name: 'Carlos Nogueira', age: 50 },
 ];
 
-calculateEntry(countEntrants(entrants));
+console.log(calculateEntry(entrants));
 module.exports = { calculateEntry, countEntrants };
