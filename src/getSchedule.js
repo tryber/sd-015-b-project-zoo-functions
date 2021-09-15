@@ -5,8 +5,8 @@ function generateSchedule() {
   Object.keys(hours).forEach((day) => {
     const officeHour = hours[day];
     const { open, close } = officeHour;
-    const filteredByDay = species.filter((available) => available.availability.includes(day));
-    const namesByDay = filteredByDay.map((specie) => specie.name);
+    const filteredByDay = species.filter(({ availability }) => availability.includes(day));
+    const namesByDay = filteredByDay.map(({ name }) => name);
     const tempObj = {};
 
     tempObj[day] = {
@@ -23,22 +23,25 @@ function generateSchedule() {
 
 function filterByDay(scheduleTarget) {
   const scheduleOfDay = {};
+  const scheduleSelected = generateSchedule()[scheduleTarget];
 
-  scheduleOfDay[scheduleTarget] = generateSchedule()[scheduleTarget];
+  scheduleOfDay[scheduleTarget] = scheduleSelected;
 
   return scheduleOfDay;
 }
 
 function filteredByAnimal(animal) {
-  return species.find((specie) => specie.name === animal).availability;
+  return species.find(({ name }) => name === animal).availability;
 }
 
 function getSchedule(scheduleTarget) {
   const weekday = Object.keys(hours);
-  const animals = species.map((specie) => specie.name);
+  const animals = species.map(({ name }) => name);
+  const haveWeekday = weekday.includes(scheduleTarget);
+  const haveAnimal = animals.includes(scheduleTarget);
 
-  if (weekday.includes(scheduleTarget)) return filterByDay(scheduleTarget);
-  if (animals.includes(scheduleTarget)) return filteredByAnimal(scheduleTarget);
+  if (haveWeekday) return filterByDay(scheduleTarget);
+  if (haveAnimal) return filteredByAnimal(scheduleTarget);
 
   return generateSchedule();
 }
