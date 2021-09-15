@@ -21,5 +21,6 @@ function countAnimals(animal) {
   const findAnimalByGender = species.find((animals2) => (animals2.name === specie));
   return findAnimalByGender.residents.filter((animals3) => animals3.sex === gender).length;
 }
+
 console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
 module.exports = countAnimals;
