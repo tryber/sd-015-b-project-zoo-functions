@@ -20,7 +20,7 @@ function filterAccountAnimals(specie, gender) {
 }
 
 function countAnimals(animal) {
-  const accont = animal ? filterAccountAnimals(animal.specie, animal.gender) : accountAnimals();
+  const accont = animal ? filterAccountAnimals(animal.specie, animal.sex) : accountAnimals();
 
   return accont;
 }
