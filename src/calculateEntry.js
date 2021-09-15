@@ -19,13 +19,16 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  console.log(entrants);
-  if (Object.keys(entrants).length === 0 || !entrants) {
+  if (!entrants) {
     return 0;
   }
-  const childTotal = entrants.child * prices.child;
-  const adultTotal = entrants.adult * prices.adult;
-  const seniorTotal = entrants.senior * prices.senior;
+  if (Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  const objCalc = countEntrants(entrants);
+  const childTotal = objCalc.child * prices.child;
+  const adultTotal = objCalc.adult * prices.adult;
+  const seniorTotal = objCalc.senior * prices.senior;
   const total = childTotal + adultTotal + seniorTotal;
   console.log(total);
   return total;
