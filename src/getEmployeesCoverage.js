@@ -1,63 +1,63 @@
 const { employees, species } = require('../data/zoo_data');
 
 function findLocationOfAnimal(animals) {
-  const locations = animals.map((animal) => species
-    .find((specie) => specie.name === animal).location);
+  const locations = animals.map((animal) => species.find(({ name }) => name === animal).location);
 
   return locations;
 }
 
-function convertAnimalIdInName(ids) {
-  const names = ids.map((id) => species
-    .find((specie) => specie.id === id).name);
+function convertAnimalIdInName(speciesIds) {
+  const speciesNames = speciesIds.map((specie) => species.find(({ id }) => id === specie).name);
 
-  return names;
+  return speciesNames;
 }
 
 function idOrName(identifier) {
+  const { id, name } = identifier;
   let employee;
 
-  if (identifier.id) {
-    employee = employees.find((people) => people.id === identifier.id);
+  if (id) {
+    employee = employees.find((people) => people.id === id);
   } else {
-    employee = employees.find((people) =>
-      people.firstName === identifier.name || people.lastName === identifier.name);
+    employee = employees.find(({ firstName, lastName }) =>
+      firstName === name || lastName === name);
   }
 
   return employee;
 }
 
-function findByEmployeeIdOrName(identifierType) {
+function findEmployeeByIdOrName(identifierType) {
   const employee = idOrName(identifierType);
+
   if (employee === undefined) throw new Error('Informações inválidas');
+
   const { firstName, lastName, responsibleFor, id } = employee;
   const speciesName = convertAnimalIdInName(responsibleFor);
   const fullName = `${firstName} ${lastName}`;
   const locations = findLocationOfAnimal(speciesName);
-  const output = {
+  const infosEmployee = {
     id,
     fullName,
     species: speciesName,
     locations,
   };
-  return output;
+
+  return infosEmployee;
 }
 
 function coverageOfAllEmployees() {
-  const employeesIds = employees.map((employee) => employee.id);
-  const output = [];
+  const employeesIds = employees.map(({ id }) => id);
+  const infosOfAllEmployees = [];
 
   employeesIds.forEach((employee) => {
-    output.push(findByEmployeeIdOrName({ id: employee }));
+    infosOfAllEmployees.push(findEmployeeByIdOrName({ id: employee }));
   });
 
-  return output;
+  return infosOfAllEmployees;
 }
 
 function getEmployeesCoverage(identifier) {
-  if (!identifier) return coverageOfAllEmployees();
-
-  return findByEmployeeIdOrName(identifier);
+  return (identifier) ? findEmployeeByIdOrName(identifier) : coverageOfAllEmployees();
 }
 
 module.exports = getEmployeesCoverage;
