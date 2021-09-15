@@ -8,12 +8,10 @@ const getAnimal = (...ids) => {
   const capturaIds = ids.forEach((id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
     idsAnimais.push(id);
   });
-  // console.log(idsAnimais); // Id de cada animal pertencente a cada pessoa
-  // Transformar idsAnimais em um array de nomes, a partir da id de cada animal armazenada
-  idsAnimais.map((id) => { // a Cada id percorrida, o retorno deve ser um array com o nome referente
-    console.log("Teste");
-    // return Teste;
-  });
+  // idsAnimais.map((id) => {
+  //   console.log("Teste");
+  //   // return Teste;
+  // });
 
   return idsAnimais;
 };
@@ -34,7 +32,7 @@ const noData = () => {
   const allData = (funcMap);
   return allData;
 };
-console.log(noData());
+// console.log(noData());
 
 function getEmployeesCoverage(peopleId) {
   // seu código aqui
