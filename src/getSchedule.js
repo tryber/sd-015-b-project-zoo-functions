@@ -15,10 +15,11 @@ function getSchedule(scheduleTarget) {
   const found = diasDaSemana.includes(scheduleTarget);
 
   diasDaSemana.forEach((day) => {
+    const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
     if (day === 'Monday') {
-      objetoRetorno[day] = { 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' };
+      objetoRetorno[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
     } else {
-      objetoRetorno[day] = `{Open from ${hours[day].open}am until ${hours[day].close}pm}`;
+      objetoRetorno[day] = `{'officeHour': '${messageOffice}','exhibition': 'Test'}`;
     }
   });
 
