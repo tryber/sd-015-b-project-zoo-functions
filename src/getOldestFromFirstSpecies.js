@@ -27,9 +27,9 @@ function getOldestFromFirstSpecies(id) {
   const [firstSpecieId] = employee.responsibleFor;
   const oldestAnimal = getOldestAnimal(firstSpecieId);
 
-  return oldestAnimal;
-}
+  const { name, sex, age } = oldestAnimal;
 
-console.log(getOldestFromFirstSpecies('9e7d4524-363c-416a-8759-8aa7e50c0992'));
+  return [name, sex, age];
+}
 
 module.exports = getOldestFromFirstSpecies;
