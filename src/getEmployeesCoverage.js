@@ -1,6 +1,72 @@
 const data = require('../data/zoo_data');
 
-function mapIdsToNames(employee, returnArr) {
+// [
+//   {
+//     id: 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1',
+//     fullName: 'Nigel Nelson',
+//     species: [ 'lions', 'tigers' ],
+//     locations: []
+//   },
+//   {
+//     id: '0e7b460e-acf4-4e17-bcb3-ee472265db83',
+//     fullName: 'Burl Bethea',
+//     species: [ 'lions', 'tigers', 'bears', 'penguins' ],
+//     locations: []
+//   },
+//   {
+//     id: 'fdb2543b-5662-46a7-badc-93d960fdc0a8',
+//     fullName: 'Ola Orloff',
+//     species: [ 'otters', 'frogs', 'snakes', 'elephants' ],
+//     locations: []
+//   },
+//   {
+//     id: '56d43ba3-a5a7-40f6-8dd7-cbb05082383f',
+//     fullName: 'Wilburn Wishart',
+//     species: [ 'snakes', 'elephants' ],
+//     locations: []
+//   },
+//   {
+//     id: '9e7d4524-363c-416a-8759-8aa7e50c0992',
+//     fullName: 'Stephanie Strauss',
+//     species: [ 'otters', 'giraffes' ],
+//     locations: []
+//   },
+//   {
+//     id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad',
+//     fullName: 'Sharonda Spry',
+//     species: [ 'otters', 'frogs' ],
+//     locations: []
+//   },
+//   {
+//     id: 'c1f50212-35a6-4ecd-8223-f835538526c2',
+//     fullName: 'Ardith Azevado',
+//     species: [ 'tigers', 'bears' ],
+//     locations: []
+//   },
+//   {
+//     id: 'b0dc644a-5335-489b-8a2c-4e086c7819a2',
+//     fullName: 'Emery Elser',
+//     species: [ 'lions', 'bears', 'elephants' ],
+//     locations: []
+//   }
+// ]
+
+function mapNamesToLoc(employee) {
+  const { species: employeeSpecies } = employee;
+  const animals = data.species;
+  // filters animals if animal is in employeeSpecies
+  const selectedSpecies = animals.filter((specie) => employeeSpecies.includes(specie.name));
+  // creates array with filtered animals locations
+  const speciesLocations = selectedSpecies.map((specie) => specie.location);
+  const employeeLocations = employee;
+  employeeLocations.locations = speciesLocations;
+}
+
+function getLocations(returnArr) {
+  returnArr.forEach((employee) => mapNamesToLoc(employee));
+}
+
+function mapIdsToNames(employee) {
   const { species: id } = employee;
   const animals = data.species;
   // filters animals if id is in employee.species
@@ -10,12 +76,10 @@ function mapIdsToNames(employee, returnArr) {
   const employeeSpecies = employee;
   // replaces IDs with names
   employeeSpecies.species = speciesNames;
-  console.log(employeeSpecies);
 }
 
 function getSpecies(returnArr) {
-  returnArr.forEach((employee) => mapIdsToNames(employee, returnArr));
-  return 'a';
+  returnArr.forEach((employee) => mapIdsToNames(employee));
 }
 
 function makeReturnArr() {
@@ -38,8 +102,10 @@ function getEmployeesCoverage(options) {
     console.log(id);
   } else {
     const returnArr = makeReturnArr();
-    const returnArrSpecies = getSpecies(returnArr);
-    console.log(returnArrSpecies);
+    getSpecies(returnArr);
+    getLocations(returnArr);
+    // console.log(returnArr);
+    return returnArr;
   }
 }
 getEmployeesCoverage();
