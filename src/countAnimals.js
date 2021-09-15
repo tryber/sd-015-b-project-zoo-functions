@@ -16,5 +16,4 @@ function countAnimals(animal) {
     .residents.filter(({ sex }) => sex === gender);
   return quantAnimal.length;
 }
-console.log(countAnimals({ specie: 'bears', gender: 'female' }));
 module.exports = countAnimals;
