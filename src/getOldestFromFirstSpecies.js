@@ -14,14 +14,13 @@ function findOldest(animals) {
   return oldest;
 }
 
-function getOldestFromFirstSpecies(id) {
-  const employee = employees.find((name) => name.id === id);
+function getOldestFromFirstSpecies(paramId) {
+  const employee = employees.find(({ id }) => id === paramId);
   const firstSpecie = employee.responsibleFor[0];
-  const groupOfSpecie = species.find((specie) => specie.id === firstSpecie);
-  const { residents } = groupOfSpecie;
-  const oldest = residents.find((resident) => resident.age === findOldest(residents));
+  const { residents } = species.find(({ id }) => id === firstSpecie);
+  const { name, sex, age } = residents.find((resident) => resident.age === findOldest(residents));
 
-  return [oldest.name, oldest.sex, oldest.age];
+  return [name, sex, age];
 }
 
 module.exports = getOldestFromFirstSpecies;
