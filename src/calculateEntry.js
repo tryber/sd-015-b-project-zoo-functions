@@ -10,7 +10,20 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (!entrants || Object.keys(entrants).length === 0) return 0;
+
+  const prices = {
+    child: 20.99,
+    adult: 49.99,
+    senior: 24.99,
+  };
+  const entrantsObject = countEntrants(entrants);
+
+  const totalPrice = prices.child * entrantsObject.child
+    + prices.adult * entrantsObject.adult
+    + prices.senior * entrantsObject.senior;
+
+  return totalPrice;
 }
 
 module.exports = { calculateEntry, countEntrants };
