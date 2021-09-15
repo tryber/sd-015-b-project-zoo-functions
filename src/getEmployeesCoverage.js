@@ -1,37 +1,37 @@
 const data = require('../data/zoo_data');
 
-const {employees, species} = data;
+const { employees, species } = data;
 
 const getAnimal = (...ids) => {
   const idsAnimais = [];
-  const capturaIds = ids.forEach( (id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
-    idsAnimais.push(id);
-  });
+  // const capturaIds = ids.forEach((id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
+  //   idsAnimais.push(id);
+  // });
   console.log(idsAnimais);
   // Transformar idsAnimais em um array de nomes, a partir da id de cada animal armazenada
-  idsAnimais.map( (id, index) => { // a Cada id percorrida, o retorno deve ser um array com o nome referente
-    
-  })
+  idsAnimais.map((id, index) => { // a Cada id percorrida, o retorno deve ser um array com o nome referente
+    return 0.
+  });
   return 0;
-}
+};
 
 const noData = () => {
-  
-  const funcMap = employees.map( (employee) => {
+
+  const funcMap = employees.map((employee) => {
     const idsAnimais = employee.responsibleFor;
-    return { 
+    return {
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
       // species: `Tratar Id dos animais capturar o objeto retornado, e salvar seu nome`, // getAnimal(idsAnimais);
       species: getAnimal(idsAnimais), // Array com o nome dos
       // locations: `Tratar o objeto retornado e mostrar sua localização`, // getLocation();
-      locations: `0`, // getLocation();
-     };
-  })
+      locations: '0', // getLocation();
+    };
+  });
   // console.log(employees);
   const allData = (funcMap);
-  return allData
-}
+  return allData;
+};
 console.log(noData());
 
 function getEmployeesCoverage(peopleId) {
