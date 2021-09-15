@@ -14,9 +14,9 @@ function countAnimals(animal) {
   if (!animal) return getDefaultAnimals();
 
   const { residents } = species.find((specie) => specie.name === animal.specie);
-  const filteredByGender = residents.filter((resident) => resident.sex === animal.sex).length;
+  const qntByGender = residents.filter((resident) => resident.sex === animal.sex).length;
 
-  return (animal.sex) ? filteredByGender : residents.length;
+  return (animal.sex) ? qntByGender : residents.length;
 }
 
 module.exports = countAnimals;
