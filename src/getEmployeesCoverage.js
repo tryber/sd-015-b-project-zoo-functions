@@ -95,19 +95,28 @@ function makeReturnArr() {
   return newReturnArr;
 }
 
-function getEmployeesCoverage(options) {
-  if (options) {
-    const { name, id } = options;
-    console.log(name);
-    console.log(id);
-  } else {
-    const returnArr = makeReturnArr();
-    getSpecies(returnArr);
-    getLocations(returnArr);
-    // console.log(returnArr);
-    return returnArr;
+function checkValidOptions(returnArr, options) {
+  const { name, id } = options;
+  const isValid = returnArr.some((employee) => (employee.id === id || employee.fullName === name));
+  if (!isValid) {
+    throw new Error('Informações inválidas');
   }
 }
-getEmployeesCoverage();
+
+function checkOptions(returnArr, options) {
+  checkValidOptions(returnArr, options);
+}
+
+function getEmployeesCoverage(options) {
+  const returnArr = makeReturnArr();
+  getSpecies(returnArr);
+  getLocations(returnArr);
+  // console.log(returnArr);
+  if (options) {
+    checkOptions(returnArr, options);
+  }
+  return returnArr;
+}
+// getEmployeesCoverage({ name: 'Ardith Azevado' });
 
 module.exports = getEmployeesCoverage;
