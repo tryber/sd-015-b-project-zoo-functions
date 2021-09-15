@@ -2,22 +2,22 @@ const data = require('../data/zoo_data');
 
 // const { species, hours } = data;
 
-const printAllData = () => {
-  const objComtodosOsAnimais = {};
-  return objComtodosOsAnimais;
-};
-console.log(printAllData());
+// const printAllData = () => {
+//   // const objComtodosOsAnimais = {};
+//   // return objComtodosOsAnimais;
+// };
+// // console.log(printAllData());
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
 
   if (!scheduleTarget) {
-    return printAllData();
+    // return printAllData();
   }
-  return 'Retorno da Função Principal';
+  return 0;
 }
 
-// console.log(getSchedule());
+console.log(getSchedule());
 
 module.exports = getSchedule;
 
