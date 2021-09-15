@@ -30,5 +30,5 @@ function calculateEntry(entrants) {
   { name: 'Maria Costa', age: 18 },
   { name: 'Núbia Souza', age: 18 },
   { name: 'Carlos Nogueira', age: 50 },
-];
-module.exports = { calculateEntry, countEntrants }; */
+]; */
+module.exports = { calculateEntry, countEntrants };
