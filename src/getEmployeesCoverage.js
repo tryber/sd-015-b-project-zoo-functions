@@ -22,17 +22,20 @@ const noData = () => {
     return { 
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
-      species: `${getAnimal(employee.responsibleFor)}`,
+      species: `Tratar Id dos animais capturar o objeto retornado, e salvar seu nome`,
+      locations: `Tratar o objeto retornado e mostrar sua localização`,
      };
   })
   // console.log(employees);
   const allData = (funcMap);
   return allData
 }
-console.log(noData());
+// console.log(noData());
 
-function getEmployeesCoverage() {
+function getEmployeesCoverage(peopleId) {
   // seu código aqui
+  if (!peopleId) return noData();
 }
+// console.log(getEmployeesCoverage(''));
 
 module.exports = getEmployeesCoverage;
