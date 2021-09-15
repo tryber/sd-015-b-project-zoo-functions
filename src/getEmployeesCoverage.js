@@ -3,13 +3,13 @@ const data = require('../data/zoo_data');
 
 function checkParameters(object) {
   const { id, name } = object;
-  let teste;
-  if (id) teste = employees.find((person) => person.id === id);
+  let employeeInfos;
+  if (id) employeeInfos = employees.find((person) => person.id === id);
   if (name) {
-    teste = employees
+    employeeInfos = employees
       .find(({ firstName, lastName }) => firstName === name || lastName === name);
   }
-  return teste;
+  return employeeInfos;
 }
 
 function getEmployee(object) {
