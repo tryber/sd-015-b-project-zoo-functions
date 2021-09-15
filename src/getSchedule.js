@@ -2,6 +2,24 @@ const data = require('../data/zoo_data');
 
 const { species, hours } = data;
 
+function argNull() {
+  const diasSemana = Object.keys(hours);
+  const objetoRetornado = {};
+  diasSemana.forEach((day) => {
+    const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
+    const animaisExibicao = species
+    .filter( (animal) => animal.availability
+    .includes(day))
+    .map((day) => day.name);
+    if (day === 'Monday') {
+      objetoRetornado[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
+    } else {
+      objetoRetornado[day] = `{ 'officeHour': '${messageOffice}','exhibition': '[ ${animaisExibicao.join(`, `)} ]'}`;
+    }
+  });
+  return objetoRetornado;
+}
+
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
@@ -20,30 +38,18 @@ function getSchedule(scheduleTarget) {
       if (day === 'Monday') {
         objetoRetorno[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
       } else {
-        objetoRetorno[day] = `{ 'officeHour': '${messageOffice}','exhibition': '${animaisExibicao}'}`;
+        objetoRetorno[day] = `{ 'officeHour': '${messageOffice}','exhibition': '[ ${animaisExibicao.join(`, `)} ]'}`;
       }
     });
   }
-  if (!scheduleTarget || !found) {
-    // console.log("Objeto não informado, ou não encontrado!");
-    // console.log(`Valor do Objeto: ${scheduleTarget}`);
-    // console.log(found);
-    diasDaSemana.forEach((day) => {
-      const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-      if (day === 'Monday') {
-        objetoRetorno[day] = `{ 'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!' }`;
-      } else {
-        objetoRetorno[day] = `{'officeHour': '${messageOffice}','exhibition': 'Test'}`;
-      }
-    });
-  }
-  // console.log(diasDaSemana);
+  if (!scheduleTarget || !found) return argNull();
+  
   return objetoRetorno;
 }
 
 // console.log(getSchedule()); // Elemento Vazio
-// console.log(getSchedule('abc')); // Elemento Inválido
-console.log(getSchedule('Thursday')); // Elemento Válido
+console.log(getSchedule('abc')); // Elemento Inválido
+// console.log(getSchedule('Thursday')); // Elemento Válido
 
 module.exports = getSchedule;
 
