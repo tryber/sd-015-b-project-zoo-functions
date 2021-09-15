@@ -1,23 +1,16 @@
 const { employees, species } = require('../data/zoo_data');
 
-function findOldest(animals) {
-  const oldest = animals.reduce((accumulator, current) => {
-    let older = accumulator;
-    const { age } = current;
-
-    if (age > older) {
-      older = age;
-    }
-    return older;
-  }, 0);
-
-  return oldest;
+function findOldestAge(animals) {
+  const oldest = animals.sort((a, b) => b.age - a.age);
+  return oldest[0].age;
 }
 
 function getOldestFromFirstSpecies(employeeId) {
   const firstSpecie = employees.find(({ id }) => id === employeeId).responsibleFor[0];
   const { residents } = species.find(({ id }) => id === firstSpecie);
-  const { name, sex, age } = residents.find((resident) => resident.age === findOldest(residents));
+  const ageOfOldest = findOldestAge(residents);
+
+  const { name, sex, age } = residents.find((resident) => resident.age === ageOfOldest);
 
   return [name, sex, age];
 }
