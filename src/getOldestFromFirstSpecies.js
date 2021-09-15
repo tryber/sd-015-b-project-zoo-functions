@@ -9,7 +9,7 @@ function getOldestFromFirstSpecies(id) {
       higherAge = resident.age;
     }
   });
-  const oldest = firstSpecies.residents.find((resident) => higherAge === resident.age)
+  const oldest = firstSpecies.residents.find((resident) => higherAge === resident.age);
   return [oldest.name, oldest.sex, oldest.age];
 }
 
