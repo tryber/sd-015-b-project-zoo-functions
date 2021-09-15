@@ -4,23 +4,30 @@ function searchDefault() {
   const regions = {};
 
   species.forEach((specie) => {
-    if (!regions[specie.location]) regions[specie.location] = [];
-    regions[specie.location].push(specie.name);
+    const { location, name } = specie;
+    if (!regions[location]) regions[location] = [];
+    regions[location].push(name);
   });
 
   return regions;
 }
 
-function getAnimalNames(sorted, sex) {
+function getAnimalNames(paramSorted, paramSex) {
   const regions = {};
 
   species.forEach((specie) => {
-    if (!regions[specie.location]) regions[specie.location] = [];
+    const { location, name } = specie;
+
+    if (!regions[location]) regions[location] = [];
+
     let residents = [...specie.residents];
-    if (sex) residents = residents.filter((resident) => resident.sex === sex);
+
+    if (paramSex) residents = residents.filter(({ sex }) => sex === paramSex);
     residents = residents.map((resident) => resident.name);
-    if (sorted) residents.sort();
-    regions[specie.location].push({ [specie.name]: residents });
+
+    if (paramSorted) residents.sort();
+
+    regions[location].push({ [name]: residents });
   });
 
   return regions;
