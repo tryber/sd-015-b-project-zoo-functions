@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-const { employees, species } = data;
+const { employees } = data;
 
 const getAnimal = (...ids) => {
   const idsAnimais = [];
@@ -9,14 +9,13 @@ const getAnimal = (...ids) => {
   // });
   console.log(idsAnimais);
   // Transformar idsAnimais em um array de nomes, a partir da id de cada animal armazenada
-  idsAnimais.map((id, index) => { // a Cada id percorrida, o retorno deve ser um array com o nome referente
-    return 0.
-  });
+  // idsAnimais.map((id, index) => { // a Cada id percorrida, o retorno deve ser um array com o nome referente
+  //   return 0;
+  // });
   return 0;
 };
 
 const noData = () => {
-
   const funcMap = employees.map((employee) => {
     const idsAnimais = employee.responsibleFor;
     return {
