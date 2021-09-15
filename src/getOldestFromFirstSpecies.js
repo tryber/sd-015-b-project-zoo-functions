@@ -14,9 +14,8 @@ function findOldest(animals) {
   return oldest;
 }
 
-function getOldestFromFirstSpecies(paramId) {
-  const employee = employees.find(({ id }) => id === paramId);
-  const firstSpecie = employee.responsibleFor[0];
+function getOldestFromFirstSpecies(employeeId) {
+  const firstSpecie = employees.find(({ id }) => id === employeeId).responsibleFor[0];
   const { residents } = species.find(({ id }) => id === firstSpecie);
   const { name, sex, age } = residents.find((resident) => resident.age === findOldest(residents));
 
