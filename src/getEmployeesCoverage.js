@@ -4,10 +4,14 @@ const {employees, species} = data;
 
 const getAnimal = (...ids) => {
   const idsAnimais = [];
-  const capturaIds = ids.forEach( (id) => {
+  const capturaIds = ids.forEach( (id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
     idsAnimais.push(id);
   });
-  // console.log(idsAnimais);
+  console.log(idsAnimais);
+  // Transformar idsAnimais em um array de nomes, a partir da id de cada animal armazenada
+  idsAnimais.map( (id, index) => { // a Cada id percorrida, o retorno deve ser um array com o nome referente
+    
+  })
   return 0;
 }
 
