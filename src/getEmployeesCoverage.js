@@ -29,12 +29,18 @@ const objectConstructing = (obj) => {
   return object;
 };
 
+const objectConstructingAll = () => {
+  const employeesAll = [];
+
+  employees.forEach((employee) => {
+    employeesAll.push(objectConstructing({ id: employee.id }));
+  });
+  return employeesAll;
+};
+
 function getEmployeesCoverage(obj) {
+  if (!obj) return objectConstructingAll();
   return objectConstructing(obj);
 }
-
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
-// console.log(getEmployeesCoverage({ name: 'Spry' }));
-// console.log(getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' }));
 
 module.exports = getEmployeesCoverage;
