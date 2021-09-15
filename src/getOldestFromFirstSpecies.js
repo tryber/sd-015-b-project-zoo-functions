@@ -1,8 +1,6 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const { name, sex, age } = species;
-
 function getOldestFromFirstSpecies(employeeId) {
   const getFirstSpecie = employees
     .find((animal) => employeeId === animal.id).responsibleFor
