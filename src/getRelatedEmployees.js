@@ -9,7 +9,7 @@ function isManager(id) {
 
 function getRelatedEmployees(managerId) {
   // seu código aqui
-  let result = [];
+  const result = [];
   if (isManager(managerId) === true) {
     const employeesList = employees.filter((employee) => employee.managers.includes(managerId));
     employeesList.forEach((employee) => result.push(`${employee.firstName} ${employee.lastName}`));
@@ -17,7 +17,5 @@ function getRelatedEmployees(managerId) {
   }
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
-
-console.log(getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992'));
 
 module.exports = { isManager, getRelatedEmployees };
