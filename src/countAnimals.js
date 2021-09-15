@@ -34,6 +34,4 @@ function countAnimals(specie) {
   return allAnimalsBySpecie(specie);
 }
 
-console.log(countAnimals({ specie: 'bears', gender: 'female' }));
-
 module.exports = countAnimals;
