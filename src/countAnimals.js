@@ -14,12 +14,12 @@ const allAnimals = () => {
 const allAnimalsBySpecie = (specie) => {
   const animal = species.find((animalFind) => animalFind.name === specie.specie);
 
-  if (!specie.gender) {
+  if (!specie.sex) {
     return animal.residents.length;
   }
 
   return animal.residents.reduce((acc, resident) => {
-    if (resident.sex === specie.gender) {
+    if (resident.sex === specie.sex) {
       return acc + 1;
     }
     return acc;
