@@ -5,9 +5,9 @@ const countEntrants = (entrants = {}) => {
   if (entrants === undefined || entrantsKeys.length === 0) return 0;
 
   const entries = {
-    child: entrants.filter((entrant) => entrant.age < 18).length,
-    adult: entrants.filter((entrant) => entrant.age >= 18 && entrant.age < 50).length,
-    senior: entrants.filter((entrant) => entrant.age >= 50).length,
+    child: entrants.filter(({ age }) => age < 18).length,
+    adult: entrants.filter(({ age }) => age >= 18 && age < 50).length,
+    senior: entrants.filter(({ age }) => age >= 50).length,
   };
 
   return entries;
@@ -15,11 +15,13 @@ const countEntrants = (entrants = {}) => {
 
 function calculateEntry(entrants) {
   const checkedEntries = countEntrants(entrants);
-  if (checkedEntries === 0) return 0;
+  const { child, adult, senior } = countEntrants(entrants);
 
-  const totalChilds = checkedEntries.child * prices.child;
-  const totalAdults = checkedEntries.adult * prices.adult;
-  const totalSeniors = checkedEntries.senior * prices.senior;
+  const totalChilds = child * prices.child;
+  const totalAdults = adult * prices.adult;
+  const totalSeniors = senior * prices.senior;
+
+  if (checkedEntries === 0) return 0;
 
   return totalChilds + totalAdults + totalSeniors;
 }
