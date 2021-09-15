@@ -7,14 +7,14 @@ function getOldestAnimal(idDoConjunto) {
   // busca pelo conjunto de animais com essa id específica
   // aplica o sort para ordenar do mais velho para o mais novo
   // Captura e retorna o mais velho POSIÇÃO 0
-  const findAnimals = species.find( (specie) => {
-    // console.log('Varredura das Espécies: ', specie);
-    if (specie.id === idDoConjunto) {
-      // console.log('Espécie encontrada: ', specie);
-      return specie;
-    }
-    return specie
-  });
+  // const findAnimals = species.find( (specie) => {
+  //   // console.log('Varredura das Espécies: ', specie);
+  //   if (specie.id === idDoConjunto) {
+  //     // console.log('Espécie encontrada: ', specie);
+  //     return specie;
+  //   }
+  //   return specie
+  // });
   const allResidents = findAnimals.residents.sort( (a, b) => b.age - a.age);
   // const sortResidents = allResidents
   // console.log(allResidents[0]);
@@ -26,7 +26,8 @@ function getOldestAnimal(idDoConjunto) {
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
   const resultEmployee = employees.find((employee) => employee.id === id); // Retorna a pessoa com a ID
-  const primeiroConjuntoAnimal = resultEmployee.responsibleFor[0];
+  const primeiroConjuntoAnimal = resultEmployee.responsibleFor[0]; // Captura ID do primeiro conjunto animal
+  const buscaEspecie = species.find( (specie) => specie.id === primeiroConjuntoAnimal);
   const animalMaisVelho = getOldestAnimal(primeiroConjuntoAnimal);
   // console.log(primeiroConjuntoAnimal); // ID do Primeiro animal da pessoa
   console.log(resultEmployee);
