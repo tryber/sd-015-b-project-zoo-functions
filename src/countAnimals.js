@@ -7,7 +7,7 @@ function countAnimals(animal) {
       return acc;
     }, {});
   }
-  const { specie, gender = undefined } = animal;
+  const { specie, sex: gender = undefined } = animal;
   if (gender === undefined) {
     const quantAnimal = data.species.find(({ name }) => name === specie);
     return quantAnimal.residents.length;
@@ -16,4 +16,5 @@ function countAnimals(animal) {
     .residents.filter(({ sex }) => sex === gender);
   return quantAnimal.length;
 }
+console.log(countAnimals({ specie: 'bears', sex: 'female' }))
 module.exports = countAnimals;
