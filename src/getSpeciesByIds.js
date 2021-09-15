@@ -8,8 +8,8 @@ function getSpeciesByIds(...ids) {
     return [];
   }
   for (let index = 0; index < ids.length; index += 1) {
-    const verifyId = element => element.id === ids[index];
-     searchResult.push(species.find(verifyId));
+    const verifyId = (element) => element.id === ids[index];
+    searchResult.push(species.find(verifyId));
   }
   return searchResult;
 }
