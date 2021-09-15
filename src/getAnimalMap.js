@@ -1,57 +1,83 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-// cria um array com o nome de todos os animais escolhido
-const animalsNames = (animalName) => {
-  const animalSpecie = species.find((animal) => animal.name === animalName);
-  return animalSpecie.residents.map((animal) => animal.name);
-};
+const locations = ['NE', 'NW', 'SE', 'SW'];
 
-// cria um objeto com a posição de todos os animais.
-const locations = species.reduce((acc, animals) => {
-  if (animals.location === 'NE') {
-    acc.NE.push(animals.name);
-    return acc;
-  }
-  if (animals.location === 'NW') {
-    acc.NW.push(animals.name);
-    return acc;
-  }
-  if (animals.location === 'SE') {
-    acc.SE.push(animals.name);
-    return acc;
-  }
-  acc.SW.push(animals.name);
-  return acc;
-}, { NE: [], NW: [], SE: [], SW: [] });
+// retorna os animais de uma localização
+function animalsLocations(location) {
+  return species.filter((animal) => animal.location === location).map((animal) => animal.name);
+}
 
-// cria um objeto com a posição de todos os animais e os nomes.
-const locationsAndNames = species.reduce((acc, animals) => {
-  if (animals.location === 'NE') {
-    const animalSpecie = animals.name;
-    const arrayNames = animalsNames(animalSpecie);
-    acc.NE.push(objectNames);
+// retorna um objeto com os locais e os animais
+function locationsObj() {
+  return locations.reduce((acc, location) => {
+    acc[location] = animalsLocations(location);
     return acc;
+  }, {});
+}
+
+const animalsObj = locationsObj();
+
+// cria o array com os nomes dos animais
+function createArrayNames(animalName) {
+  return species.find((animal) => animal.name === animalName)
+    .residents.map((animal) => animal.name);
+}
+
+// cria o array de acordo com o sexo
+function createArrayBySex(animalName, options) {
+  const animalSerch = species.find((animal) => animal.name === animalName);
+  const byGender = animalSerch.residents.filter((animal) => animal.sex === options.sex);
+  return byGender.map((animal) => animal.name);
+}
+
+// modifica o array com os nomes dos animais
+function animalsNames(animalName, options) {
+  const arrayNames = createArrayNames(animalName);
+  const arrayNameSort = createArrayBySex(animalName, options);
+  if (options.sorted && options.sex) {
+    return arrayNameSort.sort();
   }
-  if (animals.location === 'NW') {
-    acc.NW.push(animalsNames(animals.name));
+
+  if (options.sorted) {
+    return arrayNames.sort();
+  }
+
+  if (options.sex) {
+    return createArrayBySex(animalName, options);
+  }
+
+  return arrayNames;
+}
+
+console.log(animalsNames('lions', { includeNames: true, sex: 'female', sorted: true }));
+
+// cria um array com de objetos que são o nome da especie e o nome dos animas dessa especie
+function createNamesObj(location, options) {
+  return animalsObj[location].map((animal) => (({ [animal]: animalsNames(animal, options) })));
+}
+
+// cria o objeto so com as direçoes e nomes de species
+function locationObjectNames(options) {
+  return locations.reduce((acc, location) => {
+    acc[location] = createNamesObj(location, options);
     return acc;
-  }
-  if (animals.location === 'SE') {
-    acc.SE.push(animalsNames(animals.name));
-    return acc;
-  }
-  acc.SW.push(animalsNames(animals.name));
-  return acc;
-}, { NE: [], NW: [], SE: [], SW: [] });
+  }, {});
+}
 
 function getAnimalMap(options) {
   // seu código aqui
   if (!options) {
-    return locations;
+    return locationsObj();
+  }
+
+  if (!options.includeNames) {
+    return locationsObj();
+  }
+
+  if (options) {
+    return locationObjectNames(options);
   }
 }
-
-console.log(locationsAndNames);
 
 module.exports = getAnimalMap;
