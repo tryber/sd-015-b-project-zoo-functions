@@ -1,20 +1,16 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const checkEmployee = (obj) => {
-  const { values } = Object;
-  return employees.some(({ id, firstName, lastName }) =>
-    values(obj).includes(id)
-    || values(obj).includes(firstName)
-    || values(obj).includes(lastName));
-};
-
 const getEmployee = (obj) => {
   const { values } = Object;
-  return employees.find(({ id, firstName, lastName }) =>
+  const employee = ({ id, firstName, lastName }) =>
     values(obj).includes(id)
     || values(obj).includes(firstName)
-    || values(obj).includes(lastName));
+    || values(obj).includes(lastName);
+
+  return employees.some(employee)
+    ? employees.find(employee)
+    : false;
 };
 
 const getSpeciesName = (obj) => getEmployee(obj).responsibleFor
@@ -27,8 +23,7 @@ const getSpeciesLocation = (obj) => getEmployee(obj).responsibleFor
 
 const objectConstructing = (obj) => {
   const object = {};
-  const employee = checkEmployee(obj);
-  if (!employee) throw new Error('Informações inválidas');
+  if (!getEmployee(obj)) throw new Error('Informações inválidas');
   const { id, firstName, lastName } = getEmployee(obj);
   Object.assign(object, {
     id,
@@ -48,10 +43,9 @@ const objectConstructingAll = () => {
 };
 
 function getEmployeesCoverage(obj) {
-  if (!obj) return objectConstructingAll();
-  return objectConstructing(obj);
+  return !obj
+    ? objectConstructingAll()
+    : objectConstructing(obj);
 }
-
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 
 module.exports = getEmployeesCoverage;
