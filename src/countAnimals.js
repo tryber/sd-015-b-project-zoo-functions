@@ -11,13 +11,13 @@ function countAnimals(...animal) {
       return acc;
     }, {});
   }
-  if ((anm.gender === undefined)) {
+  if ((anm.sex === undefined)) {
     return data.species.filter((spc) => spc.name === anm.specie)[0].residents.length;
   }
 
   return data.species
     .filter((spc) => spc.name === anm.specie)[0]
-    .residents.filter((spcAnm) => spcAnm.sex === anm.gender).length;
+    .residents.filter((spcAnm) => spcAnm.sex === anm.sex).length;
 }
-console.log(countAnimals({ specie: 'giraffes', gender: 'female' }));
+console.log(countAnimals({ specie: 'giraffes', sex: 'female' }));
 module.exports = countAnimals;
