@@ -22,5 +22,6 @@ function countAnimals(animal) {
   const whichAnimalSex = amountSexAnimals.filter((animalSex) => animalSex.sex === animal.sex);
   return whichAnimalSex.length;
 }
+console.log(countAnimals());
 
 module.exports = countAnimals;
