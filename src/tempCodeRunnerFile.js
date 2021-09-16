@@ -1,0 +1,2 @@
+
+    .filter((manId) => manId !== []))
