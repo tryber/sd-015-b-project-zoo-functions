@@ -10,9 +10,9 @@ function countAnimals(animal) {
   }
   // ref.: consulta: https://github.com/tryber/sd-015-b-project-zoo-functions/pull/38/commits/886703fbc78a48ddc3193910625beef2415b9b80
   const { residents } = species.find((animals) => animals.name === animal.specie);
-  const genderQuantity = residents.filter((resident) => resident.sex === animal.gender).length;
+  const sexQuantity = residents.filter((resident) => resident.sex === animal.sex).length;
 
-  return (animal.gender) ? genderQuantity : residents.length;
+  return (animal.sex) ? sexQuantity : residents.length;
 }
 
 module.exports = countAnimals;
