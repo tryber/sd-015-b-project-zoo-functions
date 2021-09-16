@@ -11,8 +11,8 @@ function countAnimals(animal) {
   }
   const animalFound = data.species.find((specie) => specie.name === animal.specie);
   const animalSelected = animalFound.residents;
-  if (animal.specie !== undefined && animal.gender !== undefined) {
-    const animalSex = animalSelected.filter((specie) => specie.sex === animal.gender).length;
+  if (animal.specie !== undefined && animal.sex !== undefined) {
+    const animalSex = animalSelected.filter((specie) => specie.sex === animal.sex).length;
     return animalSex;
   }
   if (animal.specie !== undefined) {
