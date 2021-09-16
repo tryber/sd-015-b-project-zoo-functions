@@ -17,7 +17,7 @@ function contadorPorEspecie(animal) {
   if (Object.keys(animal).length === 1) {
     return filtroDeEspecie.residents.length;
   }
-  return contadorPorGenero(filtroDeEspecie.residents, animal.gender);
+  return contadorPorGenero(filtroDeEspecie.residents, animal.sex);
 }
 
 function contadorTodosAnnimais() {
