@@ -10,7 +10,8 @@ function argNull() {
   const dataObj = {};
   days.forEach((day) => {
     const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-    const exibicaoDoDia = species.filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name);
+    const exibicaoDoDia = species
+    .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name);
       if (day === 'Monday') {
         dataObj[day] = {
           officeHour: 'CLOSED',
