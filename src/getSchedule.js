@@ -25,7 +25,7 @@ function argNull() {
   });
   return dataObj;
 }
-console.log(argNull());
+// console.log(argNull()); [DEBUG]
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
