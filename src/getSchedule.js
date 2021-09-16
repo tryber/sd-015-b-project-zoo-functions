@@ -1,58 +1,57 @@
 const data = require('../data/zoo_data');
 
-function verifyDay(schedule) {
-  const animalsDay = data.species.filter((elemento) => elemento.availability.includes(schedule));
-  const animalsName = animalsDay.map((elemento) => elemento.name);
-  const dayHour = data.hours[schedule];
-  const returnTo = {};
-  returnTo[schedule] = {
-    officeHour: `Open from ${dayHour.open}am until ${dayHour}pm`,
-    exhibition: animalsName,
+function verifyDay(scheduleTarget) {
+  const animalsDay = data.species
+    .filter((element) => element.availability.includes(scheduleTarget));
+  const nameAnimals = animalsDay.map((element) => element.name);
+  const dayHours = data.hours[scheduleTarget];
+  const toReturn = {};
+  toReturn[scheduleTarget] = {
+    officeHour: `Open from ${dayHours.open}am until ${dayHours.close}pm`,
+    exhibition: nameAnimals,
   };
-  return returnTo;
-}
-// console.log(verifyDay('Monday'));
 
-function verifyAnimal(schedule) {
-  const ObjectAnimal = data.species.find((elemento) => elemento.name === schedule);
-  return ObjectAnimal.availability;
+  return toReturn;
 }
 
-const namesAnimals = data.species.map((elemento) => elemento.name);
+function verifyAnimal(scheduleTarget) {
+  const animals = data.species.find((element) => element.name === scheduleTarget);
+  return animals.availability;
+}
+
+const nameAnimals = data.species.map((element) => element.name);
 const namesDay = Object.keys(data.hours);
-
 function dontArguments() {
-  const objReturn = {};
-  namesDay.forEach((elemento) => {
-    if (elemento === 'Monday') {
-      objReturn[elemento] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
+  const ObjectReturn = {};
+  namesDay.forEach((element) => {
+    if (element === 'Monday') {
+      ObjectReturn[element] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
     } else {
-      const animalsD = data.species
-        .filter((elementScope) => elementScope.availability.includes(elemento));
-      const nameAnimals = animalsD.map((elementos) => elementos.name);
-      const dayHours = data.hours[elemento];
-      objReturn[elemento] = {
-        officeHour: `Open from ${dayHours.open}am until ${dayHours.closed}pm`,
-        exhibition: nameAnimals,
+      const animalsDay = data.species
+        .filter((scopeElement) => scopeElement.availability.includes(element));
+      const animalsName = animalsDay.map((elements) => elements.name);
+      const arrayHoursDay = data.hours[element];
+      ObjectReturn[element] = {
+        officeHour: `Open from ${arrayHoursDay.open}am until ${arrayHoursDay.close}pm`,
+        exhibition: animalsName,
       };
     }
   });
-  return objReturn;
+  return ObjectReturn;
 }
 
-const ifMonday = {};
-
+const verifyMonday = {};
 function getSchedule(scheduleTarget) {
   // seu código aqui
   if (scheduleTarget === 'Monday') {
-    ifMonday[scheduleTarget] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
-    return ifMonday;
-  } if (namesAnimals.includes(scheduleTarget)) {
+    verifyMonday[scheduleTarget] = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
+    return verifyMonday;
+  } if (nameAnimals.includes(scheduleTarget)) {
     return verifyAnimal(scheduleTarget);
   } if (namesDay.includes(scheduleTarget)) {
-    return verifyDay(scheduleTarget);
+    return verifyDay(scheduleTarget); // referência: https://github.com/tryber/sd-015-b-project-zoo-functions/pull/81/commits/7a28adcd239830563493ed56aa22292cb0493937
   }
-  return dontArguments;
+  return dontArguments();
 }
 
 module.exports = getSchedule;
