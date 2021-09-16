@@ -12,7 +12,7 @@
 // function argNull() {
 
 //   const dataObj = {};
-  
+
 //   days.forEach((day) => {
 //     const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
 //     const animaisExibicao = species
