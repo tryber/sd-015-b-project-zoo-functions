@@ -12,17 +12,18 @@ function argNull() {
     const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
     const exibicaoDoDia = species
     .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name);
-      if (day === 'Monday') {
-        dataObj[day] = {
-          officeHour: 'CLOSED',
-          exhibition: 'The zoo will be closed!',
-        };
-      } else {
-        dataObj[day] = {
-          officeHour: messageOffice,
-          exhibition: exibicaoDoDia,
-        };
-      }
+
+    if (day === 'Monday') {
+      dataObj[day] = {
+        officeHour: 'CLOSED',
+        exhibition: 'The zoo will be closed!',
+      };
+    } else {
+      dataObj[day] = {
+        officeHour: messageOffice,
+        exhibition: exibicaoDoDia,
+      };
+    }
   });
   return dataObj;
 }
@@ -30,15 +31,22 @@ function argNull() {
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
-  let objetoRetorno = {};
+  const objetoRetorno = {};
   const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
   const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
 
   if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
 
+  if (dayFound || animalFound) { // Se é passado um animal ou dia
+    if (dayFound) { // Se for um dia
+    }
+    if (animalFound) { // Se for um dia
+
+    }
+
+  }
   return objetoRetorno;
 }
-
 module.exports = getSchedule;
 
 // console.log(getSchedule());
