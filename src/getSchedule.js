@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-const workDays = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+// const workDays = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 
 function paramIsAnAnimal(scheduleTarget) {
   const parameterIsAnAnimal = data.species.some((specie) => specie.name === scheduleTarget);
@@ -8,7 +8,6 @@ function paramIsAnAnimal(scheduleTarget) {
   if (parameterIsAnAnimal) return animalAvalable;
 }
 function getSchedule(scheduleTarget) {
-
   if (scheduleTarget === 'Monday') {
     return { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
   }
