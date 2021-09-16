@@ -1,0 +1,132 @@
+[33mcommit e54e978d5e8b933b1847ac4fea8181daa5db6313[m[33m ([m[1;36mHEAD -> [m[1;32mantonio-campos-zoo-functions-project[m[33m, [m[1;31morigin/antonio-campos-zoo-functions-project[m[33m)[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 22:10:53 2021 -0300
+
+    Realizado requisito 6
+
+[33mcommit e05e208441acf72b8d00b3420bf8faea2fd40792[m
+Merge: e4e9f68 22d9fc6
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 21:53:04 2021 -0300
+
+    Merge branch 'master' of github.com:tryber/sd-015-b-project-zoo-functions into antonio-campos-zoo-functions-project
+
+[33mcommit e4e9f68d8de4e7075ba4b6c930db4d49d715f5bb[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 21:19:25 2021 -0300
+
+    Realizado requisito 5
+
+[33mcommit 22d9fc62c1121330953f19bd78d107ad49f8aa66[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: NicolasFirmo <nicolasfofo@hotmail.com>
+Date:   Tue Sep 14 19:41:29 2021 -0300
+
+    Correção: gênero -> sexo
+
+[33mcommit 552b1bda78dfcd39ae8edc1fed931a8de809fe22[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 18:26:58 2021 -0300
+
+    Realizado requisito 4
+
+[33mcommit 823a4dba3e7ebb0bba5dd0177e5634318b9e4798[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 15:59:24 2021 -0300
+
+    Realizado requisito 3
+
+[33mcommit 756b2f0f6d0c97d69128bea99bd0b2805c71ee81[m
+Author: NicolasFirmo <nicolasfofo@hotmail.com>
+Date:   Tue Sep 14 14:21:34 2021 -0300
+
+    Correção gender -> sex no teste
+
+[33mcommit 6f786413f668e8e0ea0337d2ce85089758c2ed78[m
+Author: NicolasFirmo <nicolasfofo@hotmail.com>
+Date:   Tue Sep 14 10:57:44 2021 -0300
+
+    correção gender -> sex
+
+[33mcommit 4a21b9330f620aa170137529a4e0e9ed36a67cfe[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 10:37:30 2021 -0300
+
+    Realizado requisito 2
+
+[33mcommit b2ac2e456f4da72152b35837730a4e0b98ff8fcd[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Tue Sep 14 00:48:52 2021 -0300
+
+    Realizado requisito 1
+
+[33mcommit b2f245614794bea3eb6d4b22230be4e5959d8c08[m
+Author: Antônio Campos <aclcampos@live.com>
+Date:   Mon Sep 13 22:00:45 2021 -0300
+
+    iniciando o projeto. VAMOS COM TUDO :rocket:
+
+[33mcommit b85e29069bcc79e27454fb15cac6bfb63d1297fe[m[33m ([m[1;31morigin/carlos-lima-zoo-functions-project[m[33m, [m[1;32mmaster[m[33m)[m
+Author: NicolasFirmo <49406269+NicolasFirmo@users.noreply.github.com>
+Date:   Mon Sep 13 15:08:33 2021 -0300
+
+    Erro de escrita
+
+[33mcommit 26c3a3e3b986971476477f49d66002c5f2d0be6a[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Mon Sep 13 11:31:13 2021 -0300
+
+    Updating .github/workflows/main.yml
+
+[33mcommit fdbb87c45fd16e8e5ce9c7b89dcb6ec76ad64950[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Mon Sep 13 11:31:12 2021 -0300
+
+    Updating README.md
+
+[33mcommit f83483c275863162a0ea935769c160459aafa4ad[m
+Author: NicolasFirmo <49406269+NicolasFirmo@users.noreply.github.com>
+Date:   Mon Sep 13 11:27:07 2021 -0300
+
+    Update README.md
+
+[33mcommit 555b79389cac2e33222c30af27f4ca7556b6d97a[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Mon Sep 13 11:24:14 2021 -0300
+
+    Updating .github/workflows/main.yml
+
+[33mcommit a01331a7f6112ccbf78514a5755a973224f7b6aa[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Mon Sep 13 11:24:14 2021 -0300
+
+    Updating README.md
+
+[33mcommit 2bd50a1cf69c21d65e8e99dc41e84829f94de771[m
+Author: NicolasFirmo <49406269+NicolasFirmo@users.noreply.github.com>
+Date:   Fri Sep 10 18:36:27 2021 -0300
+
+    Update README.md
+
+[33mcommit 23fedf1a6902279f20db57f808d1f86154938581[m
+Author: NicolasFirmo <49406269+NicolasFirmo@users.noreply.github.com>
+Date:   Fri Sep 10 13:55:54 2021 -0300
+
+    Update README.md
+
+[33mcommit e8d2c09b1612df4d5ff7be48133947c525cf36b8[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Fri Sep 10 13:52:09 2021 -0300
+
+    Updating .github/workflows/main.yml
+
+[33mcommit fae07bc81750d47eb91c6a97dcbaa31af69f2c1b[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Fri Sep 10 13:52:09 2021 -0300
+
+    Updating README.md
+
+[33mcommit 42979fcb3d5e76ed0c7b430e586e5caa0a95ff8c[m
+Author: Jean Paulo Silva Vasconcelos <jean.vasconcelos6@gmail.com>
+Date:   Fri Sep 10 13:52:03 2021 -0300
+
+    Initial commit
