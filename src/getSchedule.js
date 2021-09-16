@@ -19,11 +19,11 @@ function argNull() {
     const animaisExibicao = species
     .filter( (animal) => animal.availability
     .includes(day))
-    .map((day) => day.name);
+    .map((dayN) => dayN.name);
     if (day === 'Monday') {
       dataObj[day] = `{ ${closedMessage} }`;
     } else {
-      dataObj[day] = `{ 'officeHour': '${messageOffice}', 'exhibition': [ ${animaisExibicao.join(`, `)}]}`;
+      dataObj[day] = `{ 'officeHour': '${messageOffice}', 'exhibition': [ ${animaisExibicao.join(', ')}]}`;
     }
   });
   return dataObj;
@@ -38,29 +38,28 @@ function getSchedule(scheduleTarget) {
   if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
 
   if (dayFound || animalFound) { // Se foi encontrado um dia, ou um animal...
-    
     if (dayFound) { // Se for um dia, execute isto!
-
       days.find( (day) => {
         if (day === scheduleTarget) {
           // console.log(`O dia: ${day} é igual ao dia passado: ${scheduleTarget}`); // Verificação
           const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
           const animaisExibicao = species //Verifica as espécies
           .filter( (animal) => animal.availability // Verifica se o animal está disponível naquele dia
-          .includes(day)) // Para isso, verifica se o dia passado no scheduleTarget está localizado no specie.avaliability 
-          .map((day) => `'${day.name}'`);
+              .includes(day)) // Para isso, verifica se o dia passado no scheduleTarget está localizado no specie.avaliability
+                .map((dayM) => `'${dayM.name}'`);
           if (day === 'Monday') {
             objetoRetorno[day] = `{ ${closedMessage} }`;
             } else {
               objetoRetorno[day] = `{
-                'officeHour': '${messageOffice}',
+              'officeHour': '${messageOffice}',
                 'exhibition': [ ${animaisExibicao.join(`, `)} ],
                 },`;
             }
-          // return objetoRetorno;
+          return objetoRetorno;
         }
         // return objetoRetorno;
       });
+      return objetoRetorno;
     }
     if (animalFound) { // Se for um animal, execute isto!
       // console.log("ANIMAL ENCONTRADO!!!");
