@@ -31,7 +31,7 @@ function argNull() {
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
-  const objetoRetorno = {};
+  let objetoRetorno = {};
   const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
   const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
 
@@ -61,14 +61,26 @@ function getSchedule(scheduleTarget) {
     }
     if (animalFound) { // Se for um animal, execute isto!
       // console.log("ANIMAL ENCONTRADO!!!");
+      species.find( (specie) => {
+        // console.log("Pesquisando Especies...");
+        // console.log(specie.name);
+        // console.log(scheduleTarget);
+        if (specie.name === scheduleTarget) {
+          // console.log("TESTE CONSOLE!!! [animalFound]");
+          objetoRetorno = specie.availability;
+          return objetoRetorno;
+        }
+      });
+      // return objetoRetorno;
     }
   }
   return objetoRetorno;
 }
 
-console.log(getSchedule()); // Elemento Vazio
+// console.log(getSchedule()); // Elemento Vazio
 // console.log(getSchedule('abc')); // Elemento Inválido
 // console.log(getSchedule('Thursday')); // Elemento Dia
-// console.log(getSchedule('lions'));// Elemento Animal
+// console.log(getSchedule('lions')); // Elemento Animal
+// console.log(getSchedule('penguins')); // Elemento Animal
 
 module.exports = getSchedule;
