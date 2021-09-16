@@ -3,11 +3,12 @@ const data = require('../data/zoo_data');
 const { species, hours } = data;
 
 const days = Object.keys(hours);
-const allspecies = [];
-const checkSpecies = species.map( (specie) => {
-  allspecies.push(specie.name);
+const allSpecies = species.map( (specie) => {
+  // allspecies.push(specie.name);
+  return specie.name;
 })
-console.log(allspecies);
+// console.log(allspecies);
+console.log(allSpecies);
 
 function argNull() {
 
@@ -32,7 +33,8 @@ function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
   const dayFound = days.includes(scheduleTarget);
-
+  const animalFound = allSpecies.includes(scheduleTarget)
+  
   // if(found) { // Se encontrar o nome do dia passado no: diasDaSemana
     // console.log("ENCONTRADO!!!");
   //   days.forEach((day) => {
