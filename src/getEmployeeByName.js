@@ -3,11 +3,11 @@ const data = require('../data/zoo_data');
 
 function getEmployeeByName(employeeName) {
   const verify = (a, c) => {
-    if (c.firstName === employeeName || c.lastName === employeeName) return c;
-    if (a.firstName === employeeName || a.lastName === employeeName) return a;
-    return {};
+    const { firstName, lastName } = c;
+    if (firstName === employeeName || lastName === employeeName) return c;
+    return a;
   };
-  return employees.reduce(verify);
+  return employees.reduce((verify), {});
 }
 
 console.log(getEmployeeByName('Wishart'));
