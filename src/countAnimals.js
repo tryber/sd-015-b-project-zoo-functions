@@ -9,19 +9,27 @@ species.forEach((specie) => {
 });
 
 const getNumberOfAnimals = (animal) => {
-  const objtParameter = Object.values(animal).toString();
-  const numberOfSpecie = species.find((specie) => specie.name === objtParameter)
+  const objtParameter = Object.values(animal);
+  const numberOfSpecie = species.find((specie) => specie.name === objtParameter[0])
     .residents.length;
   return numberOfSpecie;
 };
-const objtParameter = Object.values(animal).toString();
-const objectSpecie = species.find((specie) => specie.name === objtParameter[0]);
-console.log(objectSpecie);
-// console.log(objtAnimals);
+const getNumberForSexy = (animal) => {
+  const objtParameter = Object.values(animal);
+  const objectSpecie = species.find((specie) => specie.name === objtParameter[0]).residents;
+  const verifySexy = objectSpecie.filter((infoAnimal) =>
+    infoAnimal.sex === objtParameter[1]).length;
+  return verifySexy;
+};
+
 function countAnimals(animal) {
   if (animal === undefined) return objtAnimals;
+  if (!animal.sex) {
+    const numberForSpecie = getNumberOfAnimals(animal);
+    return numberForSpecie;
+  }
+  const numberForSex = getNumberForSexy(animal);
+  return numberForSex;
 }
 
 module.exports = countAnimals;
-// console.log(countAnimals({ specie: 'penguins' }));
-console.log(getNumberOfAnimals({ specie: 'bears', gender: 'female' }));
