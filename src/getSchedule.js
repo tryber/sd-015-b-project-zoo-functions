@@ -23,7 +23,7 @@ function argNull() {
     if (day === 'Monday') {
       dataObj[day] = `{ ${closedMessage} }`;
     } else {
-      dataObj[day] = `{ 'officeHour': '${messageOffice}','exhibition': '[ ${animaisExibicao.join(`, `)} ]'}`;
+      dataObj[day] = `{ 'exhibition': '[ ${animaisExibicao.join(`, `)}, 'officeHour': '${messageOffice}' ]'}`;
     }
   });
   return dataObj;
@@ -35,8 +35,7 @@ function getSchedule(scheduleTarget) {
   const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
   const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
 
-  if (!dayFound && !animalFound) return argNull();
-  // if (!dayFound && !animalFound) return 'TESTE';
+  if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
 
   if (dayFound || animalFound) { // Se foi encontrado um dia, ou um animal...
     
@@ -53,7 +52,7 @@ function getSchedule(scheduleTarget) {
           if (day === 'Monday') {
             objetoRetorno[day] = `{ ${closedMessage} }`;
             } else {
-              objetoRetorno[day] = `{ 'officeHour': '${messageOffice}','exhibition': '[ ${animaisExibicao.join(`, `)} ]'}`;
+              objetoRetorno[day] = `{ 'exhibition': '[ ${animaisExibicao.join(`, `)} ]', 'officeHour': '${messageOffice}'}`;
             }
           // return objetoRetorno;
         }
