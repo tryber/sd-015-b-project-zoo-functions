@@ -1,11 +1,16 @@
+const { prices } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  // seu código aquii
+  return prices;
 }
+// console.log(countEntrants(prices));
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (!entrants || Object.keys(entrants).length === 0) {
+    return 0;
+  }
 }
+console.log(calculateEntry({}));
 
 module.exports = { calculateEntry, countEntrants };
