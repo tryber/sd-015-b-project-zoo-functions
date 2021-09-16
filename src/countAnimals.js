@@ -14,7 +14,9 @@ const getNumberOfAnimals = (animal) => {
     .residents.length;
   return numberOfSpecie;
 };
-
+const objtParameter = Object.values(animal).toString();
+const objectSpecie = species.find((specie) => specie.name === objtParameter[0]);
+console.log(objectSpecie);
 // console.log(objtAnimals);
 function countAnimals(animal) {
   if (animal === undefined) return objtAnimals;
@@ -22,4 +24,4 @@ function countAnimals(animal) {
 
 module.exports = countAnimals;
 // console.log(countAnimals({ specie: 'penguins' }));
-console.log(getNumberOfAnimals({ specie: 'giraffes' }));
+console.log(getNumberOfAnimals({ specie: 'bears', gender: 'female' }));
