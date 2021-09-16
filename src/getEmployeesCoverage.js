@@ -63,6 +63,7 @@ function mapNamesToLoc(employee) {
 }
 
 function getLocations(returnArr) {
+  // calls mapNamesToLoc for each employee
   returnArr.forEach((employee) => mapNamesToLoc(employee));
 }
 
@@ -79,9 +80,11 @@ function mapIdsToNames(employee) {
 }
 
 function getSpecies(returnArr) {
+  // calls mapIdsToNames for each employee
   returnArr.forEach((employee) => mapIdsToNames(employee));
 }
 
+// makes returnArr structure
 function makeReturnArr() {
   const returnArr = data.employees;
   const newReturnArr = returnArr.map((employee) => (
@@ -95,16 +98,47 @@ function makeReturnArr() {
   return newReturnArr;
 }
 
-function checkValidOptions(returnArr, options) {
+// creates array with all names and last names
+function createNameLastNameArray(returnArr) {
+  const employeeNames = [];
+  employeeNames.push(...returnArr.map((employee) => employee.fullName));
+  const employeeNamesSplit = employeeNames.map((employee) => employee.split(' ')).flat();
+  return employeeNamesSplit;
+}
+
+// filters array given options, works for id, full name, first name and last name
+function filterArray(returnArr, options) {
   const { name, id } = options;
-  const isValid = returnArr.some((employee) => (employee.id === id || employee.fullName === name));
-  if (!isValid) {
-    throw new Error('Informações inválidas');
+  let filteredReturnArr;
+  if (id) {
+    // filters array for employee with id === id, returns an array
+    filteredReturnArr = returnArr.filter((employee) => employee.id === id);
   }
+  if (name) {
+    // filters array for employee with fullName including what is passed as name, returns an array
+    filteredReturnArr = returnArr.filter((employee) => employee.fullName.includes(name));
+  }
+  // removes filteredReturnArr from outer array, returns it as an object
+  const filteredObj = Object.assign({}, ...filteredReturnArr);
+  return filteredObj;
 }
 
 function checkOptions(returnArr, options) {
-  checkValidOptions(returnArr, options);
+  const namesList = createNameLastNameArray(returnArr);
+  const { name, id } = options;
+  let isNameValid = false;
+  // checks if first or last name are in namesList
+  if (name) {
+    const splitName = name.split(' ');
+    // if first or last name are in namesList, returns true
+    isNameValid = splitName.some((part) => namesList.includes(part));
+  }
+  const isValid = returnArr.some((emp) => (emp.id === id || isNameValid));
+  if (!isValid) {
+    throw new Error('Informações inválidas');
+  } else {
+    return filterArray(returnArr, options);
+  }
 }
 
 function getEmployeesCoverage(options) {
@@ -113,10 +147,10 @@ function getEmployeesCoverage(options) {
   getLocations(returnArr);
   // console.log(returnArr);
   if (options) {
-    checkOptions(returnArr, options);
+    const filteredArr = checkOptions(returnArr, options);
+    return filteredArr;
   }
   return returnArr;
 }
-// getEmployeesCoverage({ name: 'Ardith Azevado' });
 
 module.exports = getEmployeesCoverage;
