@@ -35,7 +35,8 @@ function getSchedule(scheduleTarget) {
   const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
   const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
 
-  // if (!dayFound && !animalFound) return argNull();
+  if (!dayFound && !animalFound) return argNull();
+  // if (!dayFound && !animalFound) return 'TESTE';
 
   if (dayFound || animalFound) { // Se foi encontrado um dia, ou um animal...
     
@@ -62,15 +63,13 @@ function getSchedule(scheduleTarget) {
     if (animalFound) { // Se for um animal, execute isto!
       // console.log("ANIMAL ENCONTRADO!!!");
     }
-
   }
-  
   return objetoRetorno;
 }
 
 console.log(getSchedule()); // Elemento Vazio
 // console.log(getSchedule('abc')); // Elemento Inválido
-console.log(getSchedule('Thursday')); // Elemento Dia
+// console.log(getSchedule('Thursday')); // Elemento Dia
 // console.log(getSchedule('lions'));// Elemento Animal
 
 module.exports = getSchedule;
