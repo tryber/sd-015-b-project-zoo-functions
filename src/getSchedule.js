@@ -77,10 +77,6 @@ function getSchedule(scheduleTarget) {
   return objetoRetorno;
 }
 
-// console.log(getSchedule()); // Elemento Vazio
-// console.log(getSchedule('abc')); // Elemento Inválido
 // console.log(getSchedule('Thursday')); // Elemento Dia
-// console.log(getSchedule('lions')); // Elemento Animal
-// console.log(getSchedule('penguins')); // Elemento Animal
 
 module.exports = getSchedule;
