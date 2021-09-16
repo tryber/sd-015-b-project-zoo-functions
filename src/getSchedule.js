@@ -48,5 +48,4 @@ function getSchedule(scheduleTarget) {
   return getCompleteSchedule(days);
 }
 
-getSchedule('asdf');
 module.exports = getSchedule;
