@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-let listShedule = {
+const listShedule = {
   Tuesday: {},
   Wednesday: {},
   Thursday: {},
@@ -32,13 +32,13 @@ function getValidAnswerShedule(answer) {
 const getFullShedule = (weekDay, func) =>
   func(data.species.filter((specie) =>
     specie.availability.some((value) =>
-      value === weekDay)).map((specie) =>
-        specie.name));
+      value === weekDay)).map((specie) => specie.name));
 
 function getDefaultShedule() {
   for (let index = 0; index < weekDays.length; index += 1) {
-    listShedule[weekDays[index]]['officeHour'] = getOfficeHour(weekDays[index]);
-    listShedule[weekDays[index]]['exhibition'] = getFullShedule(weekDays[index], getValidAnswerShedule);
+    listShedule[weekDays[index]].officeHour = getOfficeHour(weekDays[index]);
+    listShedule[weekDays[index]].exhibition = getFullShedule(weekDays[index],
+      getValidAnswerShedule);
   }
   return listShedule;
 }
@@ -46,7 +46,7 @@ function getDefaultShedule() {
 const getDaysBySpecie = (specieName) =>
   (data.species.filter((specie) =>
     specie.name === specieName).map((specie) =>
-      specie.availability))[0];
+    specie.availability))[0];
 
 const isDayOfWeek = (weekDay) => {
   let result = false;
@@ -69,12 +69,11 @@ function getResultSpecieOrDays(specieName, dayOfWeek) {
   if (specieName) {
     result = getDaysBySpecie(specieName);
   } else {
-    console.log
     result = {
       [dayOfWeek]: {
-        ['officeHour']: getOfficeHour(dayOfWeek),
-        ['exhibition']: getFullShedule(dayOfWeek, getValidAnswerShedule),
-      }
+        'officeHour': getOfficeHour(dayOfWeek),
+        'exhibition': getFullShedule(dayOfWeek, getValidAnswerShedule),
+      },
     };
   }
   return result;
