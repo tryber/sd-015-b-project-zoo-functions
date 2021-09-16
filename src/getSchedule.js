@@ -23,7 +23,7 @@ function argNull() {
     if (day === 'Monday') {
       dataObj[day] = `{ ${closedMessage} }`;
     } else {
-      dataObj[day] = `{ 'exhibition': '[ ${animaisExibicao.join(`, `)}, 'officeHour': '${messageOffice}' ]'}`;
+      dataObj[day] = `{ 'officeHour': '${messageOffice}', 'exhibition': [ ${animaisExibicao.join(`, `)}]}`;
     }
   });
   return dataObj;
@@ -48,11 +48,14 @@ function getSchedule(scheduleTarget) {
           const animaisExibicao = species //Verifica as espécies
           .filter( (animal) => animal.availability // Verifica se o animal está disponível naquele dia
           .includes(day)) // Para isso, verifica se o dia passado no scheduleTarget está localizado no specie.avaliability 
-          .map((day) => day.name);
+          .map((day) => `'${day.name}'`);
           if (day === 'Monday') {
             objetoRetorno[day] = `{ ${closedMessage} }`;
             } else {
-              objetoRetorno[day] = `{ 'exhibition': '[ ${animaisExibicao.join(`, `)} ]', 'officeHour': '${messageOffice}'}`;
+              objetoRetorno[day] = `{
+                'officeHour': '${messageOffice}',
+                'exhibition': [ ${animaisExibicao.join(`, `)} ],
+                },`;
             }
           // return objetoRetorno;
         }
@@ -78,5 +81,7 @@ function getSchedule(scheduleTarget) {
 }
 
 // console.log(getSchedule('Thursday')); // Elemento Dia
+// console.log(getSchedule('Wednesday')); // Elemento Dia
+console.log(getSchedule('')); // Elemento Dia
 
 module.exports = getSchedule;
