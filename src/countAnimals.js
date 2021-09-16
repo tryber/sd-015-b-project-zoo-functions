@@ -1,4 +1,6 @@
+const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
+
 
 function animalsWithoutParameter() {
   const specieAnimals = {};
@@ -23,12 +25,13 @@ function countAnimals(animal) {
   if (!animal) {
     return animalsWithoutParameter();
   }
-  if (Object.toString(animal.length)) {
+  if (Object.values(animal).length === 1) {
     return amountAnimalsSpeciee(animal);
   }
-  if (Object.toString(animal.sex)) {
+  if (Object.values( animal.sex)) {
     return amountAnimalsSexAndSpeciee(animal);
   }
 }
+
 
 module.exports = countAnimals;
