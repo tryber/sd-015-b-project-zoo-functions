@@ -17,6 +17,7 @@ function zooSchedule() {
   object.Monday = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
   return object;
 }
+
 const getDays = (scheduleTarget) => ({ [scheduleTarget]: zooSchedule()[scheduleTarget] });
 
 function getAnimals(scheduleTarget) {

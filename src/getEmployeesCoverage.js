@@ -18,13 +18,13 @@ function getEmployee(object) {
     || Object.values(object).includes(lastName));
 }
 
-function getSpecies(responsibleFor) {
-  const getNameById = responsibleFor.map((specie) => species.find(({ id }) => id === specie).name);
+function getSpecies(object) {
+  const getNameById = object.map((specie) => species.find(({ id }) => id === specie).name);
   return getNameById;
 }
 
-function getLocation(responsibleFor) {
-  const locations = responsibleFor.map((specie) => species
+function getLocation(object) {
+  const locations = object.map((specie) => species
     .find(({ id }) => id === specie).location);
   return locations;
 }
