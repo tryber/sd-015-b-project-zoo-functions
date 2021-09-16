@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 const getIdFirstSpecie = (id) =>
   data.employees.filter((employee) =>
     employee.id === id).map((employee) =>
-      employee.responsibleFor.find((value) => value))[0];
+    employee.responsibleFor.find((value) => value))[0];
 
 const getListResidents = (idSpecie) =>
   data.species.filter((specie) =>
@@ -21,7 +21,7 @@ const findMostOldSpecieFromEmployee = (id) => {
 };
 
 function getOldestFromFirstSpecies(id) {
-  let result =[];
+  let result = [];
   if (id) {
     result = findMostOldSpecieFromEmployee(id);
   }
