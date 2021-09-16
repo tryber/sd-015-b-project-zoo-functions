@@ -7,8 +7,7 @@ const allSpecies = species.map( (specie) => {
   // allspecies.push(specie.name);
   return specie.name;
 })
-// console.log(allspecies);
-console.log(allSpecies);
+// console.log(allSpecies);
 
 function argNull() {
 
@@ -32,11 +31,20 @@ function argNull() {
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
-  const dayFound = days.includes(scheduleTarget);
-  const animalFound = allSpecies.includes(scheduleTarget)
-  
+  const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
+  const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
+
+  if (dayFound || animalFound) { // Se foi encontrado um dia, ou um animal...
+    
+    if (dayFound) { // Se for um dia, execute isto!
+      console.log("DIA ENCONTRADO!!!");
+    }
+    if (animalFound) { // Se for um animal, execute isto!
+      console.log("ANIMAL ENCONTRADO!!!");
+    }
+
+  }
   // if(found) { // Se encontrar o nome do dia passado no: diasDaSemana
-    // console.log("ENCONTRADO!!!");
   //   days.forEach((day) => {
   //     const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
   //     const animaisExibicao = species //Verifica as espécies
@@ -58,6 +66,7 @@ function getSchedule(scheduleTarget) {
 
 // console.log(getSchedule()); // Elemento Vazio
 // console.log(getSchedule('abc')); // Elemento Inválido
-console.log(getSchedule('Thursday')); // Elemento Válido
+// console.log(getSchedule('Thursday')); // Elemento Dia
+console.log(getSchedule('lions'));// Elemento Animal
 
 module.exports = getSchedule;
