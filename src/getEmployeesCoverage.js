@@ -1,13 +1,13 @@
 const data = require('../data/zoo_data');
 
-const { employees, species } = data;
+const { employees } = data;
 
 const getAnimal = (...ids) => {
   const idsAnimais = [];
-  const nomesAnimais = [];
-  const capturaIds = ids.forEach((id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
-    idsAnimais.push(id);
-  });
+  // const nomesAnimais = [];
+  // const capturaIds = ids.forEach((id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
+  //   idsAnimais.push(id);
+  // });
   // idsAnimais.map((id) => {
   //   console.log("Teste");
   //   // return Teste;
