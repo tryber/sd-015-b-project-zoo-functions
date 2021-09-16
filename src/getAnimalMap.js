@@ -1,141 +1,103 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const NE = species.filter((specie) => specie.location === 'NE').map((specie) => specie.name);
-const NW = species.filter((specie) => specie.location === 'NW').map((specie) => specie.name);
-const SE = species.filter((specie) => specie.location === 'SE').map((specie) => specie.name);
-const SW = species.filter((specie) => specie.location === 'SW').map((specie) => specie.name);
-
-const fullNE = species.filter((sp) => sp.location === 'NE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const fullNW = species.filter((sp) => sp.location === 'NW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const fullSE = species.filter((sp) => sp.location === 'SE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const fullSW = species.filter((sp) => sp.location === 'SW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-
-const sortedNE = species.filter((sp) => sp.location === 'NE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents.sort() };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const sortedNW = species.filter((sp) => sp.location === 'NW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents.sort() };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const sortedSE = species.filter((sp) => sp.location === 'SE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents.sort() };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const sortedSW = species.filter((sp) => sp.location === 'SW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.map((res) => res.name);
-  const eachAnimal = { [name]: allResidents.sort() };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-
-const maleNE = species.filter((sp) => sp.location === 'NE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((male) => male.sex === 'male').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const maleNW = species.filter((sp) => sp.location === 'NW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((male) => male.sex === 'male').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const maleSE = species.filter((sp) => sp.location === 'SE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((male) => male.sex === 'male').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const maleSW = species.filter((sp) => sp.location === 'SW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((male) => male.sex === 'male').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-
-const femaleNE = species.filter((sp) => sp.location === 'NE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((female) => female.sex === 'female').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const femaleNW = species.filter((sp) => sp.location === 'NW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((female) => female.sex === 'female').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const femaleSE = species.filter((sp) => sp.location === 'SE').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((female) => female.sex === 'female').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-const femaleSW = species.filter((sp) => sp.location === 'SW').reduce((acc, { name, residents }) => {
-  const allResidents = residents.filter((female) => female.sex === 'female').map((res) => res.name);
-  const eachAnimal = { [name]: allResidents };
-  acc.push(eachAnimal);
-  return acc;
-}, []);
-console.log('femaleSW É --->' , femaleSW);
-
-function getAnimalMap(options) {
-  const simpleMap = { NE, NW, SE, SW };
-  if (!options) return simpleMap;
-  const { includeNames, sorted, sex } = options;
-  
-  const namesMap = { NE: fullNE, NW: fullNW, SE: fullSE, SW: fullSW };
-  if (includeNames === true && !sorted && !sex) return namesMap;
-  
-  const sortedMap = { NE: sortedNE, NW: sortedNW, SE: sortedSE, SW: sortedSW };
-  if (sorted === true && includeNames === true && !sex) return sortedMap;
-  
-  console.log(sex)
-  const maleMap = { NE: maleNE, NW: maleNW, SE: maleSE, SW: maleSW };
-  if (sex === 'male' && !sorted) return maleMap;
-
-  const femaleMap = { NE: femaleNE, NW: femaleNW, SE: femaleSE, SW: femaleSW };
-  if (sex === 'female' !sorted) return femaleMap;
-
-  const femaleMap = { NE: femaleNE, NW: femaleNW, SE: femaleSE, SW: femaleSW };
-  if (sex === 'female') return femaleMap;
-
-  const femaleMap = { NE: femaleNE, NW: femaleNW, SE: femaleSE, SW: femaleSW };
-  if (sex === 'female') return femaleMap;
-
-
-
+function getDefaultLocation(spLocation) {
+  return species.filter(({ location }) => location === spLocation).map(({ name }) => name);
 }
 
+const defaultLocations = {
+  NE: getDefaultLocation('NE'),
+  NW: getDefaultLocation('NW'),
+  SE: getDefaultLocation('SE'),
+  SW: getDefaultLocation('SW'),
+};
+
+// console.log(defaultLocations)
+
+function getResidentsNames(location) {
+  return species.filter((sp) => sp.location === location).reduce((acc, { name, residents }) => {
+    const allResidents = residents.map((res) => res.name);
+    const eachAnimal = { [name]: allResidents };
+    acc.push(eachAnimal);
+    return acc;
+  }, []);
+}
+
+const animalsAndResidents = {
+  NE: getResidentsNames('NE'),
+  NW: getResidentsNames('NW'),
+  SE: getResidentsNames('SE'),
+  SW: getResidentsNames('SW'),
+};
+// console.log(animalsAndResidents);
+
+function getResidentsNamesSorted(location) {
+  return species.filter((sp) => sp.location === location).reduce((acc, { name, residents }) => {
+    const allResidents = residents.map((res) => res.name);
+    const eachAnimal = { [name]: allResidents.sort() };
+    acc.push(eachAnimal);
+    return acc;
+  }, []);
+}
+
+const animalsAndResidentsSorted = {
+  NE: getResidentsNamesSorted('NE'),
+  NW: getResidentsNamesSorted('NW'),
+  SE: getResidentsNamesSorted('SE'),
+  SW: getResidentsNamesSorted('SW'),
+};
+
+function getResidentsNamesBySex(location, sex) {
+  return species.filter((sp) => sp.location === location).reduce((acc, { name, residents }) => {
+    const allResidents = residents.filter((resSex) => resSex.sex === sex).map((res) => res.name);
+    const eachAnimal = { [name]: allResidents };
+    acc.push(eachAnimal);
+    return acc;
+  }, []);
+}
+function createResidentsNamesBySex(sex) {
+  return {
+    NE: getResidentsNamesBySex('NE', sex),
+    NW: getResidentsNamesBySex('NW', sex),
+    SE: getResidentsNamesBySex('SE', sex),
+    SW: getResidentsNamesBySex('SW', sex),
+  };
+}
+
+function getSortedResidentsNamesBySex(location, sex) {
+  return species.filter((sp) => sp.location === location).reduce((acc, { name, residents }) => {
+    const allResidents = residents.filter((resSex) => resSex.sex === sex).map((res) => res.name);
+    const eachAnimal = { [name]: allResidents.sort() };
+    acc.push(eachAnimal);
+    return acc;
+  }, []);
+}
+function createSortedResidentsNamesBySex(sex) {
+  return {
+    NE: getSortedResidentsNamesBySex('NE', sex),
+    NW: getSortedResidentsNamesBySex('NW', sex),
+    SE: getSortedResidentsNamesBySex('SE', sex),
+    SW: getSortedResidentsNamesBySex('SW', sex),
+  };
+}
+
+function teste(options) {
+  if (options.sex && options.sorted) {
+    return createSortedResidentsNamesBySex(options.sex);
+  }
+  if (options.sorted) return animalsAndResidentsSorted;
+  if (options.sex) {
+    return createResidentsNamesBySex(options.sex);
+  }
+  return animalsAndResidents;
+}
+
+function getAnimalMap(options) {
+  if (options && options.includeNames) return teste(options);
+  return defaultLocations;
+}
 const options = { includeNames: true, sex: 'female' };
-console.log(getAnimalMap(options));
+getAnimalMap(options);
+// console.log(getAnimalMap(options));
 
 module.exports = getAnimalMap;
