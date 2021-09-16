@@ -84,20 +84,6 @@ function getSpecies(returnArr) {
   returnArr.forEach((employee) => mapIdsToNames(employee));
 }
 
-// makes returnArr structure
-function makeReturnArr() {
-  const returnArr = data.employees;
-  const newReturnArr = returnArr.map((employee) => (
-    {
-      id: employee.id,
-      fullName: `${employee.firstName} ${employee.lastName}`,
-      species: employee.responsibleFor,
-      locations: [],
-    }
-  ));
-  return newReturnArr;
-}
-
 // creates array with all names and last names
 function createNameLastNameArray(returnArr) {
   const employeeNames = [];
@@ -139,6 +125,20 @@ function checkOptions(returnArr, options) {
   } else {
     return filterArray(returnArr, options);
   }
+}
+
+// makes returnArr structure
+function makeReturnArr() {
+  const returnArr = data.employees;
+  const newReturnArr = returnArr.map((employee) => (
+    {
+      id: employee.id,
+      fullName: `${employee.firstName} ${employee.lastName}`,
+      species: employee.responsibleFor,
+      locations: [],
+    }
+  ));
+  return newReturnArr;
 }
 
 function getEmployeesCoverage(options) {
