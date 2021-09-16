@@ -22,10 +22,8 @@ const noData = () => {
     return {
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
-      // species: `Tratar Id dos animais capturar o objeto retornado, e salvar seu nome`, // getAnimal(idsAnimais);
-      species: getAnimal(idsAnimais), // Array com o nome dos
-      // locations: `Tratar o objeto retornado e mostrar sua localização`, // getLocation();
-      locations: '0', // getLocation();
+      species: getAnimal(idsAnimais),
+      locations: '0',
     };
   });
   // console.log(employees);
