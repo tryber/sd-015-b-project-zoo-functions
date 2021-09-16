@@ -3,14 +3,9 @@ const data = require('../data/zoo_data');
 
 const getEmployee = (obj) => {
   const { values } = Object;
-  const employee = ({ id, firstName, lastName }) =>
-    values(obj).includes(id)
-    || values(obj).includes(firstName)
-    || values(obj).includes(lastName);
-
-  return employees.some(employee)
-    ? employees.find(employee)
-    : false;
+  return employees.find(({ id, firstName, lastName }) => values(obj).includes(id)
+  || values(obj).includes(firstName)
+  || values(obj).includes(lastName));
 };
 
 const getSpeciesName = (obj) => getEmployee(obj).responsibleFor
@@ -23,7 +18,7 @@ const getSpeciesLocation = (obj) => getEmployee(obj).responsibleFor
 
 const objectConstructing = (obj) => {
   const object = {};
-  if (!getEmployee(obj)) throw new Error('Informações inválidas');
+  if (getEmployee(obj) === undefined) throw new Error('Informações inválidas');
   const { id, firstName, lastName } = getEmployee(obj);
   Object.assign(object, {
     id,
