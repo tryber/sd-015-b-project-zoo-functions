@@ -9,6 +9,8 @@ function countEntrants(entrants) {
 function calculateEntry(entrants) {
   if (!entrants || Object.keys(entrants).length === 0) {
     return 0;
+  } if (entrants) {
+    return 0;
   }
 }
 console.log(calculateEntry({}));
