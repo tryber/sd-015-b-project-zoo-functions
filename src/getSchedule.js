@@ -18,7 +18,7 @@ function argNull() {
         };
       } else {
         dataObj[day] = {
-          officeHour: '',
+          officeHour: messageOffice,
           exhibition: exibicaoDoDia,
         };
       }
@@ -29,6 +29,15 @@ function argNull() {
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
+  let objetoRetorno = {};
+  const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
+  const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
+
+  if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
+
+  return objetoRetorno;
 }
 
 module.exports = getSchedule;
+
+// console.log(getSchedule());
