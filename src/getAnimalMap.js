@@ -1,11 +1,9 @@
 const data = require('../data/zoo_data');
 
 function createAnimalList(options, specie) {
-  return specie.residents.reduce((arr, animal) => {
-    if (options.sex && animal.sex === options.sex) arr.push(animal.name);
-    if (!options.sex) arr.push(animal.name);
-    return arr;
-  }, []);
+  return specie.residents
+    .filter((animal) => (options.sex && animal.sex === options.sex) || (!options.sex))
+    .map((animal) => animal.name);
 }
 
 function getAnimalMap(options = { includeNames: false, sorted: false, sex: false }) {
