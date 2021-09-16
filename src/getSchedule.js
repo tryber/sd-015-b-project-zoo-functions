@@ -8,7 +8,6 @@ const allSpecies = species.map( (specie) => {
   // allspecies.push(specie.name);
   return specie.name;
 })
-// console.log(allSpecies);
 
 function argNull() {
 
@@ -37,15 +36,14 @@ function getSchedule(scheduleTarget) {
 
   if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
 
-  if (dayFound || animalFound) { // Se foi encontrado um dia, ou um animal...
-    if (dayFound) { // Se for um dia, execute isto!
+  if (dayFound || animalFound) {
+    if (dayFound) {
       days.find( (day) => {
         if (day === scheduleTarget) {
-          // console.log(`O dia: ${day} é igual ao dia passado: ${scheduleTarget}`); // Verificação
           const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-          const animaisExibicao = species //Verifica as espécies
-          .filter( (animal) => animal.availability // Verifica se o animal está disponível naquele dia
-              .includes(day)) // Para isso, verifica se o dia passado no scheduleTarget está localizado no specie.avaliability
+          const animaisExibicao = species
+          .filter( (animal) => animal.availability
+              .includes(day))
                 .map((dayM) => `'${dayM.name}'`);
           if (day === 'Monday') {
             objetoRetorno[day] = `{ ${closedMessage} }`;
@@ -57,23 +55,16 @@ function getSchedule(scheduleTarget) {
             }
           return objetoRetorno;
         }
-        // return objetoRetorno;
       });
       return objetoRetorno;
     }
-    if (animalFound) { // Se for um animal, execute isto!
-      // console.log("ANIMAL ENCONTRADO!!!");
+    if (animalFound) {
       species.find( (specie) => {
-        // console.log("Pesquisando Especies...");
-        // console.log(specie.name);
-        // console.log(scheduleTarget);
         if (specie.name === scheduleTarget) {
-          // console.log("TESTE CONSOLE!!! [animalFound]");
           objetoRetorno = specie.availability;
           return objetoRetorno;
         }
       });
-      // return objetoRetorno;
     }
   }
   return objetoRetorno;
