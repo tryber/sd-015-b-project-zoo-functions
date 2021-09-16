@@ -1,11 +1,5 @@
 const data = require('../data/zoo_data');
 
-const isEmployee = (id, name) =>
-  data.employees.some((employee) =>
-    employee.id === id
-    || employee.firstName === name
-    || employee.lastName === name);
-
 const getEmployeeInfo = (id, name) =>
   data.employees.filter((employee) =>
     employee.id === id
@@ -17,7 +11,7 @@ const getNameSpeciesOfEmployee = (employee) => {
   employee.responsibleFor.forEach((responsible) =>
     result.push(data.species.filter((specie) =>
       specie.id === responsible).map((specie) =>
-        specie.name)[0]));
+      specie.name)[0]));
   return result;
 };
 
@@ -26,15 +20,15 @@ const getLocationsSpeciesOfEmployee = (employee) => {
   employee.responsibleFor.forEach((responsible) =>
     result.push(data.species.filter((specie) =>
       specie.id === responsible).map((specie) =>
-        specie.location)[0]));
+      specie.location)[0]));
   return result;
 };
 
 const getEmployeeOutput = (info) => {
-  if (!isEmployee(info.id, info.name)) {
+  const employee = getEmployeeInfo(info.id, info.name);
+  if (!employee || employee === '') {
     throw new Error('Informações inválidas');
   }
-  const employee = getEmployeeInfo(info.id, info.name);
   const speciesNames = getNameSpeciesOfEmployee(employee);
   const speciesLocations = getLocationsSpeciesOfEmployee(employee);
   return {
@@ -46,11 +40,11 @@ const getEmployeeOutput = (info) => {
 };
 
 const getAllEmployeesOutput = () => {
-  let result = [];
+  const result = [];
   const employees = data.employees.filter((employee) =>
-  employee).map((employee) => employee.id);
+    employee).map((employee) => employee.id);
   employees.forEach((employee) =>
-  result.push(getEmployeeOutput({id: employee})));
+    result.push(getEmployeeOutput({ id: employee })));
   return result;
 };
 
