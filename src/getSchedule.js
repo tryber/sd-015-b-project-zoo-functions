@@ -71,8 +71,8 @@ function getResultSpecieOrDays(specieName, dayOfWeek) {
   } else {
     result = {
       [dayOfWeek]: {
-        'officeHour': getOfficeHour(dayOfWeek),
-        'exhibition': getFullShedule(dayOfWeek, getValidAnswerShedule),
+        officeHour: getOfficeHour(dayOfWeek),
+        exhibition: getFullShedule(dayOfWeek, getValidAnswerShedule),
       },
     };
   }
