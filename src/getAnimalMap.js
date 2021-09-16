@@ -9,12 +9,9 @@ function getAnimalMap(options) {
       return acc;
     }, {});
   }
-  return species.reduce((acc, curr) => {
-    acc[curr.location] = species.filter((objeto) => objeto.location === curr.location)
-      .reduce((acumulador, atual) => {
-        acumulador[atual.name] = atual.residents.map((residentsName) => residentsName.name)
-        return acumulador;
-      }, {})
+  return species.reduce((acc, atual) => {
+    acc[atual.location] = species.filter((objeto) => objeto.location === atual.location)
+      .map((nome) => nome.residents.find((nomes) => nomes.name));
     return acc;
   }, {});
 }
