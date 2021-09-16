@@ -1,18 +1,13 @@
 const data = require('../data/zoo_data');
 
-const { employees } = data;
+const { employees, species } = data;
 
 const getAnimal = (...ids) => {
   const idsAnimais = [];
-  // const nomesAnimais = [];
-  // const capturaIds = ids.forEach((id) => { // Captura id de cada animal que a pessoa é responsável, e joga no idsAnimais
-  //   idsAnimais.push(id);
-  // });
-  // idsAnimais.map((id) => {
-  //   console.log("Teste");
-  //   // return Teste;
-  // });
-
+  const nomesAnimais = [];
+  const capturaIds = ids.forEach((id) => {
+    idsAnimais.push(id);
+  });
   return idsAnimais;
 };
 
@@ -26,16 +21,14 @@ const noData = () => {
       locations: '0',
     };
   });
-  // console.log(employees);
   const allData = (funcMap);
   return allData;
 };
-// console.log(noData());
 
 function getEmployeesCoverage(peopleId) {
   // seu código aqui
   if (!peopleId) return noData();
 }
-// console.log(getEmployeesCoverage(''));
+console.log(getEmployeesCoverage(''));
 
 module.exports = getEmployeesCoverage;

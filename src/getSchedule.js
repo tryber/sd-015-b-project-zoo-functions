@@ -1,13 +1,13 @@
 // const data = require('../data/zoo_data');
 
-// const { species, hours } = data;
-// const closedMessage = `'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!'`;
+const { species, hours } = data;
+const closedMessage = `'officeHour': 'CLOSED', 'exhibition': 'The zoo will be closed!'`;
 
-// const days = Object.keys(hours);
-// const allSpecies = species.map( (specie) => {
-//   // allspecies.push(specie.name);
-//   return specie.name;
-// })
+const days = Object.keys(hours);
+const allSpecies = species.map( (specie) => {
+  // allspecies.push(specie.name);
+  return specie.name;
+});
 
 // function argNull() {
 
