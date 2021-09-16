@@ -2,21 +2,26 @@ const data = require('../data/zoo_data');
 
 const {species, hours} = data;
 
-const closedMessade = `'CLOSED', 'exhibition': 'The zoo will be closed!'`;
+const closedMessage = `'CLOSED', 'exhibition': 'The zoo will be closed!'`;
 const days = Object.keys(hours);
 const allSpecies = species.map( (specie) => specie.name);
-const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
 
 function argNull() {
   const dataObj = {};
   days.forEach( (day) => {
+    const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
     const exibicaoDoDia = species
-      .filter( (animal) => animal.availability)
-      .includes( (day))
-      .map( (mDay) => mDay.name);
-
+      .filter((animal) => animal.availability
+      .includes(day))
+      .map((mDay) => mDay.name);
+      if (day === 'Monday') {
+        dataObj[day] = `{ 'officeHour': ${closedMessage} }`;
+      }
+      return dataObj;
   });
+  return dataObj;
 }
+console.log( argNull() );
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
