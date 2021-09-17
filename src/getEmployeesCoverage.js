@@ -1,10 +1,9 @@
 const data = require('../data/zoo_data');
 
-const { employees, species } = data;
+const { employees } = data;
 
 const getAnimal = (...ids) => {
   const idsAnimais = [];
-  const nomesAnimais = [];
   const capturaIds = ids.forEach((id) => {
     idsAnimais.push(id);
   });
