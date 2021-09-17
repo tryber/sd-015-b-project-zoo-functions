@@ -1,36 +1,39 @@
+const { name } = require('faker/locale/pt_BR');
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  const newObj = {
-    child: 0,
-    adult: 0,
-    senior: 0,
-  };
+  const C = entrants.filter((element) => (element.age < 18)).length;
+  const A = entrants.filter((element) => (element.age >= 18 && element.age < 50)).length;
+  const S = entrants.filter((element) => (element.age >= 50)).length;
+  const result = { child: C, adult: A, senior: S };
+  return result;
+}
 
-  entrants.forEach(({ age }) => {
-    if (age < 18) {
-      newObj.child += 1;
-    } else if (age >= 18 && age < 50) {
-      newObj.adult += 1;
-    } else { newObj.senior += 1; }
-  });
-
-  return newObj;
+function callback(array) {
+  if (!array || array.constructor === Object || Object.keys(array).length === 0) {
+    return true;
+  } return false;
 }
 
 function calculateEntry(entrants) {
-  // seu código aqui
+  if (callback(entrants)) {
+    return 0;
+  }
+  const price = [20.99, 49.99, 24.99];
+  const totalEnt = countEntrants(entrants);
+  const total = totalEnt.child * price[0] + totalEnt.adult * price[1] + totalEnt.senior * price[2];
+  return total;
 }
 
-module.exports = { calculateEntry, countEntrants };
-
 const entrants = [
-  { name: 'Lara Carvalho', age: 5 },
-  { name: 'Frederico Moreira', age: 5 },
-  { name: 'Pedro Henrique Carvalho', age: 5 },
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
+  { name: name.findName(), age: 5 },
+  { name: name.findName(), age: 5 },
+  { name: name.findName(), age: 5 },
+  { name: name.findName(), age: 18 },
+  { name: name.findName(), age: 18 },
+  { name: name.findName(), age: 50 },
 ];
 
-console.log(countEntrants(entrants));
+console.log(calculateEntry(entrants));
+
+module.exports = { calculateEntry, countEntrants };
