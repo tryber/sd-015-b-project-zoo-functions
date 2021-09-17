@@ -77,7 +77,6 @@ const verifyOptions = (options) => {
       SW: createObj(getAnimalsFromSW(), defaultOrder),
     };
   }
-
   return result;
 };
 
