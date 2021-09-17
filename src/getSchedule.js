@@ -43,12 +43,8 @@ const weekSchedule = () => {
 };
 
 function getSchedule(scheduleTarget) {
-  if (animalsNames.includes(scheduleTarget)) {
-    return animalSchedule(scheduleTarget);
-  }
-  if (days.includes(scheduleTarget)) {
-    return daySchedule(scheduleTarget);
-  }
+  if (animalsNames.includes(scheduleTarget)) return animalSchedule(scheduleTarget);
+  if (days.includes(scheduleTarget)) return daySchedule(scheduleTarget);
   return weekSchedule();
 }
 
