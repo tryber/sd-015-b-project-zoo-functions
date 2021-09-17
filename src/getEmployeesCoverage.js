@@ -8,7 +8,7 @@ const noData = () => {
     return {
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
-      species: getAnimal(idsAnimais),
+      species: 'getAnimal(idsAnimais)',
       locations: '0',
     };
   });
