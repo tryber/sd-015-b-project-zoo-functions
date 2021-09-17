@@ -2,14 +2,7 @@
 const data = require('../data/zoo_data');
 
 function getSchedule(scheduleTarget) {
-  // const horario = hours;
-  // const especies = species.map((elemento) => elemento.name);
-  const diasSemana = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  // .find((elemento, index) => elemento[index]);
-
-  if (!scheduleTarget) {
-    return diasSemana;
-  }
+  return data;
 }
 console.log(getSchedule());
 
