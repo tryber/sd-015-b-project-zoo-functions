@@ -17,15 +17,11 @@ const speciesPerRegion = () => {
 const mapIncludesNames = (sort, sex) => {
   const animalMap = {};
   species.forEach((interado) => {
-    if (!animalMap[interado.location]) { animalMap[interado.location] = []; }
+    if (!animalMap[interado.location]) animalMap[interado.location] = [];
     let residents = [...interado.residents];
-    if (sex) {
-      residents = residents.filter((resident) => resident.sex === sex);
-    }
+    if (sex) residents = residents.filter((resident) => resident.sex === sex);
     residents = residents.map((resident) => resident.name);
-    if (sort === true) {
-      residents.sort();
-    }
+    if (sort === true) residents.sort();
     animalMap[interado.location].push({ [interado.name]: residents });
   });
   return animalMap;
