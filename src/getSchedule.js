@@ -44,12 +44,11 @@ function argDay(day) {
 }
 function argAnimal(animal) {
   let argAnimalObj = {};
-  species.find((specie) => {
+  const findAnimal = species.find((specie) => {
     if (specie.name === animal) {
       argAnimalObj = specie.availability;
       // console.log("ESTOU AQUI!!!");
     }
-    // return argAnimalObj;
   });
   return argAnimalObj;
 }
@@ -66,3 +65,5 @@ function getSchedule(scheduleTarget) {
   return objetoRetorno;
 }
 module.exports = getSchedule;
+
+console.log(getSchedule('penguins'));
