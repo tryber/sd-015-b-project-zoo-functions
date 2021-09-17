@@ -35,7 +35,7 @@ function getSchedule(scheduleTarget) {
     item === scheduleTarget)) {
     return species.find((el) => el.name === scheduleTarget).availability;
   }
-  return { scheduleTarget: availDays(scheduleTarget) };
+  return { [scheduleTarget]: availDays(scheduleTarget) };
 }
 
 module.exports = getSchedule;
