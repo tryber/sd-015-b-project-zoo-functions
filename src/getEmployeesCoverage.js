@@ -4,7 +4,7 @@ const { employees } = data;
 
 const noData = () => {
   const funcMap = employees.map((employee) => {
-    const idsAnimais = employee.responsibleFor;
+    // const idsAnimais = employee.responsibleFor;
     return {
       id: employee.id,
       fullName: `${employee.firstName} ${employee.lastName}`,
