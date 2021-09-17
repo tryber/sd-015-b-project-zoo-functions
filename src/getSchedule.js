@@ -66,5 +66,3 @@ function getSchedule(scheduleTarget) {
   return objetoRetorno;
 }
 module.exports = getSchedule;
-
-console.log(getSchedule('penguins'));
