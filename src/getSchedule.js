@@ -4,7 +4,6 @@ const { species, hours } = data;
 
 const days = Object.keys(hours);
 const allSpecies = species.map( (specie) => specie.name);
-// console.log(days);
 
 function argNull(messageOffice, exibicaoDoDia) {
   const argNullObj = {};
@@ -26,12 +25,10 @@ function argNull(messageOffice, exibicaoDoDia) {
   });
   return argNullObj;
 }
-// console.log(argNull()); // [DEBUG]
 
 function argDay(day) {
   const argDayObj = {};
   if (day === 'Monday') {
-    // console.log("That's Working!");
     argDayObj[day] = {
       officeHour: 'CLOSED',
       exhibition: 'The zoo will be closed!',
