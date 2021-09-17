@@ -30,29 +30,35 @@ function argNull(messageOffice, exibicaoDoDia) {
 // console.log(argNull()); // [DEBUG]
 
 function argDay(day) {
-  // const argDayObj = {};
-  // if (day === 'Monday') {
-  //   console.log("That's Working!");
-  //   return argDayObj[day] = {
-  //     officeHour: 'CLOSED',
-  //     exhibition: 'The zoo will be closed!',
-  //   };
-  // } else {
-  //   return argDayObj[day] = {
-  //     officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
-  //     exhibition: species
-  //     .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name),
-  //   };
-  // }
-  // console.log('TESTE');
-  // return argDayObj;
+  const argDayObj = {};
+  if (day === 'Monday') {
+    // console.log("That's Working!");
+    argDayObj[day] = {
+      officeHour: 'CLOSED',
+      exhibition: 'The zoo will be closed!',
+    };
+  } else {
+    argDayObj[day] = {
+      officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
+      exhibition: species
+      .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name),
+    };
+  }
+  return argDayObj;
 }
 
-function argAnimal() {
+function argAnimal(scheduleTarget) {
   const argAnimalObj = {};
-
-  return argAnimalObj;
+  species.find( (specie) => {
+    if (specie.name === scheduleTarget) {
+      objetoRetorno = specie.availability;
+      return objetoRetorno;
+    }
+  });
+  return objetoRetorno;
 }
+// console.log(argAnimal('lions'));
+
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
@@ -63,10 +69,10 @@ function getSchedule(scheduleTarget) {
   if (dayFound || animalFound) { // Se é passado um animal ou dia
     if (dayFound) { // Se for um dia
       // console.log("ENTROU DA FUNÇAO ARGDAY");
-      argDay(scheduleTarget);
+      return argDay(scheduleTarget);
     }
     if (animalFound) { // Se for um Animal
-      argAnimal(scheduleTarget);
+      return argAnimal(scheduleTarget);
     }
   }
   return objetoRetorno;
@@ -74,4 +80,5 @@ function getSchedule(scheduleTarget) {
 module.exports = getSchedule;
 
 // console.log(getSchedule());
-console.log(getSchedule('Monday'));
+// console.log(getSchedule('Monday'));
+// console.log(getSchedule('lions'));
