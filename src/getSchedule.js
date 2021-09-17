@@ -45,32 +45,24 @@ function argDay(day) {
   }
   return argDayObj;
 }
-
 function argAnimal(scheduleTarget) {
-  const argAnimalObj = {};
+  let argAnimalObj = {};
   species.find( (specie) => {
     if (specie.name === scheduleTarget) {
-      objetoRetorno = specie.availability;
-      return objetoRetorno;
+      argAnimalObj = specie.availability;
     }
   });
-  return objetoRetorno;
+  return argAnimalObj;
 }
-// console.log(argAnimal('lions'));
-
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
+  const schedule = scheduleTarget;
   const dayFound = days.includes(scheduleTarget);
   const animalFound = allSpecies.includes(scheduleTarget);
-
-  if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
-  if (dayFound) {
-    return argDay();
-  }
-  if (animalFound) {
-    return argAnimal(scheduleTarget);
-  }
+  if (!dayFound && !animalFound) return argNull();
+  if (dayFound) return argDay(schedule);
+  if (animalFound) return argAnimal(schedule);
   return objetoRetorno;
 }
 module.exports = getSchedule;
