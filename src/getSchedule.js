@@ -3,14 +3,14 @@ const data = require('../data/zoo_data');
 const { species, hours } = data;
 
 const days = Object.keys(hours);
-const allSpecies = species.map( (specie) => specie.name);
+const allSpecies = species.map((specie) => specie.name);
 
 function argNull(messageOffice, exibicaoDoDia) {
   const argNullObj = {};
   days.forEach((day) => {
-    const messageOffice = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-    const exibicaoDoDia = species
-    .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name);
+    const messageOffice2 = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
+    const exibicaoDoDia2 = species
+      .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name);
     if (day === 'Monday') {
       argNullObj[day] = {
         officeHour: 'CLOSED',
@@ -18,8 +18,8 @@ function argNull(messageOffice, exibicaoDoDia) {
       };
     } else {
       argNullObj[day] = {
-        officeHour: messageOffice,
-        exhibition: exibicaoDoDia,
+        officeHour: messageOffice2,
+        exhibition: exibicaoDoDia2,
       };
     }
   });
@@ -37,7 +37,7 @@ function argDay(day) {
     argDayObj[day] = {
       officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
       exhibition: species
-      .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name),
+        .filter((animal) => animal.availability.includes(day)).map((mDay) => mDay.name),
     };
   }
   return argDayObj;
@@ -48,6 +48,7 @@ function argAnimal(scheduleTarget) {
     if (specie.name === scheduleTarget) {
       argAnimalObj = specie.availability;
     }
+    return argAnimalObj;
   });
   return argAnimalObj;
 }
