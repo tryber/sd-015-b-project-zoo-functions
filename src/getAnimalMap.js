@@ -1,21 +1,20 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function getAnimalMap(options) {
-  if (options === undefined) {
-    return species.reduce((acc, atual) => {
-      acc[atual.location] = species.filter((objeto) => objeto.location === atual.location)
-        .map((nome) => nome.name);
-      return acc;
-    }, {});
+function getAnimalMap(options = {}) {
+  const locationsObject = { NE: [], NW: [], SE: [], SW: [] };
+  if (!options.includeNames) {
+    species.forEach((animal) => locationsObject[animal.location].push(animal.name));
+    return locationsObject;
   }
-  return species.reduce((acc, atual) => {
-    acc[atual.location] = species.filter((objeto) => objeto.location === atual.location)
-      .map((nome) => nome.residents.find((nomes) => nomes.name));
-    return acc;
-  }, {});
+  data.species.forEach((animal) => {
+    let { residents } = animal;
+    if (options.sex) residents = residents.filter((sexo) => sexo.sex === options.sex);
+    const getNames = residents.map((names) => names.name);
+    if (options.sorted) getNames.sort();
+    locationsObject[animal.location].push({ [animal.name]: getNames });
+  });
+  return locationsObject;
 }
 
-console.log(getAnimalMap({ includeNames: true }));
-
-// module.exports = getAnimalMap;
+module.exports = getAnimalMap;
