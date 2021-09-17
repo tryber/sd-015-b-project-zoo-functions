@@ -43,14 +43,15 @@ function argDay(day) {
   return argDayObj;
 }
 function argAnimal(animal) {
-  let argAnimalObj = {};
-  const findAnimal = species.find((specie) => {
-    if (specie.name === animal) {
-      argAnimalObj = specie.availability;
-      // console.log("ESTOU AQUI!!!");
-    }
-  });
-  return argAnimalObj;
+  // let argAnimalObj = {};
+  const findAnimal = species.find((specie) => specie.name === animal);
+    // if (specie.name === animal) {
+    //   argAnimalObj = specie.availability;
+    //   // console.log("ESTOU AQUI!!!");
+    // }
+  // });
+  // return argAnimalObj;
+  return findAnimal.availability;
 }
 
 function getSchedule(scheduleTarget) {
