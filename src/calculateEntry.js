@@ -1,10 +1,9 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  const peopleAge = entrants.map((person) => person.age);
-  const child = peopleAge.filter((age) => age < 18);
-  const adult = peopleAge.filter((age) => age >= 18 && age < 50);
-  const senior = peopleAge.filter((age) => age >= 50);
+  const child = entrants.filter((p) => p.age < 18);
+  const adult = entrants.filter((p) => p.age >= 18 && p.age < 50);
+  const senior = entrants.filter((p) => p.age >= 50);
   return ({
     child: child.length,
     adult: adult.length,
