@@ -22,12 +22,19 @@ function mapingAll() {
   return obj;
 }
 
+// function mapingNames() {
+//   const arrayName = [];
+// }
+
 function getAnimalMap(options) {
   if (options === undefined) {
     return mapingAll();
   }
+  // else if (options.includeNames === true) {
+  //   return mapingNames();
+  // }
 }
 
 module.exports = getAnimalMap;
 
-console.log(getAnimalMap());
+// console.log(mapingNames());
