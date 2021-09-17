@@ -93,7 +93,6 @@ function getAnimalMap(options) {
   if (options && options.includeNames) {
     result = verifyOptions(options);
   }
-
   return result;
 }
 
