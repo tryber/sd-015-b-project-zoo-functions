@@ -42,16 +42,18 @@ function argDay(day) {
   }
   return argDayObj;
 }
-function argAnimal(scheduleTarget) {
+function argAnimal(animal) {
   let argAnimalObj = {};
   species.find((specie) => {
-    if (specie.name === scheduleTarget) {
+    if (specie.name === animal) {
       argAnimalObj = specie.availability;
+      // console.log("ESTOU AQUI!!!");
     }
-    return argAnimalObj;
+    // return argAnimalObj;
   });
   return argAnimalObj;
 }
+
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
@@ -64,3 +66,5 @@ function getSchedule(scheduleTarget) {
   return objetoRetorno;
 }
 module.exports = getSchedule;
+
+console.log(getSchedule('penguins'));
