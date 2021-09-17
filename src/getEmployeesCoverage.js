@@ -1,6 +1,6 @@
 const data = require('../data/zoo_data');
 
-function getEmployeesCoverage() {
+function getEmployeesCoverage(peopleId) {
   // seu código aqui
 }
 
