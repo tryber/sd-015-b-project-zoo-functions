@@ -17,6 +17,4 @@ function getOldestFromFirstSpecies(id) {
   return oldestAnimal;
 }
 
-getOldestFromFirstSpecies('56d43ba3-a5a7-40f6-8dd7-cbb05082383f');
-
 module.exports = getOldestFromFirstSpecies;
