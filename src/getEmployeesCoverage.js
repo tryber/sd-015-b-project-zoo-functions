@@ -19,7 +19,7 @@ function getEmployeesCoverage(person) {
   if (!person) return people();
 
   if (!people().some((idv) => (idv.id === person.id || idv.fullName.includes(person.name)))) {
-    throw new Error('Informações inválidas'); 
+    throw new Error('Informações inválidas');
   }
 
   return people().find((idv) => (idv.id === person.id || idv.fullName.includes(person.name)));
