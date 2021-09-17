@@ -4,11 +4,12 @@ function countAnimals(animal) {
   let obj = {};
   if (animal) {
     obj = 0;
+    const { sex: gender } = animal;
     const findAnimal = data.species.find((animalInfo) => animalInfo.name === animal.specie);
     if (Object.values(animal)[1] === undefined) {
       obj = findAnimal.residents.length;
     } else {
-      const countAnimalsBySex = findAnimal.residents.filter((a) => a.sex === animal.gender);
+      const countAnimalsBySex = findAnimal.residents.filter((a) => a.sex === gender);
       obj = countAnimalsBySex.length;
     }
   } else {
@@ -18,5 +19,5 @@ function countAnimals(animal) {
   }
   return obj;
 }
-
+countAnimals({ specie: 'elephants', sex: 'male' });
 module.exports = countAnimals;
