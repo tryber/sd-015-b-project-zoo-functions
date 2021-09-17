@@ -44,7 +44,7 @@ function argDay(day) {
 }
 function argAnimal(scheduleTarget) {
   let argAnimalObj = {};
-  species.find( (specie) => {
+  species.find((specie) => {
     if (specie.name === scheduleTarget) {
       argAnimalObj = specie.availability;
     }
