@@ -13,8 +13,8 @@ function countAnimals(animal) {
   // Caso parametro tenha chave gender
   const filteredSpecie = species.filter((specie) => specie.name === animal.specie);
   const individuos = filteredSpecie[0].residents;
-  const female = individuos.filter((individuo) => individuo.sex === animal.gender);
-  return (animal.gender) ? female.length : individuos.length;
+  const female = individuos.filter((individuo) => individuo.sex === animal.sex);
+  return (animal.sex) ? female.length : individuos.length;
 }
 
 module.exports = countAnimals;
