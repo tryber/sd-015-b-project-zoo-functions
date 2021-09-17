@@ -1,5 +1,5 @@
 const data = require('../data/zoo_data');
-const { employees, species} = require('../data/zoo_data');
+const { employees, species } = require('../data/zoo_data');
 
 const people = () => employees.map(({ id, firstName, lastName, responsibleFor }) => {
   const infos = {
@@ -18,10 +18,9 @@ const people = () => employees.map(({ id, firstName, lastName, responsibleFor })
 function getEmployeesCoverage(person) {
   if (!person) return people();
 
-  if (!people().some((individual) => (individual.id === person.id || individual.fullName.includes(person.name)))) { throw new Error('Informações inválidas');}
+  if (!people().some((idv) => (idv.id === person.id || idv.fullName.includes(person.name)))) { throw new Error('Informações inválidas');}
 
-  return people().find((individual) => (individual.id === person.id || individual.fullName.includes(person.name)))
+  return people().find((idv) => (idv.id === person.id || idv.fullName.includes(person.name)));
 }
 
-console.log(getEmployeesCoverage({name: 'Nigel' }));
 module.exports = getEmployeesCoverage;
