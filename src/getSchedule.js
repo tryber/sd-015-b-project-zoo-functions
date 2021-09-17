@@ -2,7 +2,6 @@ const data = require('../data/zoo_data');
 
 const { species, hours } = data;
 
-const closedMessage = `'CLOSED', 'exhibition': 'The zoo will be closed!'`;
 const days = Object.keys(hours);
 const allSpecies = species.map( (specie) => specie.name);
 // console.log(days);
@@ -62,23 +61,16 @@ function argAnimal(scheduleTarget) {
 function getSchedule(scheduleTarget) {
   // seu código aqui
   const objetoRetorno = {};
-  const dayFound = days.includes(scheduleTarget); // Verifica se argumento passado é um Dia
-  const animalFound = allSpecies.includes(scheduleTarget); // Verifica se argumento passado é um Animal
+  const dayFound = days.includes(scheduleTarget);
+  const animalFound = allSpecies.includes(scheduleTarget);
 
   if (!dayFound && !animalFound) return argNull(); // FUNÇÃO OK
-  if (dayFound || animalFound) { // Se é passado um animal ou dia
-    if (dayFound) { // Se for um dia
-      // console.log("ENTROU DA FUNÇAO ARGDAY");
-      return argDay(scheduleTarget);
-    }
-    if (animalFound) { // Se for um Animal
-      return argAnimal(scheduleTarget);
-    }
+  if (dayFound) {
+    return argDay();
+  }
+  if (animalFound) {
+    return argAnimal(scheduleTarget);
   }
   return objetoRetorno;
 }
 module.exports = getSchedule;
-
-// console.log(getSchedule());
-// console.log(getSchedule('Monday'));
-// console.log(getSchedule('lions'));
