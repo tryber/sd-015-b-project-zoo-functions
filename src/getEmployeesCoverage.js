@@ -2,14 +2,6 @@ const data = require('../data/zoo_data');
 
 const { employees } = data;
 
-const getAnimal = (...ids) => {
-  const idsAnimais = [];
-  const capturaIds = ids.forEach((id) => {
-    idsAnimais.push(id);
-  });
-  return idsAnimais;
-};
-
 const noData = () => {
   const funcMap = employees.map((employee) => {
     const idsAnimais = employee.responsibleFor;
@@ -28,6 +20,5 @@ function getEmployeesCoverage(peopleId) {
   // seu código aqui
   if (!peopleId) return noData();
 }
-console.log(getEmployeesCoverage(''));
 
 module.exports = getEmployeesCoverage;
