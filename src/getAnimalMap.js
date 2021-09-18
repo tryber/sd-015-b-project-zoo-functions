@@ -16,10 +16,7 @@ function getAnimalMap(options) {
     return orderedAnimals;
   }
   if (JSON.stringify(options) === JSON.stringify({ includeNames: true })) {
-    const teste = orderedAnimals.NE.reduce((ac, cv) => {
-      ac[orderedAnimals.NE[0]] = animalsNe[0].residents[0].name;
-      return ac;
-    }, {});
+    const teste = orderedAnimals.NE;
     return teste;
   }
 }
