@@ -1,40 +1,28 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function mapingAll() {
-  const obj = {
-    NE: [],
-    NW: [],
-    SE: [],
-    SW: [],
-  };
-  species.map((elemento) => {
-    const animal = elemento.name;
-    const locAnimal = elemento.location;
-    const keyObj = Object.keys(obj);
-    for (let i = 0; i < keyObj.length; i += 1) {
-      if (locAnimal === keyObj[i]) {
-        obj[keyObj[i]].push(animal);
-      }
+function residentsReduce(residents, options = { includeNames: false, sex: false, sorted: false }) {
+  const res = residents.reduce((acc, elemento) => {
+    if (options.sex && options.sex === elemento.sex) acc.push(elemento.name);
+    if (!options.sex) acc.push(elemento.name);
+    return acc;
+  }, []);
+  return res;
+}
+
+// fonte: https://github.com/tryber/sd-015-b-project-zoo-functions/blob/bruno-bartolomeu-zoo-functions-project/src/getAnimalMap.js
+function getAnimalMap(options = { includeNames: false, sex: false, sorted: false }) {
+  const obj = { NE: [], NW: [], SE: [], SW: [] };
+  species.forEach(({ residents, name, location }) => {
+    if (options.includeNames) {
+      const residentsName = residentsReduce(residents, options);
+      if (options.sorted) residentsName.sort();
+      obj[location].push({ [name]: residentsName });
+    } else {
+      obj[location].push(name);
     }
-    return obj;
   });
   return obj;
 }
 
-// function mapingNames() {
-//   const arrayName = [];
-// }
-
-function getAnimalMap(options) {
-  if (options === undefined) {
-    return mapingAll();
-  }
-  // else if (options.includeNames === true) {
-  //   return mapingNames();
-  // }
-}
-
 module.exports = getAnimalMap;
-
-// console.log(mapingNames());
