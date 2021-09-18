@@ -1,5 +1,5 @@
 const data = require('../data/zoo_data');
-const { price } = require('../data/zoo_data');
+const { prices } = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   const childCount = entrants.filter((entrant) => entrant.age < 18).length;
@@ -9,13 +9,13 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (!entrants || Object.keys(entrants).length === 0) return 0;
+  if (!entrants || Object.keys(entrants).length === 0) { return 0; }
 
-  const agePeopleEntrants = countEntrants(entrants);
-  const childPriceCount = agePeopleEntrants * price.child;
-  const adultPriceCount = agePeopleEntrants * price.adult;
-  const seniorPriceCount = agePeopleEntrants * price.senior;
-  return childPriceCount + adultPriceCount + seniorPriceCount;
+  const countAgePeopleEntrants = countEntrants(entrants);
+  const priceCalculateAmont = countAgePeopleEntrants.child * prices.child
+  + countAgePeopleEntrants.adult * prices.adult
+  + countAgePeopleEntrants.senior * prices.senior;
+  return priceCalculateAmont;
 }
 
 module.exports = { calculateEntry, countEntrants };
