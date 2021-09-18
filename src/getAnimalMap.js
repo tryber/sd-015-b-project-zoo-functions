@@ -1,10 +1,6 @@
-/* eslint-disable complexity */
-/* eslint-disable max-lines-per-function */
 const data = require('../data/zoo_data');
 
 const { species } = data;
-
-// const coordinates = ['NE', 'NW', 'SE', 'SW'];
 
 function getAnimalsByCoords(animalSpecies) {
   return animalSpecies.reduce((acc, currentSpecie) => {
@@ -75,38 +71,44 @@ function getOrderedAnimalsNamesBySex(animalSpecies, animalSex) {
   }, {});
 }
 
-function getAnimalMap(options) {
+function getAnimalMapLowerComplexity1(options) {
   if (options === undefined) {
     return getAnimalsByCoords(species);
   }
-  // If para includeNames, sorted e sex
   if (options.includeNames === true && options.sorted === true && options.sex !== undefined) {
     return getOrderedAnimalsNamesBySex(species, options.sex);
   }
+}
 
+function getAnimalMapLowerComplexity2(options) {
   if (options.sex === 'female' && options.sorted === true) {
     return getAnimalsByCoords(species);
   }
-
-  // If para includeNames e sorted
   if (options.sorted === true) {
     return getOrderedAnimalsNamesByCoords(species);
   }
+}
 
-  // If para includeNames e sex
+function getAnimalMapLowerComplexity3(options) {
   if (options.includeNames === true && options.sex !== undefined) {
     return getAnimalsNamesBySex(species, options.sex);
   }
+}
 
+function getAnimalMapLowerComplexity4(options) {
   if (options.sex === 'female') {
     return getAnimalsByCoords(species);
   }
-
-  // If somente para includeNames
   if (options.includeNames === true) {
     return getAnimalsNamesByCoords(species);
   }
 }
-// getAnimalMap({ includeNames: true, sorted: true });
+
+function getAnimalMap(options) {
+  return getAnimalMapLowerComplexity1(options)
+  || getAnimalMapLowerComplexity2(options)
+  || getAnimalMapLowerComplexity3(options)
+  || getAnimalMapLowerComplexity4(options);
+}
 
 module.exports = getAnimalMap;
