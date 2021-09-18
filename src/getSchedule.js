@@ -37,8 +37,8 @@ function filterAnimals(animal) {
 function getSchedule(scheduleTarget) {
   // seu código aqui
   // if(scheduleTarget === undefined) return allAnimals();
-  if(filterAnimals(scheduleTarget)) return filterAnimals(scheduleTarget);
-  if(filterDays(scheduleTarget)) return filterDays(scheduleTarget);
+  if (filterAnimals(scheduleTarget)) return filterAnimals(scheduleTarget);
+  if (filterDays(scheduleTarget)) return filterDays(scheduleTarget);
   return allAnimals();
 }
 getSchedule();

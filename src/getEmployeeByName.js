@@ -8,7 +8,8 @@ function getEmployeeByName(employeeNa) {
     return {};
   }
   return employees
-    .find((employees) => employees.firstName === employeeNa || employees.lastName === employeeNa);
+    .find((employeess) => employeess.firstName === employeeNa
+     || employeess.lastName === employeeNa);
 }
 
 module.exports = getEmployeeByName;
