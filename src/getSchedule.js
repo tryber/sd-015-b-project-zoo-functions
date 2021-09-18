@@ -10,20 +10,12 @@ function day(obj, elemento) {
 }
 
 function exhibAnimal(elemento) {
-  const hoursKeys = Object.keys(hours);
-  const animal = species.filter((elemento) => elemento.availability);
   if (elemento === 'Monday') {
     return 'The zoo will be closed!'
   }
-  const avaiableAn = animal.map((elemento) => elemento.availability)
-  const names = animal.map((elemento) => {
-    for (let i = 0; i < hoursKeys.length; i += 1) {
-      if (elemento.availability[i] === hoursKeys[i]) {
-        return elemento.name
-      }
-    }
-  })
-  return avaiableAn
+  const animalAv = species.filter((specie) => (specie.availability.includes(elemento)));
+  const getName = animalAv.map((elemento) => elemento.name)
+  return getName
 }
 
 function allSche() {
@@ -32,24 +24,18 @@ function allSche() {
   hoursKeys.map((elemento) => {
     obj[elemento] = {
       officeHour: day(obj, elemento),
-    exhibition: exhibAnimal(elemento)};
+      exhibition: exhibAnimal(elemento)};
   })
-
   return obj;
 }
 
-// function officeSche() {
-//   const days = days();
-//   return days
-// }
-
 function getSchedule(scheduleTarget) {
   if (scheduleTarget === undefined) {
-
+    return allSche();
   }
   
 }
 
 module.exports = getSchedule;
 
-console.log(exhibAnimal())
+console.log(allSche());
