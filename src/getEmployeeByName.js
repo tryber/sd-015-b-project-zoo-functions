@@ -7,7 +7,7 @@ function getEmployeeByName(employeeName) {
     return {};
   }
   return employees.find(
-    (pessoa) => pessoa.firstName === employeeName || pessoa.lastName === employeeName
+    (pessoa) => pessoa.firstName === employeeName || pessoa.lastName === employeeName,
   );
 }
 
