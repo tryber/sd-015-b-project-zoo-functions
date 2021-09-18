@@ -8,15 +8,15 @@ function countAnimals(animal) {
       acumulador[objetosResidents.name] = objetosResidents.residents.length;
     });
     return acumulador;
-  } if (animal.sex) {
+  } if (animal.gender) {
     return species.find(({ name }) => name === animal.specie).residents
-      .filter((elemento) => elemento.sex === animal.sex).length;
+      .filter((elemento) => elemento.sex === animal.gender).length;
   } if (animal) {
     const comparandoNomes = species.find((objResidents) => objResidents.name === animal.specie);
     return comparandoNomes.residents.length;
   }
 }
 
-console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
+console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
 
 module.exports = countAnimals;
