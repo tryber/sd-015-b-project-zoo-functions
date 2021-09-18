@@ -30,10 +30,13 @@ function allSche() {
 }
 
 function getSchedule(scheduleTarget) {
+  const animalName = species.map((elemento) => elemento.name);
+  const dayName = Object.keys(hours);
   if (scheduleTarget === undefined) {
     return allSche();
+  } else if (!scheduleTarget.includes(animalName) || !scheduleTarget.includes(dayName)) {
+    return allSche();
   }
-  
 }
 
 module.exports = getSchedule;
