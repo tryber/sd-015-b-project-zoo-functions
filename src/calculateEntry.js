@@ -20,8 +20,8 @@ function calculateEntry(entrants) {
     return 0;
   }
   const price = [20.99, 49.99, 24.99];
-  const totalEnt = countEntrants(entrants);
-  const total = totalEnt.child * price[0] + totalEnt.adult * price[1] + totalEnt.senior * price[2];
+  const numberP = countEntrants(entrants);
+  const total = numberP.child * price[0] + numberP.adult * price[1] + numberP.senior * price[2];
   return total;
 }
 
@@ -34,6 +34,7 @@ const entrants = [
   { name: name.findName(), age: 50 },
 ];
 
+console.log(data);
 console.log(calculateEntry(entrants));
 
 module.exports = { calculateEntry, countEntrants };
