@@ -20,7 +20,7 @@ function animalPorEspecieSexo(animal) {
   return animalEspecieSexo.length;
 }
 function countAnimals(animal) {
-  // seu código aqui
+  // seu código aqu
   if (animal === undefined) {
     return todosAnimais();
   }
