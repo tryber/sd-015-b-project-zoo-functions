@@ -8,9 +8,10 @@ function countAnimals(animal) {
       animals[currentValue.name] = currentValue.residents.length;
       return animals;
     }, {});
-  } if (animal.specie && animal.sex) {
+  } if (animal.specie && animal.gender) {
     const specieAnimal = species.find((element) => animal.specie === element.name);
-    const animalGender = specieAnimal.residents.filter((animalSex) => animalSex.sex === animal.sex);
+    const animalGender = specieAnimal.residents
+      .filter((animalSex) => animalSex.sex === animal.gender);
     return animalGender.length;
   }
   const specieAnimal = species.find((element) => animal.specie === element.name);
