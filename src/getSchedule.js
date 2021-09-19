@@ -38,12 +38,18 @@ function animalSchedule(animal) {
   return dayList;
 }
 
-function getSchedule(scheduleTarget) { // aqui filtra os resultados, por isso usa as funções de cima aqui.
+function getSchedule(scheduleTarget) {
   const days = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
   const bichos = data.species.map(({ name }) => name);
-  if (days.includes(scheduleTarget)) return dailySchedule(scheduleTarget); // qdo pesquisa por dia
-  if (bichos.includes(scheduleTarget)) return animalSchedule(scheduleTarget); // qdo pesquisa por bicho
-  return scheduleTime(); // qdo a pesquisa é vazia e tem que retornar TUDÃO
+
+  // pesquisa por dia
+  if (days.includes(scheduleTarget)) return dailySchedule(scheduleTarget);
+
+  // pesquisa por animal
+  if (bichos.includes(scheduleTarget)) return animalSchedule(scheduleTarget);
+
+  // pesquisa sem parâmetro; retorna todos dias/horários
+  return scheduleTime();
 }
 
 module.exports = getSchedule;
