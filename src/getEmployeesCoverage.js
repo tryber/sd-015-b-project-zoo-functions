@@ -31,17 +31,18 @@ function getCoverage(workers) {
   });
 }
 
+let filteredEmployees = [];
+
 function getFilteredEmployees(param) {
-  let filteredEmployees = [];
-  if (!param) filteredEmployees = employees;
-  if (param.name) filteredEmployees = filteredEmployeesByName(param);
-  if (param.id) filteredEmployees = filteredEmployeesById(param);
+  if (param && param.name) filteredEmployees = filteredEmployeesByName(param);
+  if (param && param.id) filteredEmployees = filteredEmployeesById(param);
 
   return filteredEmployees;
 }
 
 function getEmployeesCoverage(param) {
-  const filteredEmployees = getFilteredEmployees(param);
+  if (!param) filteredEmployees = employees;
+  filteredEmployees = getFilteredEmployees(param);
   if (filteredEmployees.length === 0) {
     throw new Error('Informações inválidas');
   }
