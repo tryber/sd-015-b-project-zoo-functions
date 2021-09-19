@@ -40,6 +40,7 @@ describe('5 - Crie uma função que realiza a contagem dos animais de cada espé
     }
 
     {
+
       const actual = countAnimals({ specie: 'elephants', sex: 'male' });
       const expected = 2;
       expect(actual).toBe(expected);
