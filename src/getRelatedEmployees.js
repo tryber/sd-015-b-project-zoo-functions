@@ -12,7 +12,7 @@ const isManager = (id) => managers.includes(id);
 const createResult = (managerId) => {
   const result = [];
   employees.forEach((element) => {
-    if(element.managers.includes(managerId)) {
+    if (element.managers.includes(managerId)) {
       result.push(`${element.firstName} ${element.lastName}`);
     }
   });
@@ -21,7 +21,6 @@ const createResult = (managerId) => {
 
 function getRelatedEmployees(managerId) {
   // seu código aqui
-  const employee = employees.find((element) => element.id === managerId);
   if (isManager(managerId)) {
     return createResult(managerId);
   }
