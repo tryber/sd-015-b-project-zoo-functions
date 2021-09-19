@@ -24,9 +24,9 @@ function scheduleTime() {
 
 function dailySchedule(day) {
   // feita com MUITA ajuda da Danielen e do Leandro
-  const weekSchedule = scheduleTime(); 
-  const todayDailySchedule = {}; 
-  todayDailySchedule[day] = weekSchedule[day]; 
+  const weekSchedule = scheduleTime();
+  const todayDailySchedule = {};
+  todayDailySchedule[day] = weekSchedule[day];
   // retorna agenda do dia
   return todayDailySchedule;
 }
