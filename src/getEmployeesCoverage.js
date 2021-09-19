@@ -16,20 +16,64 @@ function findLocation(locationAnimal) {
     .find((ani) => ani.id === id));
   return searchLocation.map((animal) => animal.location);
 }
+
+/*  const acumulator = [];
+data.employees.forEach((employee) => {
+  acumulator.push({
+    id: employee.id,
+    fullName: `${employee.firstName} ${employee.lastName}`,
+    species: findAnimals(employee),
+    location: findLocation(employee),
+  });
+});
+return acumulator; */
+/*  return data.employees.reduce((acumulator, employee) => {
+   acumulator.push({
+     id: employee.id,
+     fullName: `${employee.firstName} ${employee.lastName}`,
+     species: findAnimals(employee),
+     location: findLocation(employee),
+   });
+   return acumulator;
+ }, []); */
+function whithParams() {
+  const acumulator = [];
+  data.employees.forEach((employee) => {
+    const species = findAnimals(employee);
+    const locations = findLocation(employee);
+    acumulator.push({
+      id: employee.id,
+      fullName: `${employee.firstName} ${employee.lastName}`,
+      species,
+      locations,
+    });
+  });
+  return acumulator;
+}
+function errorParams(parameter) {
+  const status = findParameter(parameter);
+  if (status === undefined) {
+    throw new Error('Informações inválidas');
+  }
+  return status;
+}
 function getEmployeesCoverage(parameter) {
-  const objectParameter = {};
+  if (!parameter) return whithParams();
   const searchParameter = findParameter(parameter);
-  const findAnimalss = findAnimals(searchParameter);
+  if (!searchParameter) return errorParams(parameter);
+  const objectParameter = {};
   const location = findLocation(searchParameter);
+  const findAnimalss = findAnimals(searchParameter);
   objectParameter.id = searchParameter.id;
   objectParameter.fullName = `${searchParameter.firstName} ${searchParameter.lastName}`;
   objectParameter.species = findAnimalss;
   objectParameter.locations = location;
   return objectParameter;
 }
-console.log(getEmployeesCoverage({ name: 'Spry' }));
+
+console.log(getEmployeesCoverage());
 // getEmployeesCoverage({ name: 'Sharonda' });
-// getEmployeesCoverage();
+// getEmployeesCoverage({ name: 'Spry' });
 // getEmployeesCoverage({ id: '4b40a139-d4dc-4f09-822d-ec25e819a5ad' });
 
 module.exports = getEmployeesCoverage;
