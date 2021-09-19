@@ -4,7 +4,6 @@ const data = require('../data/zoo_data');
 function countAnimals(animal) {
   if (!animal) {
     return species.reduce((animals, currentValue) => {
-      // eslint-disable-next-line no-param-reassign
       animals[currentValue.name] = currentValue.residents.length;
       return animals;
     }, {});
