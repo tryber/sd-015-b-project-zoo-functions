@@ -8,7 +8,7 @@ const allLocat = [ne, nw, se, sw];
 const objResidentsNames = allLocat.map((re) => `${[re.residents][0]}`);
 const arrayN = [];
 const all = allLocat.map((el) => ({
-  [el.name] : `${objResidentsNames}`,
+  [el.name]: `${objResidentsNames}`,
 }));
 arrayN.push(all);
 function animalsIndividualName() {
