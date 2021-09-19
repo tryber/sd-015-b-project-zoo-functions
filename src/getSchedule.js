@@ -1,25 +1,26 @@
 const { hours, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const days = Object.keys(hours);
-const valueHours = Object.values(hours);
-const SpeciesList = Object.values(species);
-const SpeciesListNames = SpeciesList.map((specie) => specie.name);
+const daysWeek = Object.keys(hours);
+const Hours = Object.values(hours);
+const List = Object.values(species);
+const ListNames = List.map((specie) => specie.name);
 
+// Busca horario de abertura e horario de fechamento
 function officeHourFunc() {
-  return valueHours.map((hour) => {
-    if (hour.open === 0 && hour.close === 0) {
+  return Hours.map((element) => {
+    if (element.open === 0 && element.close === 0) {
       return 'CLOSED';
     }
-    return `Open from ${hour.open}am until ${hour.close}pm`;
+    return `Open from ${element.open}am until ${element.close}pm`;
   });
 }
 
 function exhibitionFunc() {
   let exhibitionPush = [];
   const exhibition = [];
-  days.forEach((day) => {
-    SpeciesList.filter((specie) => {
+  daysWeek.forEach((day) => {
+    List.filter((specie) => {
       if (specie.availability.includes(day)) {
         exhibitionPush.push(specie.name);
       }
@@ -33,10 +34,10 @@ function exhibitionFunc() {
   });
   return exhibition;
 }
-
+console.log(exhibitionFunc());
 function ScheduleComplete() {
   const Schedule = {};
-  days.forEach((day, index) => {
+  daysWeek.forEach((day, index) => {
     Schedule[day] = {
       officeHour: officeHourFunc()[index],
       exhibition: exhibitionFunc()[index],
@@ -44,16 +45,17 @@ function ScheduleComplete() {
   });
   return Schedule;
 }
+// Consultei o repositório do Lucas Peres para resolver essa parte.
+// * link: https://github.com/tryber/sd-015-b-project-zoo-functions/pull/117/commits/35b04ae8048f65020a981c14a0d1331707fac826
 
 function getSchedule(Targ) {
-  // seu código aqui
-  if (days.includes(Targ)) {
+  if (daysWeek.includes(Targ)) {
     const ScheduleDay = {};
-    const teste = Object.entries(ScheduleComplete()).filter((day) => day.includes(Targ))[0][1];
-    ScheduleDay[Targ] = teste;
+    const test = Object.entries(ScheduleComplete()).filter((day) => day.includes(Targ))[0][1];
+    ScheduleDay[Targ] = test;
     return ScheduleDay;
   }
-  if (SpeciesListNames.includes(Targ)) {
+  if (ListNames.includes(Targ)) {
     return Object.values(species).find((specie) => specie.name === Targ).availability;
   }
   return ScheduleComplete();
