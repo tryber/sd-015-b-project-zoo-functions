@@ -22,9 +22,10 @@ function countEntrants(entrants) {
     return true;
   });
   return {
-    child: `${child}`,
-    adult: `${adult}`,
-    senior: `${senior}` };
+    child,
+    adult,
+    senior,
+  };
 }
 
 function calculateEntry(entrants) {
