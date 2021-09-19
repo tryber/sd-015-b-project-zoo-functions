@@ -9,13 +9,13 @@ const countAllAnimals = () => {
 };
 
 const countSpecificAnimalWithSex = (specificAnimal, animal) => {
-  const specificAnimalWithSex = specificAnimal.filter((resident) => resident.sex === animal.gender);
+  const specificAnimalWithSex = specificAnimal.filter((resident) => resident.sex === animal.sex);
   console.log(specificAnimalWithSex);
   return specificAnimalWithSex.length;
 };
 
 const countSpecificAnimal = (specificAnimal, animal) => {
-  if (animal.sex === undefined && animal.gender === undefined) {
+  if (animal.sex === undefined) {
     return specificAnimal.length;
   }
   return countSpecificAnimalWithSex(specificAnimal, animal);
