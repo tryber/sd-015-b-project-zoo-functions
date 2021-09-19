@@ -1,27 +1,67 @@
 // const data = require('../data/zoo_data');
 
-// function getEmployeesCoverage(obj) {
-//   if (!obj) {
-//     return data.employees.find((name) => name);
-//   } if (obj.name) {
-//     return data.employees.filter((element) =>
-//       element.firstName === `${obj.name}` || element.lastName === `${obj.name}`).map((element, index) => ({
-//       id: `${element.id}`,
-//       fullName: `${element.firstName} ${element.lastName}`,
-//       species: `${data.species.name.filter((element) => {
-//         data.employees.responsibleFor.includes(element.id);
-//       })}`,
-//       locations: 'x',
-//     }));
-//   }
+// const SpecieById = (employee) => employee.responsibleFor
+//   .map((id) => data.species.find((specie) => specie.id === id).name);
+
+// const getLocations = (employee) => employee.responsibleFor
+
+//   .map((id) => data.species.find((specie) => specie.id === id).location);
+
+// const allEmployeesCoverage = () => {
+//   const allEmployees = [];
+
+//   data.employees.forEach((emp) => {
+//     const employeeCoverage = {
+//       id: emp.id,
+
+//       fullName: `${emp.firstName} ${emp.lastName}`,
+
+//       species: SpecieById(emp),
+
+//       locations: getLocations(emp),
+
+//     };
+
+//     allEmployees.push(employeeCoverage);
+//   });
+
+//   return allEmployees;
+// };
+
+// const objectEmployee = (emp) => ({
+
+//   id: emp.id,
+
+//   fullName: `${emp.firstName} ${emp.lastName}`,
+
+//   species: SpecieById(emp),
+
+//   locations: getLocations(emp),
+
+// });
+
+// const getEmployeeCoverage = (options) => {
+//   const { name, id } = options;
+
+//   const searchByFirstName = data.employees.find((emp) => emp.firstName === name);
+
+//   const searchByLastName = data.employees.find((emp) => emp.lastName === name);
+
+//   const searchById = data.employees.find((emp) => emp.id === id);
+
+//   if (searchByFirstName) { return objectEmployee(searchByFirstName); }
+
+//   if (searchByLastName) { return objectEmployee(searchByLastName); }
+
+//   if (searchById) { return objectEmployee(searchById); }
+
+//   throw new Error('Informações inválidas');
+// };
+
+// function getEmployeesCoverage(options) {
+//   if (!options) { return allEmployeesCoverage(); }
+
+//   return getEmployeeCoverage(options);
 // }
 
 // module.exports = getEmployeesCoverage;
-
-// const getSpecieRespons = (obj) => {
-//   const safe = data.employees.filter((element, index) =>
-//     element.firstName);
-//   return safe;
-// };
-
-// console.log(getSpecieRespons());
