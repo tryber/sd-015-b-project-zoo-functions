@@ -9,14 +9,16 @@ function semParametro() {
 }
 
 function animalParametro(animal) {
-  const especie = data.species.find((especies) => especies.name === animal.name);
-  return especie.length;
+  const especie = data.species.find((especies) => especies.name === animal.specie);
+  const individuosEspecie = especie.residents.length;
+  return individuosEspecie;
 }
 
 function animalGeneroParametro(animal) {
-  const especie = data.species.find((especieAnimal) => especieAnimal.name === animal.name);
+  const especie = data.species.find((especies) => especies.name === animal.specie);
   const generos = especie.residents.filter((genero) => genero.sex === animal.sex);
-  return generos.length;
+  const individosEmUmGenero = generos.length;
+  return individosEmUmGenero;
 }
 
 function countAnimals(animal) {
