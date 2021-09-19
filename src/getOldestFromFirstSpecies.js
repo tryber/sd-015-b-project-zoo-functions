@@ -1,14 +1,14 @@
 // ref: branch flavio-bianchetti-zoo-function
-
+const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-const getIdFirstSpecie = (id) =>
-  data.employees.filter((employee) =>
-    employee.id === id).map((employee) =>
-    employee.responsibleFor.find((value) => value))[0];
+const getIdFirstSpecie = (id) => employees
+  .filter((employee) => employee.id === id)
+  .map((employee) => employee.responsibleFor
+    .find((value) => value))[0];
 
 const getListResidents = (idSpecie) =>
-  data.species.filter((specie) =>
+  species.filter((specie) =>
     specie.id === idSpecie).map((specie) => specie.residents)[0];
 
 const getMostOldFirstSpecie = (idSpecie) =>
