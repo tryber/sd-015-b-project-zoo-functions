@@ -1,16 +1,14 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function withOutParameters  {
-  return species.reduce((animals, currentValue) => {
-    animals[currentValue.name] = currentValue.residents.length;
-    return animals;
-  }, {})
-
-}
+const withOutParameters = () =>
+  species.reduce((accumulator, currentValue) => {
+    accumulator[currentValue.name] = currentValue.residents.length;
+    return accumulator;
+  }, {});
 function countAnimals(animal) {
   if (!animal) {
-    return withOutParameters();    
+    return withOutParameters();
   } if (animal.specie && animal.gender) {
     const specieAnimal = species.find((element) => animal.specie === element.name);
     const animalGender = specieAnimal.residents
@@ -20,7 +18,5 @@ function countAnimals(animal) {
   const specieAnimal = species.find((element) => animal.specie === element.name);
   return specieAnimal.residents.length;
 }
-
-console.log(countAnimals({ specie: 'penguins' }));
-
+console.log(countAnimals());
 module.exports = countAnimals;
