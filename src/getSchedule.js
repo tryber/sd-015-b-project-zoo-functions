@@ -1,6 +1,7 @@
 // Requisito feito com ajuda dos colegas: Danielen Cestari, Leandro Oliveira e Ulisses Roque.
 
 const data = require('../data/zoo_data');
+const { hours } = require('../data/zoo_data');
 
 function exhibition(day) {
   // filtra e organiza de acordo com o nome - referência do Leandro Oliveira
@@ -12,7 +13,7 @@ function scheduleTime() {
   const days = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
   days.forEach((day) => {
     schedule[day] = {};
-    schedule[day].officeHour = `Open from ${data.hours[day].open}am until ${data.hours[day].close}pm`;
+    schedule[day].officeHour = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
     schedule[day].exhibition = exhibition(day);
     if (day === 'Monday') {
       schedule[day].officeHour = 'CLOSED';

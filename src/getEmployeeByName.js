@@ -11,8 +11,4 @@ function getEmployeeByName(employeeName) {
     || employee.lastName === employeeName);
 }
 
-// console.log(getEmployeeByName())
-// console.log(getEmployeeByName('flavia'))
-// console.log(getEmployeeByName('Elser'))
-
 module.exports = getEmployeeByName;

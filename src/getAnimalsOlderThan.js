@@ -1,10 +1,6 @@
 const data = require('../data/zoo_data');
-// const { species } = require('../data/zoo_data');
 
 function getAnimalsOlderThan(animal, age) {
-  // console.log('animal: ' + animal);
-  // console.log('idade: ' + age);
-
   // pega a primeira especie listada
   const animalSpecie = data.species.find((specie) => specie.name === animal);
 
@@ -13,5 +9,3 @@ function getAnimalsOlderThan(animal, age) {
 }
 
 module.exports = getAnimalsOlderThan;
-
-// getAnimalsOlderThan('lions',10)
