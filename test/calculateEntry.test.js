@@ -46,6 +46,7 @@ describe('6 - Crie o cálculo total do preço de entrada', () => {
 
   it('ao receber um array com 1 pessoa adulta retorna o valor correto', () => {
     const entrants = [{ name: name.findName(), age: 18 }];
+
     const actual = calculateEntry(entrants);
     const expected = 49.99;
     expect(actual).toEqual(expected);
