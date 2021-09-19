@@ -1,44 +1,54 @@
-const { species, employees } = require('../data/zoo_data');
+const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function getEmployeesCoverage(param) {
-  let filterEmployees
-  if (!param) {
-    // TODO: return coverage from all workers;
-    filterEmployees = employees;
-    return employees.map((element) => getCoverage(element));
-  }
-  if (param.name) {
-    // TODO: return only the employee with this name
-    return employees
-      .filter((element) => fullName(element).includes(param.name))
-      .map((element) => getCoverage(element));
-  }
-  if (param.id) {
-    // TODO: return only the employee with this id
-    return employees
-      .filter((element) => element.id === param.id)
-      .map((element) => getCoverage(element));
-  }
+let filteredEmployees = [];
+
+function getFullName(employee) {
+  return `${employee.firstName} ${employee.lastName}`;
+}
+
+function filteredEmployeesByName(param) {
+  return employees.filter((element) =>
+    getFullName(element).includes(param.name));
+}
+
+function filteredEmployeesById(param) {
+  return employees.filter((element) => element.id === param.id);
 }
 
 function getSpecies(employee) {
   return species.filter((element) =>
-    employee.responsibleFor.includes(element.id),
-  );
+    employee.responsibleFor.includes(element.id));
 }
 
-function getCoverage(employee) {
-  return {
-    id: employee.id,
-    fullName: `${employee.firstName} ${employee.lastName}`,
-    species: getSpecies(employee).map((element) => element.name),
-    locations: getSpecies(employee).map((element) => element.location),
-  };
+function getCoverage(workers) {
+  return workers.map((person) => {
+    const getAllSpecies = getSpecies(person);
+    return {
+      id: person.id,
+      fullName: `${person.firstName} ${person.lastName}`,
+      species: getAllSpecies.map((specie) => specie.name),
+      locations: getAllSpecies.map((specie) => specie.location),
+    };
+  });
 }
 
-function fullName(employee) {
-  return `${employee.firstName} ${employee.lastName}`;
+function getFilteredEmployees(param) {
+  if (param && param.name) filteredEmployees = filteredEmployeesByName(param);
+  if (param && param.id) filteredEmployees = filteredEmployeesById(param);
+
+  return filteredEmployees;
+}
+
+function getEmployeesCoverage(param) {
+  if (!param) filteredEmployees = employees;
+  filteredEmployees = getFilteredEmployees(param);
+  if (filteredEmployees.length === 0) {
+    throw new Error('Informações inválidas');
+  }
+
+  const results = getCoverage(filteredEmployees);
+  return results.length === 1 ? results[0] : results;
 }
 
 module.exports = getEmployeesCoverage;
