@@ -7,9 +7,9 @@ const { hours } = data;
 const diasDaSemana = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const nomeDosAnimais = species.map((animal) => animal.name);
 
-// verificando um dia e um animal dentro da lista
-const verificarDias = (dias) => diasDaSemana.find((dia) => dia === dias);
-const vetificarAnimais = (animais) => nomeDosAnimais.find((animal) => animal === animais);
+// // verificando um dia e um animal dentro da lista
+// const verificarDias = (dias) => diasDaSemana.find((dia) => dia === dias);
+// const vetificarAnimais = (animais) => nomeDosAnimais.find((animal) => animal === animais);
 
 // função mapear se em um dia ta animal esta incluido
 const diaDosAnimais = (dia) => {
