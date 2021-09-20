@@ -12,11 +12,11 @@ function countAnimals(animal) {
     return allAnimals;
   }
   const currAnimal = species.find((element) => element.name === animal.specie);
-  if (!animal.gender) {
+  if (!animal.sex) {
     count = currAnimal.residents.length;
     return count;
   }
-  count = currAnimal.residents.filter((element) => element.sex === animal.gender).length;
+  count = currAnimal.residents.filter((element) => element.sex === animal.sex).length;
   return count;
 }
 module.exports = countAnimals;
