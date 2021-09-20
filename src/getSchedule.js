@@ -40,6 +40,4 @@ function getSchedule(scheduleTarget) {
   return getAllSchedule();
 }
 
-getSchedule('Monday');
-
 module.exports = getSchedule;
