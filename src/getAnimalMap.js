@@ -16,19 +16,3 @@ function getAnimalMap(options) {
 console.log(mapeamentoDeNome());
 
 module.exports = getAnimalMap;
-
-
-
-
-function noOptions(local) {
-  return data.species.filter(({ location }) => local === location)
-    .map(({ name }) => name);
-}
-
-function getAnimalMap(options) {
-  const locations = { NE: [], NW: [], SE: [], SW: [] };
-  data.species.forEach((specie) => {
-    locations[specie.location] = checkOptions(options, specie.location);
-  });
-  return locations;
-}
