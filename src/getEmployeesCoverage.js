@@ -44,12 +44,12 @@ function getEmployeesCoverage(obj) {
   if (obj === undefined) {
     return arrayAllEmployees();
   }
+
   if (isEmployee(obj)) {
     return createEmployeeData(obj);
   }
+
   throw new Error('Informações inválidas');
 }
-
-getEmployeesCoverage({ name: 'Saronda' });
 
 module.exports = getEmployeesCoverage;
