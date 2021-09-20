@@ -25,7 +25,6 @@ const createCoverage = ({ id, firstName, lastName, responsibleFor }, type) =>
     species: getAnimalsNamesById(responsibleFor),
     locations: getAnimalsLocations(responsibleFor),
   });
-  
 const getEmployeeCoverage = (value) => {
   const target = Object.values(value)[0];
   const employee = findEmployee(target);
