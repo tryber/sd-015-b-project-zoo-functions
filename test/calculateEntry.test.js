@@ -12,6 +12,7 @@ describe('6 - Crie o cálculo total do preço de entrada', () => {
       { name: name.findName(), age: 50 },
     ];
 
+    
     const actual = countEntrants(entrants);
     const expected = { adult: 2, child: 3, senior: 1 };
     expect(actual).toEqual(expected);
