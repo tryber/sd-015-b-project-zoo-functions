@@ -10,7 +10,9 @@ function countEntrants(entrants) {
 }
 
 function calculateEntry(entrants) {
-  if (entrants === undefined || Object.keys(entrants).length === 0) { return 0; }
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
+    return 0;
+  }
   const pagantes = countEntrants(entrants);
   const kids = pagantes.child * prices.child;
   const adultos = pagantes.adult * prices.adult;
