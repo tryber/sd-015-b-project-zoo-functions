@@ -4,11 +4,10 @@ const { species } = require('../data/zoo_data');
 const allAnimalsCounter = () => {
   const animalsCounter = {};
   species.forEach((specie) => {
-    er[specie.name] = specie.residents.length;
+    i[specie.name] = specie.residents.length;
   });
-  return er;
+  return i;
 };
-
 
 function countAnimals(animal) {
   // seu código aqui

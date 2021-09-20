@@ -13,6 +13,7 @@ function getRelatedEmployees(managerId) {
       .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
     return colaborators;
   }
+
   throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 }
 
