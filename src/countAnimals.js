@@ -9,7 +9,8 @@ function countAnimals(animal) {
       animalNames[`${specieName.name}`] = specieName.residents.length;
     });
     return animalNames;
-  } else if (typeof animal.sex !== 'undefined') {
+  }
+  if (typeof animal.sex !== 'undefined') {
     const residents = species.find((specie) => specie.name === animal.specie);
     const genderAnimal = residents.residents.filter((element) => element.sex === animal.sex);
     return genderAnimal.length;
