@@ -21,9 +21,6 @@ const valueExhibition = arrHours.map((day) => day[0])
     .map((specieDay) => specieDay.name));
 // console.log(valueExhibition);
 
-// obtAllSchedule[keyDaysWeek] = valueOpenClose;
-// console.log(obtAllSchedule);
-// console.log(obtAllSchedule.keyDaysWeek)
 const getObjtAllSchedule = () => {
   for (let i = 0; i < daysWeek.length; i += 1) {
     if (daysWeek[i] !== 'Monday') {
@@ -36,17 +33,6 @@ const getObjtAllSchedule = () => {
   }
   return obtAllSchedule;
 };
-const dataAnimalAndSchedule = getObjtAllSchedule();
-const arrDataAnimalAndSchedule = Object.entries(dataAnimalAndSchedule);
-
-
-console.log(arrDataAnimalAndSchedule);
-
-// console.log(getObjtAllSchedule());
-// console.log(dataAnimalAndSchedule);
-
-
-const dayMonday = { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
 
 const ifAnimals = (nameAnimal) => species.some((specie) => specie.name === nameAnimal);
 // console.log(ifAnimals('lions'));
@@ -54,32 +40,30 @@ const getDayAnimal = (nameAnimal) => species
   .find((specie) => specie.name === nameAnimal).availability;
 // console.log(getDayAnimal('lions'));
 
-const objOneSchedule = {};
-const ifDay = (oneDay) => {
-  for (let i = 0; i < daysWeek.length; i += 1) {
-    if (oneDay === 'Monday') {
-      return objOneSchedule.Monday = { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
-    } 
-      objOneSchedule[oneDay] = {};
-      console.log(objOneSchedule);
-      objOneSchedule[oneDay].officeHour = valueOpenClose[i];
-      objOneSchedule[keyDaysWeek[i]].exhibition = valueExhibition[i];
+const dayMonday = { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
+
+const ifOneDay = (oneDay) => arrHours.some((dayWeek) => dayWeek[0].includes(oneDay));
+// console.log(ifOneDay('Tuday'));
+const getForOneDay = (oneDay) => {
+  if (oneDay === 'Monday') {
+    return dayMonday;
   }
-  return obtAllSchedule;
+  const dataAnimalAndSchedule = getObjtAllSchedule();
+  const objectDay = {};
+  objectDay[oneDay] = dataAnimalAndSchedule[oneDay];
+  return objectDay;
 };
-// .map((dayWeek) => arrHours.find((hour) => hour.includes(dayWeek))
-//   .map((dayOpenClose) => dayOpenClose)[0]);
 
-// function getSchedule(scheduleTarget) {
-//   if (scheduleTarget === undefined) {
-//    const allSchedule = getObjtAllSchedule();
-//    return allSchedule;
-//     } if (scheduleTarget === 'Monday') {
-//     return dayMonday;
-//   } if (ifAnimals(scheduleTarget) === true) {
-//     return getDayAnimal(scheduleTarget);
-//   }if ((scheduleTarget) === true) {
-//     return getDayAnimal(scheduleTarget);
-// }
+function getSchedule(scheduleTarget) {
+  if (scheduleTarget === undefined) {
+    const allSchedule = getObjtAllSchedule();
+    return allSchedule;
+  } if (ifOneDay(scheduleTarget) === true) {
+    return getForOneDay(scheduleTarget);
+  } if (ifAnimals(scheduleTarget) === true) {
+    return getDayAnimal(scheduleTarget);
+  } const allSchedule = getObjtAllSchedule();
+  return allSchedule;
+}
 
-// module.exports = getSchedule;
+module.exports = getSchedule;
