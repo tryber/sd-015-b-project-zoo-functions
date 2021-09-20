@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
   const kids = entrants.filter((entrada) => entrada.age < 18);
-  const adultos = entrants.filter((entrada) => (entrada.age >= 18 && entrada.age <= 50));
+  const adultos = entrants.filter((entrada) => (entrada.age >= 18 && entrada.age < 50));
   const idosos = entrants.filter((entrada) => entrada.age >= 50);
   return { child: kids.length, adult: adultos.length, senior: idosos.length };
 }
