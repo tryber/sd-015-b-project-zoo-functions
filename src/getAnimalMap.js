@@ -2,20 +2,18 @@ const data = require('../data/zoo_data');
 
 const { species } = data;
 
-const getSpeciesByLocation = (location) => // usado no noParameters
-  species
-    .filter((element) => element.location === location)
-    .map((element) => element.name);
+const getSpeciesByLocation = (location) => species
+  .filter((element) => element.location === location)
+  .map((element) => element.name);
 
-const getElementsByLocation = (location) => // usado no includedNames: true
-  species.filter((element) => element.location === location);
+const getElementsByLocation = (location) => species // usado no includedNames: true
+  .filter((element) => element.location === location);
 
-const getNamesBySpeciesAndLocation = (location) => { // usado no includedNames: true
-  return getElementsByLocation(location).reduce((acc, element) => {
+const getNamesBySpeciesAndLocation = (location) => getElementsByLocation(location)
+  .reduce((acc, element) => {
     acc.push(element);
     return acc;
   }, []);
-};
 
 const noParameters = () => {
   const locationObject = {
