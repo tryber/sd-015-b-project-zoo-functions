@@ -2,11 +2,11 @@ const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
 const allAnimalsCounter = () => {
-  const animalsCounter = {};
+  const animalsCount = {};
   species.forEach((specie) => {
-    i[specie.name] = specie.residents.length;
+    animalsCount[specie.name] = specie.residents.length;
   });
-  return i;
+  return animalsCount;
 };
 
 function countAnimals(animal) {
