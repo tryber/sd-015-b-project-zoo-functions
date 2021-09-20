@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 const { employees } = data;
 function isManager(id) {
   // seu código aqui
-  return employees.filter(employee => employee.managers === id? employee.managers : false);
+  // return employees.filter(employee => employee.managers === id? employee.managers : false);
 }
 
 console.log(isManager('4b40a139-d4dc-4f09-822d-ec25e819a5ad'));
