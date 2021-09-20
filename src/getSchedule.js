@@ -1,6 +1,7 @@
 const data = require('../data/zoo_data');
 
-const daysOfTheWeek = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
+const daysOfTheWeek = ['Tuesday',
+  'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 
 const animals = [];
 data.species.forEach((specie) => {
@@ -80,9 +81,5 @@ function getSchedule(scheduleTarget) {
   }
   return returnDayAnimal(scheduleTarget, checkParameters(scheduleTarget));
 }
-
-getSchedule('Monday');
-// console.log(daysSchedule);
-
 
 module.exports = getSchedule;
