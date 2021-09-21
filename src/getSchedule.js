@@ -27,7 +27,7 @@ const animalAndDay = (scheduleTarget, day, animals) => {
     return species.find((animal) => animal.name === scheduleTarget).availability;
   }
   if (day) {
-    return { [scheduleTarget]: getAllSchedule() };
+    return { [scheduleTarget]: getAllSchedule()[scheduleTarget] };
   }
 };
 
@@ -39,7 +39,5 @@ function getSchedule(scheduleTarget) {
   }
   return getAllSchedule();
 }
-
-getSchedule('Wednesday');
 
 module.exports = getSchedule;
