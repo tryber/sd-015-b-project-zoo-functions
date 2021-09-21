@@ -9,11 +9,11 @@ function countAnimals(animal) {
       printAnimals[specie.name] = specie.residents.length;
     });
     return printAnimals;
-  } if (!animal.gender) {
+  } if (!animal.sex) {
     return species.find((animals) => animals.name === animal.specie).residents.length;
-  } if (animal.specie && animal.gender) {
+  } if (animal.specie && animal.sex) {
     const animalGender = species.find((specie) =>
-      specie.name === animal.specie).residents.filter((resident) => animal.gender === resident.sex);
+      specie.name === animal.specie).residents.filter((resident) => animal.sex === resident.sex);
     return animalGender.length;
   }
 }
