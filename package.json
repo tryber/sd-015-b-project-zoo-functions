@@ -24,5 +24,8 @@
     "eslint-config-trybe-fundamentals": "1.1.0",
     "faker": "5.5.3",
     "jest": "25.2.3"
+  },
+  "dependencies": {
+    "babel": "^6.23.0"
   }
 }
