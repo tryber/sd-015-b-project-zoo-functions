@@ -18,13 +18,13 @@ const quantAnimals = (animal) => {
 
 const quantAnimalsBySex = (animal) => {
   const totalAnimals = species.find((animalName) => animalName.name === animal.specie);
-  const animalsBySex = totalAnimals.residents.filter((specie) => specie.sex === animal.gender);
+  const animalsBySex = totalAnimals.residents.filter((specie) => specie.sex === animal.sex);
   return animalsBySex.length;
 };
 
 function countAnimals(animal) {
   if (animal === undefined) return argumentUndefined();
-  if (animal.gender === undefined) return quantAnimals(animal);
+  if (animal.sex === undefined) return quantAnimals(animal);
   return quantAnimalsBySex(animal);
 }
 
