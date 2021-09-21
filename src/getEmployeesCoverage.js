@@ -2,7 +2,7 @@ const data = require('../data/zoo_data');
 const { species, employees } = require('../data/zoo_data');
 
 function findEmployee(employee) {
-  const getEmployee = employee.find((inputedId) => inputedId.id === employee.id
+  const getEmployee = employees.find((inputedId) => inputedId.id === employee.id
   || inputedId.firstName === employee.name
   || inputedId.lastName === employee.name);
   if (typeof getEmployee === 'undefined') {
@@ -10,6 +10,7 @@ function findEmployee(employee) {
   }
   return getEmployee;
 }
+
 function getSpeciesFromEmployee(employee) {
   const speciesFilter = species.filter((specie) => employee.includes(specie.id));
   return speciesFilter;
@@ -32,11 +33,11 @@ function getEmployeesCoverage(id) {
     });
     return allEmployees;
   }
-  const getEmployees = findEmployee(employees);
+  const getEmployees = findEmployee(id);
   const employeeResponsibleFor = getEmployees.responsibleFor;
   const getSpecieEmployeeAndLocal = getSpeciesFromEmployee(employeeResponsibleFor);
 
   return objectCreator(getEmployees, getSpecieEmployeeAndLocal);
 }
-
+console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 module.exports = getEmployeesCoverage;
