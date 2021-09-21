@@ -8,8 +8,10 @@ function getOldestFromFirstSpecies(id) {
   const animalValues = species.filter((element) => element.id.includes(filterFirstAnimal));
   const oldestAnimal = animalValues[0].residents.reduce((acumulator, element) => {
     if (element.age > acumulator.age) return element;
-    else return acumulator;
-  });
+    else {
+      return acumulator;
+    }  
+    });
   return Object.values(oldestAnimal);
 }
 
