@@ -4,7 +4,7 @@ function getAnimalsAndTime(day) {
   const obj = {};
   const { open } = data.hours[day];
   const { close } = data.hours[day];
-  obj.officeHour = `Open from ${open} am until ${close}pm`;
+  obj.officeHour = `Open from ${open}am until ${close}pm`;
   const specieFilter = data.species.filter((specie) => specie.availability.includes(day));
   const namesMap = specieFilter.map((animal) => animal.name);
   obj.exhibition = namesMap;
