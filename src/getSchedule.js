@@ -3,22 +3,21 @@ const { species } = require('../data/zoo_data');
 const { hours } = require('../data/zoo_data');
 
 function avaliabilityByWeekday(day) {
-  let officeHour;
-  let exhibition;
+  const infoFound = {
+    officeHour: '',
+    exhibition: '',
+  };
   const closed = 'Monday';
   if (day === closed) {
-    officeHour = 'CLOSED';
-    exhibition = 'The zoo will be closed!';
+    infoFound.officeHour = 'CLOSED';
+    infoFound.exhibition = 'The zoo will be closed!';
   } else {
     const findAvaliability = (specie) => specie.availability.includes(day);
     const speciesAvaliable = species.filter(findAvaliability);
-    officeHour = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-    exhibition = speciesAvaliable.map((specie) => specie.name);
+    infoFound.officeHour = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
+    infoFound.exhibition = speciesAvaliable.map((specie) => specie.name);
   }
-  const infoFound = {
-    officeHour,
-    exhibition,
-  };
+
   return infoFound;
 }
 
@@ -37,8 +36,8 @@ function getSchedule(animalOrDay) {
   }
   if (animals.includes(animalOrDay)) {
     const findAnimal = (specie) => specie.name === animalOrDay;
-    const foundAnimal = species.find(findAnimal).availability;
-    return foundAnimal;
+    const foundAnimalAvaliability = species.find(findAnimal).availability;
+    return foundAnimalAvaliability;
   }
 }
 
