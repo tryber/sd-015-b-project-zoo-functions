@@ -42,7 +42,7 @@ function getSchedule(scheduleTarget) {
 
   if (animais.includes(scheduleTarget)) return horaAnimal(scheduleTarget);
 
-  return horasTotais;
+  return horasTotais();
 }
 
 module.exports = getSchedule;
