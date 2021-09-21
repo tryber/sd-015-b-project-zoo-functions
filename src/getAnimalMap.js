@@ -18,7 +18,7 @@ function getAnimalNameByLocation(sex, sorted) {
     if (sex) residents = residents.filter((animalSex) => animalSex.sex === sex);
     residents = residents.map((resident) => resident.name);
     if (sorted) residents.sort();
-    location[specie.location].push({[specie.name]: residents});
+    location[specie.location].push({ [specie.name]: residents });
   });
   return location;
 }
