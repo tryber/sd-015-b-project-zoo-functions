@@ -242,7 +242,7 @@ Exemplo:
 throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
 ```
 
-Você pode ler mais sobre a [função construtora **Error**, neste link.](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Error)
+Você pode ler mais sobre a [função construtora **Error**, neste link.](https://developer.mozfilterilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
   **Observações técnicas**
 
@@ -268,6 +268,7 @@ Você pode ler mais sobre a [função construtora **Error**, neste link.](https:
 ### 5. Implemente a função `countAnimals`
 
   Esta função é responsável por contabilizar a quantidade de animais de cada espécie.
+
 
 **Observações técnicas**
 
