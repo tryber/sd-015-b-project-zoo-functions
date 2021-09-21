@@ -17,7 +17,8 @@ function countAnimals(animal) {
   if (animal === undefined) {
     return makeAnimalsArray();
   }
-  const selectedSpecie = species.find((specie) => specie.name === animal.specie);
+  const selectSpecie = (specie) => specie.name === animal.specie;
+  const selectedSpecie = species.find(selectSpecie);
   if (animal.gender) {
     const selectGender = (resident) => resident.sex === animal.gender;
     const selectedGender = selectedSpecie.residents.filter(selectGender);
@@ -27,7 +28,7 @@ function countAnimals(animal) {
 }
 
 console.log(countAnimals({ specie: 'penguins' }));
-console.log(countAnimals({ specie: 'elephants', gender: 'male' }));
+console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
 console.log(countAnimals());
 
 module.exports = countAnimals;
