@@ -269,6 +269,7 @@ Você pode ler mais sobre a [função construtora **Error**, neste link.](https:
 
   Esta função é responsável por contabilizar a quantidade de animais de cada espécie.
 
+
 **Observações técnicas**
 
   - Se nenhum argumento for passado, retorna um objeto cujo o nome de cada espécie é uma chave desse objeto, e o total de animais dessa espécie é o seu valor;
