@@ -10,16 +10,12 @@ function getAllRegions() {
   const allRegions = { NE: [], NW: [], SE: [], SW: [] };
   arrayRegions.forEach((region, index) =>
     region.forEach((elemnt) => {
-      if (!allRegions[optionsRegions[index]]) {
-        allRegions[optionsRegions[index]] = [elemnt.name];
-      }
       allRegions[optionsRegions[index]].push(elemnt.name);
     }));
   return allRegions;
 }
 
-function getAnimalsIncludeName(specie, region, sorted) {
-  const allRegions = { NE: [], NW: [], SE: [], SW: [] };
+function getAnimalsIncludeName(allRegions, specie, region, sorted) {
   specie.forEach(({ name, residents }) => {
     const array = [];
     if (sorted === true) {
@@ -32,12 +28,10 @@ function getAnimalsIncludeName(specie, region, sorted) {
     }
     allRegions[region].push({ [name]: array });
   });
-  console.log(allRegions);
   return allRegions;
 }
 
-function getAnimalsIncludeNameSex(specie, region, sorted, sex) {
-  const allRegions = { NE: [], NW: [], SE: [], SW: [] };
+function getAnimalsIncludeNameSex(allRegions, specie, region, sorted, sex) {
   specie.forEach(({ name, residents }) => {
     const array = [];
     residents.forEach((resident) => {
@@ -55,32 +49,30 @@ function getAnimalsIncludeNameSex(specie, region, sorted, sex) {
   return allRegions;
 }
 
-function function1(includeNames, sorted) {
+function function1(allRegions, includeNames, sorted) {
   if (includeNames) {
-    const retorno = optionsRegions.forEach((region, index) =>
-      getAnimalsIncludeName(arrayRegions[index], region, sorted));
-    return retorno;
+    optionsRegions.forEach((region, index) =>
+      getAnimalsIncludeName(allRegions, arrayRegions[index], region, sorted));
+    return allRegions;
   }
   return getAllRegions();
 }
-function function2(includeNames, sorted, sex) {
+function function2(allRegions, includeNames, sorted, sex) {
   if (sex) {
-    const retorno = optionsRegions.forEach((region, index) =>
-      getAnimalsIncludeNameSex(arrayRegions[index], region, sorted, sex));
-    return retorno;
+    optionsRegions.forEach((region, index) =>
+      getAnimalsIncludeNameSex(allRegions, arrayRegions[index], region, sorted, sex));
+    return allRegions;
   }
-  return function1(includeNames, sorted);
+  return function1(allRegions, includeNames, sorted);
 }
 
 function getAnimalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
-
+  const allRegions = { NE: [], NW: [], SE: [], SW: [] };
   if (includeNames) {
-    return function2(includeNames, sorted, sex);
+    return function2(allRegions, includeNames, sorted, sex);
   }
-  return function1(includeNames, sorted);
+  return function1(allRegions, includeNames, sorted);
 }
-//console.log(getAnimalsIncludeName(arrayRegions[0], 'NE', true));
-console.log(getAnimalMap({ includeNames: true, sorted: true }));
 
 module.exports = getAnimalMap;

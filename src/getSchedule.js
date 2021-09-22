@@ -34,9 +34,7 @@ const getDayWeek = (day) => {
 };
 
 const getScheduleAnimal = (animal) => {
-  const result = species.find(({ name, availability }) => {
-    if (name === animal) return availability;
-  });
+  const result = species.find(({ name }) => name === animal);
   return result.availability;
 };
 
