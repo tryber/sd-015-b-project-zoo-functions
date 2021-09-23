@@ -2,9 +2,10 @@ const { species, hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 const week = Object.entries(hours);
-/* eslint-disable no-param-reassign */
+
 const getWekend = () => {
   const result = week.reduce((previousValue, currentValue, index) => {
+    const obj = previousValue;
     const horario = `Open from ${week[index][1].open}am until ${week[index][1].close}pm`;
     const exhibitionAnimals = species.reduce((acumulador, { name, availability }) => {
       if (availability.includes(week[index][0])) {
@@ -12,16 +13,16 @@ const getWekend = () => {
       }
       return acumulador;
     }, []);
-    previousValue[currentValue[0]] = { officeHour: horario, exhibition: exhibitionAnimals };
+    obj[currentValue[0]] = { officeHour: horario, exhibition: exhibitionAnimals };
     if (week[index][0] === 'Monday') {
-      previousValue[currentValue[0]] = {
+      obj[currentValue[0]] = {
         officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' };
     }
     return previousValue;
   }, {});
   return result;
 };
-/* eslint-enable no-param-reassign */
+
 const getDayWeek = (day) => {
   const days = week.reduce((acumulador, [dayWeek]) => {
     acumulador.push(dayWeek);
