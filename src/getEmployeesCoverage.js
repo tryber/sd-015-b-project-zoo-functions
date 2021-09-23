@@ -1,4 +1,5 @@
 const data = require('../data/zoo_data');
+
 function getEmployee(person) {
   return data.employees.find((employee) =>
     (person.name === employee.firstName
