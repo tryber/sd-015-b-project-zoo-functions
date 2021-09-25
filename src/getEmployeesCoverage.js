@@ -4,9 +4,6 @@ const firstNames = data.employees.map((element) => element.firstName);
 const lastNames = data.employees.map((element) => element.lastName);
 const fullNames = firstNames.map((element, index) => `${element} ${lastNames[index]}`);
 const ids = data.employees.map((element) => element.id);
-// const speciesIDS = data.species.map((element) => element.id);
-// const speciesNames = data.species.map((element) => element.name);
-// const speciesLocations = data.species.map((element) => element.location);
 
 const findEmployee = (nameToFind) =>
   data.employees.find((element) =>
@@ -40,9 +37,13 @@ const employeesCoverage = ids.map((element, index) => {
 
 const testeString = (string, teste) => string.includes(teste);
 
-const findEmployeeByName = (employeeName) =>
-  employeesCoverage.find((element) => testeString(element.fullName, employeeName));
-
+const findEmployeeByName = (employeeName) => {
+  const employee = employeesCoverage.find((element) => testeString(element.fullName, employeeName));
+  if (employee) {
+    return employee;
+  }
+  throw new Error('Informações inválidas');
+};
 const findEmployeeByID = (employeeID) => {
   const employee = employeesCoverage.find((element) => testeString(element.id, employeeID));
   if (employee) {
@@ -57,8 +58,6 @@ const getOneEmployee = (key, value) => {
   }
   return findEmployeeByID(value);
 };
-
-console.log(getOneEmployee({ name: 'jorge' }));
 
 function getEmployeesCoverage(object) {
   // seu código aqui
