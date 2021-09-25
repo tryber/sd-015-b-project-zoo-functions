@@ -5,13 +5,12 @@ const lastNames = data.employees.map((element) => element.lastName);
 const fullNames = firstNames.map((element, index) => `${element} ${lastNames[index]}`);
 const ids = data.employees.map((element) => element.id);
 // const speciesIDS = data.species.map((element) => element.id);
-const speciesNames = data.species.map((element) => element.name);
-const speciesLocations = data.species.map((element) => element.location);
+// const speciesNames = data.species.map((element) => element.name);
+// const speciesLocations = data.species.map((element) => element.location);
 
-const findEmployee = (nameToFind) => {
-  return data.employees.find((element) =>
+const findEmployee = (nameToFind) =>
+  data.employees.find((element) =>
     element.firstName === nameToFind || element.lastName === nameToFind);
-};
 
 const findSpecie = (idSpecieToFind) =>
   data.species.find((element) => element.id === idSpecieToFind).name;
