@@ -3,16 +3,26 @@ const data = require('../data/zoo_data');
 
 function isManager(id) {
   // seu código aqui
-  const findEmployeeManager = employees.find((emp) => emp.id === id).managers;
-  const verify = findEmployeeManager.some((ids) => ids === '9e7d4524-363c-416a-8759-8aa7e50c0992');
+  const recoverEmpManagers = employees.map((emp) => emp.managers.some((manager) => manager === id));
+  const verifyManagement = recoverEmpManagers.some((boo) => boo === true);
 
-  return verify;
+  return verifyManagement;
 }
 
 function getRelatedEmployees(managerId) {
   // seu código aqui
-}
+  if (isManager(managerId) === true) {
+    const seeEmployees = employees.filter((emp) => emp.managers.find((id) => id === managerId));
+    const returnName = seeEmployees.map((empNames) => {
+      const first = empNames.firstName;
+      const last = empNames.lastName;
+      return `${first} ${last}`;
+    });
 
-console.log(isManager('fdb2543b-5662-46a7-badc-93d960fdc0a8'));
+    return returnName;
+  }
+
+  throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
+}
 
 module.exports = { isManager, getRelatedEmployees };
