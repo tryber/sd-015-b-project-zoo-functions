@@ -1,35 +1,23 @@
 const data = require('../data/zoo_data');
 const { prices } = require('../data/zoo_data');
 
-const getAdultsEntrants = (adultsIn) => {
-  const adults = adultsIn.filter((adult) => adult.age >= 18 && adult.age < 50);
-  return adults.length;
-};
-
-const getSeniorsEntrants = (seniorsIn) => {
-  const seniors = seniorsIn.filter((senior) => senior.age >= 50);
-  return seniors.length;
-};
-
-const getChildsEntrants = (childsIn) => {
-  const childs = childsIn.filter((child) => child.age < 18);
-  return childs.length;
-};
 function countEntrants(entrants) {
   // seu código aqui
+  // alterei a logica aqui... deu pra diminuir aquele codigo em um objeto.
   return {
-    adult: getAdultsEntrants(entrants),
-    senior: getSeniorsEntrants(entrants),
-    child: getChildsEntrants(entrants),
+    adult: entrants.filter((peoples) => peoples.age >= 18 && peoples.age < 50).length,
+    senior: entrants.filter((peoples) => peoples.age >= 50).length,
+    child: entrants.filter((peoples) => peoples.age < 18).length,
   };
 }
 
 function calculateEntry(entrants) {
   // seu código aqui
-  if (countEntrants(entrants) === 0) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) { // condicao para retornar 0 (se entrants for indefinido ou o tamanho da array retornada for 0)
     return 0;
   }
   const individual = countEntrants(entrants);
+
   const adultValue = prices.child * individual.adult;
   const seniorValue = prices.adult * individual.senior;
   const childValue = prices.child * individual.child;
@@ -38,3 +26,6 @@ function calculateEntry(entrants) {
 }
 
 module.exports = { calculateEntry, countEntrants };
+
+// Gracas ao Geovanni Cardoso pude entender melhor esse requisito.
+// Link para o repositorio dele https://github.com/tryber/sd-015-b-project-zoo-functions/tree/Geovanni-Cardoso-zoo-functions-project
