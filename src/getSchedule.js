@@ -35,14 +35,7 @@ function getScheduleByDay(scheduleDay) {
 }
 
 function getScheduleByAnimal(scheduleAnimal) {
-  const newArr = [];
-  obj.forEach((daySchedule) => {
-    if (typeof daySchedule[1].exhibition !== 'string' && daySchedule[1].exhibition
-      .some((animal) => animal === scheduleAnimal)) {
-      newArr.push(daySchedule[0]);
-    }
-  });
-  return newArr;
+  return species.find((animal) => animal.name === scheduleAnimal).availability;
 }
 
 function getSchedule(scheduleTarget) {
@@ -51,7 +44,5 @@ function getSchedule(scheduleTarget) {
     .some((animal) => animal === scheduleTarget)) return getScheduleByAnimal(scheduleTarget);
   return fullSchedule;
 }
-
-console.log(getSchedule());
 
 module.exports = getSchedule;
