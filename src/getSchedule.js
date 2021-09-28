@@ -34,10 +34,8 @@ const gotAnimalName = (receivedAnimal) => {
 
 const countAnimalsThatDay = (receivedDay) => {
   const animalsThatDay = [];
-  species.forEach(({ name, availability }) => availability.filter((day) => {
-    if (day === receivedDay) animalsThatDay.push(name);
-    return animalsThatDay;
-  }));
+  species.forEach(({ name, availability }) => availability
+    .filter((day) => ((day !== receivedDay) ? animalsThatDay : animalsThatDay.push(name))));
   return animalsThatDay;
 };
 
