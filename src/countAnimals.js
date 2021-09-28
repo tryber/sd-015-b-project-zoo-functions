@@ -2,13 +2,12 @@ const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 // retorna todos os animais
-const allAnimals = () => {
-  const animals = species.reduce((acc, animalData) => {
-    acc[animalData.name] = animalData.residents.length;
-    return acc;
-  }, {});
-  return animals;
-};
+const allAnimals = () => species.reduce((acc, animalData) => {
+  acc[animalData.name] = animalData.residents.length;
+  return acc;
+}, {});
+
+console.log(allAnimals());
 
 // retorna todos os animais de uma especie
 const allAnimalsBySpecie = (specie) => {
