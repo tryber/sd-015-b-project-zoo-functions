@@ -1,31 +1,44 @@
 const data = require('../data/zoo_data');
-const { prices } = require('../data/zoo_data');
+
+// Funcao para separar as entradas
+function separatingEntrants(entrant) {
+  if (entrant.age >= 18 && entrant.age < 50) {
+    return 'adult';
+  }
+  if (entrant.age >= 50) {
+    return 'senior';
+  }
+  if (entrant < 18) {
+    return 'child';
+  }
+}
 
 function countEntrants(entrants) {
   // seu código aqui
-  // alterei a logica aqui... deu pra diminuir aquele codigo em um objeto.
-  return {
-    adult: entrants.filter((peoples) => peoples.age >= 18 && peoples.age < 50).length,
-    senior: entrants.filter((peoples) => peoples.age >= 50).length,
-    child: entrants.filter((peoples) => peoples.age < 18).length,
+  const total = {
+    adult: 0,
+    senior: 0,
+    child: 0,
   };
+  entrants.forEach((entrant) => {
+    total[separatingEntrants(entrant)] += 1;
+  });
+  return total;
 }
 
 function calculateEntry(entrants) {
   // seu código aqui
-  if (entrants === undefined || Object.keys(entrants).length === 0) { // condicao para retornar 0 (se entrants for indefinido ou o tamanho da array retornada for 0)
-    return 0;
-  }
-  const individual = countEntrants(entrants);
+  const condition = countEntrants(entrants);
+  if (condition === 0) { return 0; }
 
-  const adultValue = prices.child * individual.adult;
-  const seniorValue = prices.adult * individual.senior;
-  const childValue = prices.child * individual.child;
+  const {
+    adult,
+    senior,
+    child,
+  } = countEntrants(entrants);
 
-  return adultValue + seniorValue + childValue;
+  const { prices } = data;
+  const totalPrice = (adult * prices.adult) + (senior * prices.senior) + (child * prices.child);
+  return totalPrice;
 }
-
 module.exports = { calculateEntry, countEntrants };
-
-// Gracas ao Geovanni Cardoso pude entender melhor esse requisito.
-// Link para o repositorio dele https://github.com/tryber/sd-015-b-project-zoo-functions/tree/Geovanni-Cardoso-zoo-functions-project
