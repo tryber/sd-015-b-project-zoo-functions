@@ -1,31 +1,32 @@
 const { species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
-function countAllAnimals() {
-  const animals = {};
-  species.forEach((animal) => {
-    animals[animal.name] = animal.residents.length;
+const argumentUndefined = () => {
+  const totalAnimals = {};
+
+  species.forEach((animalName) => {
+    totalAnimals[`${ animalName.name }`] = animalName.residents.length;
   });
-  return animals;
+
+  return totalAnimals;
+}
+
+const quantAnimals = (animal) => {
+  const totalAnimals = species.find((animalName) => animalName.name === animal.specie);
+  return totalAnimals.residents.length;
+}
+
+const quantAnimalsBySex = (animal) => {
+  const totalAnimals = species.find((animalName) => animalName.name === animal.specie);
+  const animalsBySex = totalAnimals.residents.filter((specie) => specie.sex === animal.gender);
+  return animalsBySex.length;
 }
 
 function countAnimals(animal) {
-  // seu código aqui
-  if (animal === undefined) {
-    return countAllAnimals();
-  }
-  if (animal.gender === undefined) {
-    const specie = species.find((spec) => spec.name === animal.specie);
-    return specie.residents.length;
-  }
-  let count = 0;
-  const especie = species.find((specie1) => specie1.name === animal.specie);
-  especie.residents.forEach((resident) => {
-    if (resident.sex === animal.gender) {
-      count += 1;
-    }
-  });
-  return count;
+
+  if (animal === undefined) return argumentUndefined();
+  if (animal.gender === undefined) return quantAnimals(animal);
+  return quantAnimalsBySex(animal);
 }
 
 module.exports = countAnimals;
