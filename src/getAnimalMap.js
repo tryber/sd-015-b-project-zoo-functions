@@ -19,5 +19,4 @@ const getAnimalMap = (options = { includeNames: false, sorted: false, sex: false
   }, { NE: [], NW: [], SE: [], SW: [] });// objeto estático que recebera os animais
   return result;
 };
-getAnimalMap()
 module.exports = getAnimalMap;
