@@ -1,7 +1,6 @@
 const { species } = require('../data/zoo_data');
 
 // fonte: https://github.com/tryber/sd-015-b-project-zoo-functions/pull/147/commits/8c09984e700cd2a921678499a9e7b82beaaafb3e
-// filtro e mapeamento dos animais por sexo dos residentes de cada espécie
 const createAnimalList = (options, specie) => specie.residents
   .filter((animal) => (options.sex && animal.sex === options.sex) || (!options.sex))
   .map((animal) => animal.name);
