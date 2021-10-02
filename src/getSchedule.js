@@ -29,8 +29,15 @@ const getScheduleWeek = () => {
       }
     }
   });
-  console.log(scheduleComplete);
+  // console.log(scheduleComplete);
   return scheduleComplete;
+};
+
+const getAnimalName = (getAnimal) => {
+  const animal = getAnimal;
+  const daysAnimal = species.find(({ name }) => name === animal);
+  // console.log(daysAnimal.availability);
+  return daysAnimal.availability;
 };
 
 const verifyAnimalOrDay = (element) => {
@@ -50,6 +57,7 @@ function getSchedule(scheduleTarget) {
   // seu código aqui
   if (!scheduleTarget) return getScheduleWeek();
   return verifyAnimalOrDay(scheduleTarget);
+  // console.log(value);
 }
 getSchedule();
 module.exports = getSchedule;
