@@ -29,13 +29,27 @@ const getScheduleWeek = () => {
       }
     }
   });
-  // console.log(scheduleComplete);
+  console.log(scheduleComplete);
   return scheduleComplete;
+};
+
+const verifyAnimalOrDay = (element) => {
+  const receiveAnimal = species.find(({ name }) => name === element);
+  const weekDay = Object.keys(hours).find((day) => day === element);
+  if (receiveAnimal === undefined && weekDay === undefined) {
+    return getScheduleWeek();
+  }
+  if (weekDay === undefined) {
+    return getAnimalName(element);
+  }
+  return getWeekDay(element);
+  // console.log(weekDay);
 };
 
 function getSchedule(scheduleTarget) {
   // seu código aqui
   if (!scheduleTarget) return getScheduleWeek();
+  return verifyAnimalOrDay(scheduleTarget);
 }
-// getSchedule();
+getSchedule();
 module.exports = getSchedule;
