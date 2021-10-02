@@ -1,3 +1,5 @@
+// Fonte: https://github.com/tryber/sd-015-b-project-zoo-functions/pull/145/commits/210f4e71339a1e747307103056cfd865ec031c91
+
 const { species, hours } = require('../data/zoo_data');
 // disponibilizar o horario dos animais para os users, que pode querer o cronograma da semana de um dia ou de um animal em especifico
 
@@ -40,6 +42,36 @@ const getAnimalName = (getAnimal) => {
   return daysAnimal.availability;
 };
 
+const counterAnimalsThatDay = (getDayByAnimals) => {
+  const animalsDay = [];
+  species.forEach(({ name, availability }) => availability.filter((day) => {
+    if (day === getDayByAnimals) animalsDay.push(name);
+    return animalsDay;
+  }));
+  return animalsDay;
+};
+
+const getWeekDay = (getDay) => {
+  const animalsThatDay = {};
+  const openCloseThatday = Object.entries(hours).find((day) => {
+    if (day[0] === getDay) return day.shift();
+    return '';
+  });
+  const { open, close } = openCloseThatday[0];
+  if (open === 0 && close === 0) {
+    animalsThatDay[getDay] = {
+      officeHour: 'CLOSED', exhibition: 'The zoo will be closed!',
+    };
+  } else {
+    animalsThatDay[getDay] = {
+      officeHour: `Open from ${open}am until ${close}pm`,
+      exhibition: counterAnimalsThatDay(getDay),
+    };
+  }
+  // console.log(animalsThatDay);
+  return animalsThatDay;
+};
+
 const verifyAnimalOrDay = (element) => {
   const receiveAnimal = species.find(({ name }) => name === element);
   const weekDay = Object.keys(hours).find((day) => day === element);
@@ -59,5 +91,5 @@ function getSchedule(scheduleTarget) {
   return verifyAnimalOrDay(scheduleTarget);
   // console.log(value);
 }
-getSchedule();
+// getSchedule();
 module.exports = getSchedule;
