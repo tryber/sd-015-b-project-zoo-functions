@@ -24,7 +24,7 @@ const animalSex = (sorted, sex) => {
   return object;
 };
 
-function getAnimalMap(options) {
+function getAnimalMap(options = {}) {
   const { includeNames, sorted, sex } = options;
   if (includeNames) return animalSex(sorted, sex);
   return foundAnimalLocation();
