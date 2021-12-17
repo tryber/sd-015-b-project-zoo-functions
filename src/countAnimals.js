@@ -1,27 +1,14 @@
 const { species } = require('../data/zoo_data');
-const data = require('../data/zoo_data');
 
-function countAllAnimals(speciesArray) {
-  const result = {};
+const countAllAnimals = (speciesArray) => speciesArray
+  .reduce((result, { name, residents }) => ({ ...result, [name]: residents.length }), {});
 
-  speciesArray.forEach((oneSpecies) => {
-    result[oneSpecies.name] = oneSpecies.residents.length;
-  });
+const countSpecificAnimals = (speciesArray, { sex, specie }) => (sex === undefined
+  ? speciesArray.find(({ name }) => name === specie).residents.length
+  : speciesArray.find(({ name }) => name === specie).residents
+    .filter((resident) => resident.sex === sex).length);
 
-  return result;
-}
-
-function countSpecificAnimals(speciesArray, animal) {
-  return animal.sex === undefined
-    ? speciesArray.find((oneSpecies) => oneSpecies.name === animal.specie).residents.length
-    : speciesArray.find((oneSpecies) => oneSpecies.name === animal.specie).residents
-      .filter((resident) => resident.sex === animal.sex).length;
-}
-
-function countAnimals(animal) {
-  return animal === undefined ? countAllAnimals(species) : countSpecificAnimals(species, animal);
-}
-
-console.log(countAnimals({ specie: 'penguins' }));
+const countAnimals = (animal) => (animal === undefined
+  ? countAllAnimals(species) : countSpecificAnimals(species, animal));
 
 module.exports = countAnimals;

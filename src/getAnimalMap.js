@@ -1,50 +1,23 @@
-const data = require('../data/zoo_data');
+const { species } = require('../data/zoo_data');
 
-function generateResidentsListPerSpecies(options, oneSpecies) {
-  let residentsList = oneSpecies.residents;
-  if (Object.keys(options).includes('sex')) {
-    residentsList = residentsList.filter((resident) => resident.sex === options.sex);
-  }
-
-  return residentsList;
-}
+const generateResidentsListPerSpecies = ({ sex }, { residents }) => (
+  sex ? residents.filter(({ sex: gender }) => gender === sex) : residents
+);
 
 function generateNamesListPerSpecies(options, oneSpecies) {
-  const result = {};
+  const namesList = generateResidentsListPerSpecies(options, oneSpecies)
+    .map(({ name }) => name);
 
-  const residentsList = generateResidentsListPerSpecies(options, oneSpecies);
-
-  const namesList = residentsList.map((resident) => resident.name);
-  if (options.sorted === true) namesList.sort();
-
-  result[oneSpecies.name] = namesList;
-
-  return result;
+  return { [oneSpecies.name]: options.sorted ? namesList.sort() : namesList };
 }
 
-function getOptions(options, oneSpecies) {
-  if (!options || !options.includeNames) {
-    return oneSpecies.name;
-  }
+const getOptions = (options, oneSpecies) => ((options && options.includeNames)
+  ? generateNamesListPerSpecies(options, oneSpecies) : oneSpecies.name);
 
-  return generateNamesListPerSpecies(options, oneSpecies);
-}
-
-function getAnimalMap(options) {
-  const { species } = data;
-  const locations = { NE: [], NW: [], SE: [], SW: [] };
-
-  Object.keys(locations).forEach((location) => {
-    species.forEach((oneSpecies) => {
-      if (oneSpecies.location === location) {
-        locations[location].push(getOptions(options, oneSpecies));
-      }
-    });
-  });
-
-  return locations;
-}
-
-console.log(getAnimalMap({ includeNames: true, sex: 'female' }));
+const getAnimalMap = (options) => species
+  .reduce((locations, oneSpecies) => (
+    { ...locations,
+      [oneSpecies.location]: [...locations[oneSpecies.location], getOptions(options, oneSpecies)],
+    }), { NE: [], NW: [], SE: [], SW: [] });
 
 module.exports = getAnimalMap;

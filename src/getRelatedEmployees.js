@@ -2,9 +2,7 @@ const data = require('../data/zoo_data');
 
 const { employees } = data;
 
-function isManager(id) {
-  return employees.some((employee) => employee.managers.includes(id));
-}
+const isManager = (id) => employees.some(({ managers }) => managers.includes(id));
 
 function checkManager(managerId) {
   if (!isManager(managerId)) {
@@ -15,8 +13,8 @@ function checkManager(managerId) {
 function getRelatedEmployees(managerId) {
   checkManager(managerId);
 
-  const relatedEmployees = employees.filter((employee) => employee.managers.includes(managerId));
-  return relatedEmployees.map((employee) => `${employee.firstName} ${employee.lastName}`);
+  return employees.filter(({ managers }) => managers.includes(managerId))
+    .map(({ firstName, lastName }) => `${firstName} ${lastName}`);
 }
 
 module.exports = { isManager, getRelatedEmployees };

@@ -1,34 +1,19 @@
-const data = require('../data/zoo_data');
+const { species, employees } = require('../data/zoo_data');
 
-const { species, employees } = data;
+const getAnimalFromKey = (key, givenInfo) => species
+  .find((oneSpecies) => oneSpecies[key] === givenInfo);
 
-function getAnimalFromKey(key, givenInfo) {
-  return species.find((oneSpecies) => oneSpecies[key] === givenInfo);
-}
+const getAnimalNameFromId = (speciesId) => getAnimalFromKey('id', speciesId).name;
 
-function getAnimalNameFromId(speciesId) {
-  const speciesInfo = getAnimalFromKey('id', speciesId);
-  return speciesInfo.name;
-}
+const getLocationsList = (coveredSpecies) => coveredSpecies
+  .reduce((locations, speciesName) => [...locations,
+    (getAnimalFromKey('name', speciesName).location)], []);
 
-function getLocationsList(coveredSpecies) {
-  const locations = [];
-
-  coveredSpecies.forEach((speciesName) => {
-    const speciesInfo = getAnimalFromKey('name', speciesName);
-    // if (!locations.includes(speciesInfo.location)) {
-    locations.push(speciesInfo.location);
-    // }
-  });
-
-  return locations;
-}
-
-function generateEmployeeCoverage(employee) {
+function generateEmployeeCoverage({ id, firstName, lastName, responsibleFor }) {
   const employeeCoverage = {
-    id: employee.id,
-    fullName: `${employee.firstName} ${employee.lastName}`,
-    species: employee.responsibleFor.map((speciesId) => getAnimalNameFromId(speciesId)),
+    id,
+    fullName: `${firstName} ${lastName}`,
+    species: responsibleFor.map((speciesId) => getAnimalNameFromId(speciesId)),
   };
 
   employeeCoverage.locations = getLocationsList(employeeCoverage.species);
@@ -36,58 +21,43 @@ function generateEmployeeCoverage(employee) {
   return employeeCoverage;
 }
 
-function IsValidEmployeeName(options) {
-  return employees.some((employee) => employee.firstName === options.name
-  || employee.lastName === options.name);
-}
+const isValidEmployeeName = (name) => employees
+  .some(({ firstName, lastName }) => firstName === name || lastName === name);
 
-function getEmployeeByName(options) {
-  return employees.find((employee) => employee.firstName === options.name
-  || employee.lastName === options.name);
-}
+const getEmployeeByName = (name) => employees
+  .find(({ firstName, lastName }) => firstName === name || lastName === name);
 
-function checkEmployeeName(options) {
-  if (!IsValidEmployeeName(options)) {
+function checkEmployeeName(name) {
+  if (!isValidEmployeeName(name)) {
     throw new Error('Informações inválidas');
   }
 
-  return generateEmployeeCoverage(getEmployeeByName(options));
+  return generateEmployeeCoverage(getEmployeeByName(name));
 }
 
-function IsValidEmployeeId(options) {
-  return employees.some((employee) => employee.id === options.id);
-}
+const isValidEmployeeId = (id) => employees.some((employee) => employee.id === id);
 
-function getEmployeeById(options) {
-  return employees.find((employee) => employee.id === options.id);
-}
+const getEmployeeById = (id) => employees.find((employee) => employee.id === id);
 
-function checkEmployeeId(options) {
-  if (!IsValidEmployeeId(options)) {
+function checkEmployeeId(id) {
+  if (!isValidEmployeeId(id)) {
     throw new Error('Informações inválidas');
   }
 
-  return generateEmployeeCoverage(getEmployeeById(options));
+  return generateEmployeeCoverage(getEmployeeById(id));
 }
 
-function getOptions(options) {
-  if (options.name) {
-    return checkEmployeeName(options);
+function getOptions({ name, id }) {
+  if (name) {
+    return checkEmployeeName(name);
   }
 
-  if (options.id) {
-    return checkEmployeeId(options);
+  if (id) {
+    return checkEmployeeId(id);
   }
 }
 
-function getEmployeesCoverage(options) {
-  if (!options) {
-    return employees.map((employee) => generateEmployeeCoverage(employee));
-  }
-
-  return getOptions(options);
-}
-
-console.log(getEmployeesCoverage({ id: 'c1f50212-35a6-4ecd-8223-f835538526c2' }));
+const getEmployeesCoverage = (options) => (options
+  ? getOptions(options) : employees.map((employee) => generateEmployeeCoverage(employee)));
 
 module.exports = getEmployeesCoverage;

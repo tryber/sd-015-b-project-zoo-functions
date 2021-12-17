@@ -1,82 +1,39 @@
-const data = require('../data/zoo_data');
+const { species, hours } = require('../data/zoo_data');
 
-const { species, hours } = data;
+const isTargetAnAnimal = (scheduleTarget) => species
+  .some(({ name }) => name === scheduleTarget);
 
-function checkAnimalTarget(scheduleTarget) {
-  return species.some((oneSpecies) => oneSpecies.name === scheduleTarget);
-}
+const isTargetADay = (scheduleTarget) => Object.keys(hours)
+  .some((day) => day === scheduleTarget);
 
-function checkDayTarget(scheduleTarget) {
-  return Object.keys(hours).some((day) => day === scheduleTarget);
-}
+const isTargetTypeValid = (scheduleTarget) => isTargetAnAnimal(scheduleTarget)
+|| isTargetADay(scheduleTarget);
 
-function checkTargetType(scheduleTarget) {
-  return checkAnimalTarget(scheduleTarget) || checkDayTarget(scheduleTarget);
-}
+const hasScheduleTarget = (scheduleTarget) => (
+  (scheduleTarget && isTargetTypeValid(scheduleTarget))
+);
 
-function checkScheduleTarget(scheduleTarget) {
-  let targetOk = true;
+const getDaysBySpecies = (animal) => species
+  .find(({ name }) => name === animal).availability;
 
-  if (!scheduleTarget || !checkTargetType(scheduleTarget)) {
-    targetOk = false;
-  }
+const getSpeciesByDay = (day) => species
+  .filter(({ availability }) => availability.includes(day))
+  .map(({ name }) => name);
 
-  return targetOk;
-}
+const createDailySchedule = (day) => (day === 'Monday'
+  ? { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' }
+  : { officeHour: `Open from ${hours[day].open}am until ${hours[day].close}pm`,
+    exhibition: getSpeciesByDay(day) });
 
-function getDaysBySpecies(targetAnimal) {
-  return species.find((oneSpecies) => oneSpecies.name === targetAnimal).availability;
-}
+const generateFullSchedule = (days) => days.reduce((schedule, day) => ({
+  ...schedule, [day]: createDailySchedule(day),
+}), {});
 
-function getSpeciesByDay(day) {
-  return species.filter((oneSpecies) => oneSpecies.availability.includes(day))
-    .map((oneSpecies) => oneSpecies.name);
-}
+const generateCustomizedSchedule = (scheduleTarget) => (isTargetAnAnimal(scheduleTarget)
+  ? getDaysBySpecies(scheduleTarget) : generateFullSchedule([scheduleTarget]));
 
-function createDailySchedule(day) {
-  const dailySchedule = {};
-
-  if (day === 'Monday') {
-    dailySchedule.officeHour = 'CLOSED';
-    dailySchedule.exhibition = 'The zoo will be closed!';
-  } else {
-    dailySchedule.officeHour = `Open from ${hours[day].open}am until ${hours[day].close}pm`;
-    dailySchedule.exhibition = getSpeciesByDay(day);
-  }
-
-  return dailySchedule;
-}
-
-function generateFullSchedule(days) {
-  const schedule = {};
-
-  days.forEach((day) => {
-    schedule[day] = createDailySchedule(day);
-  });
-
-  return schedule;
-}
-
-function generateCustomizedSchedule(scheduleTarget) {
-  if (checkAnimalTarget(scheduleTarget)) {
-    return getDaysBySpecies(scheduleTarget);
-  }
-
-  if (checkDayTarget(scheduleTarget)) {
-    return generateFullSchedule(scheduleTarget.split());
-  }
-}
-
-function getSchedule(scheduleTarget) {
-  const fullWeek = Object.keys(hours);
-
-  if (!checkScheduleTarget(scheduleTarget)) {
-    return generateFullSchedule(fullWeek);
-  }
-
-  return generateCustomizedSchedule(scheduleTarget);
-}
-
-console.log('Tuesday'.split());
+const getSchedule = (scheduleTarget) => (hasScheduleTarget(scheduleTarget)
+  ? generateCustomizedSchedule(scheduleTarget)
+  : generateFullSchedule(Object.keys(hours)));
 
 module.exports = getSchedule;
